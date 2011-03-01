@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Python4Astronomers'
-copyright = u'2011, Tom Aldcroft, Brian Refsdal, Tom Robitaille'
+copyright = u'2011, Smithsonian Astrophysical Observatory'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
