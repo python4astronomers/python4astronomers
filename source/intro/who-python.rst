@@ -23,9 +23,19 @@ on the back-end.
 Why join the herd?
 ------------------
 
-- Books: `Amazon "python science engineering"
-  <http://www.amazon.com/s/ref=pd_rhf_s_1?ie=UTF8&search-alias=aps&keywords=python%20science%20engineering>`_
-- Resources (discussions and people answering questions)
+Resources, resources, resources!
+
+- Books: 
+
+  - `Amazon "python science engineering"
+    <http://www.amazon.com/s/ref=pd_rhf_s_1?ie=UTF8&search-alias=aps&keywords=python%20science%20engineering>`_
+  - `Beginning Python: From Novice to Professional
+    <http://www.amazon.com/Beginning-Python-Professional-Magnus-Hetland/dp/159059519X>`_
+  - `Learning Python
+    <http://www.amazon.com/Learning-Python-Powerful-Object-Oriented-Programming/dp/0596158068/>`_
+  - ... and hundreds more ...
+   
+- Discussions and people answering questions
 
   - CfA pythonusers mailing list (nearly 100 subscribers)
   - `astropython.org <http://astropython.org>`_
@@ -36,7 +46,23 @@ Why join the herd?
   - Conferences: `SciPy <http://conference.scipy.org/scipy2011>`_ and
     `EuroSciPy <http://www.euroscipy.org/>`_
 
-- Active development (new features, bug fixes)
+- Tutorials
+
+  - `SciPy Intro and Advanced tutorials
+    <http://conference.scipy.org/scipy2010/tutorials.html>`_ [#]_
+  - `SciPy astronomy tutorial
+    <http://www.scipy.org/Additional_Documentation/Astronomy_Tutorial>`_ (144 pages!)
+  - `Dive into Python <http://diveintopython.org/toc/index.html>`_
+  - ... and many more ...
+
+- Lists of resources 
+
+  - `Comfort at 1 AU
+    <http://oneau.wordpress.com/2010/10/02/python-for-astronomy/>`_
+  - `Astropython.org resources <http://astropython.org/resources>`_
+  - `Astronomical Python <http://www.astro.washington.edu/users/rowen/AstroPy.html>`_
+
+.. [#] I could not untar the "tgz" (tar.gz) version but the "zip" archive was fine.
 
 Other sciences
 --------------

@@ -12,8 +12,8 @@ Introduction
 
    overview
    why-python
-   who-python
-   key-packages
    quick-tour
-   cool-things
-
+   who-python
+   wrapup
+   comparison
+   python-requirements

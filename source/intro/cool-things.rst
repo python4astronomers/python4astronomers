@@ -1,2 +1,0 @@
-Cool things with Python
-=======================
