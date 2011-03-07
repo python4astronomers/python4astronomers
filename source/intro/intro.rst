@@ -1,9 +1,12 @@
 ..    # :tocdepth: 2
 
-Introduction
-================================
+Practical Python for Astronomers
+==================================
 
-.. image:: xkcd_python.png
+.. Make aplpy.gif with:
+   convert -delay 700 aplpy.png -delay 300 aplpy_plain.png -loop 0 aplpy.gif
+
+.. image:: aplpy.gif
 
 .. toctree::
    :glob:

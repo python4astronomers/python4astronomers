@@ -1,8 +1,5 @@
-Practical Python for Astronomers
-==================================
-
 Overview
---------
+==========
 
 The CfA Python Lunch group [#]_ is hosting a series of hands-on workshops to explore
 the Python language and the powerful analysis tools it provides. *The emphasis

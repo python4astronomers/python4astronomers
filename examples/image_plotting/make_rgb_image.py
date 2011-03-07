@@ -4,7 +4,8 @@ import aplpy
 aplpy.make_rgb_cube(['m1.fits', 'i3.fits', 'i2.fits'], 'rgb.fits')
 
 # Make 3-color image
-aplpy.make_rgb_image('rgb.fits', 'rgb.png', vmin_r=20, vmax_r=400, vmin_g=0, vmax_g=150, vmin_b=-2,vmax_b=50)
+aplpy.make_rgb_image('rgb.fits', 'rgb.png', vmin_r=20, vmax_r=400,
+                     vmin_g=0, vmax_g=150, vmin_b=-2,vmax_b=50)
 
 # Create a new figure
 f = aplpy.FITSFigure('rgb_2d.fits')

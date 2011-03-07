@@ -37,12 +37,11 @@ Resources, resources, resources!
    
 - Discussions and people answering questions
 
-  - CfA pythonusers mailing list (nearly 100 subscribers)
+  - CfA pythonusers mailing list (over 100 subscribers)
   - `astropython.org <http://astropython.org>`_
   - `astropy <http://mail.scipy.org/mailman/listinfo/astropy>`_ mailing list
   - `stackoverflow <http://stackoverflow.com/questions/tagged/python>`_ (~50000
     questions answered ca. Mar-2011)
-  - `Reddit/Python <http://www.reddit.com/r/Python/>`_
   - Conferences: `SciPy <http://conference.scipy.org/scipy2011>`_ and
     `EuroSciPy <http://www.euroscipy.org/>`_
 
@@ -59,7 +58,7 @@ Resources, resources, resources!
 
   - `Comfort at 1 AU
     <http://oneau.wordpress.com/2010/10/02/python-for-astronomy/>`_
-  - `Astropython.org resources <http://astropython.org/resources>`_
+  - `Astropython.org resources <http://www.astropython.org/resources>`_
   - `Astronomical Python <http://www.astro.washington.edu/users/rowen/AstroPy.html>`_
 
 .. [#] I could not untar the "tgz" (tar.gz) version but the "zip" archive was fine.
