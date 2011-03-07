@@ -11,7 +11,7 @@ on several levels:
 - Standard library support for web, GUI, databases, process management, etc.
 - Very active developer community
 
-==> `Easy for astronomers <http://www.manning.com/sande/>`_ but with virtually no limits for gurus.  <==
+==> **Easy for astronomers** (or `children <http://www.manning.com/sande/>`_ but with virtually no limits for gurus.  <==
 
 Freedom and commitment
 ----------------------
@@ -50,9 +50,7 @@ didn't intend it.
 The `HIPE <http://herschel.esac.esa.int/HIPE_download.shtml>`_ (Herschel
 Interactive Processing Environment) `data analysis guide
 <http://herschel.esac.esa.int/hcss-doc-5.0/print/howtos/howtos.pdf>`_ is a
-great example.  They barely mention in this guide that the dozens of "command
-line" examples are just Python (well actually Jython).  That would be too
-scary.
+an example. 
 
 .. image:: hipe.png
 

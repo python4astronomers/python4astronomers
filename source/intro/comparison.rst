@@ -1,3 +1,5 @@
+.. _comparison_sm_idl:
+
 Comparison to SM and IDL
 =========================
 
