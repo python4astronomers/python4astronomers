@@ -3,3 +3,8 @@ Things to include:
 X Resources and meta-resources
 X Reference to the Greenfield tutorial
 X Python 2 vs. 3
+
+Exercise:
+
+- Enhance the run_codes.py to check for errors
+- Enhance the run_codes.py to use subprocess

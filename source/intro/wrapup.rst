@@ -29,6 +29,7 @@ Other topics of interest?
 - Making a GUI tool
 - Making a Python-backed web site
 - Classes and object oriented programming
+- Writing modules or packages for re-usable code
 - ??
 
 Workshop materials

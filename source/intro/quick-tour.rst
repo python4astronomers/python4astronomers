@@ -17,6 +17,47 @@ Quick tour of Python
    Esaview (live demo)
    C-COSMOS browse (live demo)
    
+
+Reading a table and plotting
+----------------------------
+
+::
+
+  import asciitable
+
+  dat = asciitable.read('fermi_agn.dat')
+
+  redshift = dat['redshift']
+  flux = dat['photon_flux']
+  gamma = dat['spectral_index']
+
+  # Select rows that have a measured redshift
+  with_z = redshift != -999
+
+  figure(1)
+  semilogx(flux, gamma, '.b', label='All')
+  semilogx(flux[with_z], gamma[with_z], 'or', label='With Z')
+  legend(numpoints=1)
+  grid()
+  xlabel('Flux (photon/cm$^2$/s)')
+  ylabel('Spectral index $\Gamma$')
+
+  # Select low- and high-z samples
+  lowz = with_z & (redshift < 0.8)
+  highz = with_z & (redshift >= 0.8)
+
+  figure(2)
+  bins = arange(1.2, 3.0, 0.1)
+  hist(gamma[lowz], bins, color='b', alpha=0.5, label='z < 0.8')
+  hist(gamma[highz], bins, color='r', alpha=0.5, label='z > 0.8')
+  xlabel('Spectral index $\Gamma$')
+  title('$\Gamma$ for low-z and high-z samples')
+  legend(loc='upper left')
+
+  asciitable.write(dat[with_z], 'fermi_agn_with_z.dat')
+
+.. image:: 
+
 Curve fitting with SciPy
 ------------------------
 
@@ -63,6 +104,7 @@ The plotted fit result is as shown below:
 
 .. image:: fit.png
 
+
 Synthetic images
 ----------------
 
@@ -108,4 +150,85 @@ including convolution with a Gaussian filter and the addition of noise
 The simulated cluster image is below:
 
 .. image:: synthetic_image.png
+
+Running existing compiled codes
+-------------------------------
+
+::
+
+  import os
+  import asciitable
+
+  smoothing = 30  # Smoothing window length
+  freqs = [2, 4]  # Frequency values for making data
+  noises = [1, 5] # Noise amplitude inputs
+
+  figure(1)
+  clf()
+
+  # Loop over freq and noise values, running standalone code to create noisy data
+  # and smooth it.  Get the data back into Python and plot.
+
+  plot_num = 1
+  for freq in freqs:
+      for noise in noises:
+          # Run the compiled code "make_data" to make data as a list of x, y, y_smooth
+          cmd = 'make_data %s %s %s' % (freq, noise, smoothing)
+          print 'Running', cmd
+          out = os.popen(cmd).read()
+          # out now contains the output from <cmd> as a single string
+
+          # Parse the output string as a table
+          dat = asciitable.read(out)
+
+          # Make a plot
+          subplot(2, 2, plot_num)
+          plot(dat['x'], dat['y'])
+          plot(dat['x'], dat['y_smooth'], linewidth=3, color='r')
+
+          plot_num += 1
+
+
+.. image:: run_codes.png
+
+Making a publication quality image
+----------------------------------
+
+Making a publication quality image is a snap in Python using the `APLpy
+<aplpy.github.com>`_ package.  Images can be made interactively or
+(reproducibly) with a script.  Let's see how the cover image for today's
+talk was made.
+
+::
+
+  import aplpy
+
+  # Convert all images to common projection
+  aplpy.make_rgb_cube(['m1.fits', 'i3.fits', 'i2.fits'], 'rgb.fits')
+
+  # Make 3-color image
+  aplpy.make_rgb_image('rgb.fits', 'rgb.png', 
+                       vmin_r=20, vmax_r=400,
+                       vmin_g=0, vmax_g=150, 
+                       vmin_b=-2,vmax_b=50)
+
+  # Create a new figure
+  fig = aplpy.FITSFigure('rgb_2d.fits')
+
+  # Show the RGB image
+  fig.show_rgb('rgb.png')
+
+  # Add contours
+  fig.show_contour('sc.fits', cmap='gist_heat', levels=[0.2,0.4,0.6,0.8,1.0])
+
+  # Overlay a grid
+  fig.add_grid()
+  fig.grid.set_alpha(0.5)
+
+  # Save image
+  fig.save('plot.png')
+
+This produces the nice image:
+
+.. image:: image_plotting.png 
 
