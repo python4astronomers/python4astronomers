@@ -115,7 +115,7 @@ uncertainties.
   plot(xm, gaussian(xm, popt[0], popt[1], popt[2]))
 
   # Save figure
-  fig.savefig('fit.png')
+  savefig('fit.png')
    
 The plotted fit result is as shown below:
 
