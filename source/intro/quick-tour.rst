@@ -230,7 +230,7 @@ Making a publication quality image
 ----------------------------------
 
 Making a publication quality image is a snap in Python using the `APLpy
-<aplpy.github.com>`_ package.  Images can be made interactively or
+<http://aplpy.github.com>`_ package.  Images can be made interactively or
 (reproducibly) with a script.  Let's see how the cover image for today's
 talk was made.
 
@@ -271,11 +271,19 @@ This produces the nice image:
 And much much more...
 ----------------------
 
-- Fast access to big (1e9 rows) tables
-- 3-d plotting and surface rendering
-- Sophisticated data modeling with advanced statistics
+- Fast access to big (1e9 rows) tables with `PyTables
+  <http://www.pytables.org>`_ + `HDF5 <http://www.hdfgroup.org/HDF5/>`_
+- 3-d plotting and surface rendering with `Mayavi <http://mayavi.sourceforge.net/>`_
+- Sophisticated data modeling with advanced statistics with `Sherpa 
+  <http://cxc.harvard.edu/sherpa/>`_
+- `Query VO tables
+  <http://www.astropython.org/blog/2011/3/Querying-tables-in-the-virtual-observatory>`_
+  and `broadcast <https://gist.github.com/855678>`_ or 
+  `retrieve <https://gist.github.com/855678>`_ tables to VO applications like 
+  `TOPCAT <http://www.star.bris.ac.uk/~mbt/topcat/>`_.  
 - GUI application to quickly view thousands of X-ray survey image cutouts
 - Python-based web site for browsing a complex multi-wavelength survey
-- Thermal modeling of the Chandra X-ray satellite
+- `Thermal modeling of the Chandra X-ray satellite 
+  <http://conference.scipy.org/scipy2010/slides/tom_aldcroft_chandra.pdf>`_
 - Interactive multi-user plots accessed through a web browser (!)
-- Distributed computing (MPI)
+- Distributed computing with `MPI for Python <http://mpi4py.scipy.org/>`_
