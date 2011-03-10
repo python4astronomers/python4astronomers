@@ -113,6 +113,8 @@ billion-element python list you'll be waiting for a while.
 NumPy
 -----
 
+**UNDER CONSTRUCTION**
+
 NumPy has an excellent `basic tutorial
 <http://www.scipy.org/Tentative_NumPy_Tutorial>`_ available.  Here I just copy
 the Quick Tour from that tutorial but you should read the rest as well.  In

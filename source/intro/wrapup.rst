@@ -4,8 +4,10 @@ Logistics and open discussion
 Workshop schedule and location
 ------------------------------
 
-Currently we have the A-building classroom booked from 1:30pm to 3pm
-for five Friday afternoons in April and May.  On April 1 there is a
+Currently we have the A-building classroom booked from 1:30pm to 3pm for five
+Friday afternoons in April and May.  The goal will be to finish by 2:30pm.
+
+On April 1 there is a
 Graduate lunch scheduled 1pm - 2:30pm (does anybody know why the unusual time?).
 
 - The classroom can hold about 30 people.  How many plan to attend?
@@ -14,7 +16,7 @@ Agenda
 --------
 
 ======== ========================================= =================
-March 11 Introduction to Python for Astronomers    Classroom A-bldg
+March 11 Introduction to Python for Astronomers    Phillips
 April 1  Building a scientific Python installation Pratt (Phillips?)
 April 8  Core packages - NumPy, iPython, SciPy     Classroom
 April 15 Plotting and images                       Classroom

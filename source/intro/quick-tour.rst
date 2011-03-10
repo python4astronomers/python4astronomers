@@ -273,6 +273,7 @@ And much much more...
 
 - Fast access to big (1e9 rows) tables
 - 3-d plotting and surface rendering
+- Sophisticated data modeling with advanced statistics
 - GUI application to quickly view thousands of X-ray survey image cutouts
 - Python-based web site for browsing a complex multi-wavelength survey
 - Thermal modeling of the Chandra X-ray satellite
