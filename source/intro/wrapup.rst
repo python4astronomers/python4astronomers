@@ -47,6 +47,22 @@ The workshop presentations are being developed and each one will be ready by the
 morning of that session (and hopefully earlier).  You are encouraged to download the
 tutorial and data prior to the session starting.
 
+Installing Python and the rest
+------------------------------
+
+In order to follow along the tutorial sessions you need to have Python 2.6 or 2.7
+installed and satisfy these :ref:`python_requirements`.  At least a week before
+the April 1 session (Building a scientific Python installation) we will send
+out materials with specific instructions for:
+
+- HEAD managed linux (CentOS 5) machines (via xterm on laptop)
+- CF managed linux (CentOS 5) machines (via xterm on laptop)
+- MacOSX 10.5 and MacOSX 10.6
+- Self-managed linux with root (recent Ubuntu, others?)
+
+At the very least you should download the necessary package files for your
+configuration in advance of the April 1 session.  
+
 Open discussion
 ---------------
 

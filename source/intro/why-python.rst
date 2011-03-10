@@ -11,7 +11,7 @@ on several levels:
 - Standard library support for web, GUI, databases, process management, etc.
 - Very active developer community
 
-==> **Easy for astronomers** (or `children <http://www.manning.com/sande/>`_ but with virtually no limits for gurus.  <==
+==> **Easy for astronomers** (or `children <http://www.manning.com/sande/>`_) but with virtually no limits for gurus.  <==
 
 Freedom and commitment
 ----------------------
@@ -21,7 +21,7 @@ Freedom and commitment
 Python and the necessary tools are FREE, as in free beer and Free Open Source
 Software.  IDL and SM are not free.  Maybe you don't care because someone else
 pays, but perhaps your collaborators don't want to pay, or you want to run on a
-personal laptop.  *Using unlicensed versions is not cool*.
+personal laptop. 
 
 **Bad**
 

@@ -1,3 +1,5 @@
+.. include:: ../references.rst
+
 Quick tour of Python
 ====================
 
@@ -15,31 +17,41 @@ Quick tour of Python
    Compiled extensions
    HDF5 (Read 100 million data rows, beyond capability of TOPCAT) (live demo)
    Esaview (live demo)
+   CygOb2 aeview.py
    C-COSMOS browse (live demo)
    
+In the spirit of this workshop let's jump in to real Python analysis code.
+These examples assume you are using `pylab
+<http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
+(you'll understand what that is after the 2nd hands-on session).
 
 Reading a table and plotting
 ----------------------------
 
-::
+The Fermi Gamma-ray satellite has a nice catalog of AGN available through
+HEASARC.  The script below will read in the catalog data using the `asciitable`_
+module, do some basic filtering with `NumPy`_, and make a couple of plots with
+`matplotlib`_ ::
 
-  import asciitable
+  import asciitable   # Make external package available
 
+  # Read table.  
+  # ==> dat[column_name] and dat[row_number] both valid <==
   dat = asciitable.read('fermi_agn.dat')
 
-  redshift = dat['redshift']
+  redshift = dat['redshift']    # array of values from 'redshift' column
   flux = dat['photon_flux']
   gamma = dat['spectral_index']
 
   # Select rows that have a measured redshift
-  with_z = redshift != -999
+  with_z = (redshift != -999)
 
   figure(1)
-  semilogx(flux, gamma, '.b', label='All')
+  semilogx(flux, gamma, '.b', label='All')  # First plot!
   semilogx(flux[with_z], gamma[with_z], 'or', label='With Z')
   legend(numpoints=1)
   grid()
-  xlabel('Flux (photon/cm$^2$/s)')
+  xlabel('Flux (photon/cm$^2$/s)')   # latex works
   ylabel('Spectral index $\Gamma$')
 
   # Select low- and high-z samples
@@ -47,7 +59,7 @@ Reading a table and plotting
   highz = with_z & (redshift >= 0.8)
 
   figure(2)
-  bins = arange(1.2, 3.0, 0.1)
+  bins = arange(1.2, 3.0, 0.1)    # values from 1.2 to 3.0 by 0.1
   hist(gamma[lowz], bins, color='b', alpha=0.5, label='z < 0.8')
   hist(gamma[highz], bins, color='r', alpha=0.5, label='z > 0.8')
   xlabel('Spectral index $\Gamma$')
@@ -56,12 +68,14 @@ Reading a table and plotting
 
   asciitable.write(dat[with_z], 'fermi_agn_with_z.dat')
 
-.. image:: 
+.. image:: scatter.png
+
+.. image:: hist.png
 
 Curve fitting with SciPy
 ------------------------
 
-SciPy provides `curve_fit
+`SciPy`_ provides `curve_fit
 <http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html>`_,
 a simple and useful implementation of the Levenburg-Marquardt non-linear
 minimization algorithm.  This example shows a code to generate a fake dataset
@@ -72,13 +86,16 @@ uncertainties.
 
   from scipy.optimize import curve_fit
 
-  # Create function
+  # Create a function
+  # ==> First encounter with *whitespace* in Python <==
   def gaussian(x, a, b, c):
-      return a * exp(-(x - b)**2 / c**2)
+      val = a * exp(-(x - b)**2 / c**2)
+      return val
 
-  # Generate fake data
+  # Generate fake data.
+  # Note: functions in random package, array arithmetic (exp)
   n = 100
-  x = random.uniform(-10., 10., n)
+  x = random.uniform(-10., 10., n)  
   y = exp(-(x - 3.)**2 / 4) * 10. + random.normal(0., 2., n)
   e = random.uniform(0.1, 1., n)
 
@@ -94,7 +111,7 @@ uncertainties.
   errorbar(x, y, yerr=e, linewidth=1, color='black', fmt=None)
 
   # Plot model
-  xm = linspace(-10., 10., 100)
+  xm = linspace(-10., 10., 100)  # 100 evenly spaced points
   plot(xm, gaussian(xm, popt[0], popt[1], popt[2]))
 
   # Save figure
@@ -104,12 +121,23 @@ The plotted fit result is as shown below:
 
 .. image:: fit.png
 
+Intermission: NumPy, Matplotlib, and SciPy
+------------------------------------------
+
+These three packages are the workhorses of scientific Python.  
+
+- `NumPy`_ is the fundamental package for scientific computing in Python [`Reference
+  <http://docs.scipy.org/doc/numpy/reference/>`_]
+- `Matplotlib`_ is one of many plotting packages.  Started as a Matlab clone.
+- `SciPy`_ is a collection of mathematical algorithms and convenience
+  functions [`Reference <http://docs.scipy.org/doc/scipy/reference/>`_]
+
 
 Synthetic images
 ----------------
 
 This example demonstrates how to create a synthetic image of a cluster,
-including convolution with a Gaussian filter and the addition of noise
+including convolution with a Gaussian filter and the addition of noise.
 ::
 
   import pyfits
@@ -134,6 +162,7 @@ including convolution with a Gaussian filter and the addition of noise
   y = ny / 2 + r * sin(theta)
 
   # Add stars to image
+  # ==> First for loop and if statement <==
   for i in range(n):
       if x[i] >= 0 and x[i] < nx and y[i] >= 0 and y[i] < ny:
           image[y[i], x[i]] += f[i]
@@ -154,6 +183,9 @@ The simulated cluster image is below:
 Running existing compiled codes
 -------------------------------
 
+In addition to just doing computations and plotting, Python is great for gluing
+together other codes and doing system type tasks.
+
 ::
 
   import os
@@ -168,7 +200,6 @@ Running existing compiled codes
 
   # Loop over freq and noise values, running standalone code to create noisy data
   # and smooth it.  Get the data back into Python and plot.
-
   plot_num = 1
   for freq in freqs:
       for noise in noises:
@@ -177,6 +208,10 @@ Running existing compiled codes
           print 'Running', cmd
           out = os.popen(cmd).read()
           # out now contains the output from <cmd> as a single string
+
+          # Write the output to a file
+          filename = 'data_%s_%s' % (freq, noise)
+          open(filename, 'w').write(out)
 
           # Parse the output string as a table
           dat = asciitable.read(out)
@@ -232,3 +267,14 @@ This produces the nice image:
 
 .. image:: image_plotting.png 
 
+
+And much much more...
+----------------------
+
+- Fast access to big (1e9 rows) tables
+- 3-d plotting and surface rendering
+- GUI application to quickly view thousands of X-ray survey image cutouts
+- Python-based web site for browsing a complex multi-wavelength survey
+- Thermal modeling of the Chandra X-ray satellite
+- Interactive multi-user plots accessed through a web browser (!)
+- Distributed computing (MPI)

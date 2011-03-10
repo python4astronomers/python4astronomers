@@ -25,16 +25,6 @@ Why join the herd?
 
 Resources, resources, resources!
 
-- Books: 
-
-  - `Amazon "python science engineering"
-    <http://www.amazon.com/s/ref=pd_rhf_s_1?ie=UTF8&search-alias=aps&keywords=python%20science%20engineering>`_
-  - `Beginning Python: From Novice to Professional
-    <http://www.amazon.com/Beginning-Python-Professional-Magnus-Hetland/dp/159059519X>`_
-  - `Learning Python
-    <http://www.amazon.com/Learning-Python-Powerful-Object-Oriented-Programming/dp/0596158068/>`_
-  - ... and hundreds more ...
-   
 - Discussions and people answering questions
 
   - CfA pythonusers mailing list (over 100 subscribers)
@@ -60,6 +50,18 @@ Resources, resources, resources!
     <http://oneau.wordpress.com/2010/10/02/python-for-astronomy/>`_
   - `Astropython.org resources <http://www.astropython.org/resources>`_
   - `Astronomical Python <http://www.astro.washington.edu/users/rowen/AstroPy.html>`_
+
+- Books: 
+
+  - CfA Wolbach Library
+  - `Amazon "python science engineering"
+    <http://www.amazon.com/s/ref=pd_rhf_s_1?ie=UTF8&search-alias=aps&keywords=python%20science%20engineering>`_
+  - `Beginning Python: From Novice to Professional
+    <http://www.amazon.com/Beginning-Python-Professional-Magnus-Hetland/dp/159059519X>`_
+  - `Learning Python
+    <http://www.amazon.com/Learning-Python-Powerful-Object-Oriented-Programming/dp/0596158068/>`_
+  - ... and hundreds more ...
+   
 
 .. [#] I could not untar the "tgz" (tar.gz) version but the "zip" archive was fine.
 
