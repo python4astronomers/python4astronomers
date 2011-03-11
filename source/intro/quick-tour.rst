@@ -287,3 +287,4 @@ And much much more...
   <http://conference.scipy.org/scipy2010/slides/tom_aldcroft_chandra.pdf>`_
 - Interactive multi-user plots accessed through a web browser (!)
 - Distributed computing with `MPI for Python <http://mpi4py.scipy.org/>`_
+- Make a little `video distribution web site <http://youtube.com>`_

@@ -14,12 +14,13 @@ Contents:
    :maxdepth: 2
 
    intro/intro
-   installation/installation
-   core/core
-   plotting/plotting
-   files/files
-   fitting/fitting
-   vo/vo
+
+..   installation/installation
+..   core/core
+..   plotting/plotting
+..   files/files
+..   fitting/fitting
+..   vo/vo
 
 Schedule
 --------

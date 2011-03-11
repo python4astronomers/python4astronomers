@@ -78,3 +78,9 @@ A :ref:`comparison_sm_idl` is available.
 
 **Questions?**
 
+Final words
+-----------
+
+From `xkcd <http://xkcd.com>`_:
+
+.. image:: xkcd_python.png
