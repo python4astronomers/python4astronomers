@@ -14,8 +14,8 @@ Contents:
    :maxdepth: 2
 
    intro/intro
+   installation/installation
 
-..   installation/installation
 ..   core/core
 ..   plotting/plotting
 ..   files/files

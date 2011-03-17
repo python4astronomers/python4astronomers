@@ -5,3 +5,6 @@
 .. _CIAO: http://cxc.harvard.edu/ciao/
 .. _SAS: http://xmm.vilspa.esa.es/sas/
 .. _asciitable: http://cxc.harvard.edu/contrib/asciitable
+.. _pyfits: http://www.stsci.edu/resources/software_hardware/pyfits
+.. _ATpy: atpy.github.com
+.. _APLpy: aplpy.github.com
