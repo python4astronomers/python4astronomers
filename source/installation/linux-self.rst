@@ -34,7 +34,7 @@ Astro: required and useful
 
   sudo easy_install asciitable
   sudo easy_install http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
-  sudo easy_install http://stsdas.stsci.edu/astrolib/pywcs-1.9-4.4.4.tar.gz
+  sudo easy_install pywcs
   sudo easy_install atpy
   sudo easy_install aplpy
   sudo easy_install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
@@ -70,7 +70,7 @@ Now install additional packages::
 
   easy_install --user asciitable
   easy_install --user http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
-  easy_install --user http://stsdas.stsci.edu/astrolib/pywcs-1.9-4.4.4.tar.gz
+  easy_install --user pywcs
   easy_install --user atpy
   easy_install --user aplpy
   easy_install --user http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz

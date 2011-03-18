@@ -103,7 +103,7 @@ Next open a terminal window and do the following::
 
   easy_install asciitable
   easy_install http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
-  easy_install http://stsdas.stsci.edu/astrolib/pywcs-1.9-4.4.4.tar.gz
+  easy_install pywcs
   easy_install atpy
   easy_install aplpy
   easy_install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz

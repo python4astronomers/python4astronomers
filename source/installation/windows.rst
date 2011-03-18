@@ -18,7 +18,7 @@ Next open a command window and do the following::
   cd \Python27\Scripts
   easy_install.exe asciitable
   easy_install.exe http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
-  easy_install.exe http://stsdas.stsci.edu/astrolib/pywcs-1.9-4.4.4.tar.gz
+  easy_install.exe pywcs
   easy_install.exe atpy
   easy_install.exe aplpy
   easy_install.exe http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz

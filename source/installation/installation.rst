@@ -38,18 +38,49 @@ downloads we are providing.*
 
 However, please do not distribute these files to others without express permission.
 
+Installation
+------------
+
+In order to follow along with the examples to be presented in the workshops
+your Python installation will need to meet the `Python requirements`_.  The aim
+of this workshop is to get this set up correctly. Once you have followed the
+installation instructions in the next section for your platform then go to the
+`Tests`_ section to see if everything is OK
+
+The installation process is particular to each platform.  For all options
+except "Linux on HEAD or CF network" you will need the EPD download as
+discussed in the next section.
+
+EPD downloads
+^^^^^^^^^^^^^
+
+For workshop participants the Enthought Python Distribution download files have been
+mirrored to the `EPD downloads
+<http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_ page.  The user name
+and password were emailed to the pythonusers mailing list on March 18.
+
+
+Instructions
+^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 2
+   
+   macosx
+   linux-self
+   linux-network
+   windows
+   package-basics
+
 Python requirements
 -----------------------
 
-In order to follow along with the examples to be presented in the workshops
-your must have at least the following installed in your working environment.
-Once you have followed the installation instructions in the next section for
-your platform then run the tests below to see if everything is OK.
+Following are a list of required and optional (but useful) packages for the workshops.
 
 Core
 ^^^^^
 
-- Python 2.6 or 2.7 [#]_
+- Python 2.6 or 2.7 (not Python 3.x [#]_)
 - IPython >= 0.10
 - NumPy >= 1.3
 - SciPy >= 0.7.2
@@ -77,7 +108,7 @@ Astro: useful
 
 .. _installation_test:
 
-Test
+Tests
 ^^^^^^^^^^
 
 To do a very basic test whether you meet the requirements and have a functioning
@@ -113,30 +144,3 @@ To check the other required packages do the following from within ipython::
 .. [#] Python 3.x is the "next generation" Python but for astronomy analysis
        Python 2.x is still the best choice.
 
-Installation
-------------
-
-The installation process is particular to each platform.  For all options
-except "Linux on HEAD or CF network" you will need the EPD download as
-discussed in the next section.
-
-EPD downloads
-^^^^^^^^^^^^^
-
-For workshop participants the Enthought Python Distribution download files have been
-mirrored to the `EPD downloads
-<http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_ page.  The user name
-and password were emailed to the pythonusers mailing list on March 18.
-
-
-Instructions
-^^^^^^^^^^^^^^
-
-.. toctree::
-   :maxdepth: 2
-   
-   macosx
-   linux-self
-   linux-network
-   windows
-   package-basics
