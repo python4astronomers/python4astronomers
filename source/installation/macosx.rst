@@ -79,7 +79,7 @@ You may at some point come across packages which require a Fortran
 compiler, or you may want to interface Fortran and Python code. If not, you
 can proceed to the next section.
 
-The prefered compiler to interface Fortran and Python code is ``gfortran``.
+The preferred compiler to interface Fortran and Python code is ``gfortran``.
 Other compilers `should` work, but if you want to be on the safe side, you
 can download a one-click installer for gfortran 4.2.3 from `this page
 <http://r.research.att.com/tools/>`_. Once you have installed it, make sure
