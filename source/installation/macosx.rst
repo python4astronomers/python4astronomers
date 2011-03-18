@@ -91,8 +91,8 @@ that typing ``gfortran`` gives something like this::
 If you get ``gfortran: command not found``, then ``gfortran`` did not
 install correctly.
 
-Additional Packages
--------------------
+Astro: required and useful
+--------------------------
 
 Next open a terminal window and do the following::
 
