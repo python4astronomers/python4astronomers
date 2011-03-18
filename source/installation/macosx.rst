@@ -9,11 +9,16 @@ Enthought Python Distribution (EPD)
 First download the appropriate Mac OSX EPD installer from `this <http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_ page.
 The user name and password were emailed to the pythonusers mailing list.
 
-.. note:: If you are using MacOS X 10.5 or 10.6 on an Intel Mac, we 
-          recommend that you install EPD 7.0.2 64-bit
-          (``epd-7.0-2-macosx-x86_64.dmg``). If you are using a PPC or
-          Intel Mac with MacOS X 10.4, you will need to download an older
-          32-bit version (``epd_py25-4.2.30201-macosx-u.dmg``).
+.. note:: If you are using MacOS X 10.5 or 10.6 on an Intel Mac, you can
+          either install the 32-bit or 64-bit version of EPD 7.0.2. To
+          determine whether you have a 32-bit or 64-bit processor, see
+          `this page <http://support.apple.com/kb/ht3696>`_. If you have a
+          64-bit processor, we strongly recommend that you install the
+          64-bit version of EPD (``epd-7.0-2-macosx-x86_64.dmg``).
+          Otherwise, you will need the 32-bit version
+          (``epd-7.0-2-macosx-i386.dmg``). If you are using a PPC or Intel
+          Mac with MacOS X 10.4, you will need to download an older 32-bit
+          version (``epd_py25-4.2.30201-macosx-u.dmg``).
 
 After downloading the disk image, open it, then double-click on
 ``EPD.mpkg`` and follow the prompts to install. Choose all the defaults for
