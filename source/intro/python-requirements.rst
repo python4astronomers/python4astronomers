@@ -23,7 +23,7 @@ Astro: required
 
 - `asciitable`_ >= 0.5.0
 - `pyfits`_ >= 2.3.0
-- `pywcs`_ <https://trac6.assembla.com/astrolib>`_ >= 1.9 ()
+- `pywcs <https://trac6.assembla.com/astrolib>`_ >= 1.9 ()
 - `ATpy`_ >= 0.9.4
 - `APLpy`_ >= 0.9.5 (pyparsing, pyregion, PIL, montage are optional but useful)
 

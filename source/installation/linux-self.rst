@@ -1,5 +1,3 @@
-.. _`Linux self-managed`
-
 Linux self-managed machine
 ==========================
 
@@ -30,8 +28,8 @@ Core installation
   sudo apt-get install python-matplotlib
   sudo apt-get install python-setuptools
 
-Astro: required
-^^^^^^^^^^^^^^^^
+Astro: required and useful
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
   sudo easy_install asciitable
@@ -39,11 +37,6 @@ Astro: required
   sudo easy_install http://stsdas.stsci.edu/astrolib/pywcs-1.9-4.4.4.tar.gz
   sudo easy_install atpy
   sudo easy_install aplpy
-
-Astro: useful
-^^^^^^^^^^^^^
-::
-
   sudo easy_install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
   sudo easy_install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
   sudo easy_install pyparsing
@@ -52,22 +45,34 @@ Astro: useful
 User install without root
 -------------------------
 
-In this case the easiest path is to use the Enthought Python Distribution.
+First download the appropriate Linux EPD installer from the `EPD downloads
+<http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_ page.  The user name
+and password were emailed to the pythonusers mailing list
 
-Astro: required
-^^^^^^^^^^^^^^^^
-::
+The follow the instructions for `Getting Started with EPD
+<http://www.enthought.com/products/epdgetstart.php?platform=linux>`_ for
+Linux.   
+
+Once installed then follow the Getting Started page and look at Pylab and plain
+Python.
+
+Next you need to edit the appropriate shell startup file (e.g. ``~/.cshrc`` or
+``~/.bash_profile``) and update your path to include the EPD path.  For
+instance if you specified to install EPD in ``/home/me/epd7.0`` then the
+following will work::
+
+  export PATH=/home/me/epd7.0/bin:$PATH  # bash
+  set path=(/home/me/epd7.0/bin $path)   # csh or tcsh
+
+Astro: required and useful
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Now install additional packages::
 
   easy_install --user asciitable
   easy_install --user http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
   easy_install --user http://stsdas.stsci.edu/astrolib/pywcs-1.9-4.4.4.tar.gz
   easy_install --user atpy
   easy_install --user aplpy
-
-Astro: useful
-^^^^^^^^^^^^^
-::
-
   easy_install --user http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
   easy_install --user http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
   easy_install --user pyparsing

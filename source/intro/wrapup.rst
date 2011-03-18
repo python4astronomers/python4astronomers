@@ -15,15 +15,18 @@ Graduate lunch scheduled 1pm - 2:30pm (does anybody know why the unusual time?).
 Agenda
 --------
 
-======== ========================================= =================
-March 11 Introduction to Python for Astronomers    Phillips
-April 1  Building a scientific Python installation Pratt (Phillips?)
-April 8  Core packages - NumPy, iPython, SciPy     Classroom
-April 15 Plotting and images                       Classroom
-April 29 Data file I/O, process control (csh)      Classroom
-May 13   Fitting and modeling 1-d and 2-d data     Classroom
-May 27   VO and online astronomy                   Classroom
-======== ========================================= =================
+All workshops will be in Phillips Auditorium.  Please note the times below, which
+jump around a bit due to availability of Phillips.
+
+======== ========================================= =====================
+March 11 Introduction to Python for Astronomers    Phillips 1:30pm
+April 1  Building a scientific Python installation Phillips 1:30pm
+April 8  Core packages - NumPy, iPython, SciPy     Phillips 1:30pm
+April 15 Plotting and images                       Phillips 1:30pm
+April 22 Data file I/O, process control (csh)      Phillips **3pm**
+April 29 Fitting and modeling 1-d and 2-d data     Phillips **11:30am**
+May 6    VO and online astronomy                   Phillips 1:30pm
+======== ========================================= =====================
 
 Other topics of interest?
 

@@ -27,21 +27,24 @@ For Windows, MacOS and linux non-root installation we will make use of the
 (EPD).  `Enthought <http://www.enthought.com>`_ is the company which leads most
 of the development of `NumPy`_ and `SciPy`_.  They provide a bundled binary
 distribution of Python with a large set of useful packages built in.  The
-Academic version of EPD is free for use by students or employees of a
-degree-granting institution (i.e. Harvard but not SAO).  
+`Academic version <http://www.enthought.com/products/edudownload.php>`_ of EPD
+is free for use by students or employees of a degree-granting institution
+(i.e. Harvard but not SAO) as specified in the `license terms
+<http://www.enthought.com/EPDAcademicTerms.html>`_. 
 
 *By special permission
-from Enthought, all tutorial participants have permission use the Academic EPD
+from Enthought, all tutorial participants are allowed use the Academic EPD
 downloads we are providing.*
 
-However, do not distribute these files to others
-without express permission.
+However, please do not distribute these files to others without express permission.
 
 Python requirements
 -----------------------
 
 In order to follow along with the examples to be presented in the workshops
 your must have at least the following installed in your working environment.
+Once you have followed the installation instructions in the next section for
+your platform then run the tests below to see if everything is OK.
 
 Core
 ^^^^^
@@ -58,7 +61,7 @@ Astro: required
 
 - `asciitable`_ >= 0.5.0
 - `pyfits`_ >= 2.3.0
-- `pywcs`_ <https://trac6.assembla.com/astrolib>`_ >= 1.9 ()
+- `pywcs <https://trac6.assembla.com/astrolib>`_ >= 1.9 ()
 - `ATpy`_ >= 0.9.4
 - `APLpy`_ >= 0.9.5 (pyparsing, pyregion, PIL, montage are optional but useful)
 
@@ -71,6 +74,8 @@ Astro: useful
 - `pyregion <http://leejjoon.github.com/pyregion/>`_
 - `PIL <http://www.pythonware.com/products/pil>`_
 - `Montage <http://montage.ipac.caltech.edu/>`_ (compiled application and library)
+
+.. _installation_test:
 
 Test
 ^^^^^^^^^^
@@ -93,7 +98,10 @@ core scientific Python installation, do the following and check version numbers:
   plot(x, sin(x))
   print scipy.linalg.eig([[1,2],[3,4]])
 
-The to check the other required packages do the following from within ipython::
+The commands above should succeed with no errors.  The version numbers should
+meet the requirements, and finally you should see a plot of a sine wave.
+
+To check the other required packages do the following from within ipython::
 
   import asciitable
   import pyfits
@@ -108,7 +116,21 @@ The to check the other required packages do the following from within ipython::
 Installation
 ------------
 
-The installation process is particular to each platform:
+The installation process is particular to each platform.  For all options
+except "Linux on HEAD or CF network" you will need the EPD download as
+discussed in the next section.
+
+EPD downloads
+^^^^^^^^^^^^^
+
+For workshop participants the Enthought Python Distribution download files have been
+mirrored to the `EPD downloads
+<http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_ page.  The user name
+and password were emailed to the pythonusers mailing list on March 18.
+
+
+Instructions
+^^^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 2
@@ -116,4 +138,5 @@ The installation process is particular to each platform:
    macosx
    linux-self
    linux-network
+   windows
    package-basics
