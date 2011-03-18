@@ -19,7 +19,8 @@ these older versions for stability reasons.
 
 Core installation
 ^^^^^^^^^^^^^^^^^
-::
+
+First install the core packages for analysis with the following::
 
   sudo apt-get install python-dev
   sudo apt-get install ipython
@@ -28,9 +29,10 @@ Core installation
   sudo apt-get install python-matplotlib
   sudo apt-get install python-setuptools
 
-Astro: required and useful
+Additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::
+
+Now install additional packages needed for the workshop with the following commands::
 
   sudo easy_install asciitable
   sudo easy_install http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
@@ -41,6 +43,8 @@ Astro: required and useful
   sudo easy_install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
   sudo easy_install pyparsing
   sudo easy_install pyregion
+
+Now go back to the :ref:`installation_test` section to verify everything is working.
 
 User install without root
 -------------------------
@@ -64,9 +68,9 @@ following will work::
   export PATH=/home/me/epd7.0/bin:$PATH  # bash
   set path=(/home/me/epd7.0/bin $path)   # csh or tcsh
 
-Astro: required and useful
+Additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Now install additional packages::
+Now install the additional packages needed for the workshop::
 
   easy_install --user asciitable
   easy_install --user http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
@@ -78,3 +82,4 @@ Now install additional packages::
   easy_install --user pyparsing
   easy_install --user pyregion
 
+Now go back to the :ref:`installation_test` section to verify everything is working.

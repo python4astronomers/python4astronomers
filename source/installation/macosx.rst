@@ -96,10 +96,10 @@ that typing ``gfortran`` gives something like this::
 If you get ``gfortran: command not found``, then ``gfortran`` did not
 install correctly.
 
-Astro: required and useful
+Additional packages
 --------------------------
 
-Next open a terminal window and do the following::
+Next open a terminal window and do the following to install additional packages needed for the workshop::
 
   easy_install asciitable
   easy_install http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz

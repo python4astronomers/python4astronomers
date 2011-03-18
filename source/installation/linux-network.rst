@@ -37,14 +37,11 @@ CF      csh   ~/.myrc         ``set path=(/data/astropy/bin $path)``
 CF      bash  ~/.bashrc       ``export PATH=/data/astropy/bin:$PATH``
 ======= ===== ============= =========================================
 
-Packages
---------
+Additional packages
+-----------------------------
 
-Now install a few extra packages into your local area (``~/.local/lib/python2.6/site-packages``):
-
-Astro: required and useful
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-::
+Now the extra packages needed for the workshop into your local area
+(``~/.local/lib/python2.6/site-packages``) with the following commands::
 
   easy_install --user asciitable
   easy_install --user http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz

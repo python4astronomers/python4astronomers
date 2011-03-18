@@ -13,7 +13,7 @@ Once installed then follow the
 Getting Started page and look at Pylab, Plain Python and see how to write
 Python code.
 
-Next open a command window and do the following::
+Next open a command window and do the following to install additional packages needed for the workshop::
 
   cd \Python27\Scripts
   easy_install.exe asciitable
@@ -28,4 +28,4 @@ Next open a command window and do the following::
   
 Now run the PyLab application from the Start menu or do
 ``C:\Python27\Scripts\ipython -pylab``.  Once this is running go back to the
-:ref:`installation_test` section.
+:ref:`installation_test` section to verify that everything is working.
