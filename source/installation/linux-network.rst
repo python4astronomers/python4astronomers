@@ -47,6 +47,7 @@ Now install a few extra packages into your local area (``~/.local/lib/python2.6/
 
 Astro: required and useful
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
 
   easy_install --user asciitable
   easy_install --user http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
