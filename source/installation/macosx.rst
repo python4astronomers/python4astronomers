@@ -34,8 +34,8 @@ installed, try typing ``gcc`` in a Terminal. You should see something like this:
     i686-apple-darwin10-gcc-4.2.1: no input files
 
 If you get ``gcc: command not found`` then you need to install the
-developer tools. If you already have the developer tools installed, you can
-proceed to the next section.
+developer tools. **If you already have the developer tools installed, you can
+proceed to the next section**.
 
 There are several ways to install XCode:
 
@@ -43,8 +43,28 @@ There are several ways to install XCode:
   that came with your Mac. Often, this can be found on DVD 2 rather than on
   the main DVD.
 
-* You can `register <http://developer.apple.com/programs/register/>`_ for
-  free as an Apple Developer, which will give you access to XCode 3.
+* If you don't have the original installation DVDs, you can `register
+  <http://developer.apple.com/programs/register/>`_ for free as an Apple
+  Developer, which will give you access to XCode 2 or 3:
+
+  - If you are using MacOS 10.6 you should be able to download XCode 3.2.6
+    once you are logged in to the `Mac Dev Center
+    <http://developer.apple.com/devcenter/mac/index.action>`_. Then, run
+    the installer (``Xcode and iOS SDK``).
+
+  - If you are using MacOS 10.5, first log in to the `Mac Dev Center
+    <http://developer.apple.com/devcenter/mac/index.action>`_, then go
+    `here
+    <http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/downloads>`_.
+    Click on `Developer Tools`, and download `Xcode 3.1.4 Developer DVD
+    (Disk Image)`, then run the installer (``XcodeTools.mpkg``).
+
+  - If you are using MacOS 10.4, first log in to the `Mac Dev Center
+    <http://developer.apple.com/devcenter/mac/index.action>`_, then go
+    `here
+    <http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/downloads>`_.
+    Click on `Developer Tools`, and download `Xcode 2.5 Developer Tools
+    (Disk Image)`, then run the installer (``XcodeTools.mpkg``).
 
 * If you like to live on the bleeding edge, have MacOS X 10.6.6, and don't
   mind shelling out $4.99, go to the App Store (``/Applications/App
