@@ -87,3 +87,21 @@ Next open a terminal window and do the following::
   easy_install pyregion
 
 Now go back to the :ref:`installation_test` section to verify everything is working.
+
+Troubleshooting
+---------------
+
+If you get the following error when attempting to start up ``python``::
+
+    $ python
+    -bash: /Library/Frameworks/EPD64.framework/Versions/Current/bin/python: Bad CPU type in executable
+
+then this means that your processor does not support 64-bit binaries. Start
+by uninstalling EPD::
+
+    cd /Library/Frameworks/EPD64.framework/Versions
+    sudo rm -rf 7.0
+    cd /Applications
+    sudo rm -rf Enthought
+
+then download and install EPD 7.0.2 32-bit (``epd-7.0-2-macosx-i386.dmg``).
