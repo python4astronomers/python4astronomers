@@ -116,6 +116,30 @@ Now go back to the :ref:`installation_test` section to verify everything is work
 Troubleshooting
 ---------------
 
+Path
+^^^^^
+
+If EPD installed successfully and you can start ``python`` but not ``ipython`` (error message
+like ``ipython: command not found``) then there is likely a problem with your PATH.
+
+First, determine if you are running csh/tcsh or bash with the following command::
+
+  echo $SHELL
+
+For ``/bin/csh`` or ``/bin/tcsh`` you should edit the file ``~/.cshrc`` and add the following lines at the end::
+
+ # Setting PATH for Enthough Python Distribution
+ set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)
+
+For ``/bin/bash`` you should edit the file ``~/.bash_profile`` and add the following lines at the end::
+
+ # Setting PATH for Enthough Python Distribution
+ export PATH=/Library/Frameworks/EPD64.framework/Versions/Current/bin:$PATH
+
+
+32 vs. 64 bit
+^^^^^^^^^^^^^^
+
 If you get the following error when attempting to start up ``python``::
 
     $ python
