@@ -135,7 +135,7 @@ core scientific Python installation, do the following and check version numbers:
 The commands above should succeed with no errors.  The version numbers should
 meet the requirements, and finally you should see a plot of a sine wave.
 
-To check the other required packages do the following from within ipython::
+To check the other required packages, do the following from within ipython::
 
   import asciitable
   import pyfits
@@ -149,7 +149,8 @@ Try it out!
 Setup
 ^^^^^^^^^^^
 
-First download the `<install_examples.tar>`_ tar file which has example data files.
+First download the `<install_examples.tar>`_ tar file which has example data
+files that will be used in subsequent exercises.
 Then change to a working directory, untar the file, and start up IPython::
 
   tar xvf ~/Downloads/install_examples.tar   # or wherever your browser puts downloads
@@ -157,7 +158,7 @@ Then change to a working directory, untar the file, and start up IPython::
   ls
   ipython -pylab
 
-.. hint::
+.. tip::
    For all of the workshops you should always start Python using the command::
    
      ipython -pylab  # (for Windows start the Pylab application)
@@ -172,40 +173,40 @@ Then change to a working directory, untar the file, and start up IPython::
      alias pylab "ipython -pylab"
 
 
-*Exercise*: Read a table and examine it
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. admonition:: Exercise: Read a table and examine it
+  
+  Look at the documentation for the `asciitable.read()
+  <http://cxc.harvard.edu/contrib/asciitable/#reading-tables>`_ function in
+  `asciitable`_.  Follow the very first example and use the ``read()`` function
+  to read the data in the file ``table1.dat`` into the variable named ``data``.
 
-Look at the documentation for the `asciitable.read()
-<http://cxc.harvard.edu/contrib/asciitable/#reading-tables>`_ function in
-`asciitable`_.  Follow the very first example and use the ``read()`` function
-to read the data in the file ``table1.dat`` into the variable named ``data``.
-
-.. note::
   This table is in the "ApJ machine-readable format" (which is actually a bit
   tricky for machines to read).  This is very similar to the table format used
   by CDS / Vizier for input and storage of tables in astronomy.
 
-Once you have read the table into the variable ``data`` then print the table,
-print the column ``RAdeg``, and print the 3rd row..
+  Once you have read the table into the variable ``data`` then print the table,
+  print the column ``RAdeg``, and print the 3rd row.
 
-.. hint::
-   
-   - You can print a ``<variable>`` by just typing ``print <variable>`` at the command line, for example ``print data``.
-   - You can get tons of useful information about a variable with ``help`` or ``?``:
+  Hints:
+     
+     - You can print a ``<variable>`` by just typing ``print <variable>`` at the command line, for example ``print data``.
+     - You can get tons of useful information about a variable with ``help`` or ``?``:
 
-      - ``help <variable>``
-      - ``? <variable>``
+        - ``help <variable>``
+        - ``? <variable>``
 
-   - The object returned by ``asciitable.read()`` is a NumPy record array, 
-     which is just a fancy way of saying a table where you can access rows or columns of data.
-   - You can get the column names and types with ``print data.dtype``
-   - To print a column of data use ``print data["<column_name>"]``, for example ``print data["Name"]``
-   - To print a row of data use ``print data[3]``
+       These two commands are pretty similar except that ``?`` gives a little bit more information
+       and in a more raw form.
+     - The object returned by ``asciitable.read()`` is a NumPy record array, 
+       which is just a fancy way of saying a table where you can access rows or columns of data.
+     - You can get the column names and types with ``print data.dtype``
+     - To print a column of data use ``print data["<column_name>"]``, for example ``print data["Name"]``
+     - To print a row of data use ``print data[<row_number>]``
 
-Optional: use the `plot <http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.plot>`_ and 
-`hist <http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.hist>`_ functions to
-examine the data graphically.  For instance plot RAdeg versus DEdeg.  Look at the ``table1.dat`` file itself for
-detailed column descriptions.
+  Optional: use the `plot <http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.plot>`_ and 
+  `hist <http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.hist>`_ functions to
+  examine the data graphically.  For instance plot RAdeg versus DEdeg.  Look at the ``table1.dat`` file itself for
+  detailed column descriptions.
 
 
 Modules, Packages, and all that
@@ -242,24 +243,25 @@ second nature.
   ``<module>.<function>(...)`` syntax there would be no way to know which one
   to call.
 
-.. hint::
+.. Tip::
+
   Sometimes it is convenient to make an end-run around the ``<module>.`` 
   prefixing.  For instance when you run ``ipython -pylab`` the interpreter
   does some startup processing so that a number of functions 
   from the `numpy`_ and `matplotlib`_ modules are available *without*
   using the prefix.
-
+  
   Python allows this with this syntax::
 
     from <module> import *
-
+  
   That means to import every function and definition from the module into the
   current namespace (in other words make them available without prefixing).
   For instance you could do::
-
+  
     from atpy import *
     data = Table('my_table.fits')
-
+  
   A general rule of thumb is that ``from <module> import *`` is OK for
   interactive analysis within IPython but you should avoid using it within
   scripts.
@@ -286,11 +288,10 @@ scipy.sparse.linalg.eigen          Sparse Eigenvalue Solvers
 scipy.sparse.linalg.eigen.arpack   Eigenvalue solver using iterative methods. 
 ================================== ======================================================
 
-*Exercise*: Import a package module and learn about it
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Import the Linear algebra module from the SciPy package and find out what
-functions it provides.
+.. admonition:: Exercise: Import a package module and learn about it
+  
+  Import the Linear algebra module from the SciPy package and find out what
+  functions it provides.
 
 
 Finding and installing other packages
@@ -339,13 +340,12 @@ are available on PyPI, but this list misses a lot of available options.
 The advantage of being on PyPI is the ease of installation using
 ``easy_install <package_name>``.  
 
-*Exercise*: find packages for coordinate manipulations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. admonition:: Exercise: Find packages for coordinate manipulations
 
-Find one or more Python packages that will transform coordinates from Galactic to FK5 ecliptic.
-
-*Hint*: tags are helpful at astropython.org and don't forget the "next" button at
-the bottom.
+  Find one or more Python packages that will transform coordinates from Galactic to FK5 ecliptic.
+  
+  *Hint*: tags are helpful at astropython.org and don't forget the "next" button at
+  the bottom.
 
 Package installation
 ^^^^^^^^^^^^^^^^^^^^
@@ -415,8 +415,8 @@ An important option in the installation process is where to put the package
 files.  We've seen the ``--user`` option in ``easy_install`` and ``python
 setup.py install``.  What's up with that?
 
-WITH --user
-###########
+WITH ``--user``
+################
 
 This option is generally a good idea and will work in all cases.  Packages get
 installed in a local user-owned directory when you do something like either of
@@ -424,6 +424,14 @@ the following::
 
   easy_install --user asciitable 
   python setup.py install --user
+
+.. warning::
+   If you installed Python with a distribution *other* than EPD, then you might get an error using
+   ``easy_install --user``.  There is an older (deprecated) version of easy_install
+   in some Python distributions which does not support ``--user``.  You should be able 
+   to get the latest ``easy_install`` with::
+
+     easy_install distribute  # maybe need "sudo" in front
 
 This puts the packages into:
 
@@ -434,6 +442,11 @@ Windows  %APPDATA%/Python/Python2x/site-packages
 =======  ==============================================
 
 .. Note::
+  On Mac if you did not use the EPD Python Framework then you may see user
+  packages within ``~/.local/lib`` as for linux.  This depends on whether Python
+  is installed as a MacOS Framework or not.
+
+.. Note::
    As a side benefit of always installing with ``--user``, if you use multiple
    Python installations (for instance PyRaf, CASA, and CIAO), *each* of those will
    provide its own version of Python which is essentially its own universe as far
@@ -441,21 +454,21 @@ Windows  %APPDATA%/Python/Python2x/site-packages
    at once is to install with ``--user``.  (There are limitations even in this
    case, for instance Python 2.6 will not always play with Python 2.7).
 
-WITHOUT --user
-###############
+WITHOUT ``--user``
+###################
 
 This option requires root or admin privilege because the package will be
 installed in the system area instead of your own local directories. 
 
-Installing has the benefit of making the package available for all users of the
+Installing this way has the benefit of making the package available for all users of the
 Python installation, but has the downside of possibly breaking things in a way
 that is difficult to repair (see next topic).
 
 How do I find a package once installed?
 #######################################
 
-Finding the file associated with a package or module is simple, just use the ?
-function in IPython::
+Finding the file associated with a package or module is simple, just use the ``help``
+command in IPython::
 
   import scipy
   help scipy
@@ -485,25 +498,35 @@ There is no simple way to do this.  (Python community is working on this one).
 Final exercises
 ---------------
 
-Exercise [intermediate]: Fully install APLpy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. admonition:: Exercise [intermediate]: Fully install APLpy
 
-Go to the `APLpy install page <http://aplpy.github.com/install.html>`_ and
-read the instructions.  Manually install all of the Python package dependencies with the
-``--user`` option.
+  Go to the `APLpy install page <http://aplpy.github.com/install.html>`_ and
+  read the instructions.  Manually install all of the Python package dependencies with the
+  ``--user`` option or try the auto-install script available there.
 
-For extra credit install the `Montage
-<http://montage.ipac.caltech.edu/>`_ C library as discussed on the APLpy
-install page.  Then try to run the example `Making a publication quality plot
-<../intro/quick-tour.html#making-a-publication-quality-image>`_ that was shown
-in the introductory talk.  The necessary input files are in the
-``install_examples.tar`` file.
+  For extra credit install the `Montage
+  <http://montage.ipac.caltech.edu/>`_ C library as discussed on the APLpy
+  install page.  Then try to run the example `Making a publication quality plot
+  <../intro/quick-tour.html#making-a-publication-quality-image>`_ that was shown
+  in the introductory talk.  The necessary input files are in the
+  ``install_examples.tar`` file.
 
-Exercise [expert]: Install SciPy and all dependencies from source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. admonition:: Exercise [intermediate]: Install HDF5 and PyTables
 
-Attempt to follow the instructions for building from source in the `Installing
-SciPy <http://www.scipy.org/Installing_SciPy>`_ page.  (No binary downloads!).
-If you can do this then consider yourself an expert on Python installation.
+  Install `HDF5 <http://www.hdfgroup.org/HDF5/>`_ and
+  `PyTables <http://www.pytables.org/moin>`_.  This will let you read HDF5 tables
+  in Python.  HDF5 is a data file format which can store and manipulate extremely
+  large or complex datasets in a scalable manner.  It is the baseline for some data-heavy
+  facilities such as LOFAR.
+
+.. admonition:: Exercise [expert]: Install SciPy and all dependencies from source
+
+  Attempt to follow the instructions for building from source in the `Installing
+  SciPy <http://www.scipy.org/Installing_SciPy>`_ page.  (No binary downloads!).
+  This will be useful if you want to use the very latest development version of
+  Python or else want to use the system-dependent build optimization so your
+  numerical libraries are the fastest possible.  For most people this is not needed.
+
+  If you can do this then consider yourself an expert on Python installation.
 
 
