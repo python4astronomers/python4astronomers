@@ -454,6 +454,9 @@ Windows  %APPDATA%/Python/Python2x/site-packages
    at once is to install with ``--user``.  (There are limitations even in this
    case, for instance Python 2.6 will not always play with Python 2.7).
 
+   .. image:: antisocial_pythons_trans.png
+      :width: 650
+
 WITHOUT ``--user``
 ###################
 
