@@ -11,12 +11,12 @@ Practical Python for Astronomers
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    intro/intro
    installation/installation
+   core/core
 
-..   core/core
 ..   plotting/plotting
 ..   files/files
 ..   fitting/fitting
