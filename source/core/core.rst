@@ -1,4 +1,4 @@
-Core packages for analysis: IPython, NumPy, SciPy
+Core packages for analysis: IPython and NumPy
 =================================================
 
 Workshop goals:
@@ -15,8 +15,8 @@ Workshop goals:
   - Understand the basic concept
   - Know how to inspect an object and discover what it can do
 
-- Gain familiarity with tools available within the SciPy package
 - Develop a script that extracts a 1-d spectrum from a 2-d longslit image
+- Gain familiarity with tools available within the SciPy package
 
 Setup
 -----
@@ -142,7 +142,7 @@ Here we'll learn NumPy by performing a very simple reduction of a
 - Plot the spatial profile and raw spectrum
 - Fit and subtract the background from each wavelength column
 - Sum the source signal
-- Filter bad pixels
+- Filter bad pixels  (SKIP?)
 - Calculate errors
 
 .. Topics:
@@ -498,3 +498,38 @@ Finally subtract this background and see if it worked::
    badimg = zeros(bad.shape)
    badimg[bad] = 1
    imgview.ImgView(badimg)
+
+Sum the source signal
+^^^^^^^^^^^^^^^^^^^^^^
+
+Now the final step is easy and is left as an exercise.
+
+.. admonition:: Exercise: Make the final spectrum
+
+   Sum the rows of the background subtracted spectrum and plot.  Hint: you
+   already did it once in a previous exercise.
+
+
+SciPy
+-----
+
+It is impossible to do justice to the full contents of the `SciPy`_ package: is
+entirely too large!  What is left as homework for the reader is to 
+click through to the main `SciPy Reference Manual
+<http://docs.scipy.org/doc/scipy/reference/>`_ and skim the `tutorial
+<http://docs.scipy.org/doc/scipy/reference/tutorial/index.html>`_.  Keep 
+this repository of functionality in mind whenever you need some numerical
+functionality that isn't in NumPy: there is a good chance it is in SciPy:
+
+- Basic functions in Numpy (and top-level scipy)
+- Special functions (scipy.special)
+- Integration (scipy.integrate)
+- Optimization (optimize)
+- Interpolation (scipy.interpolate)
+- Fourier Transforms (scipy.fftpack)
+- Signal Processing (signal)
+- Linear Algebra
+- Statistics
+- Multi-dimensional image processing (ndimage)
+- File IO (scipy.io)
+- Weave
