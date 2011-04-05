@@ -1,5 +1,5 @@
-Core packages for analysis
-===========================
+Core packages for analysis: IPython, NumPy, SciPy
+=================================================
 
 Workshop goals:
 
@@ -149,8 +149,10 @@ Here we'll learn NumPy by performing a very simple reduction of a
    - Appending
    - Median
    - Making arrays
+   - Broadcasting x = arange(5); y=x.reshape(5,1) ; x + y * 10
    - diff between list and array
    - vectorized ops (do a for loop)
+   - exercise: make a mexican hat or similar
    - boolean masking / where
    - scipy 2-d median filter
 
@@ -186,8 +188,10 @@ columns (left to right).
     print arange(5)
 
 Now give meaningful names to each of the three images that are available in the
-FITS HDU list::
+FITS HDU list.  You can access element ``n`` in a list with the index ``[n]``,
+where the count starts from 0::
 
+  primary = hdus[0].data
   img = hdus[1].data
   err = hdus[2].data
   dq = hdus[3].data
@@ -212,16 +216,16 @@ Now discover a little bit about the images you have read in::
   img.shape  # Get the shape of img
   img.min()  # Call object method min with no arguments
   img.argmax(axis=0) 
-  figure()
-  hist(img.flatten(), bins=100, log=True)
 
-.. admonition:: Important Digression: Python Objects
+.. admonition:: Digression: Python Objects - or what's with the
+   periods everywhere?
 
    Most things in Python are objects.  What does that mean?  What is an object?
 
    Every constant, variable, or function in Python is actually a object with a
    type and associated attributes and methods.  An *attribute* a property of
-   the object, for example ``img.shape``.  A *method* is a function
+   the object that you get or set by giving the <object_name> + dot +
+   <attribute_name>, for example ``img.shape``.  A *method* is a function
    that the object provides, for example ``img.argmax(axis=0)`` or ``img.min()``.
 
    Use tab completion in IPython to inspect objects and start to understand
@@ -230,7 +234,7 @@ Now discover a little bit about the images you have read in::
      a = [3, 1, 2, 1]
      a.<TAB>
 
-   This will show the available methods for ``a``::
+   This will show the available attributes and methods for the Python list ``a``::
 
      In [17]: a.<TAB>
      a.__add__           a.__ge__            a.__iter__          a.__repr__          a.append
@@ -243,125 +247,254 @@ Now discover a little bit about the images you have read in::
      a.__eq__            a.__imul__          a.__reduce__        a.__str__           a.reverse
      a.__format__        a.__init__          a.__reduce_ex__     a.__subclasshook__  a.sort
 
-   In general you can ignore all the ones that begin with ``__`` since these are
-   internal methods that are not usually called directly.  However at the end you
-   see useful looking functions like ``append`` or ``sort`` which you can get help
-   for and use::
+   For the most part you can ignore all the ones that begin with ``__`` since
+   they are generally are internal methods that are not called directly.  At
+   the end you see useful looking functions like ``append`` or ``sort`` which
+   you can get help for and use::
 
      a.sort
      a.sort?
      a.sort()
      a
 
-.. tip:: Help
-   
-   Remember that you can always get help on an object::
+   *Question*:
+     How do you tell the difference between an attribute and a
+     callable method?  How can you find all attributes or methods?
+ 
+   *Answer*:
+     Use the ``callable`` function::
 
-     a = [3, 1, 2, 1]
-     help a
-     a?
+       callable(a.sort)
 
-   Discuss difference between ? and help.
+     To list all the "interesting" callable methods do::
 
-   The ``help`` command gives help on the generic *class* of object ``a`` (e.g. a Python list or
-   NumPy array) as opposed to the specific contents of ``a``.  You will again see
-   a bunch of methods that start with ``__`` which you can ignore, but further
-   down you will see all the useful methods.
+       [x for x in dir(a) if callable(getattr(a, x)) and not x.startswith('__')]
 
-   Generally ``print a`` or just ``a`` is the best way to learn about the specific
-   contents in an object.  Each object has methods for printing information about
-   itself, and depending on the class the print methods can be informative or not.
+NumPy basics
+^^^^^^^^^^^^
+
+Slicing
+#######
+
+NumPy provides powerful methods for accessing particular subsets of an array,
+e.g. the 4th column or every other row.  This is called slicing.  As a first
+example plot column 300 of the longslit image to look at the spatial profile::
+
+  clf(); plot(img[:, 300])
+
+The ":" in the first axis means to select all elements in that axis (i.e. all
+rows).  This is a short form for the full slicing syntax::
+
+  i0 : i1 : step
+
+- ``i0`` is the first index value (default is zero if not provided)
+- ``i1`` is the index upper bound (default is last element index + 1)
+- ``step`` is the step size (default is one).  When ``step`` is not specified then the final ":" is not required.
+
+.. admonition:: Exercise: Slice the error array
+
+  - For row 254 of the error array ``err`` plot columns 10 to 200 stepping by 3.
+  - Print a rectangular region slice with rows 251 to 253 (inclusive) and columns 101 to
+    104 (inclusive).  What did you learn about the index upper bound value?
+
+Making arrays
+#############
+
+Arrays can be created in different ways::
+
+  a = array([10, 20, 30, 40])   # create an array from a list of values
+  b = arange(4)                 # create an array of 4 integers, from 0 to 3
+  c = arange(0.0, 10.0, 0.1)    # create a float array from 0 to 100 stepping by 0.1
+  d = linspace(-pi, pi, 5)      # create an array of 5 evenly spaced samples from -pi to pi
+
+New arrays can be obtained by operating with existing arrays::
+
+  e = a + b**2            # elementwise operations
+
+Arrays may have more than one dimension::
+
+  f = ones([3, 4])                 # 3 x 4 float array of ones
+  g = zeros([2, 3, 4], dtype=int)  # 3 x 4 x 5 int array of zeros
+  h = ones_like(f)                 # array of ones with same shape/type as f
+  i = zeros_like(f)                # array of zeros with same shape/type as f
+
+You can change the dimensions of existing arrays::
+
+  w = arange(12)
+  w.shape = [3, 4]       # does not modify the total number of elements
+  x = arange(5)
+  y = x.reshape(5, 1)
+  y = x.reshape(-1, 1)   # Numpy determines the right value for "-1" axis
+
+It is possible to operate with arrays of different dimensions as long as they fit well (broadcasting)::
+
+  z = x + y * 10
+
+.. admonition:: Exercise: Make a ripple
+
+  Calculate a surface ``z = cos(r) / (r + 5)`` where ``r = sqrt(x**2 +
+  y**2)``.  Set ``x`` to an array that goes from -20 to 20 stepping by 0.25
+  Make ``y`` the same as ``x`` but "transposed" using the ``reshape`` trick above.
+  Use ImgView to display the image of ``z``.
+
+
+.. Solution
+   x = arange(-20, 20, 0.25)
+   y = x.reshape(-1, 1)
+   r = sqrt(x**2 + y**2)
+   z = cos(r) / (r + 5)
+   imgview.ImgView(z)
+   dist = sqrt((x-10)**2 + (y-15)**2)
+   ok = dist < 10
+   z[ok] = dist[ok] / 10
 
 
 Plot the spatial profile and raw spectrum
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-::
+Plot the spatial profile by summing along the wavelength direction::
 
-  spectrum = img.sum(axis=0)
   profile = img.sum(axis=1)
-  figure()
-  plot(spectrum)
   figure()
   plot(profile)
 
+Now plot the spectrum by summing along the spatial direction::
+
+  spectrum = img.sum(axis=0)
+  figure()
+  plot(spectrum)
+
+Since most of the sum is in the background region there is a lot of noise and
+cosmic-ray contamination.
+
+.. admonition:: Exercise: Use slicing to make a better spectrum plot
+
+  Use slicing to do the spectrum sum using only the rows in the image where
+  there is a signal from the source.
+  Hint: zoom into the profile plot to find the right row range.
+
+.. Solution
+   spectrum = img[250:260, :].sum(axis=0)
+   figure()
+   plot(spectrum)
 
 
+Fit and subtract the background from each wavelength column
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Other NumPy tidbits
-^^^^^^^^^^^^^^^^^^^^^
+Plot five columns (wavelength) from the spectrum image as follows::
 
-Here I just copy
-the Quick Tour from that tutorial but you should read the rest as well.  In
-these examples the python prompt is shown as ">>>" in order to distinguish the
-input from the outputs.
+  clf()
+  plot(img[:, 254:259])
 
-Arrays can be created in different ways::
+The basic idea in spectral extraction is to subtract out the background and sum
+over rows with the source signal.
 
-  >>> a = array( [ 10, 20, 30, 40 ] )   # create an array out of a list
-  >>> a
-  array([10, 20, 30, 40])
-  >>> b = arange( 4 )                   # create an array of 4 integers, from 0 to 3
-  >>> b
-  array([0, 1, 2, 3])
-  >>> c = linspace(-pi,pi,3)            # create an array of 3 evenly spaced samples from -pi to pi
-  >>> c
-  array([-3.14159265,  0.        ,  3.14159265])
+It's evident that there are significant cosmic ray defects in the data.  In
+order to do a good job of subtracting the background we need to filter them
+out.  Doing this correctly in general is difficult and in reality one would
+just use the answers already provided by STSci.
 
-New arrays can be obtained by operating with existing arrays::
+**Strategy**: Use a median filter to smooth out single-pixel deviations.  Then
+use sigma-clipping to remove large variations between the actual and smoothed
+image.
 
-  >>> d = a+b**2                        # elementwise operations
-  >>> d
-  array([10, 21, 34, 49])
+::
 
-Arrays may have more than one dimension::
+  import scipy.signal
+  img_sm = scipy.signal.medfilt(img, 5)
+  sigma = median(err)
+  bad = abs(img - img_sm) / sigma > 8.0
+  img_cr = img.copy()
+  img_cr[bad] = img_sm[bad]
+  img_cr[230:280,:] = img[230:280,:]  # Filter only for background
 
-  >>> x = ones( (3,4) )
-  >>> x
-  array([[1., 1., 1., 1.],
-         [1., 1., 1., 1.],
-         [1., 1., 1., 1.]])
-  >>> x.shape                            # a tuple with the dimensions
-  (3, 4)
+Check if it worked::
 
-and you can change the dimensions of existing arrays::
+  clf()
+  plot(img_cr[:, 254:259])
 
-  >>> y = arange(12)
-  >>> y
-  array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11])
-  >>> y.shape = 3,4              # does not modify the total number of elements
-  >>> y
-  array([[ 0,  1,  2,  3],
-         [ 4,  5,  6,  7],
-       [ 8,  9, 10, 11]])
+This introduces the important concept of slicing with a boolean mask.  Let's
+look at a smaller example::
 
-It is possible to operate with arrays of different dimensions as long as they fit well (broadcasting)::
+   a = array([1, 4, -2, 4, -5])
+   neg = (a < 0)    # Parentheses here for clarity but are not required
+   a[neg] = 0
 
-  >>> 3*a                                # multiply each element of a by 3
-  array([ 30,  60,  90, 120])
-  >>> a+y                                # sum a to each row of y
-  array([[10, 21, 32, 43],
-         [14, 25, 36, 47],
-         [18, 29, 40, 51]])
+A slightly more complex example shows that this works the same on N-d arrays
+and that you can compose logical expressions::
 
-Similar to Python lists, arrays can be indexed, sliced and iterated over::
+   a = arange(25).reshape(5,5)
+   ok = (a > 6) & (a < 17)     # "ok = a > 6 & a < 17" will FAIL!
+   a[~ok] = 0                  # Note the "logical not" operator
 
-  >>> a[2:4] = -7,-3                     # modify last two elements of a
-  >>> for i in a:                        # iterate over a
-  ...     print i
-  ...
-  10
-  20
-  -7
-  -3
+.. admonition:: Digression: copy versus reference
 
-When indexing more than one dimension, indices are separated by commas::
+   **Question**
+     In the median filtering commands above we wrote ``img_cr = img.copy()``.  Why
+     was that needed instead of just ``img_cr = img``?
 
-  >>> x[1,2] = 20
-  >>> x[1,:]                             # x's second row
-  array([ 1,  1, 20,  1])
-  >>> x[0] = a                           # change first row of x
-  >>> x
-  array([[10, 20, -7, -3],
-         [ 1,  1, 20,  1],
-         [ 1,  1,  1,  1]])
+   **Answer**
+     Because the statement ``img_cr = img`` would just create another reference
+     pointing to the underlying N-d array object that ``img`` references.
+
+   Remember that the variable names are just pointers to the actual Python
+   object.  To see this clearly do the following::
+
+     a = arange(8)
+     b = a
+     id(a)
+     id(b)
+     b[3] = -10
+     print a
+    
+   After getting over the initial confusion this behavior is actually a good
+   thing because it is efficient and consistent within Python.  If you really
+   need a copy of an array then use the copy() method as shown.
+
+   **BEWARE** of one common pitfall: NumPy "basic" slicing like ``a[3:6]``
+   does NOT make a copy::
+
+     b = a[3:6]
+     print b
+     b[1] = 100
+     print a
+
+   However if you do arithmetic or boolean mask then a copy is always made::
+
+     a = arange(4)
+     b = a**2
+     a[1] = 100
+     print a
+     print b    # Still as expected after changing "a"
+      
+
+Fit the background for a single column::
+
+  x = append(arange(10, 200), arange(300, 480))
+  y = img_bkg[x, 10]
+  clf()
+  plot(x, y)
+  pfit = polyfit(x, y, 2)
+  yfit = polyval(pfit, x)
+  plot(x, yfit)
+
+Now do this for every column and store the results in a background image::
+
+  xrows = arange(img_bkg.shape[0])
+  bkg = zeros_like(img_cr)
+  for col in range(img_bkg.shape[1]):
+      pfit = polyfit(x, img_cr[x, col], 2)
+      bkg[:, col] = polyval(pfit, xrows)
+
+  ImgView(bkg)
+
+Finally subtract this background and see if it worked::
+
+  img_bkg = img_cr - bkg
+  ImgView(img_bkg)
+
+.. Solution
+   badimg = zeros(bad.shape)
+   badimg[bad] = 1
+   imgview.ImgView(badimg)
