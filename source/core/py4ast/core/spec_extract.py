@@ -26,16 +26,16 @@ img_cr[bad] = img_sm[bad]
 img_cr[230:280,:] = img[230:280,:]
 
 x = append(arange(10, 200), arange(300, 480))
-y = img_bkg[x, 10]
+y = img_cr[x, 10]
 clf()
 plot(x, y)
 pfit = polyfit(x, y, 2)
 yfit = polyval(pfit, x)
 plot(x, yfit)
 
-xrows = arange(img_bkg.shape[0])
+xrows = arange(img_cr.shape[0])
 bkg = zeros_like(img_cr)
-for col in range(img_bkg.shape[1]):
+for col in range(img_cr.shape[1]):
     pfit = polyfit(x, img_cr[x, col], 2)
     bkg[:, col] = polyval(pfit, xrows)
 

@@ -10,11 +10,6 @@ Workshop goals:
   - Basic array slicing
   - Documentation and tutorials for further work
 
-- Python objects
-   
-  - Understand the basic concept
-  - Know how to inspect an object and discover what it can do
-
 - Develop a script that extracts a 1-d spectrum from a 2-d longslit image
 - Gain familiarity with tools available within the SciPy package
 
@@ -48,37 +43,16 @@ Leave this IPython session open for the rest of the workshop.
    
    <div class="panel0">
 
-One of the most useful features of IPython is the ability to edit and navigate 
-you command line history.  This lets you quickly re-do commands, perhaps with a
-slight variation based on seeing the last result.  Try cut-n-pasting the above
-lines in an IPython session.  This should bring up a plot of a sine wave.::
+- ``urllib2.urlopen(url)`` opens the URL as a streaming file-like object
+- ``mode='r|' means ``tarfile`` is expecting a streaming file-like object
+  with no ability to seek in the file
+- ``tarfile.open(..).extractall`` then extracts the tar archive
 
-  import this
-  cool = this.that
-
-.. raw:: html
-   
-   </div>
-   <p class="flip0">Click to Show/Hide Solution</p>
+Creating a tarfile is left for the reader to solve.
 
 .. raw:: html
    
-   <div class="panel1">
-
-As we saw in the Introduction and Installation workshops, for interactive data
-analysis IPython has a special ``-pylab`` command line option which
-automatically imports elements of the NumPy and the Matplotlib environments.
-This provides a Matlab-like environment allowing very simple and direct
-commands like::
-
-  import this, also
-  cool = this.that.other
-
-.. raw:: html
-   
-   </div>
-   <p class="flip1">Click to Show/Hide Solution</p>
-   
+   </div> <p class="flip0">Click to Show/Hide Solution</p>
 
 IPython
 ---------
@@ -148,6 +122,26 @@ complete file names and to inspect python objects.  As an example do::
 This will list everything in your home directory.  You can continue
 this way searching through files or hit Return to complete the command.
 
+Showing data values
+^^^^^^^^^^^^^^^^^^^^^^
+
+So far we typed ``print x`` to look at the value of ``x``.  However,
+most of the time for interactive analysis it is faster and better to simply
+type ``x`` (or whatever the object name) followed by <Return>.  This returns
+the "representation" of the object which is often a cleaner and more
+informative than the "string" version that gets returned with ``print``.  In 
+many cases the "representation" of an object the same as Python
+code to create that object.
+
+  Try::
+
+    y = dict((x, 'value is %d' % x**2) for x in range(10))
+    y
+    print y
+    x = arange(5)       # Array with 5 elements starting at 0 and counting up by 1
+    x
+    print x
+
 Further resources
 ^^^^^^^^^^^^^^^^^^
 
@@ -176,10 +170,16 @@ Here we'll learn NumPy by performing a very simple reduction of a
 
 - Read in the 2-d image
 - Plot the spatial profile and raw spectrum
-- Fit and subtract the background from each wavelength column
+- Filter cosmic rays from the background
+- Fit for the background and subtract
 - Sum the source signal
-- Filter bad pixels  (SKIP?)
-- Calculate errors
+
++------------------------------------+-----------------------------------+
+|  **2-d longslit image**            |   **Final 1-d spectrum**          |
++====================================+===================================+
+| .. image:: 3c120.png               | .. image:: 3c120_spec.gif         |
+|    :scale: 70                      |    :scale: 45                     |
++------------------------------------+-----------------------------------+
 
 .. Topics:
    - Appending
@@ -196,41 +196,24 @@ Read in the 2-d image
 ^^^^^^^^^^^^^^^^^^^^^^
 
 First read in the long-slit spectrum data.  The standard file format available
-for download from MAST is a FITS file with three identically sized images
-providing the 2-d spectral intensity, error values, and data quality for each
-pixel.  The slit direction is along the rows (up and down) and wavelength is in
-columns (left to right).
-::
+for download from `MAST <http://archive.stsci.edu/hst/>`_ is a FITS file with
+three identically sized images providing the 2-d spectral intensity, error
+values, and data quality for each pixel.  The slit direction is along the rows
+(up and down) and wavelength is in columns (left to right).  ::
 
   import pyfits
   hdus = pyfits.open('3c120_stis.fits.gz')
   hdus?
   hdus
 
-.. admonition:: Digression: ``print x`` versus plain ``x``
-
-  So far we typed ``print x`` to look at the value of ``x``.  However,
-  most of the time for interactive analysis it is faster and better to simply
-  type ``x`` (or whatever the object name) followed by <Return>.  This returns
-  the "representation" of the object which is often a cleaner and more
-  informative than the "string" version that gets returned with ``print``.  In 
-  many cases the "representation" of an object the same as Python
-  code to create that object.
-
-  Try::
-
-    print hdus
-    arange(5)
-    print arange(5)
-
 Now give meaningful names to each of the three images that are available in the
 FITS HDU list.  You can access element ``n`` in a list with the index ``[n]``,
 where the count starts from 0::
 
-  primary = hdus[0].data
-  img = hdus[1].data
-  err = hdus[2].data
-  dq = hdus[3].data
+  primary = hdus[0].data  # Primary (NULL) header data unit
+  img = hdus[1].data      # Intensity data
+  err = hdus[2].data      # Error per pixel
+  dq = hdus[3].data       # Data quality per pixel
 
 Next have a look at the images using a super-simple image viewer that I wrote in
 about 50 lines of Python::
@@ -238,12 +221,34 @@ about 50 lines of Python::
   from imgview import ImgView
   ImgView(img)
 
+.. image:: imgview_img.png
+  :scale: 50
+
 .. admonition:: Exercise: View the error and data quality images
   
   Bring up a viewer window for the other two images.  Play with the toolbar
   buttons on the lower-left (hint: try the four on the right first, then
   imagine a web browser for the three on the left).  Does the save button 
   work for you?
+
+.. raw:: html
+   
+   <div class="panel1">
+
+::
+
+  ImgView(err)
+  ImgView(dq)
+
+.. image:: imgview_err.png
+   :scale: 50
+
+.. image:: imgview_dq.png
+   :scale: 50
+
+.. raw:: html
+   
+   </div> <p class="flip1">Click to Show/Hide Solution</p>
 
 Now discover a little bit about the images you have read in::
 
@@ -253,61 +258,11 @@ Now discover a little bit about the images you have read in::
   img.min()  # Call object method min with no arguments
   img.argmax(axis=0) 
 
-.. admonition:: Digression: Python Objects - or what's with the
-   periods everywhere?
-
-   Most things in Python are objects.  What does that mean?  What is an object?
-
-   Every constant, variable, or function in Python is actually a object with a
-   type and associated attributes and methods.  An *attribute* a property of
-   the object that you get or set by giving the <object_name> + dot +
-   <attribute_name>, for example ``img.shape``.  A *method* is a function
-   that the object provides, for example ``img.argmax(axis=0)`` or ``img.min()``.
-
-   Use tab completion in IPython to inspect objects and start to understand
-   attributes and methods.  To start off create a list of 4 numbers::
-
-     a = [3, 1, 2, 1]
-     a.<TAB>
-
-   This will show the available attributes and methods for the Python list ``a``::
-
-     In [17]: a.<TAB>
-     a.__add__           a.__ge__            a.__iter__          a.__repr__          a.append
-     a.__class__         a.__getattribute__  a.__le__            a.__reversed__      a.count
-     a.__contains__      a.__getitem__       a.__len__           a.__rmul__          a.extend
-     a.__delattr__       a.__getslice__      a.__lt__            a.__setattr__       a.index
-     a.__delitem__       a.__gt__            a.__mul__           a.__setitem__       a.insert
-     a.__delslice__      a.__hash__          a.__ne__            a.__setslice__      a.pop
-     a.__doc__           a.__iadd__          a.__new__           a.__sizeof__        a.remove
-     a.__eq__            a.__imul__          a.__reduce__        a.__str__           a.reverse
-     a.__format__        a.__init__          a.__reduce_ex__     a.__subclasshook__  a.sort
-
-   For the most part you can ignore all the ones that begin with ``__`` since
-   they are generally are internal methods that are not called directly.  At
-   the end you see useful looking functions like ``append`` or ``sort`` which
-   you can get help for and use::
-
-     a.sort
-     a.sort?
-     a.sort()
-     a
-
-   *Question*:
-     How do you tell the difference between an attribute and a
-     callable method?  How can you find all attributes or methods?
- 
-   *Answer*:
-     Use the ``callable`` function::
-
-       callable(a.sort)
-
-     To list all the "interesting" callable methods do::
-
-       [x for x in dir(a) if callable(getattr(a, x)) and not x.startswith('__')]
-
 NumPy basics
 ^^^^^^^^^^^^
+
+Before going further on the spectral extraction project we need to learn about
+a few key features of NumPy.
 
 Slicing
 #######
@@ -316,7 +271,11 @@ NumPy provides powerful methods for accessing particular subsets of an array,
 e.g. the 4th column or every other row.  This is called slicing.  As a first
 example plot column 300 of the longslit image to look at the spatial profile::
 
-  clf(); plot(img[:, 300])
+  figure()             # Clear the existing plot -- by default matplotlib overplots.
+  plot(img[:, 300]) 
+
+.. image:: img_col300.png
+  :scale: 50
 
 The ":" in the first axis means to select all elements in that axis (i.e. all
 rows).  This is a short form for the full slicing syntax::
@@ -330,8 +289,30 @@ rows).  This is a short form for the full slicing syntax::
 .. admonition:: Exercise: Slice the error array
 
   - For row 254 of the error array ``err`` plot columns 10 to 200 stepping by 3.
-  - Print a rectangular region slice with rows 251 to 253 (inclusive) and columns 101 to
+  - Print a rectangular region slice of the data quality with rows 251 to 253 (inclusive) and columns 101 to
     104 (inclusive).  What did you learn about the index upper bound value?
+
+.. raw:: html
+   
+   <div class="panel2">
+
+::
+
+  clf()
+  plot(err[254, 10:200:3])
+  dq[251:254, 101:105]  
+
+The index upper bound ``i1`` is one more than the final index that gets
+included in the slice.  In other words the slice includes everything up to,
+*but not including*, the index upper bound ``i1``.  There are good reasons for
+this, but for now just accept and learn it.
+
+.. image:: err_row254.png
+   :scale: 50
+
+.. raw:: html
+   
+   </div> <p class="flip2">Click to Show/Hide Solution</p>
 
 Making arrays
 #############
@@ -373,16 +354,24 @@ It is possible to operate with arrays of different dimensions as long as they fi
   Make ``y`` the same as ``x`` but "transposed" using the ``reshape`` trick above.
   Use ImgView to display the image of ``z``.
 
+.. raw:: html
+   
+   <div class="panel3">
 
-.. Solution
+::
+
    x = arange(-20, 20, 0.25)
    y = x.reshape(-1, 1)
    r = sqrt(x**2 + y**2)
    z = cos(r) / (r + 5)
    imgview.ImgView(z)
-   dist = sqrt((x-10)**2 + (y-15)**2)
-   ok = dist < 10
-   z[ok] = dist[ok] / 10
+
+.. image:: ripple.png
+   :scale: 50
+
+.. raw:: html
+   
+   </div> <p class="flip3">Click to Show/Hide Solution</p>
 
 
 Plot the spatial profile and raw spectrum
@@ -391,7 +380,7 @@ Plot the spatial profile and raw spectrum
 Plot the spatial profile by summing along the wavelength direction::
 
   profile = img.sum(axis=1)
-  figure()
+  clf()
   plot(profile)
 
 Now plot the spectrum by summing along the spatial direction::
@@ -403,25 +392,48 @@ Now plot the spectrum by summing along the spatial direction::
 Since most of the sum is in the background region there is a lot of noise and
 cosmic-ray contamination.
 
+.. image:: profile.png
+   :scale: 50
+
+.. image:: spectrum_noisy.png
+   :scale: 50
+
 .. admonition:: Exercise: Use slicing to make a better spectrum plot
 
   Use slicing to do the spectrum sum using only the rows in the image where
   there is a signal from the source.
   Hint: zoom into the profile plot to find the right row range.
 
+.. raw:: html
+   
+   <div class="panel4">
+
+::
+
+  spectrum = img[250:260, :].sum(axis=0)
+  clf()
+  plot(spectrum)
+
+.. image:: spectrum_clean.png
+   :scale: 50
+
+.. raw:: html
+   
+   </div> <p class="flip4">Click to Show/Hide Solution</p>
+
 .. Solution
-   spectrum = img[250:260, :].sum(axis=0)
-   figure()
-   plot(spectrum)
 
 
-Fit and subtract the background from each wavelength column
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Filter cosmic rays from the background
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Plot five columns (wavelength) from the spectrum image as follows::
 
   clf()
   plot(img[:, 254:259])
+
+.. image:: img_row254_noisy.png
+   :scale: 50
 
 The basic idea in spectral extraction is to subtract out the background and sum
 over rows with the source signal.
@@ -450,6 +462,9 @@ Check if it worked::
   clf()
   plot(img_cr[:, 254:259])
 
+.. image:: img_row254_clean.png
+   :scale: 50
+
 This introduces the important concept of slicing with a boolean mask.  Let's
 look at a smaller example::
 
@@ -464,7 +479,30 @@ and that you can compose logical expressions::
    ok = (a > 6) & (a < 17)     # "ok = a > 6 & a < 17" will FAIL!
    a[~ok] = 0                  # Note the "logical not" operator
 
-.. admonition:: Digression: copy versus reference
+.. admonition:: Exercise [intermediate]: circular region slicing
+
+   Remember the surface ``z = cos(r) / (r + 5)`` that you made previously.  Set
+   ``z = 0`` for every pixel of ``z`` that is within 10 pixels of (x,y) = (10, 15).
+
+.. raw:: html
+   
+   <div class="panel5">
+
+::
+
+  dist = sqrt((x-10)**2 + (y-15)**2)
+  mask = dist < 10
+  z[mask] = 0
+  ImgView(z)
+  
+.. image:: ripple_masked.png
+   :scale: 50
+
+.. raw:: html
+   
+   </div> <p class="flip5">Click to Show/Hide Solution</p>
+
+.. admonition:: Detour: copy versus reference
 
    **Question**
      In the median filtering commands above we wrote ``img_cr = img.copy()``.  Why
@@ -474,13 +512,13 @@ and that you can compose logical expressions::
      Because the statement ``img_cr = img`` would just create another reference
      pointing to the underlying N-d array object that ``img`` references.
 
-   Remember that the variable names are just pointers to the actual Python
+   Variable names in Python are just pointers to the actual Python
    object.  To see this clearly do the following::
 
      a = arange(8)
      b = a
-     id(a)
-     id(b)
+     id(a)     # Unique identifier for the object referred to by "a": arange(8)
+     id(b)     # Unique identifier for the object referred to by "b": same ^^
      b[3] = -10
      print a
     
@@ -504,31 +542,73 @@ and that you can compose logical expressions::
      print a
      print b    # Still as expected after changing "a"
       
+Fit the background
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Fit the background for a single column::
+To subtract the background signal from the source region we want to fit a
+quadratic to the background pixels and subtract that quadratic from the entire
+image which includes the source region.
 
-  x = append(arange(10, 200), arange(300, 480))
-  y = img_bkg[x, 10]
-  clf()
+Let's tackle a simpler problem first and fit the background for a single column::
+
+  x = append(arange(10, 200), arange(300, 480))  # Background rows
+  y = img_cr[x, 10]         # Background rows of column 10 of cleaned image
+  figure()
   plot(x, y)
-  pfit = polyfit(x, y, 2)
-  yfit = polyval(pfit, x)
+  pfit = polyfit(x, y, 2)   # Fit a 2nd order polynomial to (x, y) data
+  yfit = polyval(pfit, x)   # Evaluate the polynomial at x
   plot(x, yfit)
+  grid()
+
+.. image:: bkg_fit0.png
+   :scale: 50
 
 Now do this for every column and store the results in a background image::
 
-  xrows = arange(img_bkg.shape[0])
-  bkg = zeros_like(img_cr)
-  for col in range(img_bkg.shape[1]):
-      pfit = polyfit(x, img_cr[x, col], 2)
-      bkg[:, col] = polyval(pfit, xrows)
+  xrows = arange(img_bkg.shape[0])         # Array from 0 .. N_rows-1
+  bkg = zeros_like(img_cr)                 # Empty image for background fits
+  for col in arange(img_bkg.shape[1]):     # Iterate over columns
+      pfit = polyfit(x, img_cr[x, col], 2) # Fit poly over bkg rows for col
+      bkg[:, col] = polyval(pfit, xrows)   # Eval poly at ALL row positions
 
   ImgView(bkg)
+
+.. image:: bkg_fit1.png
+   :scale: 50
 
 Finally subtract this background and see if it worked::
 
   img_bkg = img_cr - bkg
   ImgView(img_bkg)
+
++------------------------------------+-----------------------------------+
+|  **Background subtracted**         |   **Original**                    |
++====================================+===================================+
+| .. image:: bkg_fit2.png            | .. image:: imgview_img.png        |
+|    :scale: 50                      |    :scale: 50                     |
++------------------------------------+-----------------------------------+
+
+.. admonition:: Detour: vector operations versus looping
+
+   If you are used to C or Fortran you might be wondering why jump through these
+   hoops with slicing and making sure everything is vectorized.  The answer is
+   that pure Python is an interpreted dynamic language and hence doing loops is
+   *slow*.   Try the following::
+
+     size = 1000000
+     x = arange(size)
+     a = zeros(size)
+     time for i in x: a[i] = x[i] / 2.0
+
+   Now compare to the vectorized NumPy solution::
+
+     x = arange(size)
+     time a = x / 2
+
+   Sometimes doing things in a vectorized way is not possible or just too
+   confusing.  There is an art here and the basic answer is that if it runs
+   fast enough then you are good to go.  Otherwise things need to be vectorized
+   or maybe coded in C or Fortran.
 
 .. Solution
    badimg = zeros(bad.shape)
@@ -540,11 +620,34 @@ Sum the source signal
 
 Now the final step is easy and is left as an exercise.
 
++------------------------------------+-----------------------------------+
+|**Python for Astronomers Spectrum** |   **HST official spectrum**       |
++====================================+===================================+
+| .. image:: spectrum_final.png      | .. image:: 3c120_spec.gif         |
+|    :scale: 50                      |    :scale: 45                     |
++------------------------------------+-----------------------------------+
+
 .. admonition:: Exercise: Make the final spectrum
 
    Sum the rows of the background subtracted spectrum and plot.  Hint: you
    already did it once in a previous exercise.
 
+.. raw:: html
+   
+   <div class="panel6">
+
+::
+
+  spectrum = img_bkg[250:260, :].sum(axis=0)
+  clf()
+  plot(spectrum)
+
+.. raw:: html
+   
+   </div> <p class="flip6">Click to Show/Hide Solution</p>
+
+
+**To do**: flux calibration and wavelength calibration!
 
 SciPy
 -----
@@ -569,3 +672,23 @@ functionality that isn't in NumPy: there is a good chance it is in SciPy:
 - Multi-dimensional image processing (ndimage)
 - File IO (scipy.io)
 - Weave
+
+Survey
+-------
+
+How was the pacing and information level today?
+
+- Could be a bit slower
+- About right
+- Would like some harder exercises
+
+Upcoming Schedule
+-------------------
+
+======== ========================================= =====================
+April 15 Plotting and images                       Phillips 1:30pm
+April 22 Data file I/O, process control (csh)      Phillips **3pm**
+April 29 Fitting and modeling 1-d and 2-d data     Phillips **11:30am**
+May 6    VO and online astronomy                   Phillips 1:30pm
+======== ========================================= =====================
+
