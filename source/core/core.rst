@@ -19,7 +19,7 @@ Setup
 Before getting started you need to get the example data and script files for
 the workshop.  Now that you have a working Python installation we can do this
 without worrying about details of the platform (e.g. linux has wget,
-Mac has curl, Windows does not have tar, etc etc).  
+Mac has curl, Windows might not have tar, etc etc).  
 
 Change to your main Python for Astronomers working directory, start IPython
 ("ipython -pylab") and enter::
@@ -250,13 +250,20 @@ about 50 lines of Python::
    
    </div> <p class="flip1">Click to Show/Hide Solution</p>
 
-Now discover a little bit about the images you have read in::
+Now discover a little bit about the images you have read in, first with ``?``::
 
   img?
+
+Next use ``help`` and note the slightly different information that you get::
+
   help img
+
+Finally find the shape of the image, its minimum value, and a list of the
+maximum value in each column::
+
   img.shape  # Get the shape of img
   img.min()  # Call object method min with no arguments
-  img.argmax(axis=0) 
+  maxes = img.max(axis=0) 
 
 NumPy basics
 ^^^^^^^^^^^^
@@ -364,7 +371,7 @@ It is possible to operate with arrays of different dimensions as long as they fi
    y = x.reshape(-1, 1)
    r = sqrt(x**2 + y**2)
    z = cos(r) / (r + 5)
-   imgview.ImgView(z)
+   ImgView(z)
 
 .. image:: ripple.png
    :scale: 50
@@ -530,17 +537,17 @@ and that you can compose logical expressions::
    does NOT make a copy::
 
      b = a[3:6]
-     print b
+     b
      b[1] = 100
-     print a
+     a
 
    However if you do arithmetic or boolean mask then a copy is always made::
 
      a = arange(4)
      b = a**2
      a[1] = 100
-     print a
-     print b    # Still as expected after changing "a"
+     a
+     b    # Still as expected after changing "a"
       
 Fit the background
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -565,9 +572,9 @@ Let's tackle a simpler problem first and fit the background for a single column:
 
 Now do this for every column and store the results in a background image::
 
-  xrows = arange(img_bkg.shape[0])         # Array from 0 .. N_rows-1
+  xrows = arange(img_cr.shape[0])          # Array from 0 .. N_rows-1
   bkg = zeros_like(img_cr)                 # Empty image for background fits
-  for col in arange(img_bkg.shape[1]):     # Iterate over columns
+  for col in arange(img_cr.shape[1]):      # Iterate over columns
       pfit = polyfit(x, img_cr[x, col], 2) # Fit poly over bkg rows for col
       bkg[:, col] = polyval(pfit, xrows)   # Eval poly at ALL row positions
 
@@ -613,7 +620,7 @@ Finally subtract this background and see if it worked::
 .. Solution
    badimg = zeros(bad.shape)
    badimg[bad] = 1
-   imgview.ImgView(badimg)
+   ImgView(badimg)
 
 Sum the source signal
 ^^^^^^^^^^^^^^^^^^^^^^
