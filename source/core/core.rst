@@ -1,5 +1,5 @@
-Core packages for analysis: IPython and NumPy
-=================================================
+Core packages for analysis: IPython, NumPy, and SciPy
+=====================================================
 
 Workshop goals:
 
@@ -43,6 +43,42 @@ Leave this IPython session open for the rest of the workshop.
    the file at a URL and untar it.  Google on "python urllib2" and "python
    tarfile" to find the relevant module docs.  Figure out how you would
    use the ``tarfile`` module to create a tarfile.
+
+.. raw:: html
+   
+   <div class="panel0">
+
+One of the most useful features of IPython is the ability to edit and navigate 
+you command line history.  This lets you quickly re-do commands, perhaps with a
+slight variation based on seeing the last result.  Try cut-n-pasting the above
+lines in an IPython session.  This should bring up a plot of a sine wave.::
+
+  import this
+  cool = this.that
+
+.. raw:: html
+   
+   </div>
+   <p class="flip0">Click to Show/Hide Solution</p>
+
+.. raw:: html
+   
+   <div class="panel1">
+
+As we saw in the Introduction and Installation workshops, for interactive data
+analysis IPython has a special ``-pylab`` command line option which
+automatically imports elements of the NumPy and the Matplotlib environments.
+This provides a Matlab-like environment allowing very simple and direct
+commands like::
+
+  import this, also
+  cool = this.that.other
+
+.. raw:: html
+   
+   </div>
+   <p class="flip1">Click to Show/Hide Solution</p>
+   
 
 IPython
 ---------

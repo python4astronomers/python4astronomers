@@ -1,0 +1,36 @@
+{% extends "!layout.html" %}
+
+{%- block extrahead %}
+{{ super() }}
+<script type="text/javascript"> 
+$(document).ready(function(){
+{% for isol in range(10) %}
+$(".flip{{isol}}").click(function(){
+    $(".panel{{isol}}").slideToggle("normal");
+  });
+{% endfor %}
+});
+</script>
+ 
+<style type="text/css"> 
+{% for isol in range(10) %}
+div.panel{{isol}},p.flip{{isol}}
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip{{isol}}
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel{{isol}}
+{
+display:none;
+}
+{% endfor %}
+</style>
+{% endblock %}
