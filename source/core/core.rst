@@ -572,7 +572,7 @@ and that you can compose logical expressions::
 .. admonition:: Exercise [intermediate]: circular region slicing
 
    Remember the surface ``z = cos(r) / (r + 5)`` that you made previously.  Set
-   ``z = 0`` for every pixel of ``z`` that is within 10 pixels of (x,y) = (10, 15).
+   ``z = 0`` for every pixel of ``z`` that is within 10 units of (x,y) = (10, 15).
 
 .. raw:: html
    
