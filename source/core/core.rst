@@ -200,8 +200,11 @@ values, and data quality for each pixel.  The slit direction is along the rows
 
   import pyfits
   hdus = pyfits.open('3c120_stis.fits.gz')
-  hdus?
   hdus
+
+Use the ``?`` to get a little more detail on the ``hdus`` object::
+
+  hdus?
 
 Now give meaningful names to each of the three images that are available in the
 FITS HDU list.  You can access element ``n`` in a list with the index ``[n]``,
@@ -281,10 +284,10 @@ Arrays can be created in different ways::
 
   >>> b = arange(4)                 # create an array of 4 integers, from 0 to 3
   >>> b
-   array([0, 1, 2, 3]),
+  array([0, 1, 2, 3]),
 
   >>> arange(0.0, 10.0, 0.1)    # create a float array from 0 to 100 stepping by 0.1
-   array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ,
+  array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ,
           1.1,  1.2,  1.3,  1.4,  1.5,  1.6,  1.7,  1.8,  1.9,  2. ,  2.1,
           2.2,  2.3,  2.4,  2.5,  2.6,  2.7,  2.8,  2.9,  3. ,  3.1,  3.2,
           3.3,  3.4,  3.5,  3.6,  3.7,  3.8,  3.9,  4. ,  4.1,  4.2,  4.3,
@@ -296,7 +299,7 @@ Arrays can be created in different ways::
           9.9]),
 
   >>> linspace(-pi, pi, 5)      # create an array of 5 evenly spaced samples from -pi to pi
-   array([-3.14159265, -1.57079633,  0.        ,  1.57079633,  3.14159265]))
+  array([-3.14159265, -1.57079633,  0.        ,  1.57079633,  3.14159265]))
 
 New arrays can be obtained by operating with existing arrays::
 
@@ -333,6 +336,9 @@ You can change the dimensions of existing arrays::
          [ 8,  9, 10, 11]]),
 
   >>> x = arange(5)
+  >>> x
+  array([0, 1, 2, 3, 4]),
+
   >>> y = x.reshape(5, 1)
   >>> y = x.reshape(-1, 1)  # Same thing but NumPy figures out correct length
   >>> y
