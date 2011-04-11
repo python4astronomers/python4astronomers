@@ -12,7 +12,47 @@ Workshop goals:
   - Understand the basic concept
   - Know how to inspect an object and discover what it can do
 
+.. NOTES on content for this workshop
 
+   Python concepts
+   ----------------
+   - scripts / execfile
+   - function definition and calling (args, kwargs)
+   - Object digression
+   - Python types int float str dict tuple list
+
+   Overall: 1d, 2d, 3d plotting with MPL, and intro to APLpy
+   Science thread: ???
+
+   1-d
+   ---
+   - Basic examples: line, scatter, hist
+   - Concepts: fig axes, axis ticks (Artist tutorial http://matplotlib.sourceforge.net/users/artists.html)
+   - Customization: font size and family, figure size, tick properties
+     log / semilog, marker props, line props
+   - legend(()
+   - Multiple subplits, subplots_adjust, GridSpec
+   - Tour of the MPL gallery 
+   - Object oriented MPL
+   - Alpha opacity for markers and areas
+   - Hist(): illustrate function definition w/ custom hist (with lines not bars)
+
+   - Also bar charts ala http://matplotlib.sourceforge.net/users/screenshots.html#bar-charts
+     (make bar charts like topcat)
+
+   - GUI image viewer similar to ImgView but with pylab (no classes).  Use to
+     illustrate scripts and functions.  (Worth it??)
+   - MPL docs (tutorial pages) explaing key concepts
+
+   2-d
+   ---
+   - imshow()
+   - cmap
+   - clims
+
+   3-d
+   ----
+   - mplot3d
 
 **UNDER CONSTRUCTION**
 
