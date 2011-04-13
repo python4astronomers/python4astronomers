@@ -27,6 +27,7 @@ window.
 
 ::
 
+  from numpy.random import random, normal
   figure(1)
   clf()
   axis([-10, 10, -10, 10])

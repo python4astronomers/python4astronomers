@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from pylab import *
+from numpy.random import random, normal
 
 figure(1)
 clf()
