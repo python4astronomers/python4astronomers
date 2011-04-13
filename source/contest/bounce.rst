@@ -52,10 +52,12 @@ window.
       circles.set_offsets(pos)    # Change the positions
       draw()
 
+.. image:: bounce.png
+   :scale: 50
     
 In order to run this you should copy the lines above into a file
-called ``bounce.py`` in your working directory.  Then start IPthon as usual
-with ``ipython -pylab`` or with the Pylab application and enter the following::
+called ``bounce.py`` in your working directory.  Then start IPython as usual
+with ``ipython -pylab`` or with the Pylab application on Windows and enter the following::
 
   execfile("bounce.py")
 
