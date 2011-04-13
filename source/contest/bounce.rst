@@ -27,20 +27,19 @@ window.
 
 ::
 
-  from numpy.random import random, normal
   figure(1)
   clf()
   axis([-10, 10, -10, 10])
 
   # Define properties of the "bouncing balls"
   n = 10
-  pos = (20 * random(n*2) - 10).reshape(n, 2)
+  pos = (20 * random_sample(n*2) - 10).reshape(n, 2)
   vel = (0.3 * normal(size=n*2)).reshape(n, 2)
-  sizes = normal(200, 100, size=n)
+  sizes = 100 * random_sample(n) + 100
 
   # Colors where each row is (Red, Green, Blue, Alpha).  Each can go
   # from 0 to 1.  Alpha is the transparency.
-  colors = random([n, 4])  
+  colors = random_sample([n, 4])  
 
   # Draw all the circles and return an object ``circles`` that allows
   # manipulation of the plotted circles.
