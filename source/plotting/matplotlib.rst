@@ -41,6 +41,7 @@
      - locs, labels = xticks(); xticks(locs, [])
 
    - gca() and gcf(), discussion of stateful plotting
+   - savefig (backends)
 
    2-d
    ---

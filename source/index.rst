@@ -16,8 +16,9 @@ Contents:
    intro/intro
    installation/installation
    core/core
-   plotting/plotting
+   contest/bounce.rst
 
+.. plotting/plotting
 ..   files/files
 ..   fitting/fitting
 ..   vo/vo
