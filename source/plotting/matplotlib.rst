@@ -234,8 +234,7 @@ you can issue the command::
 study the page of matplotlib `screenshots
 <http://matplotlib.sourceforge.net/users/screenshots.html>`_ to get a better picture.
 
-.. admonition:: Clearing the figure with clf()
-
+.. admonition Clearing the figure with clf()
    From now on we will assume that you know to clear the figure with
    `clf()`_ before entering commands to make the next plot.  
 
@@ -246,6 +245,7 @@ MATLAB, and you concatenate a color string with a line style string.
 The default format string is 'b-', which is a solid blue line.  For
 example, to plot the above with red circles, you would issue::
 
+  clf()
   plot([1,2,3,4], [1,4,9,16], 'ro')
   axis([0, 6, 0, 20])
 
@@ -269,6 +269,7 @@ using arrays::
 
   # red dashes, blue squares and green triangles
   # then filled circle with connecting line
+  clf()
   plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
   plot(t, t+60, 'o', linestyle='-', color='c')
 
@@ -290,6 +291,7 @@ using arrays::
 
    x = [1, 2, 3, 4]
    y = [3, 2, 3, 1]
+   clf()
    plot(x, y, '-.', linewidth=10)
    plot(x, y, 'H', markeredgecolor='b', markeredgewidth=10, markerfacecolor='r', markersize=40)
    axis([0, 5, 0, 4])
@@ -314,24 +316,33 @@ properties
 
 * Use keyword args::
 
-      plot(x, y, linewidth=2.0)
-
-* Use the setter methods of the ``Line2D`` instance.  ``plot`` returns a list
-  of lines; eg ``line1, line2 = plot(x1,y1,x2,x2)``.  Below I have only
-  one line so it is a list of length 1.  I use tuple unpacking in the
-  ``line, = plot(x, y, 'o')`` to get the first element of the list::
-
-      line, = plot(x, y, '-')
-      line.set_antialiased(False) # turn off antialising
-      line.<TAB>
+      x = arange(0, 10, 0.25)
+      y = sin(x)
+      clf()
+      plot(x, y, linewidth=4.0)
 
 * Use the `setp()`_ command.  The example below
   uses a MATLAB-style command to set multiple properties
   on a list of lines.  ``setp`` works transparently with a list of objects
   or a single object::
 
-      lines = plot(x1, y1, 'r', x2, y2, 'b')
-      setp(lines, color='r', linewidth=2.0)
+      clf()
+      lines = plot(x, y, 'r', x/2, y/2, 'b')
+      setp(lines, color='r', linewidth=4.0)
+
+* Use the setter methods of the ``Line2D`` instance.  ``plot`` returns a list
+  of lines; eg ``line1, line2 = plot(x1,y1,x2,x2)``.  Below I have only
+  one line so it is a list of length 1.  I use tuple unpacking in the
+  ``line, = plot(x, y, 'o')`` to get the first element of the list::
+
+      clf()
+      line, = plot(x, y, '-')
+      line.set_<TAB>
+
+  Now change the line color, noting that in this case you need to explicitly redraw:
+
+      line.set_color('m') # change color
+      draw()
 
 .. Important::
 
@@ -437,6 +448,7 @@ subplots::
   t2 = arange(0.0, 5.0, 0.02)
 
   figure(1)             # Make the first figure
+  clf()
   subplot(211)  # 2 rows, 1 column, plot 1
   plot(t1, f(t1), 'bo', t2, f(t2), 'k')
   title('FIGURE 1')
@@ -447,14 +459,17 @@ subplots::
   text(2, 0.8, 'AXES 212')
 
   figure(2)             # Make a second figure
+  clf()
   plot(t2, f(t2), '*') 
   grid()
   title('FIGURE 2')
   text(2, 0.8, 'AXES 111')
 
+Now return the second plot in the first figure and update it::
+
   figure(1)             # Select the existing first figure
   subplot(212)          # Select the existing subplot 212
-  plot(t2, cos(2*pi*t2), 'g--')   # Add a plot to the axes
+  plot(t2, cos(pi*t2), 'g--')   # Add a plot to the axes
   text(2, -0.8, 'Back to AXES 212')
 
 +--------------------------+---------------------------+
@@ -500,6 +515,7 @@ for a more detailed example)::
 
   mu, sigma = 100, 15
   x = normal(mu, sigma, size=10000)
+  clf()
 
   # the histogram of the data
   histvals, binvals, patches = hist(x, bins=50, normed=1, facecolor='g', alpha=0.75)
@@ -603,18 +619,14 @@ two points to consider: the location being annotated represented by
 the argument ``xy`` and the location of the text ``xytext``.  Both of
 these arguments are ``(x,y)`` tuples::
 
-  ax = subplot(111)
-
+  clf()
   t = arange(0.0, 5.0, 0.01)
   s = cos(2*pi*t)
   lines = plot(t, s, lw=2)
 
   annotate('local max', xy=(2, 1), xytext=(3, 1.5),
-              arrowprops=dict(facecolor='black', shrink=0.05),
-              )
-
+           arrowprops=dict(facecolor='black', shrink=0.05))
   ylim(-2,2)
-  show()
 
 .. image:: pyplot_annotate.png
 
