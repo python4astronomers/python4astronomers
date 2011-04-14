@@ -288,9 +288,11 @@ using arrays::
 
 ::
 
-  plot([1,2,3,4], [3,2,3,1], 'H', markeredgecolor='b', 
-       markeredgewidth=10, markerfacecolor='r', markersize=40, 
-       linestyle='-.', linewidth=10)
+   x = [1, 2, 3, 4]
+   y = [3, 2, 3, 1]
+   plot(x, y, '-.', linewidth=10)
+   plot(x, y, 'H', markeredgecolor='b', markeredgewidth=10, markerfacecolor='r', markersize=40)
+   axis([0, 5, 0, 4])
 
 .. raw:: html
    
