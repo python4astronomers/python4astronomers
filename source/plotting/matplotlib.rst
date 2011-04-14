@@ -19,7 +19,7 @@
    - Customization: font size and family, figure size, tick properties
      log / semilog, marker props, line props
    - legend(()
-   - Multiple subplits, subplots_adjust, GridSpec
+   - Multiple subplots, subplots_adjust, GridSpec
    - Tour of the MPL gallery 
    - Object oriented MPL
    - Alpha opacity for markers and areas
@@ -70,6 +70,17 @@
 .. _`figure()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.figure
 .. _`annotate()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.annotate
 .. _`matplotlib.pyplot`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib-pyplot
+.. _`marker`: http://matplotlib.sourceforge.net/api/artist_api.html#matplotlib.lines.Line2D.set_marker
+.. _`Line2D`: http://matplotlib.sourceforge.net/api/artist_api.html#matplotlib.lines.Line2D
+.. _`autoscale()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.autoscale#matplotlib.pyplot.autoscale
+.. _`hold()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.hold#matplotlib.pyplot.hold
+.. _`ioff()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.ioff#matplotlib.pyplot.ioff
+.. _`ion()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.ion#matplotlib.pyplot.ion
+.. _`xlim()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.xlim#matplotlib.pyplot.xlim
+.. _`ylim()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.ylim#matplotlib.pyplot.ylim
+.. _`xticks()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.xticks#matplotlib.pyplot.xticks
+.. _`yticks()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.yticks#matplotlib.pyplot.yticks
+
 
 Matplotlib
 ============
@@ -79,19 +90,42 @@ figures in a variety of formats and interactive environments across
 platforms.  Matplotlib can be used in Python scripts, the Python and IPython
 shell, web application servers, and six graphical user interface toolkits.
 
-
 Documentation
 -----------------
 
-The matplotlib documentation is extensive and covers all the functionality you are likely to need.
+The matplotlib documentation is extensive and covers all the functionality in
+detail.  The documentation is littered with hundreds of examples showing a plot and the
+exact source code making the plot:
 
-- `Main matplotlib page <http://matplotlib.sourceforge.net/>`_
-- `Pyplot tutorial <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_
+- `Main matplotlib page <http://matplotlib.sourceforge.net/>`_: all the pylab commands in a table
+- `Pyplot tutorial <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_: intro to 1-D plotting
 - `Interactive navigation
-  <http://matplotlib.sourceforge.net/users/navigation_toolbar.html>`_
-- `Screenshots <http://matplotlib.sourceforge.net/users/screenshots.html>`_
-- `Thumbnail gallery <http://matplotlib.sourceforge.net/gallery.html>`_
-- `Text intro <http://matplotlib.sourceforge.net/users/text_intro.html#text-intro>`_
+  <http://matplotlib.sourceforge.net/users/navigation_toolbar.html>`_: how to use the plot window for zooming etc.
+- `Screenshots <http://matplotlib.sourceforge.net/users/screenshots.html>`_: screenshots and code for about 20 key types of matplotlib functionality
+- `Thumbnail gallery <http://matplotlib.sourceforge.net/gallery.html>`_: hundreds of thumbnails (find a plot like the one you want to make)
+- `Text intro <http://matplotlib.sourceforge.net/users/text_intro.html#text-intro>`_: manipulate text
+- `Mathematical expressions
+  <http://matplotlib.sourceforge.net/users/mathtext.html#mathtext-tutorial>`_:
+  put math in figure text or labels
+- `FAQ <http://matplotlib.sourceforge.net/faq/index.html>`_: FAQ, including a useful `Howto <http://matplotlib.sourceforge.net/faq/howto_faq.html>`_ section (e.g. multiple y-axis scales, make plot aspect ratio equal, etc)
+- `Search <http://matplotlib.sourceforge.net/search.html>`_: find documentation for specific functions or general concepts
+- `Line2D`_: knobs to twiddle for customizing a line or points in a plot
+
+Hints on getting from here (an idea) to there (a plot)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Start with `Screenshots
+  <http://matplotlib.sourceforge.net/users/screenshots.html>`_ for the broad
+  plotting capabilities
+- Googling is unfortunately not the best way to get to the detailed help for
+  particular functions.  For example `googling "matplotlib errorbar"
+  <http://www.google.com/search?ie=UTF-8&q=matplotlib+errorbar&qscrl=1>`_ just gives the home page and the
+  pyplot API docs.  The ``errorbar()`` function is then not so easy to find.
+- Instead use `Search <http://matplotlib.sourceforge.net/search.html>`_ and
+  enter the function name.  *Most* of the high-level plotting functions are in
+  the ``pyplot`` module and you can find them quickly by searching for
+  ``pyplot.<function>``, e.g. ``pyplot.errorbar``.  *(We'll talk later about pylab versus pyplot)*
+
 
 Plotting 1-d data
 ------------------
@@ -103,20 +137,17 @@ version.  **The content below is largely taken from the pyplot tutorial with a
 few changes and the addition of exercises.**  Most notably the example code
 has been modified assuming the Pylab environment where the `matplotlib.pyplot`_
 functions have all been imported already.
-:mo
 
-
-The ``pylab`` mode of `matplotlib`_ is a collection of command style functions
-that make `matplotlib`_  work like matlab.  Each ``pylab`` function makes
-some change to a figure: eg, create a figure, create a plotting area
-in a figure, plot some lines in a plotting area, decorate the plot
-with labels, etc....  ``Pylab`` is stateful, in that it
-keeps track of the current figure and plotting area, and the plotting
-functions are directed to the current axes.  On the 
-`matplotlib FAQ <http://matplotlib.sourceforge.net/faq/index.html>`_ page there is a 
-very good discussion on 
-`Matplotlib, pylab, and pyplot: how are they related? <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_.
-
+.. The ``pylab`` mode of `matplotlib`_ is a collection of command style functions
+   that make `matplotlib`_ work like matlab.  Each ``pylab`` function makes some
+   change to a figure: eg, create a figure, create a plotting area in a figure,
+   plot some lines in a plotting area, decorate the plot with labels, etc....
+   ``Pylab`` is stateful, in that it keeps track of the current figure and
+   plotting area, and the plotting functions are directed to the current axes.  On
+   the `matplotlib FAQ <http://matplotlib.sourceforge.net/faq/index.html>`_ page
+   there is a very good discussion on `Matplotlib, pylab, and pyplot: how are they
+   related?
+   <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_.
 
 `matplotlib.pyplot`_ is a collection of command style functions that make
 matplotlib work like MATLAB.  Each ``pyplot`` function makes some change to a
@@ -126,16 +157,15 @@ lines in a plotting area, decorate the plot with labels, etc....
 figure and plotting area, and the plotting functions are directed to the
 current axes::
 
-  import matplotlib.pyplot as plt
-  plt.plot([1,2,3,4])
-  plt.ylabel('some numbers')
-  plt.show()
+  plot([1,2,3,4])
+  ylabel('some numbers')
+  show()
 
 .. image:: pyplot_simple.png
 
 You may be wondering why the x-axis ranges from 0-2 and the y-axis
 from 1-3.  If you provide a single list or array to the
-`matplotlib.pyplot.plot` command, matplotlib assumes it is a
+`plot()`_ command, matplotlib assumes it is a
 sequence of y values, and automatically generates the x values for
 you.  Since python ranges start with 0, the default x vector has the
 same length as y but starts with 0.  Hence the x data are
@@ -145,7 +175,7 @@ same length as y but starts with 0.  Hence the x data are
 an arbitrary number of arguments.  For example, to plot x versus y,
 you can issue the command::
 
-    plt.plot([1,2,3,4], [1,4,9,16])
+    plot([1,2,3,4], [1,4,9,16])
 
 For every x, y pair of arguments, there is an optional third argument
 which is the format string that indicates the color and line type of
@@ -154,8 +184,8 @@ MATLAB, and you concatenate a color string with a line style string.
 The default format string is 'b-', which is a solid blue line.  For
 example, to plot the above with red circles, you would issue::
 
-  plt.plot([1,2,3,4], [1,4,9,16], 'ro')
-  plt.axis([0, 6, 0, 20])
+  plot([1,2,3,4], [1,4,9,16], 'ro')
+  axis([0, 6, 0, 20])
 
 .. image:: pyplot_formatstr.png
 
@@ -173,12 +203,40 @@ plotting several lines with different format styles in one command
 using arrays::
 
   # evenly sampled time at 200ms intervals
-  t = np.arange(0., 5., 0.2)
+  t = arange(0., 5., 0.2)
 
   # red dashes, blue squares and green triangles
-  plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
+  plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
 
-.. image:: pyplot_three.png
+  # plot filled circle with connecting line
+  plot(t, t+60, 'o', linestyle='-', color='c')
+
+
+.. image:: pyplot_three_v2.png
+   :scale: 70
+
+.. admonition:: Exercise: Make this plot
+
+   .. image:: big_hexes.png
+      :scale: 50
+
+   Make a plot that looks fairly similar to the one above.
+
+   ::
+
+      plot([1,2,3,4], [3,2,3,1], 'H', markeredgecolor='b', 
+           markeredgewidth=10, markerfacecolor='r', markersize=40, 
+           linestyle='-.', linewidth=10)
+
+.. admonition:: Detour into Python
+
+  You may have noticed that in the last workshop we mostly used NumPy arrays like
+  ``arange(5)`` or ``array([1,2,3,4])`` but now you are seeing statements like
+  ``plot([1,2,3,4])``.  
+
+  It's time to talk about :ref:`python-built-in-types-and-operations`.  In the
+  next workshop we'll talk about Python control statements and introduce
+  objects and classes.
 
 .. _controlling-line-properties:
 
@@ -191,31 +249,33 @@ several ways to set line properties
 
 * Use keyword args::
 
-      plt.plot(x, y, linewidth=2.0)
-
+      plot(x, y, linewidth=2.0)
 
 * Use the setter methods of the ``Line2D`` instance.  ``plot`` returns a list
   of lines; eg ``line1, line2 = plot(x1,y1,x2,x2)``.  Below I have only
   one line so it is a list of length 1.  I use tuple unpacking in the
   ``line, = plot(x, y, 'o')`` to get the first element of the list::
 
-      line, = plt.plot(x, y, '-')
+      line, = plot(x, y, '-')
       line.set_antialiased(False) # turn off antialising
+      line.<TAB>
 
 * Use the `setp()`_ command.  The example below
   uses a MATLAB-style command to set multiple properties
   on a list of lines.  ``setp`` works transparently with a list of objects
-  or a single object.  You can either use python keyword arguments or
-  MATLAB-style string/value pairs::
+  or a single object::
 
-      lines = plt.plot(x1, y1, x2, y2)
-      # use keyword args
-      plt.setp(lines, color='r', linewidth=2.0)
-      # or MATLAB style string value pairs
-      plt.setp(lines, 'color', 'r', 'linewidth', 2.0)
+      lines = plot(x1, y1, 'r', x2, y2, 'b')
+      setp(lines, color='r', linewidth=2.0)
 
+.. Important::
 
-Here are the available :class:`~matplotlib.lines.Line2D` properties.
+   This point about manipulating the lines after the fact is a big deal.
+   In contrast to old-school plotting where you issue a plot command and
+   the line is immortalized, in matplotlib the lines (and basically everything
+   about the plot) is a *dynamic object* that can be modified after the fact.
+
+Here are the available `Line2D`_ properties.
 
 ======================  ==================================================
 Property                Value Type
@@ -231,13 +291,13 @@ contains		the hit testing function
 dash_capstyle		['butt' | 'round' | 'projecting']
 dash_joinstyle		['miter' | 'round' | 'bevel']
 dashes			sequence of on/off ink in points
-data			(np.array xdata, np.array ydata)
+data			(array xdata, array ydata)
 figure			a matplotlib.figure.Figure instance
 label			any string
 linestyle or ls		[ '-' | '--' | '-.' | ':' | 'steps' | ...]
 linewidth or lw		float value in points
 lod			[True | False]
-marker			[ '+' | ',' | '.' | '1' | '2' | '3' | '4'
+marker		        [ '+' | ',' | '.' | '1' | '2' | '3' | '4' | ... ]
 markeredgecolor or mec	any matplotlib color
 markeredgewidth or mew	float value in points
 markerfacecolor or mfc	any matplotlib color
@@ -249,8 +309,8 @@ solid_capstyle		['butt' | 'round' |  'projecting']
 solid_joinstyle		['miter' | 'round' | 'bevel']
 transform		a matplotlib.transforms.Transform instance
 visible			[True | False]
-xdata			np.array
-ydata			np.array
+xdata			array
+ydata			array
 zorder			any number
 ======================  ==================================================
 
@@ -258,19 +318,28 @@ To get a list of settable line properties, call the
 `setp()`_ function with a line or lines
 as argument::
 
-  In [69]: lines = plt.plot([1,2,3])
-
-  In [70]: plt.setp(lines)
-    alpha: float
-    animated: [True | False]
-    antialiased or aa: [True | False]
-    ...snip
+  lines = plot([1,2,3])
+  setp(lines)
 
 .. _multiple-figs-axes:
 
+
+
+Some useful functions for controlling plotting
+----------------------------------------------
+
+======================== =============================================================================
+`autoscale()`_           Allow or disable autoscaling and control space beyond data limits
+`hold()`_                Hold figure: hold(False) means next plot() command wipes figure
+`ion()`_, `ioff()`_      Turn interactive plotting on and off
+`axis()`_                Set plot axis limits or set aspect ratio (plus more)
+`xlim()`_, `ylim()`_     Set x and y axis limits individually
+`xticks()`_, `yticks()`_ Set x and y axis ticks
+======================== =============================================================================
+
+
 Working with multiple figures and axes
 ----------------------------------------
-
 
 MATLAB, and `matplotlib.pyplot`_, have the concept of the current
 figure and the current axes.  All plotting commands apply to the
@@ -279,74 +348,67 @@ current axes (a :class:`matplotlib.axes.Axes` instance), and
 `gcf()`_ returns the current figure
 (:class:`matplotlib.figure.Figure` instance). Normally, you don't have
 to worry about this, because it is all taken care of behind the
-scenes.  Below is a script to create two subplots::
+scenes.  Below is a script to create two figures where the first figure has two
+subplots::
 
-  def f(t):
-      return np.exp(-t) * np.cos(2*np.pi*t)
+  def f(t):                        
+      """Python function to calculate a decaying sinusoid"""
+      val = exp(-t) * cos(2*pi*t)
+      return val
 
-  t1 = np.arange(0.0, 5.0, 0.1)
-  t2 = np.arange(0.0, 5.0, 0.02)
+  t1 = arange(0.0, 5.0, 0.1)
+  t2 = arange(0.0, 5.0, 0.02)
 
-  plt.figure(1)
-  plt.subplot(211)
-  plt.plot(t1, f(t1), 'bo', t2, f(t2), 'k')
+  figure(1)             # Make the first figure
+  subplot(211)  # 2 rows, 1 column, plot 1
+  plot(t1, f(t1), 'bo', t2, f(t2), 'k')
+  title('FIGURE 1')
+  text(2, 0.8, 'AXES 211')
+  
+  subplot(212)  # 2 rows, 1 column, plot 2
+  plot(t2, cos(2*pi*t2), 'r--')
+  text(2, 0.8, 'AXES 212')
 
-  plt.subplot(212)
-  plt.plot(t2, np.cos(2*np.pi*t2), 'r--')
+  figure(2)             # Make a second figure
+  plot(t2, f(t2), '*') 
+  grid()
+  title('FIGURE 2')
+  text(2, 0.8, 'AXES 111')
 
-.. image:: pyplot_two_subplots.png
+  figure(1)             # Select the existing first figure
+  subplot(212)          # Select the existing subplot 212
+  plot(t2, cos(2*pi*t2), 'g--')   # Add a plot to the axes
+  text(2, -0.8, 'Back to AXES 212')
 
-The `figure()`_ command here is optional because
++--------------------------+---------------------------+
+|.. image:: mult_figs1.png |.. image:: mult_figs2.png  |
+|   :scale: 50             |   :scale: 50              |
++--------------------------+---------------------------+
+
+The first `figure()`_ command here is optional because
 ``figure(1)`` will be created by default, just as a ``subplot(111)``
-will be created by default if you don't manually specify an axes.  The
-`subplot()`_ command specifies ``numrows,
-numcols, fignum`` where ``fignum`` ranges from 1 to
-``numrows*numcols``.  The commas in the ``subplot`` command are
-optional if ``numrows*numcols<10``.  So ``subplot(211)`` is identical
-to ``subplot(2,1,1)``.  You can create an arbitrary number of subplots
-and axes.  If you want to place an axes manually, ie, not on a
-rectangular grid, use the `axes()`_ command,
-which allows you to specify the location as ``axes([left, bottom,
-width, height])`` where all values are in fractional (0 to 1)
-coordinates.  See :ref:`pylab_examples-axes_demo` for an example of
-placing axes manually and :ref:`pylab_examples-line_styles` for an
-example with lots-o-subplots.
+will be created by default if you don't manually specify an axes.  
 
+The `subplot()`_ command specifies ``numrows, numcols, fignum`` where
+``fignum`` ranges from 1 to ``numrows*numcols``.  The commas in the ``subplot``
+command are optional if ``numrows*numcols<10``.  So ``subplot(211)`` is
+identical to ``subplot(2,1,1)``.  You can create an arbitrary number of
+subplots and axes.  
 
-You can create multiple figures by using multiple
-`figure()`_ calls with an increasing figure
-number.  Of course, each figure can contain as many axes and subplots
-as your heart desires::
-
-    import matplotlib.pyplot as plt
-    plt.figure(1)                # the first figure
-    plt.subplot(2, 1, 1)         # the first subplot in the first figure
-    plt.plot([1,2,3])
-    plt.subplot(2, 1, 2)         # the second subplot in the first figure
-    plt.plot([4,5,6])
-
-
-    plt.figure(2)                # a second figure
-    plt.plot([4,5,6])            # creates a subplot(111) by default
-
-    plt.figure(1)                # figure 1 current; subplot(212) still current
-    plt.subplot(2, 1, 1)         # make subplot(2,1,1) in figure1 current
-    plt.title('Easy as 1,2,3')   # subplot 2,1,1 title
+If you want to place an axes manually, ie, not on a rectangular grid, use the
+`axes()`_ command, which allows you to specify the location as ``axes([left,
+bottom, width, height])`` where all values are in fractional (0 to 1)
+coordinates.  See `pylab_examples-axes_demo
+<http://matplotlib.sourceforge.net/examples/pylab_examples/axes_demo.html>`_
+for an example of placing axes manually and `pylab_examples-line_styles
+<http://matplotlib.sourceforge.net/examples/pylab_examples/line_styles.html>`_
+for an example with lots-o-subplots.
 
 You can clear the current figure with `clf()`_
 and the current axes with `cla()`_.  If you find
 this statefulness, annoying, don't despair, this is just a thin
 stateful wrapper around an object oriented API, which you can use
 instead (see :ref:`artist-tutorial`)
-
-If you are making a long sequence of figures, you need to be aware of one
-more thing: the memory required for a figure is not completely
-released until the figure is explicitly closed with
-`close()`_.  Deleting all references to the
-figure, and/or using the window manager to kill the window in which
-the figure appears on the screen, is not enough, because pyplot
-maintains internal references until `close()`_
-is called.
 
 .. _working-with-text:
 
@@ -360,18 +422,18 @@ are used to add text in the indicated locations (see :ref:`text-intro`
 for a more detailed example)::
 
   mu, sigma = 100, 15
-  x = mu + sigma * np.random.randn(10000)
+  x = mu + sigma * random.randn(10000)
 
   # the histogram of the data
-  n, bins, patches = plt.hist(x, 50, normed=1, facecolor='g', alpha=0.75)
+  n, bins, patches = hist(x, 50, normed=1, facecolor='g', alpha=0.75)
 
 
-  plt.xlabel('Smarts')
-  plt.ylabel('Probability')
-  plt.title('Histogram of IQ')
-  plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
-  plt.axis([40, 160, 0, 0.03])
-  plt.grid(True)
+  xlabel('Smarts')
+  ylabel('Probability')
+  title('Histogram of IQ')
+  text(60, .025, r'$\mu=100,\ \sigma=15$')
+  axis([40, 160, 0, 0.03])
+  grid(True)
 
 
 .. image:: pyplot_text.png
@@ -381,7 +443,7 @@ All of the `text()`_ commands return an
 above, you can customize the properties by passing keyword arguments
 into the text functions or using `setp()`_::
 
-  t = plt.xlabel('my data', fontsize=14, color='red')
+  t = xlabel('my data', fontsize=14, color='red')
 
 These properties are covered in more detail in :ref:`text-properties`.
 
@@ -393,7 +455,7 @@ matplotlib accepts TeX equation expressions in any text expression.
 For example to write the expression :math:`\sigma_i=15` in the title,
 you can write a TeX expression surrounded by dollar signs::
 
-    plt.title(r'$\sigma_i=15$')
+    title(r'$\sigma_i=15$')
 
 The ``r`` preceeding the title string is important -- it signifies
 that the string is a *raw* string and not to treate backslashes and
@@ -418,18 +480,18 @@ two points to consider: the location being annotated represented by
 the argument ``xy`` and the location of the text ``xytext``.  Both of
 these arguments are ``(x,y)`` tuples::
 
-  ax = plt.subplot(111)
+  ax = subplot(111)
 
-  t = np.arange(0.0, 5.0, 0.01)
-  s = np.cos(2*np.pi*t)
-  line, = plt.plot(t, s, lw=2)
+  t = arange(0.0, 5.0, 0.01)
+  s = cos(2*pi*t)
+  lines = plot(t, s, lw=2)
 
-  plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
+  annotate('local max', xy=(2, 1), xytext=(3, 1.5),
               arrowprops=dict(facecolor='black', shrink=0.05),
               )
 
-  plt.ylim(-2,2)
-  plt.show()
+  ylim(-2,2)
+  show()
 
 .. image:: pyplot_annotate.png
 
