@@ -17,8 +17,8 @@ Contents:
    installation/installation
    core/core
    contest/bounce.rst
+   plotting/plotting
 
-.. plotting/plotting
 ..   files/files
 ..   fitting/fitting
 ..   vo/vo

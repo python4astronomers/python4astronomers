@@ -100,7 +100,7 @@ The matplotlib documentation is extensive and covers all the functionality in
 detail.  The documentation is littered with hundreds of examples showing a plot and the
 exact source code making the plot:
 
-- `Matplotlib home page <http://matplotlib.sourceforge.net/>`_: all the pylab commands in a table
+- `Matplotlib home page <http://matplotlib.sourceforge.net/>`_: key pylab plotting commands in a table
 - `Pyplot tutorial <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_: intro to 1-D plotting
 - `Interactive navigation
   <http://matplotlib.sourceforge.net/users/navigation_toolbar.html>`_: how to use the plot window for zooming etc.
@@ -135,8 +135,8 @@ Hints on getting from here (an idea) to there (a plot)
 
 .. admonition::  Pylab and Pyplot and NumPy
 
-  A quick diversion is useful to demystify what's happening when you use
-  ``ipython -pylab`` and to understand the relationship between **pylab** and **pyplot**.
+  Let's demystify what's happening when you use ``ipython -pylab`` and
+  clarify the relationship between **pylab** and **pyplot**.
 
   `matplotlib.pyplot`_ is a collection of command style functions that make
   matplotlib work like MATLAB.  This is just a package module that you can import::
@@ -185,8 +185,7 @@ The `matplotlib`_ tutorial on `Pyplot
 <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_ (Copyright (c)
 2002-2009 John D. Hunter; All Rights Reserved and `license
 <http://matplotlib.sourceforge.net/users/license.html>`_) is an excellent
-introduction to basic 1-d plotting that there is no need to write a new
-version.  **The content below has been adapted directly from the pyplot
+introduction to basic 1-d plotting.  **The content below has been adapted from the pyplot
 tutorial source with some changes and the addition of exercises.** Most notably
 the example code has been modified assuming the Pylab environment where the
 `matplotlib.pyplot`_ functions have all been imported already.
@@ -210,9 +209,9 @@ lines in a plotting area, decorate the plot with labels, etc....
 figure and plotting area, and the plotting functions are directed to the
 current axes::
 
+  figure()          # Make a new figure window
   plot([1,2,3,4])
   ylabel('some numbers')
-  show()
 
 .. image:: pyplot_simple.png
 
@@ -228,7 +227,17 @@ same length as y but starts with 0.  Hence the x data are
 an arbitrary number of arguments.  For example, to plot x versus y,
 you can issue the command::
 
+    clf()
     plot([1,2,3,4], [1,4,9,16])
+
+`Plot()`_ is just the tip of the iceberg for plotting commands and you should
+study the page of matplotlib `screenshots
+<http://matplotlib.sourceforge.net/users/screenshots.html>`_ to get a better picture.
+
+.. admonition:: Clearing the figure with clf()
+
+   From now on we will assume that you know to clear the figure with
+   `clf()`_ before entering commands to make the next plot.  
 
 For every x, y pair of arguments, there is an optional third argument
 which is the format string that indicates the color and line type of
@@ -256,19 +265,15 @@ plotting several lines with different format styles in one command
 using arrays::
 
   # evenly sampled time at 200ms intervals
-  t = arange(0., 5., 0.2)
+  t = arange(0., 5., 0.2)   
 
   # red dashes, blue squares and green triangles
+  # then filled circle with connecting line
   plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
-
-  # plot filled circle with connecting line
   plot(t, t+60, 'o', linestyle='-', color='c')
-
 
 .. image:: pyplot_three_v2.png
    :scale: 70
-
-   
 
 .. admonition:: Exercise: Make this plot
 
@@ -291,24 +296,19 @@ using arrays::
    
    </div> <p class="flip0">Click to Show/Hide Solution</p>
 
-.. admonition:: Detour into Python
-
-  You may have noticed that in the last workshop we mostly used NumPy arrays like
-  ``arange(5)`` or ``array([1,2,3,4])`` but now you are seeing statements like
-  ``plot([1,2,3,4])``.  
-
-  It's time to talk about :ref:`python-built-in-types-and-operations`.  In the
-  next workshop we'll talk about Python control statements and introduce
-  objects and classes.
-
-.. _controlling-line-properties:
-
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. admonition:: What are lines and markers?
+
+   A matplotlib "line" is a object containing a set of points and various
+   attributes describing how to draw those points.  The points are optionally
+   drawn with "markers" and the connections between points can be drawn with
+   various styles of line (including no connecting line at all).
+
 Lines have many attributes that you can set: linewidth, dash style,
-antialiased, etc; see :class:`matplotlib.lines.Line2D`.  There are
-several ways to set line properties
+antialiased, etc; see :class:`matplotlib.lines.Line2D`.   There are several ways to set line
+properties
 
 * Use keyword args::
 
@@ -333,7 +333,6 @@ several ways to set line properties
 
 .. Important::
 
-   This point about manipulating the lines after the fact is important.
    In contrast to old-school plotting where you issue a plot command and
    the line is immortalized, in matplotlib the lines (and basically everything
    about the plot) are *dynamic objects* that can be modified after the fact.
@@ -386,6 +385,18 @@ as argument::
 
 .. _multiple-figs-axes:
 
+
+.. admonition:: Detour into Python
+
+  You may have noticed that in the last workshop we mostly used NumPy arrays like
+  ``arange(5)`` or ``array([1,2,3,4])`` but now you are seeing statements like
+  ``plot([1,2,3])``.  
+
+  It's time to talk about :ref:`python-built-in-types-and-operations`.  In the
+  next workshop we'll talk about Python control statements and introduce
+  objects and classes.
+
+.. _controlling-line-properties:
 
 Some useful functions for controlling plotting
 ----------------------------------------------
@@ -536,8 +547,8 @@ These properties are covered in more detail in `text-properties <http://matplotl
    
    </div> <p class="flip0">Click to Show/Hide Solution</p>
 
-For the control freaks
-^^^^^^^^^^^^^^^^^^^^^^^
+Getting the fonts just right
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The global font properties for various plot elements can be controlled using
 the `rc()`_ function::
@@ -612,18 +623,13 @@ variety of other coordinate systems one can choose -- see
 details.  More examples can be found in
 :ref:`pylab_examples-annotation_demo`.
 
-Bouncing balls contest
------------------------
-
-Now the moment we've been waiting for... :ref:`contest-bouncing-balls`.
-
-Plotting 2-d image data
+Plotting 2-d data
 ------------------------
 
 A deeper tutorial on plotting 2-d image data will have to wait for another
 day:
 
-- For simple cases there is not too much to learn and everything you need
+- For simple cases it is straightforward and everything you need
   to know is in the `image tutorial
   <http://matplotlib.sourceforge.net/users/image_tutorial.html>`_
 - For making publication quality images for astronomy you should be
@@ -632,7 +638,9 @@ day:
 Plotting 3-d data
 -------------------
 
-::
+Matplotlib supports plotting 3-d data through the ``mpl_toolkits.mplot3d``
+module.  This is a somewhat specialized functionality but it's worth quickly
+looking at an example of the 3-d viewer that is available::
 
   from mpl_toolkits.mplot3d import Axes3D
 
@@ -651,3 +659,6 @@ Plotting 3-d data
   ax.set_xlabel('X Label')
   ax.set_ylabel('Y Label')
   ax.set_zlabel('Z Label')
+
+To get more information check out the `mplot3d tutorial
+<http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_.
