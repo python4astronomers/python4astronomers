@@ -29,8 +29,8 @@ When things go wrong
 
 * If you run into what you believe is a bug, please report it at the GitHub `Issue Tracker <https://github.com/aplpy/aplpy/issues>`_.
 
-Ultra-fast tutorial
--------------------
+Getting started
+---------------
 
 Start off by downloading :download:`this tar file <../files/APLpy-example.tgz>`, expand it, and go to the ``APLpy-example`` directory on the command line. Then, launch pylab::
 
@@ -69,4 +69,19 @@ We can now save our masterpiece either by clicking on the Save icon in the matpl
 The latter is recommended because it will automatically figure out the best resolution with which to output your plot. Your plot should look something like this:
 
 .. image:: aplpy_example.png
+
+Exercise 1
+----------
+
+Use the  ``help`` or ``?`` functionality in ``ipython`` to figure out how to set the min/max levels on the grayscale manually, and to change the stretch function to a square-root stretch. Also use the Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ to figure out how to change the grayscale to a colorscale.
+
+Exercise 2
+----------
+
+Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ to manually set the tick spacing on both axes. In the default view for the example FITS file above, the arcseconds in the declination are not useful (they are always zero). Try and change the format of the y axis labels so that they only include degrees and arcminutes.
+
+Exercise 3
+----------
+
+Use APLpy to plot one of your own FITS images!
 
