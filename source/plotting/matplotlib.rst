@@ -53,7 +53,10 @@
    ----
    - mplot3d
 
+.. _`rc()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.rc
 .. _`plot()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.plot
+.. _`subplots_adjust()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.subplots_adjust
+.. _`hist()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.hist
 .. _`axis()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.axis
 .. _`cla()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.cla
 .. _`clf()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.clf
@@ -97,7 +100,7 @@ The matplotlib documentation is extensive and covers all the functionality in
 detail.  The documentation is littered with hundreds of examples showing a plot and the
 exact source code making the plot:
 
-- `Main matplotlib page <http://matplotlib.sourceforge.net/>`_: all the pylab commands in a table
+- `Matplotlib home page <http://matplotlib.sourceforge.net/>`_: all the pylab commands in a table
 - `Pyplot tutorial <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_: intro to 1-D plotting
 - `Interactive navigation
   <http://matplotlib.sourceforge.net/users/navigation_toolbar.html>`_: how to use the plot window for zooming etc.
@@ -109,6 +112,9 @@ exact source code making the plot:
   put math in figure text or labels
 - `FAQ <http://matplotlib.sourceforge.net/faq/index.html>`_: FAQ, including a useful `Howto <http://matplotlib.sourceforge.net/faq/howto_faq.html>`_ section (e.g. multiple y-axis scales, make plot aspect ratio equal, etc)
 - `Search <http://matplotlib.sourceforge.net/search.html>`_: find documentation for specific functions or general concepts
+- `Customizing matplotlib
+  <http://matplotlib.sourceforge.net/users/customizing.html>`_: making it
+  beautiful and well-behaved
 - `Line2D`_: knobs to twiddle for customizing a line or points in a plot
 
 Hints on getting from here (an idea) to there (a plot)
@@ -124,19 +130,66 @@ Hints on getting from here (an idea) to there (a plot)
 - Instead use `Search <http://matplotlib.sourceforge.net/search.html>`_ and
   enter the function name.  *Most* of the high-level plotting functions are in
   the ``pyplot`` module and you can find them quickly by searching for
-  ``pyplot.<function>``, e.g. ``pyplot.errorbar``.  *(We'll talk later about pylab versus pyplot)*
+  ``pyplot.<function>``, e.g. ``pyplot.errorbar``.  
 
+
+.. admonition::  Pylab and Pyplot and NumPy
+
+  A quick diversion is useful to demystify what's happening when you use
+  ``ipython -pylab`` and to understand the relationship between **pylab** and **pyplot**.
+
+  `matplotlib.pyplot`_ is a collection of command style functions that make
+  matplotlib work like MATLAB.  This is just a package module that you can import::
+
+    import matplotlib.pyplot
+    print sorted(dir(matplotlib.pyplot))
+
+  Likewise pylab is also a module provided by matplotlib that you can import::
+
+    import pylab
+
+  This module is a thin wrapper around ``matplotlib.pylab`` which pulls in:
+
+  - Everything in ``matplotlib.pyplot``
+  - All top-level functions ``numpy``,``numpy.fft``, ``numpy.random``,
+  - ``numpy.linalg``
+  - A selection of other useful functions and modules from matplotlib
+
+  There is no magic, and to see for yourself do
+
+  .. sourcecode:: python
+
+     import matplotlib.pylab
+     matplotlib.pylab??       # prints the source code!!
+
+  When you do ``ipython -pylab`` it (essentially) just does::
+
+    from pylab import *
+
+  In a lot of documentation examples you will see code like::
+
+    import matplotlib.pyplot as plt  # set plt as alias for matplotlib.pyplot
+    plt.plot([1,2], [3,4])
+
+  Now you should understand this is the same ``plot()`` function that you get in
+  Pylab.  
+
+  See `Matplotlib, pylab, and pyplot: how are they related?
+  <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
+  for a more discussion on the topic.
 
 Plotting 1-d data
 ------------------
 
 The `matplotlib`_ tutorial on `Pyplot
-<http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_ does such a
-good job of covering basic 1-d plotting that there is no need to write a new
-version.  **The content below is largely taken from the pyplot tutorial with a
-few changes and the addition of exercises.**  Most notably the example code
-has been modified assuming the Pylab environment where the `matplotlib.pyplot`_
-functions have all been imported already.
+<http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_ (Copyright (c)
+2002-2009 John D. Hunter; All Rights Reserved and `license
+<http://matplotlib.sourceforge.net/users/license.html>`_) is an excellent
+introduction to basic 1-d plotting that there is no need to write a new
+version.  **The content below has been adapted directly from the pyplot
+tutorial source with some changes and the addition of exercises.** Most notably
+the example code has been modified assuming the Pylab environment where the
+`matplotlib.pyplot`_ functions have all been imported already.
 
 .. The ``pylab`` mode of `matplotlib`_ is a collection of command style functions
    that make `matplotlib`_ work like matlab.  Each ``pylab`` function makes some
@@ -196,8 +249,8 @@ list of ``[xmin, xmax, ymin, ymax]`` and specifies the viewport of the
 axes.
 
 If matplotlib were limited to working with lists, it would be fairly
-useless for numeric processing.  Generally, you will use `numpy
-<http://numpy.scipy.org>`_ arrays.  In fact, all sequences are
+useless for numeric processing.  Generally, you will use `NumPy`_
+arrays.  In fact, all sequences are
 converted to numpy arrays internally.  The example below illustrates a
 plotting several lines with different format styles in one command
 using arrays::
@@ -215,18 +268,28 @@ using arrays::
 .. image:: pyplot_three_v2.png
    :scale: 70
 
+   
+
 .. admonition:: Exercise: Make this plot
 
    .. image:: big_hexes.png
       :scale: 50
 
-   Make a plot that looks fairly similar to the one above.
+   Make a plot that looks similar to the one above.
 
-   ::
+.. raw:: html
+   
+   <div class="panel0">
 
-      plot([1,2,3,4], [3,2,3,1], 'H', markeredgecolor='b', 
-           markeredgewidth=10, markerfacecolor='r', markersize=40, 
-           linestyle='-.', linewidth=10)
+::
+
+  plot([1,2,3,4], [3,2,3,1], 'H', markeredgecolor='b', 
+       markeredgewidth=10, markerfacecolor='r', markersize=40, 
+       linestyle='-.', linewidth=10)
+
+.. raw:: html
+   
+   </div> <p class="flip0">Click to Show/Hide Solution</p>
 
 .. admonition:: Detour into Python
 
@@ -270,10 +333,10 @@ several ways to set line properties
 
 .. Important::
 
-   This point about manipulating the lines after the fact is a big deal.
+   This point about manipulating the lines after the fact is important.
    In contrast to old-school plotting where you issue a plot command and
    the line is immortalized, in matplotlib the lines (and basically everything
-   about the plot) is a *dynamic object* that can be modified after the fact.
+   about the plot) are *dynamic objects* that can be modified after the fact.
 
 Here are the available `Line2D`_ properties.
 
@@ -324,18 +387,19 @@ as argument::
 .. _multiple-figs-axes:
 
 
-
 Some useful functions for controlling plotting
 ----------------------------------------------
 
-======================== =============================================================================
+======================== ========================================================================================
+`figure()`_              Make new figure frame (accepts figsize=(width,height) in inches)
 `autoscale()`_           Allow or disable autoscaling and control space beyond data limits
 `hold()`_                Hold figure: hold(False) means next plot() command wipes figure
 `ion()`_, `ioff()`_      Turn interactive plotting on and off
 `axis()`_                Set plot axis limits or set aspect ratio (plus more)
+`subplots_adjust()`_     Adjust the spacing around subplots (fix clipped labels etc)
 `xlim()`_, `ylim()`_     Set x and y axis limits individually
 `xticks()`_, `yticks()`_ Set x and y axis ticks
-======================== =============================================================================
+======================== ========================================================================================
 
 
 Working with multiple figures and axes
@@ -422,11 +486,10 @@ are used to add text in the indicated locations (see :ref:`text-intro`
 for a more detailed example)::
 
   mu, sigma = 100, 15
-  x = mu + sigma * random.randn(10000)
+  x = normal(mu, sigma, size=10000)
 
   # the histogram of the data
-  n, bins, patches = hist(x, 50, normed=1, facecolor='g', alpha=0.75)
-
+  histvals, binvals, patches = hist(x, bins=50, normed=1, facecolor='g', alpha=0.75)
 
   xlabel('Smarts')
   ylabel('Probability')
@@ -434,7 +497,6 @@ for a more detailed example)::
   text(60, .025, r'$\mu=100,\ \sigma=15$')
   axis([40, 160, 0, 0.03])
   grid(True)
-
 
 .. image:: pyplot_text.png
 
@@ -445,8 +507,56 @@ into the text functions or using `setp()`_::
 
   t = xlabel('my data', fontsize=14, color='red')
 
-These properties are covered in more detail in :ref:`text-properties`.
+These properties are covered in more detail in `text-properties <http://matplotlib.sourceforge.net/users/text_props.html>`_.
 
+.. admonition:: Exercise: Overlaying histograms
+
+   Make an additional normal distribution with a mean of 130.  Make a new plot
+   where the two distributions are overlayed.  Use a different color and
+   choose the opacities so it looks reasonable.
+  
+   Hints:
+
+   - You might want to use the ``bin`` parameter with an ``arange(min, max,
+     step)`` so both histograms are binned the same.
+   - The ``histtype`` parameter may also prove useful depending on your taste.
+  
+.. raw:: html
+   
+   <div class="panel0">
+
+::
+
+  clf()
+  x2 = normal(130, sigma, size=10000)
+  out = hist(x, bins=bins, normed=1, facecolor='g', alpha=0.5, histtype='stepfilled')
+  out = hist(x2, bins=bins, normed=1, facecolor='r', alpha=0.5, histtype='stepfilled')
+
+.. raw:: html
+   
+   </div> <p class="flip0">Click to Show/Hide Solution</p>
+
+For the control freaks
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The global font properties for various plot elements can be controlled using
+the `rc()`_ function::
+
+  rc("font", size=10, family='normal', weight='bold')
+  rc("axes", labelsize=10, titlesize=10)
+  rc("xtick", labelsize=10)
+  rc("ytick", labelsize=10)
+  rc("legend", fontsize=10)
+
+The inconsistency here is one of the warts in matplotlib.  Ironically my favorite
+way to find these valuable commands is to google `"matplotlib makes me
+hate"
+<http://www.google.com/search?sourceid=chrome&ie=UTF-8&q=matplotlib+makes+me+hate&qscrl=1>`_
+which brings up a blog post ranting about the problems with matplotlib.
+
+All of the attributes that can be controlled with the `rc()`_ command are
+listed in ``$HOME/.matplotlib/matplotlibrc`` and `Customizing matplotlib
+<http://matplotlib.sourceforge.net/users/customizing.html>`_.
 
 Using mathematical expressions in text
 ----------------------------------------
@@ -457,16 +567,16 @@ you can write a TeX expression surrounded by dollar signs::
 
     title(r'$\sigma_i=15$')
 
-The ``r`` preceeding the title string is important -- it signifies
-that the string is a *raw* string and not to treate backslashes and
-python escapes.  matplotlib has a built-in TeX expression parser and
-layout engine, and ships its own math fonts -- for details see
-:ref:`mathtext-tutorial`.  Thus you can use mathematical text across platforms
-without requiring a TeX installation.  For those who have LaTeX and
-dvipng installed, you can also use LaTeX to format your text and
-incorporate the output directly into your display figures or saved
-postscript -- see :ref:`usetex-tutorial`.
-
+The ``r`` preceeding the title string is important -- it signifies that the
+string is a *raw* string and not to treate backslashes and python escapes.
+matplotlib has a built-in TeX expression parser and layout engine, and ships
+its own math fonts -- for details see the `mathtext-tutorial
+<http://matplotlib.sourceforge.net/users/mathtext.html>`_.  Thus you can use
+mathematical text across platforms without requiring a TeX installation.  For
+those who have LaTeX and dvipng installed, you can also use LaTeX to format
+your text and incorporate the output directly into your display figures or
+saved postscript -- see the `usetex-tutorial
+<http://matplotlib.sourceforge.net/users/usetex.html>`_.
 
 Annotating text
 -----------------
@@ -502,6 +612,10 @@ variety of other coordinate systems one can choose -- see
 details.  More examples can be found in
 :ref:`pylab_examples-annotation_demo`.
 
+Bouncing balls contest
+-----------------------
+
+Now the moment we've been waiting for... :ref:`contest-bouncing-balls`.
 
 Plotting 2-d image data
 ------------------------

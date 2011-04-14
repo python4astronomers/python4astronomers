@@ -1,3 +1,5 @@
+.. _`contest-bouncing-balls`:
+
 CONTEST: Make a fun bouncing balls demo
 ========================================
 
