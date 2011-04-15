@@ -311,7 +311,7 @@ Controlling line properties
    various styles of line (including no connecting line at all).
 
 Lines have many attributes that you can set: linewidth, dash style,
-antialiased, etc; see :class:`matplotlib.lines.Line2D`.   There are several ways to set line
+antialiased, etc; see `Line2D`_.   There are several ways to set line
 properties
 
 * Use keyword args::
@@ -339,7 +339,7 @@ properties
       line, = plot(x, y, '-')
       line.set_<TAB>
 
-  Now change the line color, noting that in this case you need to explicitly redraw:
+  Now change the line color, noting that in this case you need to explicitly redraw::
 
       line.set_color('m') # change color
       draw()
@@ -413,6 +413,8 @@ as argument::
 
 Some useful functions for controlling plotting
 ----------------------------------------------
+
+Here are a few useful functions:
 
 ======================== ========================================================================================
 `figure()`_              Make new figure frame (accepts figsize=(width,height) in inches)
