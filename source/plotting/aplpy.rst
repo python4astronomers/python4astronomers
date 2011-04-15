@@ -32,9 +32,17 @@ When things go wrong
 Getting started
 ---------------
 
-Start off by downloading :download:`this tar file <../files/APLpy-example.tgz>`, expand it, and go to the ``APLpy-example`` directory on the command line. Then, launch pylab::
+Start off by downloading :download:`this tar file <../files/APLpy-example.tar>`, expand it, and go to the ``APLpy-example`` directory on the command line. Then, launch pylab::
 
     $ ipython -pylab
+
+If you have trouble downloading the file, then start up IPython (``ipython -pylab``) and enter::
+
+    import urllib2, tarfile
+    url = 'http://python4astronomers.github.com/_downloads/APLpy-example.tar'
+    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    cd APLpy-example
+    ls
 
 Import the ``aplpy`` module (note the lowercase module name)::
 
@@ -83,5 +91,12 @@ Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_refe
 Exercise 3
 ----------
 
-Use APLpy to plot one of your own FITS images! If you don't have any FITS files at hand, you can play with :download:`this <../files/m82_wise.tgz>` newly-released WISE data of M82!
+Use APLpy to plot one of your own FITS images! If you don't have any FITS files at hand, you can play with :download:`this <../files/m82_wise.tar>` newly-released WISE data of M82!
 
+If you have trouble downloading the file, then start up IPython (``ipython -pylab``) and enter::
+
+    import urllib2, tarfile
+    url = 'http://python4astronomers.github.com/_downloads/m82_wise.tar'
+    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    cd m82_wise
+    ls
