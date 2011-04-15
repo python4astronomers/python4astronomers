@@ -83,5 +83,5 @@ Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_refe
 Exercise 3
 ----------
 
-Use APLpy to plot one of your own FITS images!
+Use APLpy to plot one of your own FITS images! If you don't have any FITS files at hand, you can play with :download:`this <../files/m82_wise.tgz>` newly-released WISE data of M82!
 
