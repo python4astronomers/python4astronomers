@@ -78,25 +78,67 @@ The latter is recommended because it will automatically figure out the best reso
 
 .. image:: aplpy_example.png
 
-Exercise 1
-----------
+.. admonition::  Exercise 1
 
-Use the  ``help`` or ``?`` functionality in ``ipython`` to figure out how to set the min/max levels on the grayscale manually, and to change the stretch function to a square-root stretch. Also use the Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ to figure out how to change the grayscale to a colorscale.
+    Use the  ``help`` or ``?`` functionality in ``ipython`` to figure out how to set the min/max levels on the grayscale manually, and to change the stretch function to a square-root stretch. Also use the Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ to figure out how to change the grayscale to a colorscale.
 
-Exercise 2
-----------
+.. raw:: html
 
-Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ to manually set the tick spacing on both axes. In the default view for the example FITS file above, the arcseconds in the declination are not useful (they are always zero). Try and change the format of the y axis labels so that they only include degrees and arcminutes.
+   <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
 
-Exercise 3
-----------
+To manually set the levels::
 
-Use APLpy to plot one of your own FITS images! If you don't have any FITS files at hand, you can play with :download:`this <../files/m82_wise.tar>` newly-released WISE data of M82!
+    f.show_grayscale(vmin=0., vmax=200.)
 
-If you have trouble downloading the file, then start up IPython (``ipython -pylab``) and enter::
+To additionally use a square-root stretch::
 
-    import urllib2, tarfile
-    url = 'http://python4astronomers.github.com/_downloads/m82_wise.tar'
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
-    cd m82_wise
-    ls
+    f.show_grayscale(vmin=0.,vmax=200., stretch='sqrt')
+
+To change to a colorscale::
+
+    f.show_colorscale()
+
+Note that the colormap can be set using for example::
+
+    f.show_colorscale(cmap='gist_heat')
+
+where the value of the cmap argument can be any of the names listed on `this <http://www.scipy.org/Cookbook/Matplotlib/Show_colormaps>`_ page.
+
+.. raw:: html
+
+   </div>
+
+
+.. admonition::  Exercise 2
+
+    Use the `Quick Reference Guide <http://aplpy.github.com/documentation/quick_reference.html>`_ to manually set the tick spacing on both axes. In the default view for the example FITS file above, the arcseconds in the declination are not useful (they are always zero). Try and change the format of the y-axis labels so that they only include degrees and arcminutes.
+
+.. raw:: html
+
+   <p class="flip8">Click to Show/Hide Solution</p> <div class="panel8">
+
+To set the tick spacing::
+
+   f.ticks.set_xspacing(0.05)
+   f.ticks.set_yspacing(0.05)
+
+To show the y-axis labels in dd:mm format::
+
+    f.tick_labels.set_yformat('dd:mm')
+
+.. raw:: html
+
+   </div>
+
+
+.. admonition:: Exercise 3
+
+    Use APLpy to plot one of your own FITS images! If you don't have any FITS files at hand, you can play with :download:`this <../files/m82_wise.tar>` newly-released WISE data of M82!
+
+    If you have trouble downloading the file, then start up IPython (``ipython -pylab``) and enter::
+
+        import urllib2, tarfile
+        url = 'http://python4astronomers.github.com/_downloads/m82_wise.tar'
+        tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+        cd m82_wise
+        ls
