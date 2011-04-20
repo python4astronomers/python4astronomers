@@ -18,9 +18,9 @@ Contents:
    core/core
    contest/bounce.rst
    plotting/plotting
+   fitting/fitting
 
 ..   files/files
-..   fitting/fitting
 ..   vo/vo
 
 Schedule
