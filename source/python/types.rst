@@ -6,202 +6,217 @@ Python Built-in Types and Operations
 Let's discuss `Python Built-in Types and Operations
 <http://docs.python.org/library/stdtypes.html>`_.
 
-Python supports the following built-in types:
+Python supports a number of built-in types and operations. This tutorial covers the most common types, but information about additional types is available `here <http://docs.python.org/library/stdtypes.html>`_
 
-- **Numerics**: int float long complex
-- **Sequences**: str (string), unicode (string), list, tuple, bytearray, buffer,
-  xrange
-- **Mappings**: dict
-- **Sets**: set, frozenset
-- **Files**: file
-- **Classes**: class
-- **Instances**: class instance (object)
-- **Exceptions**: runtime exception (e.g. divide by zero or file not found error)
+Basic numeric types
+-------------------
 
-::
+The basic data numeric types are similar to those found in other languages, including:
 
-Numeric types
---------------
+* Integers::
 
-Python numeric data types behave like you might expect::
+    >>> i = 1
 
-  >>> width = 20      # int
-  >>> height = 5 * 9  # int
-  >>> width * height
-  900
-  
-  >>> height = 5.0 * 9  # int * float => float
-  >>> height
-  45.0
+* Floating point values::
 
-*There is one important exception*: if you divide two integers the result is truncated to the nearest integer::
+    >>> f = 4.3
 
-  >>> 3 / 2
-  1
-  >>> 3.0 / 2
-  1.5
+* Complex values::
 
-This is behavior is widely regarded as a huge design mistake and the future
-more-perfect Python (Python 3.x) behaves like you would expect.  In fact you can visit the
-future today with Python 2.x with this little trick::
+    >>> c = complex(4., -1.)
 
-  >>> from __future__ import division
-  >>> 3 / 2
-  1.5
-  >>> 3 // 2
-  1
+Manipulating numbers behaves the way you would expect, so an operation (``+``, ``-``, ``/``, ``*``, ``**``, etc.) on two values of the same type produces another value of the same type, while an operation on two values with different types produces a value of the more 'advanced' type:
 
-Sequences
-----------
+* Adding two integers gives an integer::
 
-Str (string)
-^^^^^^^^^^^^
+    >>> 1 + 3
+    4
 
-Python strings can be enclosed in single or double quotes::
+* Multiplying two floats gives a float::
 
-  >>> 'spam eggs'
-  'spam eggs'
-  >>> 'doesn\'t'
-  "doesn't"
-  >>> "doesn't"
-  "doesn't"
-  >>> '"Yes," he said.'
-  '"Yes," he said.'
-  >>> "\"Yes,\" he said."
-  '"Yes," he said.'
-  >>> '"Isn\'t," she said.'
-  '"Isn\'t," she said.'
+    >>> 3. * 2.
+    6.0
 
-It should not surprise you that a string is an object with methods::
+* Subtracting two complex numbers gives a complex number::
 
-  a = 'hello'
-  a.<TAB>
-  a.__add__          a.__mod__                 a.decode           a.partition
-  a.__class__        a.__mul__                 a.encode           a.replace
-  a.__contains__     a.__ne__                  a.endswith         a.rfind
-  a.__delattr__      a.__new__                 a.expandtabs       a.rindex
-  a.__doc__          a.__reduce__              a.find             a.rjust
-  a.__eq__           a.__reduce_ex__           a.format           a.rpartition
-  a.__format__       a.__repr__                a.index            a.rsplit
-  a.__ge__           a.__rmod__                a.isalnum          a.rstrip
-  a.__getattribute__ a.__rmul__                a.isalpha          a.split
-  a.__getitem__      a.__setattr__             a.isdigit          a.splitlines
-  a.__getnewargs__   a.__sizeof__              a.islower          a.startswith
-  a.__getslice__     a.__str__                 a.isspace          a.strip
-  a.__gt__           a.__subclasshook__        a.istitle          a.swapcase
-  a.__hash__         a._formatter_field_name_  a.isupper          a.title
-  a.__init__         a._formatter_parser       a.join             a.translate
-  a.__le__           a.capitalize              a.ljust            a.upper
-  a.__len__          a.center                  a.lower            a.zfill
-  a.__lt__           a.count                   a.lstrip           
+    >>> complex(2.,4.) - complex(1.,6.)
+    (1-2j)
 
-The most non-obvious feature of Python strings is that they are *immutable*,
-meaning that you cannot change a string in place like you might expect::
+* Multiplying an integer with a float gives a float::
 
-  >>> a = 'hello world'
-  >>> a[3:5]
-  'lo'
-  >>> a[3:5] = 'XX'
-  Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-  TypeError: 'str' object does not support item assignment
-  >>> a[:3] + 'XX' + a[5:]  
-  'helXX world'
+    >>> 3 * 9.2
+    27.599999999999998  # int * float = float
 
-List
-^^^^^^^
+* Multiplying a float with a complex number gives a complex number::
 
-The Python ``list`` is a versatile data type which can be written as a list of
-comma-separated values (items) between square brackets. List items need not all
-have the same type.
+    >>> 2. * complex(-1.,3.)
+    (-2+6j)  # float * complex = complex
 
-  >>> a = ['spam', 'eggs', 100, 1234]
-  >>> a
-  ['spam', 'eggs', 100, 1234]
+* Multiplying an integer and a complex number gives a complex number::
 
-Like string indices, list indices start at 0, and lists can be sliced, concatenated and so on::
+    >>> 8 * complex(-3.3,1)
+    (-26.4+8j)  # int * complex = complex
 
-  >>> a[0]
-  'spam'
-  >>> a[3]
-  1234
-  >>> a[-2]
-  100
-  >>> a[1:-1]
-  ['eggs', 100]
-  >>> a[:2] + ['bacon', 2*2]
-  ['spam', 'eggs', 'bacon', 4]
+However, there is one case where this happens but is not desirable, and that you should be aware of, which is the division of two integer numbers::
 
-  >>> a[0] = 'ham'
-  >>> a
-  ['ham', 'eggs', 100, 1234]
+    >>> 3 / 2
+    1
 
-Unlike NumPy arrays:
+This is behavior is widely regarded as a huge design mistake and Python 3.x has been fixed to behave like you would expect. To see how Python 3.x behaves, we can use::
 
-- Python lists can contain anything, including other lists, objects, or complex data structures.
-- When you slice a Python list it returns a copy.
-- Vector math does not work on lists:
-  - Multiplying a list by an int ``n`` gives ``n`` copies of the list.  
-  - Adding another list concatentates.
-  - Multiplying by a float gives an error.
+    >>> from __future__ import division
 
-::
+After typing this, we can use the Python 3.x syntax::
 
-  >>> b = a[0:2]
-  >>> b
-  ['ham', 'eggs']
-  >>> b[1] = 'chickens'
-  >>> a
-  ['ham', 'eggs', 100, 1234]
-  >>> 3*a[:3] + ['Boo!']
-  ['spam', 'eggs', 100, 'spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boo!']
+    >>> 3 / 2
+    1.5
 
-Tuple
-^^^^^^^^
+    >>> 3 // 2
+    1
 
-A Python ``tuple`` is like an immutable ``list``.  There are reasons why this
-is a useful feature (faster and `hashable
-<http://docs.python.org/glossary.html#term-hashable>`_ are two biggies), but
-for now you should know how to recognize and make a tuple.
+Another way to prevent this is to cast at least one of the integers in the division to a ``float``::
 
-  >>> a = (1, 2, 'hello')
-  >>> a
-  (1, 2, 'hello')
-  >>> a[1] = 10
-  Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-  TypeError: 'tuple' object does not support item assignment
-  
-  >>> b = 1,        # note trailing comma
-  >>> b
-  (1,)
-  >>> c = 1, 2, 3
-  >>> c
-  (1, 2, 3)
-  >>> x, y, z = c
-  >>> x, y = y, x   # One step swap
+    >>> 3 / float(2)
+    1.5
 
-Dict
-^^^^^^^^
+Lists, tuples, and sets
+-----------------------
 
-A Python ``dict`` is fundamentally like an actual dictionary that 
-contains a list of unique words (*keys*) each with a definition (*values*)::
+There are two types of sequences that appear similar at first glance, both of which can contain inhomogeneous data types:
 
-  >>> tel = {'jack': 4098, 12.0: 4139}    # key can be any hashable object
-  >>> tel['guido'] = 4127
-  >>> tel
-  {12.0: 4139, 'jack': 4098, 'guido': 4127}
-  >>> tel['jack']
-  4098
-  >>> del tel[12.0]                       # delete from the hash
-  >>> tel
-  {'jack': 4098, 'guido': 4127}
-  >>> tel.keys()
-  ['jack', 'guido']
-  >>> tel.values()
-  [4098, 4127]
-  >>> 'guido' in tel
-  True
+* Lists::
 
-As for lists a ``dict`` can contain arbitrarily complex data structures for
-values.
+    >>> l = [4, 5.5, "spam"]
+    >>> l[0]
+    4
+    >>> l[1]
+    5.5
+    >>> l[2]
+    'spam'
+
+* Tuples::
+
+    >>> t = (4, 5.5, "spam")
+    >>> t[0]
+    4
+    >>> t[1]
+    5.5
+    >>> t[2]
+    'spam'
+
+The difference between these two types is that lists are mutable, and tuples are immutable::
+
+    >>> l[0] = 3
+    >>> l.append('egg')  # For a full list of methods, type l. then press TAB!
+    >>> l.insert(3,'spam')
+    >>> l
+    [3, 5.5, 'spam', 'spam', 'egg']
+
+    >>> t[0] = 3
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    TypeError: 'tuple' object does not support item assignment
+
+There are reasons why tuples are a useful feature (faster and `hashable
+<http://docs.python.org/glossary.html#term-hashable>`_ are the two main ones), but for now, it's enough for you to know there is such a difference.
+
+One useful operation with lists and tuples is ``+``, which can be used for concatenation::
+
+    >>> [1,2,3] + [4,5,6]
+    [1, 2, 3, 4, 5, 6]
+
+    >>> ('spam', 'egg') + ('more spam','!')
+    ('spam', 'egg', 'more spam', '!')
+
+.. note:: Unlike Numpy arrays:
+
+        * Python lists can contain anything, including other lists, objects, or complex data structures.
+        * When you slice a Python list it returns a copy.
+        * Vector math does not work on lists
+            * Multiplying a list by an int ``n`` gives ``n`` copies of the list.
+            * Adding another list concatentates.
+            * Multiplying by a float gives an error.
+
+Sets are a third type of sequence which you can make from a tuple or a list::
+
+    >>> set([1, 2, 3, 2, 'spam', 'egg', 'spam'])
+    set([1, 2, 3, 'egg', 'spam'])
+
+Note that duplicate items have been removed. This is the mathematical definition of a set, i.e. a collection of *distinct* objects. The order of the objects is arbitrary (order is not preserved). Various operators can be used to represent set operations::
+
+    >>> set([1,2,3]) - set([3,4])
+    set([1, 2])
+
+    >>> set([1,2,3]) & set([3,4])
+    set([3])
+
+    >>> set([1,2,3]) | set([3,4])
+    set([1, 2, 3, 4])
+
+Strings
+-------
+
+Strings will be familiar from other programming languages::
+
+    >>> s = "Spam egg spam spam"
+
+You can use either single quotes (``'``), double quotes (``"``), or triple quotes (``'''``) to enclose a string (the last one is used for multi-line strings). To include single or double quotes inside a string, you can either use the opposite quote to enclose the string::
+
+    >>> "I'm"
+    "I'm"
+
+    >>> '"hello"'
+    '"hello"'
+
+or you can *escape* them::
+
+    >>> 'I\'m'
+    "I'm"
+
+    >>> "\"hello\""
+    '"hello"'
+
+You can access individual characters or chunks of characters::
+
+    >>> s[5]
+    'e'
+
+    >>> s[9:13]
+    'spam'
+
+Note that strings are immutable (like tuples), that is you cannot change the value of certain characters without creating a new string::
+
+    >>> s[5] = 'r'
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    TypeError: 'str' object does not support item assignment
+
+As for lists, and tuples, concatenation is done with ``+``::
+
+    >>> "hello," + " " + "world!"
+    'hello, world!'
+
+Finally, strings have many methods associated with them, here are a few examples::
+
+    >>> s.upper()
+    'SPAM EGG SPAM SPAM'  # An uppercase version of the string
+
+    >>> s.index('egg')
+    5  # An integer giving the position of the sub-string
+
+    >>> s.split()
+    ['Spam', 'egg', 'spam', 'spam']  # A list of strings
+
+Dictionaries
+------------
+
+One of the remaining types are dictionaries which you can think of as look-up
+tables::
+
+    >>> d = {'name':'m31', 'ra':10.68, 'dec':41.27}
+    >>> d['name']
+    'm31'
+    >>> d['flux'] = 4.5
+    >>> d
+    {'flux': 4.5, 'dec': 41.27, 'name': 'm31', 'ra': 10.68}
+
