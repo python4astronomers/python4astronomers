@@ -42,6 +42,7 @@ Reading tables
 --------------
 ::
 
+  import asciitable
   table = """
   col1 col2 col3
   1    2    "hi there"
@@ -153,10 +154,10 @@ or a different table writer class::
 
   asciitable.write(dat, sys.stdout, Writer=asciitable.CommentedHeader)
 
-As a final example, imagine you've done a computation and have four columns of
-data you want to write to an ASCII table.  You could just use pure Python file I/O as
-shown earlier, but then you may need to be careful about quoting (and why
-rewrite the same code every time when it is already done!)::
+As a final example, imagine you've gathered basic information about 5 galaxies
+which you want to write as an ASCII table.  You could just use pure Python file I/O as
+shown earlier, but then you may need to be careful about quoting and formatting (and why
+rewrite the same code every time when it is already done!).  Instead just use `asciitable`_::
 
   types = ['barred spiral', 'spiral', 'peculiar (ring)', 'elliptical', 'elliptical']
   redshifts = array([0.024221, 0.132, 0.22, 0.34, 0.45])
@@ -170,15 +171,16 @@ rewrite the same code every time when it is already done!)::
 
    To do this exercise you must first install the `BeautifulSoup
    <http://www.crummy.com/software/BeautifulSoup/>`_ package which will parse
-   HTML pages into nice data structures.  From the command line do::
-
+   HTML pages into nice data structures.  **QUIT** your IPython session and from the command line do::
+     
      easy_install [--user] BeautifulSoup
 
-   Use the --user flag if you prefer to install the package into your local
+   Use the ``--user`` flag if you prefer to install the package into your local
    user area instead of within the system Python installation.
 
-   Now define the following function which converts an HTML table to a list
-   of lines with tab-separated values (this will be more clear in the next part)::
+   Now start IPython again and define the following function which converts an
+   HTML table to a list of lines with tab-separated values (this will be more
+   clear in the next part)::
 
      from BeautifulSoup import BeautifulSoup
      def html2tsv(html, index=0):
@@ -202,21 +204,23 @@ rewrite the same code every time when it is already done!)::
      html = urllib2.urlopen('http://goo.gl/fNafv').read()  # Get web page as string
      lines = html2tsv(html, 5)   # Parse the number 5 table in the web page
 
-   Now examine the ``lines`` and understand where is the header line and where
-   the valid data lines start and end.  Then adjust the `table parameters for
-   reading`_ accordingly to read the lines using `asciitable.read()`_.
+   Now examine the ``lines`` and understand the delimiter, where is the header
+   line, and where the valid data lines start and end.  Then adjust the `table
+   parameters for reading`_ accordingly to read the lines using
+   `asciitable.read()`_.
 
 .. raw:: html
 
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
 
-The first and last data lines are garbage and there is no header (column)
-information in the way that we parsed the HTML table.  It turns out this page
-put the table header column names ("Mark" "Dataset" "Target Name" ...) in a 
-separate element.  The table can still be read, however, by indicating that
-there is no header line with ``header_start=None``::
+The delimiter is the tab character `"\t"`.  The first and last data lines are
+garbage and there is no header (column) information in the way that we parsed
+the HTML table.  It turns out this page put the table header column names
+("Mark" "Dataset" "Target Name" ...) in a separate element.  The table can
+still be read, however, by indicating that there is no header line with
+``header_start=None``::
 
-  dat = asciitable.read(lines, data_start=1, data_end=-1, header_start=None)
+  dat = asciitable.read(lines, data_start=1, data_end=-1, header_start=None, delimiter='\t')
 
 .. raw:: html
 
