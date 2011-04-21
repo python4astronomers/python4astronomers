@@ -10,7 +10,7 @@ We have already talked about :ref:`python-built-in-types-and-operations`, but
 there are more types that we did not speak about. One of these is the
 ``file()`` object which can be used to read in or write files.
 
-Let's start off by downloading :download:`this <data.txt>` data file, then launching IPython the directory where you have the file::
+Let's start off by downloading :download:`this <../downloads/data.txt>` data file, then launching IPython the directory where you have the file::
 
     $ ipython -pylab
 
