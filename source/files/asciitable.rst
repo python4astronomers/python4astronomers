@@ -213,7 +213,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
 
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
 
-The delimiter is the tab character `"\t"`.  The first and last data lines are
+The delimiter is the tab character `"\\t"`.  The first and last data lines are
 garbage and there is no header (column) information in the way that we parsed
 the HTML table.  It turns out this page put the table header column names
 ("Mark" "Dataset" "Target Name" ...) in a separate element.  The table can
