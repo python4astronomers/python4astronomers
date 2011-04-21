@@ -1,20 +1,14 @@
 from BeautifulSoup import BeautifulSoup
-import urllib2
-import asciitable
 
-url = 'http://hea-www.harvard.edu/XJET/'
-page = urllib2.urlopen(url).read()
+def html2tsv(html, index=0):
+    """Parse the index'th HTML table in ``html``.  Return table as a list of
+    tab-separated ASCII table lines"""
+    soup = BeautifulSoup(html)
+    tables = soup.findAll('table')
+    table = tables[index]
+    out = []
+    for row in jet_table.findAll('tr'):
+        colvals = [col.text for col in row.findAll('td')]
+        out.append('\t'.join(colvals))
 
-soup = BeautifulSoup(page)
-
-tables = soup.findAll('table')
-jettable = tables[1]
-
-out = []
-for row in jettable.findAll('tr'):
-    colvals = []
-    for col in row.findAll('td'):
-        colvals.append(col.text)
-    out.append('\t'.join(colvals))
-
-dat = asciitable.read(out)
+    return out
