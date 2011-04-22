@@ -52,11 +52,18 @@ Reading tables
 Examine what was returned::
 
   data
+
+This is an instance of the NumPy `structured array
+<http://docs.scipy.org/doc/numpy/user/basics.rec.html#module-numpy.doc.structured_arrays>`_
+type, which is an efficient way to manipulate records of tabular data.  It stores
+columns of typed data and you can access either a column of data or a row of
+data at once::
+
   data.dtype
   data[1]
   data['col2']
 
-The first and most important argument to the ``asciitable.read()`` function is
+The first and most important argument to the `asciitable.read()`_ function is
 the table input.  There is some flexibility here and you can supply any of the following:
 
   - Name of a file (string)
@@ -195,32 +202,38 @@ rewrite the same code every time when it is already done!).  Instead just use `a
              out.append('\t'.join(colvals))
          return out
 
-   Now the exercise is to grab the table data from this `HST Search for 3c273
-   data <http://goo.gl/fNafv>`_ into a Python data structure.  You'll want to
-   start with::
+   Now the exercise is to grab the table data from the `XJET catalog page
+   <http://hea-www.harvard.edu/XJET/>`_ into a Python data structure.  You'll
+   want to start with::
 
      import urllib2
      import asciitable
-     html = urllib2.urlopen('http://goo.gl/fNafv').read()  # Get web page as string
-     lines = html2tsv(html, 5)   # Parse the number 5 table in the web page
+     html = urllib2.urlopen('http://hea-www.harvard.edu/XJET/').read()  # Get web page as string
+     table1 = html2tsv(html, 0)   # Parse the first table in the web page
+     table2 = html2tsv(html, 1)   # Parse the second table
+     table3 = html2tsv(html, 2)   # Parse the third table
 
-   Now examine the ``lines`` and understand the delimiter, where is the header
-   line, and where the valid data lines start and end.  Then adjust the `table
-   parameters for reading`_ accordingly to read the lines using
-   `asciitable.read()`_.
+   Now examine what you got in the ``table`` variables and use
+   `asciitable.read()`_ to parse the right one into a table.  Then plot a
+   histogram of the redshift distribution in this sample.
+
+   **HINT**: the table has missing values so include ``fill_values=('', '-1')`` in
+   the call to `asciitable.read()`_.  `Asciitable`_ has robust functionality to `replace bad or
+   missing values <http://cxc.cfa.harvard.edu/contrib/asciitable/#replace-bad-or-missing-values>`_.
 
 .. raw:: html
 
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
 
-The delimiter is the tab character `"\\t"`.  The first and last data lines are
-garbage and there is no header (column) information in the way that we parsed
-the HTML table.  It turns out this page put the table header column names
-("Mark" "Dataset" "Target Name" ...) in a separate element.  The table can
-still be read, however, by indicating that there is no header line with
-``header_start=None``::
+The data are in the second table, so do::
 
-  dat = asciitable.read(lines, data_start=1, data_end=-1, header_start=None, delimiter='\t')
+  dat = asciitable.read(table2, fill_values=('', '-1'))
+  dat.dtype
+  dat.dtype.names
+  hist(dat['z'], bins=50)
+
+.. image:: xjet_hist.png
+   :scale: 50
 
 .. raw:: html
 
