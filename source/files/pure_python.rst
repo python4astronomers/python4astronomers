@@ -231,7 +231,7 @@ To open a file for writing, use::
 
 Then simply use ``f.write()`` to write any content to the file, for example::
 
-    f.write("Hello, World!")
+    f.write("Hello, World!\n")
 
 If you want to write multiple lines, you can either give a list of strings to the ``writelines()`` method::
 
