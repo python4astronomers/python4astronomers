@@ -8,6 +8,7 @@ In this workshop we will learn how to get data in and out of Python using solely
 .. toctree::
    :maxdepth: 1
 
+   ../python/types
    pure_python.rst
    asciitable.rst
    atpy.rst

@@ -3,9 +3,6 @@
 Python Built-in Types and Operations
 ====================================
 
-Let's discuss `Python Built-in Types and Operations
-<http://docs.python.org/library/stdtypes.html>`_.
-
 Python supports a number of built-in types and operations. This tutorial covers the most common types, but information about additional types is available `here <http://docs.python.org/library/stdtypes.html>`_
 
 Basic numeric types
@@ -13,19 +10,19 @@ Basic numeric types
 
 The basic data numeric types are similar to those found in other languages, including:
 
-* Integers::
+* Integers (``int``)::
 
     >>> i = 1
 
-* Floating point values::
+* Floating point values (``float``)::
 
     >>> f = 4.3
 
-* Complex values::
+* Complex values (``complex``)::
 
     >>> c = complex(4., -1.)
 
-Manipulating numbers behaves the way you would expect, so an operation (``+``, ``-``, ``/``, ``*``, ``**``, etc.) on two values of the same type produces another value of the same type, while an operation on two values with different types produces a value of the more 'advanced' type:
+Manipulating these behaves the way you would expect, so an operation (``+``, ``-``, ``/``, ``*``, ``**``, etc.) on two values of the same type produces another value of the same type, while an operation on two values with different types produces a value of the more 'advanced' type:
 
 * Adding two integers gives an integer::
 
@@ -84,7 +81,7 @@ Lists, tuples, and sets
 
 There are two types of sequences that appear similar at first glance, both of which can contain inhomogeneous data types:
 
-* Lists::
+* Lists (``list``)::
 
     >>> l = [4, 5.5, "spam"]
     >>> l[0]
@@ -94,7 +91,7 @@ There are two types of sequences that appear similar at first glance, both of wh
     >>> l[2]
     'spam'
 
-* Tuples::
+* Tuples (``tuple``)::
 
     >>> t = (4, 5.5, "spam")
     >>> t[0]
@@ -137,7 +134,7 @@ One useful operation with lists and tuples is ``+``, which can be used for conca
             * Adding another list concatentates.
             * Multiplying by a float gives an error.
 
-Sets are a third type of sequence which you can make from a tuple or a list::
+Sets (``set``) are a third type of sequence which you can make from a tuple or a list::
 
     >>> set([1, 2, 3, 2, 'spam', 'egg', 'spam'])
     set([1, 2, 3, 'egg', 'spam'])
@@ -156,7 +153,7 @@ Note that duplicate items have been removed. This is the mathematical definition
 Strings
 -------
 
-Strings will be familiar from other programming languages::
+Strings (``str``) will be familiar from other programming languages::
 
     >>> s = "Spam egg spam spam"
 
@@ -210,8 +207,8 @@ Finally, strings have many methods associated with them, here are a few examples
 Dictionaries
 ------------
 
-One of the remaining types are dictionaries which you can think of as look-up
-tables::
+One of the remaining types are dictionaries (``dict``) which you can think of
+as look-up tables::
 
     >>> d = {'name':'m31', 'ra':10.68, 'dec':41.27}
     >>> d['name']
