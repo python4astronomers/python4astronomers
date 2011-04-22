@@ -32,8 +32,8 @@ and you will see something like this::
     >>> f.read()
     'RAJ        DEJ                          Jmag   e_Jmag\n2000 (deg) 2000
     (deg) 2MASS             (mag)  (mag) \n---------- ----------
-    ----------------- ------ ------\n010.684737 +41.269035 00424433+4116085  
-    9.453  0.052\n010.683469 +41.268585 00424403+4116069   9.321 
+    ----------------- ------ ------\n010.684737 +41.269035 00424433+4116085
+    9.453  0.052\n010.683469 +41.268585 00424403+4116069   9.321
     0.022\n010.685657 +41.269550 00424455+4116103  10.773  0.069\n010.686026
     +41.269226 00424464+4116092   9.299  0.063\n010.683465 +41.269676
     00424403+4116108  11.507  0.056\n010.686015 +41.269630
@@ -58,12 +58,12 @@ Now ``data`` contains a string::
 But what we'd really like to do is read the file line by line. There are several ways to do this, the simplest of which is to use a ``for`` loop in the following way::
 
     f = open('data.txt', 'r')
-    for line in f.readlines():
+    for line in f:
         print repr(line)
 
 Notice the indent before ``print``, which is necessary to indicate that we are inside the loop (there is no ``end for`` in Python). Note that we are using ``repr()`` to show any invisible characters (this will be useful in a minute). The output should now look something like this::
 
-    >>> for line in f.readlines():
+    >>> for line in f:
             print repr(line)
 
     'RAJ        DEJ                          Jmag   e_Jmag\n'
@@ -78,6 +78,22 @@ Notice the indent before ``print``, which is necessary to indicate that we are i
     '010.685270 +41.267124 00424446+4116016  12.070  0.035\n'
 
 Each line is being returned as a string. Notice the ``\n`` at the end of each line - this is a line return character, which indicates the end of a line.
+
+.. note:: You may also come across the following way to read files line by
+          line::
+
+              for line in f.readlines():
+                  ...
+
+          ``f.readlines()`` actually reads in the whole file and splits it
+          into a list of lines, so for large files this can be memory
+          intensive. Using::
+
+              for line in f:
+                  ...
+
+          instead is more memory efficient because it only reads one line
+          at a time.
 
 Now we're reading in a file line by line, what would be really nice would be to get some values out of it.  Let's examine the last line in detail. If we just type ``line`` we should see the last line that was printed in the loop::
 
@@ -126,7 +142,7 @@ We can put all this together to write a little script to read the data from the 
     header3 = f.readline()
 
     # Loop over lines and extract variables of interest
-    for line in f.readlines():
+    for line in f:
         line = line.strip()
         columns = line.split()
         name = columns[2]
@@ -152,7 +168,7 @@ The output should look like this::
         header2 = f.readline()
         header3 = f.readline()
         data = []
-        for line in f.readlines():
+        for line in f:
             line = line.strip()
             columns = line.split()
             source = {}
