@@ -18,6 +18,8 @@ Contents:
    core/core
    contest/bounce.rst
    plotting/plotting
+   python/types
+   files/files
    fitting/fitting
 
 ..   files/files
