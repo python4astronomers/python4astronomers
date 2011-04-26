@@ -107,7 +107,7 @@ Below are the entries that were received for the contest.  Thanks to all who sub
 :download:`bounce_fprimini.py`         Spinning pentagons
 :download:`bounce_jconnelly.py`        Order from chaos [*]
 :download:`bounce_jslavin.py`          1-d gravity [*]
-:download:`bounce_kkaitlin.py`         Growing rings
+:download:`bounce_kkratter.py`         Growing rings
 :download:`bounce_mswanson.py`         Whirling stars
 :download:`bounce_pgrigis.py`          Diffusion: **contest winner**
 :download:`bounce_trobitaille1.py`     Gravitational well [*]
