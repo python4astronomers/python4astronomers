@@ -5,11 +5,18 @@ Python Classes
 Basics
 ^^^^^^
 
+Begin by starting IPython with pylab::
+
+  $ ipython -pylab
+
+
 Classes definitions include the ``class`` declaration, an identifier, and a
 colon::
 
   class MyClass:
       pass
+
+  h = MyClass()
 
 This class ``MyClass`` isn't very interesting since it does not contain any
 methods or attributes.  The ``pass`` is simply a placeholder in the class
@@ -18,7 +25,6 @@ declaration indicating a no-op.
 Class instances are mutable, meaning that attributes and functions can be added
 after instantiation::
 
-  h = MyClass()
   print h.msg
 
 There is no attribute ``msg``, so add one::
@@ -86,7 +92,6 @@ return the attribute ``msg3`` when the class instance is printed with
 
 Class ``HelloWorld`` is of type ``Hello``, ``World``, and ``HelloWorld``::
 
-  type(hw)
   isinstance(hw, Hello)
   isinstance(hw, World)
   isinstance(hw, HelloWorld)
@@ -154,6 +159,9 @@ Answer::
 	   self.norm = norm
       def calc(self, wave):
            return self.norm*(wave**self.index)
+
+  p = Powlaw()
+  p.calc(array([1,2,3]))
 
 .. raw:: html
    

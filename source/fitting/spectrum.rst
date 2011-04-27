@@ -38,8 +38,11 @@ choosen model identifier.  ``pow1`` is now a power-law model accessible in
 scope::
 
   ui.set_model(ui.powlaw1d.pow1)
-  pow1.ref = 4000.      # Set power-law reference to 4000 Angstroms
-  print ui.get_model()  # or ui.show_model() for interactive use
+  # Set power-law reference to 4000 Angstroms
+  pow1.ref = 4000.
+
+  # or ui.show_model() for interactive use
+  print ui.get_model()  
 
 Fit the filtered continuum using ``pow1`` and plot the fitted model atop the
 data.  The default fit statistic is chi-squared with Gehrels variance and the
@@ -78,7 +81,9 @@ model that is finally passed as a single argument to ``set_model``::
   g2.fwhm = 50
   g3.fwhm = 50
   g4.fwhm = 50
-  print ui.get_model()  # or ui.show_model() for interactive use
+
+  # or ui.show_model() for interactive use
+  print ui.get_model()
 
 Now fit with the four Gaussian lines plus the continuum and plot the results
 with the spectrum::
@@ -104,7 +109,8 @@ times the FHWM of the narrow line::
 The link expressions for the position and FWHM can be seen in the model display
 information::
 
-  print ui.get_model() # or ui.show_model() for interactive use
+  # or ui.show_model() for interactive use
+  print ui.get_model()
 
 Freeze the Gaussian lines at the red end of the spectrum at their current
 best-fit parameter values::

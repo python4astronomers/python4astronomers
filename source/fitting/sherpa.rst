@@ -49,6 +49,14 @@ and start IPython::
 
   $ ipython -pylab
 
+If you have trouble accessing the spectrum you can download it straight away
+using Python::
+  
+  import urllib2
+  url = 'http://python4astronomers.github.com/_downloads/3c273.fits'
+  open('3c273.fits', 'wb').write(urllib2.urlopen(url).read())
+  ls
+
 Import a few Sherpa classes needed to characterize a fit::
 
   from sherpa.data import Data1D
@@ -79,14 +87,17 @@ Create a Sherpa ``Data1D`` data set from the NumPy arrays ``wave``, ``flux``, an
 
 Array access::
 
-  print data.x, data.y, data.staterror
+  print 'x', data.x
+  print 'y', data.y
+  print 'err',  data.staterror
 
 
-Define a a convenience function ``plot_data`` that calls the matplotlib functions
+Define a convenience function ``plot_data`` that calls the matplotlib functions
 ``plot`` and ``errorbar`` according to certain criteria.  Plot the ``x`` and
-``y`` arrays using the format specified in the optional argument, ``fmt``.  Clear
-the plot if the ``clear`` argument is ``True``.  Add the plot errorbars if the
-``err`` array is present::
+``y`` arrays using the format specified in the optional argument, ``fmt``.
+Clear the plot if the ``clear`` argument is ``True``.  Add the plot errorbars if
+the ``err`` array is present.  Plot the spectrum by accessing the NumPy arrays
+in the Sherpa data set using our new function and its default arguments::
 
   def plot_data(x, y, err=None, fmt='.', clear=True):
       if clear:
@@ -94,9 +105,6 @@ the plot if the ``clear`` argument is ``True``.  Add the plot errorbars if the
       plot(x, y, fmt)
       if err is not None:
           errorbar(x, y, err, fmt=None, ecolor='b')
-
-Plot the spectrum by accessing the NumPy arrays in the Sherpa data set using the
-default arguments::
 
   plot_data(data.x, data.y, data.staterror)
 
@@ -108,18 +116,18 @@ Create a Sherpa power-law model ``pl``.  All Sherpa models maintain a tuple of
 parameters in ``pars``.  Access each of the model's parameter objects and print
 the ``name`` and ``val`` attributes::
 
-  pl = PowLaw1D('powlaw1d.pl')
+  pl = PowLaw1D('pl')
   pl.pars
   for par in pl.pars:
       print par.name, par.val
 
-
-Print out the ``PowLaw1D`` object and its parameter information.  Set the
-power-law reference to be 4000 Angstroms.  Each model parameter is accessible as
-an attribute its model.  For example, the power-law amplitude is referenced
-with ``pl.ampl``::
-
   print pl
+
+Set the power-law reference to be 4000 Angstroms and print out the ``PowLaw1D``
+object and its parameter information.  Each model parameter is accessible as an
+attribute its model.  For example, the power-law amplitude is referenced with
+``pl.ampl``::
+
   pl.ref = 4000.
   print pl
 
@@ -142,26 +150,30 @@ special setter method ``__setattr__()`` that updates the pl.ref.val attribute
 underneath.  The ``property`` function defines custom getter and setter
 functions for a particular class attribute::
 
-
-  class Parameter:
-      def _get_val(self):
-          return self._value
-      def _set_val(self, val):
-          self._value = val
-      # setup a 'val' attribute
-      val = property(_get_val, _set_val)
+  class Parameter(object):
       def __init__(self):
           # private attribute intended to be reference as 'val'.
           self._value = 1.0
 
+      def _get_val(self): return self._value
+      def _set_val(self, value): self._value = value
+      # setup a 'val' attribute
+      val = property(_get_val, _set_val)
 
   class Model(object):
       def __setattr__(self, name, val):
-          if hasattr(self, name) and isinstance(getattr(self, name), Parameter):
-	      getattr(self, name).val = val
+          if isinstance(getattr(self, name, None), Parameter):
+              getattr(self, name).val = val
+          else:
+              object.__setattr__(self, name, val)
       def __init__(self):
           self.ref = Parameter()
 
+  m = Model()
+  m.ref
+  m.ref = 4
+  m.ref
+  m.ref.val
 
 .. raw:: html
    

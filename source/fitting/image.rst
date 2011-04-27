@@ -9,6 +9,14 @@ and start IPython::
 
   $ ipython -pylab
 
+If you have trouble accessing the image you can download it straight away using
+Python::
+  
+  import urllib2
+  url = "http://python4astronomers.github.com/_downloads/image2.fits"
+  open("image2.fits", "wb").write(urllib2.urlopen(url).read())
+  ls
+
 Import the Sherpa's high-level UI with added routines for astronomy::
 
   from sherpa.astro.ui import *
@@ -265,7 +273,7 @@ ERF(sigma/SQRT(2)).  We can invert this operation using the inverse
 error-function found in SciPy in the special functions module::
 
   import scipy.special
-  print scipy.special.erfinv(0.90)*sqrt(2)
+  print scipy.special.erfinv(0.90)*numpy.sqrt(2)
 
 .. raw:: html
 
