@@ -8,3 +8,9 @@
 .. _pyfits: http://www.stsci.edu/resources/software_hardware/pyfits
 .. _ATpy: atpy.github.com
 .. _APLpy: aplpy.github.com
+.. _SAMPy: http://pypi.python.org/pypi/sampy
+.. _COATPy: https://github.com/python4vo/coatpy
+.. _vaods9: https://github.com/python4vo/vaods9
+.. _pyvolib: https://code.google.com/p/pyvolib
+.. _ds9: http://hea-www.harvard.edu/RD/ds9
+.. _TOPCAT: http://www.star.bris.ac.uk/~mbt/topcat

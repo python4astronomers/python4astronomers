@@ -20,9 +20,7 @@ Contents:
    plotting/plotting
    files/files
    fitting/fitting
-
-..   files/files
-..   vo/vo
+   vo/vo
 
 Schedule
 --------
