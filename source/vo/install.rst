@@ -5,9 +5,9 @@
 Installation
 ============
 
-In addition to Scientific Python packages like numpy, and modules
-installed for preceding classes (asciitable, atpy, aplpy, vo), the
-following modules should be installed for this class::  
+In addition to Scientific Python packages like numpy, and modules installed
+for preceding classes (`asciitable`_, `ATpy`_, `APLpy`_, vo), the following
+modules should be installed for this class::
 
     easy_install -U sampy
     easy_install -U https://github.com/python4vo/coatpy/tarball/master

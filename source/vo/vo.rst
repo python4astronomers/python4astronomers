@@ -20,8 +20,9 @@ Topics
    
    install.rst
    webmodules.rst
+   votools.rst
+
 ..   atpy.rst
-..   votools.rst
 ..   all.rst
 ..   desktop.rst
                     
