@@ -17,8 +17,17 @@ COATPy
 
 We have provided this "Collection of Online Astronomy Tools" for the
 purposes of this workshop. The `COATPy`_ package wraps up a number (2
-presently) other modules that exist but lack a turnkey installation:
-`vaods9`_ and `pyvolib`_. We will see how these tools are used in
+presently) other modules that exist but lack turnkey installation:
+
+* `pyvolib`_ 
+   - author: Shui Hung Kwok
+   - comment:  an updated version of the python software used in past virtual observatory summer schools.
+* `vaods9`_ 
+    - author: Omar Laurino, SAO/VAO
+    - comment:  a wrapper to the SAMPy interface for making private calls between python and ds9.
+
+
+We will see how these tools are used in
 
 .. note:: COATPy as a standalone module should be considered 
     alpha-ware and its content and wrapping of the underlying 
@@ -29,6 +38,4 @@ SAMPy
 
 `SAMPy`_ is a python library that provides a connector between the
 python command line interface and other desktop applications such as
-`ds9`_, `TOPCAT`_ or `Aladin`_. Planned functionality also includes
-direct interfacing between python and your desktop browser. For this
-workshop we will use a higher level wrapper to SAMPy ().
+`ds9`_, `TOPCAT`_ or `Aladin`_. 

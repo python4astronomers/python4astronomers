@@ -32,22 +32,25 @@ tuple.  You can specify which service you wish to use::
 ConeSearch
 ----------
 
-The cone search option is a standardized interface to one of hundreds
+The ``ConeSearch`` tool is a standardized interface to one of hundreds
 of catalogs. The necessary parameters are:
     
 * ``RA``: decimal degrees
 * ``DEC``: decimal degrees
 * ``SR``: cone radius in decimal degrees
 
-An optional parameter ``VERB`` varies the verbosity of the query response. Only ``VERB=1`` is standardized across all catalogs and returns only the 
+An optional parameter ``VERB`` varies the verbosity of the query response.
+Only ``VERB=1`` is standardized across all catalogs and returns only the
 positions of objects in the queried catalog.
 
 As with the web queries you can wrap up the parameters in a
 dictionary and pass these to the query handler::
 
+    from coatpy import ConeSearch
+    
     params = {}
-    position = simbad.resolve('IC348')
-    params.update(zip(('RA','DEC'),position))
+    params['RA'] = simbad.resolve("IC348")[0]
+    params['DEC'] = simbad.resolve("IC348")[1]
     params['SR'] = 1./60.
     params['VERB'] = 3
 
@@ -85,7 +88,9 @@ The ``Siap`` tool stands for *Simple Image Access Protocol* and as with
 
 .. note:: Various image archives have appended other query parameters onto
     the SIAP standard to provide additional initial filtering of the images
-    returned.   A good example is the `IRSA 2MASS <http://irsa.ipac.caltech.edu/applications/2MASS/IM/docs/siahelp.html>`_ service.  The ``Siap`` tool currently ignores these extra parameters.
+    returned.   A good example is the `IRSA 2MASS 
+    <http://irsa.ipac.caltech.edu/applications/2MASS/IM/docs/siahelp.html>`_ 
+    service.  The ``Siap`` tool currently throws Exceptions on extra parameters.
 
 .. admonition:: Exercise: find HST images of a young cluster
 
@@ -93,57 +98,49 @@ The ``Siap`` tool stands for *Simple Image Access Protocol* and as with
     images with ``Siap`` from the Hubble Legacy Archive.
 
     The first step is to set up the query, which is nearly identical to the
-    previous examples.
+    previous examples. 
     ::
-    
-        import atpy
+
+        import urllib2    
         from coatpy import Siap, Sesame
+        import vo
     
         simbad = Sesame(opt="S")
     
-        url = "http://www.stecf.org/hst-vo/hla_sia?"
+        url = " http://hla.stsci.edu/cgi-bin/acsSIAP.cgi?strict=1"
 
         hla = Siap(url)
     
         params = {}
-        params['RA'] = simbad.resolve("IC348")[0]
-        params['DEC'] = simbad.resolve("IC348")[1]
+        position = simbad.resolve('IC348')
+        params.update(zip(('RA', 'DEC'), position))
         params['SIZE'] = 1./60.
         params['FORMAT'] = 'image/fits'
 
-        with open('hst_ic348_images.xml','wb') as f:
+        with open('hla_ic348_images.xml','wb') as f:
             f.write(hla.getRaw(**params))
+
 
     The main difference between a catalog and an image query is that an
     image query results in a series of **pointers** to the image files
-    that can be examined and filtered before they are downloaded.
+    that can be examined and filtered before they are downloaded. We use
+    the `vo <http://stsdas.stsci.edu/astrolib/vo/html/>`_ to parse the
+    results, extracting the table of images that satisfy our query.
+    ::
     
-    images = atpy.Table('hst_ic348_images.xml',type='vo')
-    
-    
-.. admonition:: Exercise: import a 24 micron Spitzer image for a young cluster
-
-    In this exercise we will go through the same exercise but tuned to deal
-    with the unique formats provided by the Spitzer Heritage Archive (SHA).
-    
-    Everything begins the same::
+        vot = vo.table.parse_single_table('hla_ic348_images.xml')
+        image_table = vot.array
         
-        from coatpy import Siap
-        
-        url = "http://irsa.ipac.caltech.edu/applications/Spitzer/SHA/servlet/DataService?"
-
-        sha = Siap(url)
-        
-    There are a couple of significant alterations in the input params and in 
-    the format of the returned data. The SHA does not POS as object names
+    The returned array contains **66** fields! But if all we want is the 
+    actual data then the important column is **URL**.
+    ::
     
-        params = {}
-        params['POS'] = "IC348"
-        params['SIZE'] = 1./60.
-        
-    
-.. note:: We have provided a CSV file list of all the current virtual
-    observatory standardized image services 
-    :download:`here <../downloads/image_sources.csv>` 
-    
+        # just grab the first image returned
+        image_url = image_table[0]['URL']
+        with open('image.fits','wb') as image_file:
+            image_handler = urllib2.urlopen(image_url)
+            image_file.write(image_handler.read())
+            image_handler.close() 
+           
+.. url = "http://irsa.ipac.caltech.edu/applications/Spitzer/SHA/servlet/DataService?"
     
