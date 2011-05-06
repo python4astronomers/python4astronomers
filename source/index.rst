@@ -21,6 +21,7 @@ Contents:
    files/files
    fitting/fitting
    vo/vo
+   wrapup/wrapup
 
 Schedule
 --------
