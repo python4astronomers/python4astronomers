@@ -29,13 +29,22 @@ Schedule
 All workshops will be in Phillips Auditorium.  Please note the times below, which
 jump around a bit due to availability of Phillips.
 
-======== ========================================= =====================
-March 11 Introduction to Python for Astronomers    Phillips 1:30pm
-April 1  Building a scientific Python installation Phillips 1:30pm
-April 8  Core packages - NumPy, iPython, SciPy     Phillips 1:30pm
-April 15 Plotting and images                       Phillips 1:30pm
-April 22 Data file I/O, process control (csh)      Phillips **3pm**
-April 29 Fitting and modeling 1-d and 2-d data     Phillips **11:30am**
-May 6    VO and online astronomy                   Phillips 1:30pm
-======== ========================================= =====================
+======== ========================================= ===================== =======
+March 11 Introduction to Python for Astronomers    Phillips 1:30pm       TA
+April 1  Building a scientific Python installation Phillips 1:30pm       TA
+April 8  Core packages - NumPy, iPython, SciPy     Phillips 1:30pm       TA
+April 15 Plotting and images                       Phillips 1:30pm       TA, TR
+April 22 Data file I/O, process control (csh)      Phillips **3pm**      TR, TA
+April 29 Fitting and modeling 1-d and 2-d data     Phillips **11:30am**  BR 
+May 6    VO and online astronomy                   Phillips 1:30pm       GM
+======== ========================================= ===================== =======
 
+Presenters:
+
+- TA: Tom Aldcroft
+- TR: Tom Robitaille
+- BR: Brian Refsdal
+- GM: Gus Muench
+
+:Authors: Tom Aldcroft, Tom Robitaille, Brian Refsdal, Gus Muench
+:Copyright: 2011 Smithsonian Astrophysical Observatory

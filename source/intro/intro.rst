@@ -20,3 +20,6 @@ Practical Python for Astronomers
    wrapup
    comparison
    python-requirements
+
+:Author: Tom Aldcroft
+:Copyright: 2011 Smithsonian Astrophysical Observatory

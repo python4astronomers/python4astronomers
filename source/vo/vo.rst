@@ -24,3 +24,5 @@ Topics
    atpy.rst
    desktop.rst
                     
+:Author: Gus Muench
+:Copyright: 2011 Smithsonian Astrophysical Observatory

@@ -19,6 +19,9 @@ Workshop goals:
 
 - Learn where Python files live
 
+:Authors: Tom Aldcroft, Tom Robitaille
+:Copyright: 2011 Smithsonian Astrophysical Observatory
+
 Enthought Python Distribution
 -----------------------------
 

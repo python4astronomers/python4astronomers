@@ -28,3 +28,5 @@ Topics
    -----------------------
    Now the moment we've been waiting for... :ref:`contest-bouncing-balls`.
 
+:Authors: Tom Aldcroft, Tom Robitaille
+:Copyright: 2011 Smithsonian Astrophysical Observatory
