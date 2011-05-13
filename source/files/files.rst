@@ -13,4 +13,6 @@ In this workshop we will learn how to get data in and out of Python using solely
    asciitable.rst
    atpy.rst
    
+:Authors: Tom Robitaille, Tom Aldcroft
+:Copyright: 2011 Smithsonian Astrophysical Observatory
 

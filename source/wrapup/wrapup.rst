@@ -29,6 +29,10 @@ you'll find that Python feels like an old friend.
 - The Python lunch is a great forum to share what you've done and get feedback on ways to improve.  
 - The best contributions are often from beginners!
 
+*Attend SciPy-2011*
+
+- Two solid days of tutorials at the beginner (more NumPy + Matplotlib etc) or advanced level
+- At least 4 other people from CfA will be there
 
 Future: Python Lunch and seminars
 -----------------------------------
@@ -44,6 +48,6 @@ Future: Python Lunch and seminars
   - Writing modules or packages for re-usable code
   - Machine learning (clustering, categorization)
   - Database access
-  - 
+  - ???
 
 Please send any other ideas to ``pythonusers``.

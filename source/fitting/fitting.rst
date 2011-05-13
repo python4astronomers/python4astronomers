@@ -24,3 +24,6 @@ Topics
    sherpa
    spectrum
    image
+
+:Author: Brian Refsdal
+:Copyright: 2011 Smithsonian Astrophysical Observatory

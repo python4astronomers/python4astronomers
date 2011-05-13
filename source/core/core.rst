@@ -13,6 +13,9 @@ Workshop goals:
 - Develop a script that extracts a 1-d spectrum from a 2-d longslit image
 - Gain familiarity with tools available within the SciPy package
 
+:Author: Tom Aldcroft
+:Copyright: 2011 Smithsonian Astrophysical Observatory
+
 Setup
 -----
 
