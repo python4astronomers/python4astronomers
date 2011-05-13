@@ -1,5 +1,6 @@
 .. include:: ../references.rst
-
+.. _`Here is an example Directory search.`: http://nvo.stsci.edu/vor10/index.aspx#Table||query_string=IC%20348
+.. _`Here is the catalog used in this example.`: http://nvo.stsci.edu/vor10/getRecord.aspx?id=ivo://CDS.VizieR/J/AJ/122/866
 Virtual Observatory
 ===================
 
@@ -9,11 +10,21 @@ observatory tools. We will go over each of these in turn.
 .. contents::
     :local:
 
-Sesame Name Resolver
---------------------
+Name Position Resolver
+----------------------
 
-This is a basic name resolver that returns the position of objects as a
-tuple.  You can specify which service you wish to use::
+.. sidebar:: Names of things
+
+    Presently the "names" of things have to be URL encoded or the tool
+    will not resolve.  Use ``IC+348`` or ``IC348`` instead of ``IC 348``. 
+    Programmatically this looks like::
+    
+        urllib.quote_plus("IC 348")
+    
+    This will be fixed in an upcoming update.
+
+``Sesame`` is a basic name resolver that returns the position of objects as a
+tuple. You can specify which service you wish to use::
 
     from coatpy import Sesame
     
@@ -23,30 +34,34 @@ tuple.  You can specify which service you wish to use::
 
     ned.resolve('M51')
     
-    # the services do not agree
+    # the services do not agree; doing this will produce an exception.
     assert simbad.resolve('IC348') == ned.resolve('IC348')
-
-.. note:: Presently the "names" of things have to be URL encoded or the tool
-    will not resolve.  Use ``IC+348`` or ``IC348`` instead of ``IC 348``
     
-ConeSearch
-----------
+Catalog Search
+--------------
 
-The ``ConeSearch`` tool is a standardized interface to one of hundreds
-of catalogs. The necessary parameters are:
+The ``ConeSearch`` tool is a standardized interface to one of hundreds of
+catalogs. The necessary parameters are:
     
 * ``RA``: decimal degrees
 * ``DEC``: decimal degrees
 * ``SR``: cone radius in decimal degrees
 
-An optional parameter ``VERB`` varies the verbosity of the query response.
-Only ``VERB=1`` is standardized across all catalogs and returns only the
-positions of objects in the queried catalog.
+An optional parameter ``VERB`` varies the verbosity of the query response.  
 
-As with the web queries you can wrap up the parameters in a
-dictionary and pass these to the query handler::
+.. sidebar:: Verbs
 
-    from coatpy import ConeSearch
+    Only ``VERB=1`` is standardized across all catalogs. A ``VERB=1`` query
+    returns only the positions of objects found the queried catalog. 
+    ``VERB=2`` returns the "default" set of columns chosen by the
+    archive.  ``VERB=3`` returns all columns.  Not all services respond
+    to ``VERB`` parameters.
+
+As with the web queries you can wrap up the parameters in a dictionary::
+
+    from coatpy import ConeSearch, Sesame
+
+    simbad = Sesame(opt='S')
     
     params = {}
     params['RA'] = simbad.resolve("IC348")[0]
@@ -54,31 +69,37 @@ dictionary and pass these to the query handler::
     params['SR'] = 1./60.
     params['VERB'] = 3
 
-.. note:: At this point the system breaks down a little bit as we are not
-    providing a programmatic tool for discovering catalogs. You have to
-    search an online `Directory`_ to find the catalogs you might want. 
-    There are work arounds but a handler that wraps this up would be valuable!
-    
-With the query URL for the Chandra Source Catalog you create a catalog handler 
-that wraps the query tools::
+.. sidebar:: Discovering catalogs
 
-    url = "http://heasarc.gsfc.nasa.gov/cgi-bin/vo/cone/coneGet.pl?table=ic348cxo&"
-    csc = ConeSearch(url)
+    At this point the system breaks down a little bit as we are not providing
+    a programmatic tool for discovering catalogs. You have to use an online
+    `Directory`_ to search the catalogs you want. `Here is an example
+    Directory search.`_ Once a catalog is found, you want to copy the
+    "accessURL" from the search table or open the "Full Record" and open the
+    "Simple Cone Search" option. `Here is the catalog used in this example.`_
     
-    with open('csc.xml','wb') as f:
-        f.write(csc.getRaw(**params))
+enter the query URL for the target catalog (see sidebar), and create a catalog
+handler ``ic348cxo`` that wraps the query tool. We use the ``getRaw`` function
+of the ConeSearch to retrieve the raw string result that we then dump into a
+file and extract back the data using `ATpy`_::
+
+    url = "http://vizier.u-strasbg.fr/viz-bin/votable/-A?-source=J/AJ/122/866&"
+    ic348cxo = ConeSearch(url)
+    
+    with open('ic348cxo.xml','wb') as f:
+        f.write(ic348cxo.getRaw(**params))
         
     data = atpy.Table(f.name,type='vo')
     
     
-Siap Image Search
------------------
+Image Search
+------------
 
-The tool for querying image services is::
+``Siap`` is the tool for querying image services is::
 
     from coatpy import Siap
     
-The ``Siap`` tool stands for *Simple Image Access Protocol* and as with
+The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
 ``ConeSearch`` the inputs are fairly simple:
 
 * ``RA``: Decimal Degrees
@@ -142,5 +163,14 @@ The ``Siap`` tool stands for *Simple Image Access Protocol* and as with
             image_file.write(image_handler.read())
             image_handler.close() 
            
-.. url = "http://irsa.ipac.caltech.edu/applications/Spitzer/SHA/servlet/DataService?"
+    Continue this exercise by examining the resulting image.
+
+.. raw:: html
+
+   <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
+    
+We use ``pyfits``_ to open the image file and examine its contents.
+::
+    import pyfits
+
     

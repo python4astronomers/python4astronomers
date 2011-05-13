@@ -23,4 +23,4 @@ Topics
    votools.rst
    atpy.rst
    desktop.rst
-                    
+   changes.rst

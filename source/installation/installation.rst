@@ -90,6 +90,8 @@ Core
 .. [#] Python 3.x is the "next generation" Python but for astronomy analysis
        Python 2.x is still the best choice.
 
+.. _astro-required:
+
 Astro: required
 ^^^^^^^^^^^^^^^^^^
 
