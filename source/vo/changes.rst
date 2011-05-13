@@ -22,6 +22,8 @@ Notes
 -----
 * [all] Rewrote all sections based on workshop feedback;  
 * [all] Rewrote all sections utilizing "sidebar" format for details;
+* [all] Manual PEP 8 (Style Guide) edits
+* [all] Rewrote all formatting statements for clarity;
 
 
 .. _v100-additions:
@@ -39,12 +41,12 @@ Changes
 * [:doc:`Standard </vo/webmodules>`] Rewrote all ``urllib2.urlopen`` calls 
   as **GET** queries;
 
-
 .. _v100-repairs:   
 
 Repairs
 -------
-* [votools] Fixed Catalog Reference and Text
+* [:doc:`VO Tools </vo/votools>`] Changed ``ConeSearch`` query URL and fixed
+  catalog reference;
 
 
 .. _version-workshop:
@@ -57,5 +59,5 @@ Workshop Release
 
 Notes
 -----
-* [all] Release for Python4Astronomers workshop
-* [all] Desktop examples are in development
+* [all] Release for Python4Astronomers workshop;
+* [all] Desktop examples are in development;

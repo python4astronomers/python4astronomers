@@ -185,13 +185,7 @@ Just a quick plot that reuses some of this metadata in the plot title.
     
 .. image:: wise_cc.png
    :scale: 50
-
-
-
-
-
-    
-    
+   
 .. raw:: html
 
    </div>

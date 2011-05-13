@@ -1,6 +1,7 @@
 .. include:: ../references.rst
 .. _`Here is an example Directory search.`: http://nvo.stsci.edu/vor10/index.aspx#Table||query_string=IC%20348
 .. _`Here is the catalog used in this example.`: http://nvo.stsci.edu/vor10/getRecord.aspx?id=ivo://CDS.VizieR/J/AJ/122/866
+
 Virtual Observatory
 ===================
 
@@ -138,27 +139,35 @@ The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
         params['SIZE'] = 1./60.
         params['FORMAT'] = 'image/fits'
 
-        with open('hla_ic348_images.xml','wb') as f:
+        with open('hla_ic348_images.xml', 'wb') as f:
             f.write(hla.getRaw(**params))
 
 
-    The main difference between a catalog and an image query is that an
-    image query results in a series of **pointers** to the image files
-    that can be examined and filtered before they are downloaded. We use
-    the `vo <http://stsdas.stsci.edu/astrolib/vo/html/>`_ to parse the
+    The main difference between a catalog and an image query is that an image
+    query results in a series of **pointers** to the image files that can be
+    examined and filtered before the reference files are downloaded. We use
+    the `vo <http://stsdas.stsci.edu/astrolib/vo/html/>`_ module to parse the
     results, extracting the table of images that satisfy our query.
     ::
     
         vot = vo.table.parse_single_table('hla_ic348_images.xml')
         image_table = vot.array
         
-    The returned array contains **66** fields! But if all we want is the 
-    actual data then the important column is **URL**.
+    The returned array contains **66** fields! 
+    ::
+        
+        print image_table.dtype.names     
+        
+    If all we want is the actual data then the important column is **URL**
+    while the **filename** column is also useful.
     ::
     
         # just grab the first image returned
-        image_url = image_table[0]['URL']
-        with open('image.fits','wb') as image_file:
+        image = image_table[0]
+        image_url = image['URL']
+        filename = image['filename'] + '.fits'
+        
+        with open(filename, 'wb') as image_file:
             image_handler = urllib2.urlopen(image_url)
             image_file.write(image_handler.read())
             image_handler.close() 
@@ -169,8 +178,40 @@ The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
 
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
     
-We use ``pyfits``_ to open the image file and examine its contents.
+We use `pyfits`_ to open the image file and examine its contents.
 ::
-    import pyfits
 
+    import pyfits
+    import aplpy
+    import matplotlib.pyplot as mpl
+    
+    hdulist = pyfits.open(filename)
+
+    # check for multiple FITS extensions and their contents
+    # in this case the "PRIMARY" header is empty
+    for hdu in hdulist:
+        print hdu.name, type(hdu.data)
+    
+    fig = mpl.figure(figsize=(15, 7))
+    f1 = aplpy.FITSFigure(filename, hdu=1, subplot=[0.1,0.1,0.3,0.65], figure=fig)    
+    f1.set_tick_labels_font(size='x-small')
+    f1.set_axis_labels_font(size='small')
+    f1.show_grayscale()
+    
+    f2 = aplpy.FITSFigure(filename, hdu=2, subplot=[0.4,0.1,0.3,0.65], figure=fig)
+    f2.hide_xaxis_label()
+    f2.hide_xtick_labels()
+    f2.hide_yaxis_label()
+    f2.hide_ytick_labels()
+    f2.show_colorscale()
+    
+    f3 = aplpy.FITSFigure(filename, hdu=3, subplot=[0.7,0.1,0.3,0.65], figure=fig)
+    f3.hide_xaxis_label()
+    f3.hide_xtick_labels()
+    f3.hide_yaxis_label()
+    f3.hide_ytick_labels()
+    f3.show_colorscale(cmap='spring')
+
+        
+        
     
