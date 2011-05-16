@@ -6,26 +6,25 @@ Mac OSX
 Enthought Python Distribution (EPD)
 -----------------------------------
 
-First download the appropriate Mac OSX EPD installer from `this <http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_ page.
-The user name and password were emailed to the pythonusers mailing list.
-
-.. note:: If you are using MacOS X 10.5 or 10.6 on an Intel Mac, you can
-          either install the 32-bit or 64-bit version of EPD 7.0.2. To
-          determine whether you have a 32-bit or 64-bit processor, see
-          `this page <http://support.apple.com/kb/ht3696>`_. If you have a
-          64-bit processor, we strongly recommend that you install the
-          64-bit version of EPD (``epd-7.0-2-macosx-x86_64.dmg``).
-          Otherwise, you will need the 32-bit version
-          (``epd-7.0-2-macosx-i386.dmg``). If you are using a PPC or Intel
-          Mac with MacOS X 10.4, you will need to download an older 32-bit
-          version (``epd_py25-4.2.30201-macosx-u.dmg``).
-
-After downloading the disk image, open it, then double-click on
+Assuming that you have downloaded the EPD disk image, open it, then double-click on
 ``EPD.mpkg`` and follow the prompts to install. Choose all the defaults for
 installing (in particular use the default installation location).
 
-Optionally, you can go over to the `Getting Started with EPD
+Additional information can be found on the `Getting Started with EPD
 <http://www.enthought.com/products/epdgetstart.php?platform=mac>`_ page.
+
+Quick installation check 
+----------------------------------------
+
+Open a new terminal window and type::
+
+  which ipython
+
+You should see something like:
+
+  /Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython
+
+If not go to the `Troubleshooting`_ section.
 
 MacOS X Developer Tools
 -----------------------
@@ -96,42 +95,42 @@ that typing ``gfortran`` gives something like this::
 If you get ``gfortran: command not found``, then ``gfortran`` did not
 install correctly.
 
-Additional packages
---------------------------
-
-Next open a terminal window and do the following to install additional packages needed for the workshop::
-
-  easy_install asciitable
-  easy_install http://www.stsci.edu/resources/software_hardware/pyfits/pyfits-2.4.0.tar.gz
-  easy_install pywcs
-  easy_install atpy
-  easy_install aplpy
-  easy_install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
-  easy_install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
-  easy_install pyparsing
-  easy_install pyregion
-
-Now go back to the :ref:`installation_test` section to verify everything is working.
-
 Troubleshooting
 ---------------
 
 Path
 ^^^^^
 
-If EPD installed successfully and you can start ``python`` but not ``ipython`` (error message
-like ``ipython: command not found``) then there is likely a problem with your PATH.
+If EPD installed successfully and you can start ``python`` but not ``ipython``
+(error message like ``ipython: command not found``) then there is likely a
+problem with your PATH.
 
-First, determine if you are running csh/tcsh or bash with the following command::
+Step 1
+######
 
-  echo $SHELL
+Are you sure you opened a new terminal window after the installation finished?
 
-For ``/bin/csh`` or ``/bin/tcsh`` you should edit the file ``~/.cshrc`` and add the following lines at the end::
+Step 2
+######
+
+Try this in a new terminal window::
+
+  echo $PATH
+
+If you do not see something like
+``/Library/Frameworks/EPD64.framework/Versions/Current/bin`` in your path then go
+to step 3.  
+
+Step 3
+########
+
+Determine if you are running csh/tcsh or bash by entering the command ``ps`` in a terminal window.
+For ``csh`` or ``tcsh`` you should edit the file ``~/.cshrc`` and add the following lines at the end::
 
  # Setting PATH for Enthough Python Distribution
  set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)
 
-For ``/bin/bash`` you should edit the file ``~/.bash_profile`` and add the following lines at the end::
+For ``bash`` you should edit the file ``~/.bash_profile`` and add the following lines at the end::
 
  # Setting PATH for Enthough Python Distribution
  export PATH=/Library/Frameworks/EPD64.framework/Versions/Current/bin:$PATH
@@ -153,4 +152,4 @@ by uninstalling EPD::
     cd /Applications
     sudo rm -rf Enthought
 
-then download and install EPD 7.0.2 32-bit (``epd-7.0-2-macosx-i386.dmg``).
+then download and install EPD 7.0.2 32-bit.
