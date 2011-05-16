@@ -1,6 +1,12 @@
 Linux 
 ==========================
 
+There are three options for a linux Python installation that we describe:
+
+- System install in /usr/bin and /usr/lib where you have root privilege
+- User installation of EPD in a non-system directory without root
+- Non-root setup with an existing full-featured Python on the system
+
 System install with root
 ------------------------
 
@@ -134,6 +140,6 @@ Open a new terminal window and type::
 
 You should see one of the following two (for options A and B respectively)::
 
-  $PYTHONPATH/bin/ipython
-  $HOME/.local/bin/ipython
+  $PYTHONPATH/bin/ipython    # option A
+  $HOME/.local/bin/ipython   # option B
 

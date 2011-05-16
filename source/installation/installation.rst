@@ -16,13 +16,16 @@ work can be more of a challenge.
 Workshop goals:
 
 - Install Python and all packages needed for the rest of the workshops
+- Understand the concept of Python modules and packages
 - Learn how to find and install other 3rd party packages:
   
   - PyPI
   - using pip install
   - using python setup.py install
 
-- Learn where Python files live
+- Know where Python files live
+- Learn how to solve installation problems
+- Understand the issues involved with multiple Python installations
 
 :Authors: Tom Aldcroft, Tom Robitaille
 :Copyright: 2011 Smithsonian Astrophysical Observatory
@@ -513,49 +516,23 @@ installation via a standard ``setup.py`` script.  This is used as follows::
 More information is available in the `Installing Python Modules
 <http://docs.python.org/install/index.html>`_ page.
 
-**What to do if these don't work**
-
-If you attempt to install a package with these methods but it does not work,
-your basic options are:
-
-  - Dig in your heels and start reading the error messages to see why it is
-    unhappy.  Often when you find a specific message it's time to start
-    googling by pasting in the relevant parts of the message.
-  - Send an email to the pythonusers mailing list.  Include: 
-
-      - Package you are trying to install
-      - URL for downloading the package tar file
-      - Your platform (machine architecture and exact OS version)
-      - Exactly what you typed
-      - Entire output from the ``python setup.py install`` process
-
-    Do NOT write and say "I tried to install BLAH and it failed, can 
-    someone help?"
-  
 Where to packages get installed?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An important option in the installation process is where to put the package
 files.  We've seen the ``--user`` option in ``pip install`` and ``python
-setup.py install``.  What's up with that?
+setup.py install``.  What's up with that?  In general, if you don't have to you
+should not use ``--user``, but see the discussion in `Multiple Pythons on
+your computer`_ for a reason you might.
 
 WITH ``--user``
 ################
 
-This option is generally a good idea and will work in all cases.  Packages get
-installed in a local user-owned directory when you do something like either of
-the following::
+Packages get installed in a local user-owned directory when you do something
+like either of the following::
 
   pip install --user asciitable 
   python setup.py install --user
-
-.. warning::
-   If you installed Python with a distribution *other* than EPD, then you might get an error using
-   ``pip install --user``.  There is an older (deprecated) version of pip install
-   in some Python distributions which does not support ``--user``.  You should be able 
-   to get the latest ``pip install`` with::
-
-     pip install distribute  # maybe need "sudo" in front
 
 This puts the packages into:
 
@@ -569,17 +546,6 @@ Windows  %APPDATA%/Python/Python2x/site-packages
   On Mac if you did not use the EPD Python Framework then you may see user
   packages within ``~/.local/lib`` as for linux.  This depends on whether Python
   is installed as a MacOS Framework or not.
-
-.. Note::
-   As a side benefit of always installing with ``--user``, if you use multiple
-   Python installations (for instance PyRaf, CASA, and CIAO), *each* of those will
-   provide its own version of Python which is essentially its own universe as far
-   as packages.  The only reliable way to make a package available to all of them
-   at once is to install with ``--user``.  (There are limitations even in this
-   case, for instance Python 2.6 will not always play with Python 2.7).
-
-   .. image:: antisocial_pythons_trans.png
-      :width: 650
 
 WITHOUT ``--user``
 ###################
@@ -619,7 +585,104 @@ This gives something like::
 Uninstalling packages
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-There is no simple way to do this.  (Python community is working on this one).
+There is no simple and fully consistent way to do this.  The Python
+community is working on this one.  In most simple cases, however, you can just
+delete the module file or directory that is revealed by the technique shown above.
+
+Getting help on package installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you attempt to install a package but it does not work, your basic options are:
+
+  - Dig in your heels and start reading the error messages to see why it is
+    unhappy.  Often when you find a specific message it's time to start
+    googling by pasting in the relevant parts of the message.
+  - Send an email to the `AstroPy
+    <http://mail.scipy.org/mailman/listinfo/astropy>`_ mailing list
+    astropy@scipy.org.  Include:
+
+      - Package you are trying to install
+      - URL for downloading the package tar file
+      - Your platform (machine architecture and exact OS version)
+      - Exactly what you typed
+      - Entire output from the ``python setup.py install`` process
+
+    Do NOT just write and say "I tried to install BLAH and it failed, can 
+    someone help?"
+  
+
+Multiple Pythons on your computer
+---------------------------------
+
+Apart from being a scary thought, this is a practical problem that you are
+likely to encounter.  Straight away you probably have the system Python
+(/usr/bin) and the EPD Python.  Then if you install PyRaf, CIAO, and CASA you
+will get one more Python installation for each analysis package (there are good
+reasons for this).  **In general, different Python installations cannot
+reliably share packages or resources**.  Each installation should be considered
+as its own local Python universe.
+
+Installing within each Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now that you know about all the great packages within our Scientific Python
+installation, you might want to start using them in your PyRaf or CASA
+or CIAO analysis.
+
+If you start digging into Python you will likely come across the technique of
+setting the ``PYTHONPATH`` environment variable to extend the list of search
+paths that Python uses to look for a module.  Let's say you are using CIAO
+Python and want to use SciPy functions.  You might be tempted to set
+``PYTHONPATH`` to point to the directory in EPD where the SciPy modules live.
+This will fail because the EPD Python modules were compiled and linked assuming
+they'll be run with EPD Python.  With effort you might find a way to make this
+work, but in general it's not a workable solution.
+
+What *will* often work is to follow the package installation procedure for
+each desired package within each Python installation.  This assumes that you
+have write permission into the directories where the analysis package files
+live.  Simply enter the appropriate analysis environment, then do then
+following:
+
+- Download http://pypi.python.org/packages/source/p/pip/pip-1.0.1.tar.gz
+- Untar that file, go in the tar directory, and do ``python setup.py install``
+- Now you can do ``pip install <package>`` for each desired package within
+  that analysis environment.
+
+It's worth noting that the original example of SciPy will not install with
+``pip``.  It requires a very tricky installation from source, so unless SciPy
+ships with your favorite analysis environment you are out of luck with that
+one.
+
+If you do *not* have write access to the analysis package directories, then you
+need to use the ``--prefix`` option in ``pip`` to install in a local area and
+then set a corresponding ``PYTHONPATH``.
+
+Can we share packages?
+^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are careful there is a way to get limited sharing between Pythons.  The
+first rule is that they need to be the same major version, i.e. all 2.6 or 2.7.
+This is because Python always includes a major version like ``python2.6/`` in
+the default search path so Python 2.7 will never find 2.6 packages.  The second
+rule is to install packages using the ``--user`` option in ``pip install`` or
+``setup.py install``.  This results in the situation shown below where each
+Python can find common packages in the local user area:
+
+.. image:: antisocial_pythons_trans.png
+   :width: 650
+
+Be sure to test that the package you installed works within the other Python
+environments.
+
+.. Caution::
+   
+   Be very wary of installing a package with ``--user`` if one of your Python
+   installations already contains that package.  This is because the local user
+   version will always take precedence and thus potentially upset that Python
+   installation.  Big analysis packages like CIAO or CASA are carefully tested
+   assuming the integrated environment they provide.  If you start mucking this
+   up then all bets are off.
 
 
 Final exercises
