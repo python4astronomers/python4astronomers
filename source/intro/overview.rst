@@ -24,7 +24,7 @@ Hands-on
 
   The first hands-on session on April 1 will be devoted to building a working Python
   environment that will be used for subsequent sessions.  **This is critical.**  To 
-  follow the tutorials your environment must satisfy these :ref:`python_requirements`.
+  follow the tutorials your environment must satisfy these :ref:`python_pkg_requirements`.
 
 Agenda for today
 ----------------

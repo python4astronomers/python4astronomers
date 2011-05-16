@@ -92,6 +92,7 @@ The magic is that `urllib`_ module takes care of encoding the
 parameters using standard HTTP rules. You can compare the input
 dictionary key,value pairs with the HTTP url encoding. 
 ::
+
     # some simple formatting where the format %-M.Ns means 
     # "-" :: 'left justified'
     # "M" :: 'minimum string length, padded'

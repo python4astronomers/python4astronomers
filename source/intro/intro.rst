@@ -19,7 +19,7 @@ Practical Python for Astronomers
    who-python
    wrapup
    comparison
-   python-requirements
+   ../installation/requirements
 
 :Author: Tom Aldcroft
 :Copyright: 2011 Smithsonian Astrophysical Observatory

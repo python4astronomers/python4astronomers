@@ -112,11 +112,11 @@ If you have a 32-bit processor then your decision is easy (32-bit) but if you
 have a 64-bit processor then either 32 or 64 will work.  See below if you don't
 know your processor architecture:
 
-- MacOSX: Follow `these instructions <http://support.apple.com/kb/ht3696>`_
+- MacOSX: Follow `the MacOS instructions <http://support.apple.com/kb/ht3696>`_
 - Linux: Type ``uname -mpi`` at the command line.  If you see ``x86_64 x86_64
   x86_64`` you have a 64-bit machine and OS.  If you see one or more ``i686``
   or ``i386`` you are running a 32-bit OS.
-- Windows:  Follow `these instructions 
+- Windows:  Follow `the Windows instructions 
   <http://windows.microsoft.com/en-US/windows-vista/32-bit-and-64-bit-Windows-frequently-asked-questions>`_.
 
 **64-bit**

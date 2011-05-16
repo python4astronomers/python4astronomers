@@ -405,10 +405,6 @@ as argument::
   ``arange(5)`` or ``array([1,2,3,4])`` but now you are seeing statements like
   ``plot([1,2,3])``.  
 
-  It's time to talk about :ref:`python-built-in-types-and-operations`.  In the
-  next workshop we'll talk about Python control statements and introduce
-  objects and classes.
-
 .. _controlling-line-properties:
 
 Some useful functions for controlling plotting

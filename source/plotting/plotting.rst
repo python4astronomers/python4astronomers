@@ -11,7 +11,7 @@ Workshop goals
 - Learn the key features of Matplotlib for 1-d, 2-d and 3-d plotting
 - Gain familiarity with the hierarchy of objects that comprise a plot
 - Know the basic options for customizing plot elements
-- Learn about the key Python built-in data types
+- Learn more about Python objects
 - Use `APLpy`_ to make publication-quality plots of astronomical imaging data
 
 Topics
@@ -21,6 +21,7 @@ Topics
    :maxdepth: 2
    
    matplotlib
+   ../python/objects
    aplpy
    ../contest/bounce
 

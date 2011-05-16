@@ -1,3 +1,4 @@
+.. include:: ../references.rst
 .. _python_pkg_requirements:
 
 Python requirements

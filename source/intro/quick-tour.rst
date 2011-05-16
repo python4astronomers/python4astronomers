@@ -126,11 +126,11 @@ Intermission: NumPy, Matplotlib, and SciPy
 
 These three packages are the workhorses of scientific Python.  
 
-- `NumPy`_ is the fundamental package for scientific computing in Python [`Reference
+- `NumPy`_ is the fundamental package for scientific computing in Python [`NumPy Reference
   <http://docs.scipy.org/doc/numpy/reference/>`_]
 - `Matplotlib`_ is one of many plotting packages.  Started as a Matlab clone.
 - `SciPy`_ is a collection of mathematical algorithms and convenience
-  functions [`Reference <http://docs.scipy.org/doc/scipy/reference/>`_]
+  functions [`SciPy Reference <http://docs.scipy.org/doc/scipy/reference/>`_]
 
 
 Synthetic images
@@ -280,7 +280,7 @@ And much much more...
   <http://www.astropython.org/blog/2011/3/Querying-tables-in-the-virtual-observatory>`_
   and `broadcast <https://gist.github.com/855678>`_ or 
   `retrieve <https://gist.github.com/855678>`_ tables to VO applications like 
-  `TOPCAT <http://www.star.bris.ac.uk/~mbt/topcat/>`_.  
+  `TOPCAT`_.  
 - GUI application to quickly view thousands of X-ray survey image cutouts
 - Python-based web site for browsing a complex multi-wavelength survey
 - `Thermal modeling of the Chandra X-ray satellite 
