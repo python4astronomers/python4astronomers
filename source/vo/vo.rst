@@ -23,6 +23,7 @@ Topics
    votools.rst
    atpy.rst
    desktop.rst
-                    
+   changes.rst
+
 :Author: Gus Muench
 :Copyright: 2011 Smithsonian Astrophysical Observatory

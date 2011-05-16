@@ -1,21 +1,19 @@
 .. _`urllib2`: http://docs.python.org/library/urllib2
 .. _`urllib`: http://docs.python.org/library/urllib
 
-Core Modules
-============
+Standard Python Tools
+=====================
 
-There are two standard modules that provide much of the functionality
-necessary to access internet resources from inside python: `urllib2`_
-and `urllib`_. You have seen ``urllib2`` in each of the prior
+There are two standard "core" Python modules that provide much of the
+functionality necessary to access internet resources from inside python:
+`urllib2`_ and `urllib`_. You have seen ``urllib2`` in each of the prior
 workshops when downloading example files or datasets, like this::
 
   import urllib2
   url = 'http://python4astronomers.github.com/_downloads/image_sources.csv'
   open('image_sources.csv', 'wb').write(urllib2.urlopen(url).read())
 
-.. note:: You should download this file now!
-    
-
+   
 Webpage Retrieval
 -----------------
 
@@ -63,7 +61,7 @@ learn which `parameters <http://archive.stsci.edu/vo/general_params.html>`_ are 
     import urllib2, urllib
     
     # this is the query url for this service. 
-    url = 'http://archive.stsci.edu/hst/search.php?'
+    url = 'http://archive.stsci.edu/hst/search.php'
 
     # make a dictionary of search parameters
     p = {}
@@ -75,9 +73,12 @@ learn which `parameters <http://archive.stsci.edu/vo/general_params.html>`_ are 
   
     # encode the http string
     query = urllib.urlencode(p)
+
+    # create the full URL for a GET query
+    get_url = url + "?" + query
     
-    # create the handler
-    handler = urllib2.urlopen(url, query)
+    # create the GET handler
+    handler = urllib2.urlopen(get_url)
     
     # check it
     print handler.code
@@ -86,18 +87,27 @@ learn which `parameters <http://archive.stsci.edu/vo/general_params.html>`_ are 
     # save it
     with open('hst_m51.csv','wb') as f:
         f.write(handler.read())        
-    
+                                     
 The magic is that `urllib`_ module takes care of encoding the 
 parameters using standard HTTP rules. You can compare the input
 dictionary key,value pairs with the HTTP url encoding. 
 ::
+    # some simple formatting where the format %-M.Ns means 
+    # "-" :: 'left justified'
+    # "M" :: 'minimum string length, padded'
+    # "N" :: 'maximum string length, sequence sliced'
+    # "s" :: 'format as string'
+    sform = "%-20.20s %-10.10s %-30.30s"   
 
-    for k,v in p.items():
-        print "%30s %10s" % (k,v)
-
-    for i in query.split('&'):
-        print "%30s" % i
-
+    # make a header
+    print sform % ('parameter','value','encoded')
+    print sform % (3*(100*'-',))
+    
+    # for each paramter show the input items from the dictionary
+    # "p" and the output query string. 
+    for a,b in zip(p.items(),query.split('&')):
+       print sform % (a+(b,))
+       
 .. admonition::  Exercise: import WISE catalog data for a young cluster
 
     In this exerice you will use a different service (IRSA) and
@@ -106,7 +116,7 @@ dictionary key,value pairs with the HTTP url encoding.
 
         import atpy, urllib, urllib2
     
-        url = "http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query?"
+        url = "http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query"
         p = {}
         p['spatial'] = "Cone"
         p['objstr'] = "IC 348"
@@ -115,11 +125,12 @@ dictionary key,value pairs with the HTTP url encoding.
         p['radius'] = 300
     
         query = urllib.urlencode(p)
-        handler = urllib2.urlopen(url, query)
+        get_url = url + "?" + query
+        handler = urllib2.urlopen(get_url)
         raw = handler.read()
         print raw[0:255]
         
-        with open('ic348_wise.tbl','wb') as f:
+        with open('ic348_wise.tbl', 'wb') as f:
             f.write(raw)
 
     The challenge is to immediately analyze the results of this query. The
@@ -131,7 +142,11 @@ dictionary key,value pairs with the HTTP url encoding.
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
 
 There are MANY ways we have looked at in the workshops for converting
-this result to a numpy array::
+this result to a numpy array.  Some of these examples parse the raw
+web data directly, circumventing a need to write it to file. Some use
+different means to try to deal with the data types and null values
+in the result.
+::
 
     t1 = atpy.Table('ic348_wise.tbl',type="ipac")
     
@@ -147,32 +162,30 @@ this result to a numpy array::
     t5 = atpy.Table(raw,type='ascii', fill_values=fill_values)
 
 Its important to realize that YMMV as to how these differ in their output.
-For example::
+For example, lets look at the output table types and the data types for
+a couple of columns::
 
     t = [t1, t2, t3, t4, t5]
     for i in t: 
-        c = (type(i), i['j_m_2mass'].dtype,i['tmass_key'].dtype)
+        c = (type(i), i['j_m_2mass'].dtype, i['tmass_key'].dtype)
         print "%40s%10s%10s" % c
 
-We will just use ``t1`` as the data types are correct. It also preserves
-more of the metadata of the query. Just a quick plot.
+The output table types (and hence their built-in utilities), column data types
+and treatment of null values vary and this matters when trying to make a plot
+or perform other types of analysis. We will use ``t1`` as the data types are 
+correct. It also preserves more of the metadata of the query. 
+Just a quick plot that reuses some of this metadata in the plot title.
 ::
 
     clf()
-    plot(t1['w2mag']-t1['w3mag'],t1['j_m_2mass']-t1['h_m_2mass'],'ro')
+    plot(t1['w2mag']-t1['w3mag'], t1['j_m_2mass']-t1['h_m_2mass'], 'ro')
     xlabel('W2 - W3')
     ylabel('J - H')
-    title(t1.keywords['SKYAREA'],fontsize='small')
+    title(t1.keywords['SKYAREA'], fontsize='small')
     
 .. image:: wise_cc.png
    :scale: 50
-
-
-
-
-
-    
-    
+   
 .. raw:: html
 
    </div>
