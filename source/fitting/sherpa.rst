@@ -1,8 +1,8 @@
 
-Sherpa
-------
+Sherpa Overview
+---------------
 
-`Sherpa`_ is a general purpose modeling and fitting application written in Python.
+`Sherpa <http://cxc.harvard.edu/sherpa>`_ is a general purpose modeling and fitting application written in Python.
 
   - Uses Python's interactive capabilities and its Object Oriented Programming
     (OOP) approach.

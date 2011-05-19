@@ -10,15 +10,15 @@ CONTEST: Make a fun bouncing balls demo
   Submitted entries will be run during the Workshop and everyone will vote for the winner.
 
 **Prize**: 
-  One-year subscription to Wired Magazine or other geeky magazine of your choice (up to US$20 value).
+  *FOR EXAMPLE:* One-year subscription to Wired Magazine (US$10 value).
 
 **Submission**: 
-  Email your script as an attachment to aldcroft@head.cfa.harvard.edu.  To make
-  life easier please rename the script "bounce_<yourname>.py.txt" before
+  Email your script as an attachment to *workshop_organizer@institution.edu*.  To make
+  life easier please name the script "bounce_<yourname>.py" before
   attaching.
 
 **Deadline**: 
-  The deadline for submission is Noon on Friday.  
+  The deadline for submission is TBD.  
 
 Bouncing balls
 --------------
@@ -98,8 +98,8 @@ Possibilities include:
   <http://matplotlib.sourceforge.net/users/artists.html#axis-containers>`_ documentation.
 - Put in physics, like making the balls bounce off each other, including gravity, or ???
 
-Final Entries
--------------
+Entries from CfA 2011 Workshops
+-------------------------------
 
 Below are the entries that were received for the contest.  Thanks to all who submitted an entry!
 

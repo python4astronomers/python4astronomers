@@ -1,12 +1,9 @@
-.. include:: ../references.rst
+:tocdepth: 2
 
 .. Python4Astronomers documentation file
 
 Plotting and images
 ===================
-
-Workshop goals
----------------
 
 - Learn the key features of Matplotlib for 1-d, 2-d and 3-d plotting
 - Gain familiarity with the hierarchy of objects that comprise a plot
@@ -14,11 +11,10 @@ Workshop goals
 - Learn more about Python objects
 - Use `APLpy`_ to make publication-quality plots of astronomical imaging data
 
-Topics
--------
+**Agenda**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    
    matplotlib
    ../python/objects
@@ -31,3 +27,6 @@ Topics
 
 :Authors: Tom Aldcroft, Tom Robitaille
 :Copyright: 2011 Smithsonian Astrophysical Observatory
+
+.. include:: ../references.rst
+

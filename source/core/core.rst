@@ -1,3 +1,5 @@
+:tocdepth: 2
+
 Core packages for analysis: IPython, NumPy, and SciPy
 =====================================================
 
@@ -782,23 +784,4 @@ functionality that isn't in NumPy: there is a good chance it is in SciPy:
 - Multi-dimensional image processing (ndimage)
 - File IO (scipy.io)
 - Weave
-
-Survey
--------
-
-How was the pacing and information level today?
-
-- Could be a bit slower
-- About right
-- Would like some harder exercises
-
-Upcoming Schedule
--------------------
-
-======== ========================================= =====================
-April 15 Plotting and images                       Phillips 1:30pm
-April 22 Data file I/O, process control (csh)      Phillips **3pm**
-April 29 Fitting and modeling 1-d and 2-d data     Phillips **11:30am**
-May 6    VO and online astronomy                   Phillips 1:30pm
-======== ========================================= =====================
 

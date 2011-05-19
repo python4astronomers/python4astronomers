@@ -1,19 +1,19 @@
 .. include:: ../references.rst
 .. Python4Astronomers documentation file
 
+:tocdepth: 2
+
 Online Astronomy and the virtual observatory
 ============================================
 
 
-Workshop goals
----------------
+Workshop goals:
 
 - Review basic python web interfacing tools
 - Learn how to make remote queries
 - Interface with other desktop tools
 
-Topics
--------
+**Agenda**
 
 .. toctree::
    :maxdepth: 1

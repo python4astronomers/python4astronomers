@@ -44,6 +44,8 @@ You should see::
 
   /usr/bin/ipython
 
+.. _linux_nonroot:
+
 User install of EPD without root
 --------------------------------
 

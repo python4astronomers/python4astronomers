@@ -1,4 +1,4 @@
-.. include:: ../references.rst
+:tocdepth: 2
 
 .. _`table parameters for reading`: http://cxc.harvard.edu/contrib/asciitable/#commonly-used-parameters-for-read
 .. _`asciitable.Basic`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Basic
@@ -238,3 +238,5 @@ The data are in the second table, so do::
 .. raw:: html
 
    </div>
+
+.. include:: ../references.rst

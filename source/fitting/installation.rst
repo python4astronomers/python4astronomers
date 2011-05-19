@@ -1,5 +1,3 @@
-.. include:: ../references.rst
-
 .. _`sherpa-4.3.0-EPD-7.0-i386.dmg`: http://cxc.cfa.harvard.edu/contrib/sherpa/downloads/sherpa-4.3.0-EPD-7.0-i386.dmg
 .. _`sherpa-4.3.0-EPD-7.0-x86_64.dmg`: http://cxc.cfa.harvard.edu/contrib/sherpa/downloads/sherpa-4.3.0-EPD-7.0-x86_64.dmg
 .. _`sherpa-4.3.0-EPD-7.0-linux-x86_64.egg`: http://cxc.cfa.harvard.edu/contrib/sherpa/downloads/sherpa-4.3.0-EPD-7.0-linux-x86_64.egg
@@ -9,12 +7,12 @@
 .. Python4Astronomers documentation file
 
 
-Installation
-------------
+Sherpa Installation
+-------------------
 
-In order to follow along with the Sherpa examples presented in the workshop on
-April 29, your Python installation will need the following dependencies and
-Sherpa version 4.3.0.
+In order to follow along with the Sherpa examples presented in this workshop,
+your Python installation will need the following dependencies and Sherpa
+version 4.3.0.
 
 - Sherpa Dependencies
 
@@ -26,43 +24,27 @@ Sherpa version 4.3.0.
 
 .. Note::
   EPD users, you have already satisfied the installation requirements
-  above.  Continue with the installation Notes below.  If you have been to
+  above.  Continue with the installation notes below.  If you have been to
   previous workshops and are able to complete the examples, your installation is
   most likely sufficient.  See the Sherpa installation notes below to install
   Sherpa version 4.3.0.
 
 
-Users Interested in Maintaining their own Python Installation
+Sherpa downloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Built Python binaries of Sherpa can be found here
+The Sherpa source tar file and pre-built binaries can be found here:
 
-- `Download Sherpa <http://cxc.cfa.harvard.edu/contrib/sherpa/downloads/>`_:
-  Sherpa binaries for Mac and Ubuntu
+- `Sherpa downloads <http://cxc.cfa.harvard.edu/contrib/sherpa/downloads/>`_:
+  Sherpa source and binaries for Mac and Ubuntu.
 
 
-Install Notes for EPD Mac Users
+Mac EPD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the Enthought EPD 7.0 at `EPD downloads <http://cxc.cfa.harvard.edu/contrib/python4astronomers>`_
-
-  `Enthought <http://www.enthought.com>`_ is the company which leads most of the
-  development of `NumPy`_ and `SciPy`_.  They provide a bundled binary
-  distribution of Python with a large set of useful packages built in.  The
-  `Academic version <http://www.enthought.com/products/edudownload.php>`_ of EPD
-  is free for use by students or employees of a degree-granting institution
-  (i.e. Harvard but not SAO) as specified in the `license terms
-  <http://www.enthought.com/EPDAcademicTerms.html>`_.
-
-  *By special permission from Enthought, all tutorial participants are allowed
-  use the Academic EPD downloads we are providing.*
-
-  However, please do not distribute these files to others without express
-  permission.  The user name and password were emailed to the pythonusers
-  mailing list on March 18.
-
-
-Download the appropriate Sherpa disk image for your version of OSX
+Installed the Enthought EPD 7.0 following the
+instructions for :ref:`Mac_OSX`.  Then download the appropriate Sherpa disk
+image for your version of OSX:
 
   ===================  ===========================  ===================================
   OSX                  EPD disk image               Sherpa disk image
@@ -74,7 +56,7 @@ Download the appropriate Sherpa disk image for your version of OSX
 Double-click on the disk image and follow the instructions in the install wizard.
 
 
-Install Notes for Ubuntu Users
+Ubuntu (root)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Users who use ``apt-get`` to manage their Python distribution can
@@ -89,12 +71,12 @@ Double-click on the Debian package file (.deb) and follow the instructions in
 the install wizard.
 
 
-Install Notes for EPD Linux Users
+EPD Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install the EPD on Linux by following the instructions `here. <http://python4astronomers.github.com/installation/linux-self.html#user-install-without-root>`_
-
-Download the appropriate Sherpa egg for your Linux architecture
+Install the EPD on Linux by following the instructions for
+:ref:`linux_nonroot`.  Then download the appropriate Sherpa egg for your Linux
+architecture
 
   =====================  ========================  ========================================
   Architecture           EPD Linux installer               Sherpa egg
@@ -106,27 +88,6 @@ Download the appropriate Sherpa egg for your Linux architecture
 Install Sherpa into your EPD installation using easy_install::
 
   easy_install sherpa-4.3.0-EPD-7.0-linux-x86.egg
-
-
-Install Notes for Linux Users using HEAD network installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Users relying on the Python located in /usr/local/bin accessible from their CfA
-HEAD managed Linux machine can install Sherpa as an egg to their own directory
-
-Download the Sherpa egg
-
-`sherpa-4.3.0-py2.6-rh5-x86_64.egg <http://cxc.cfa.harvard.edu/contrib/sherpa/downloads/sherpa-4.3.0-py2.6-rh5-x86_64.egg>`_
-
-
-Install Sherpa into your own directory using easy_install::
-
-  easy_install --user sherpa-4.3.0-py2.6-rh5-x86_64.egg
-
-.. Note::
-   The Sherpa installation includes a number of XSPEC spectral FITS tables, so
-   consider storage of ~= 250MB for Sherpa in your home directory.
-
 
 
 Try It Out
@@ -167,3 +128,6 @@ Try importing the Sherpa high level UI with::
    WARNING: imaging routines will not be available, failed to import
    sherpa.image.ds9_backend due to 'RuntimeErr: DS9Win unusable: Could not find ds9
    on your PATH'
+
+.. include:: ../references.rst
+

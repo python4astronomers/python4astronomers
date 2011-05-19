@@ -1,11 +1,9 @@
-.. include:: ../references.rst
-
+:tocdepth: 2
 
 Fitting and Modeling 1-D and 2-D Data
 =====================================
 
-Workshop goals
---------------
+Workshop goals:
 
 - Discover Python classes and Object-Oriented Programming
 - Learn the basics of modeling and fitting with Sherpa 
@@ -13,11 +11,10 @@ Workshop goals
 - Fit a Chandra image of G21.5-0.9
 
 
-Topics
-------
+**Agenda**
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
  
    installation
    classes
@@ -27,3 +24,4 @@ Topics
 
 :Author: Brian Refsdal
 :Copyright: 2011 Smithsonian Astrophysical Observatory
+

@@ -1,4 +1,4 @@
-.. Python4Astronomers documentation file
+:tocdepth: 2
 
 Reading and Writing files
 =========================

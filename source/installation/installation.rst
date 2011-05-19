@@ -1,10 +1,6 @@
-.. Python4Astronomers documentation file
-.. include:: ../references.rst
+:tocdepth: 2
 
-.. toctree::
-   :hidden:
-
-   requirements
+.. _`installing_scientific_python`:
 
 Installing Scientific Python
 =============================
@@ -138,8 +134,8 @@ Install core Python
 
 Now install EPD as the core Python on your system following the instructions below:
 
-.. toctree::
-   :maxdepth: 2
+.. .. toctree::
+   :maxdepth: 1
    
    macosx
    linux
@@ -720,3 +716,4 @@ Final exercises
   If you can do this then consider yourself an expert on Python installation.
 
 
+.. include:: ../references.rst

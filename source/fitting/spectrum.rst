@@ -20,7 +20,8 @@ Read in the columns from the FITS file and load the arrays into a Sherpa data
 set::
 
   dat = pyfits.open('3c273.fits')[1].data
-  ui.load_arrays(1, dat.field('WAVELENGTH'), dat.field('FLUX')*1e14, dat.field('FLUX') * 0.02e14)
+  ui.load_arrays(1, dat.field('WAVELENGTH'), dat.field('FLUX')*1e14, 
+                 dat.field('FLUX') * 0.02e14)
 
 Filter the spectral coordinates from 3000 to 5700 Angstroms and plot the
 spectrum using Sherpa's high level plotting interface to matplotlib::
