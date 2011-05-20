@@ -15,7 +15,7 @@ workshops are hands-on and participants should bring a laptop.
 ======== ========================================= ===================== =========
 Date     Topic                                     Location and time     Presenter
 ======== ========================================= ===================== =========
-TBD      Building a scientific Python installation TBD                   TBD          
+TBD      Installation and Understanding Packages   TBD                   TBD          
 TBD      Core packages - NumPy, iPython, SciPy     TBD                   TBD          
 TBD      Plotting and images                       TBD                   TBD          
 TBD      Data file I/O, process control (csh)      TBD                   TBD          

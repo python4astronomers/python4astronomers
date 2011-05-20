@@ -2,7 +2,7 @@
 
 .. Python4Astronomers documentation file
 
-Plotting and images
+Plotting and Images
 ===================
 
 - Learn the key features of Matplotlib for 1-d, 2-d and 3-d plotting

@@ -13,7 +13,7 @@ Core
 - IPython >= 0.10
 - NumPy >= 1.3
 - SciPy >= 0.7.2
-- Matplotlib >= 0.99
+- Matplotlib >= 1.0
 - distribute (aka setuptools) >= 0.6
 
 .. [#] Python 3.x is the "next generation" Python but for astronomy analysis

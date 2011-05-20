@@ -69,8 +69,10 @@ module, do some basic filtering with `NumPy`_, and make a couple of plots with
   asciitable.write(dat[with_z], 'fermi_agn_with_z.dat')
 
 .. image:: scatter.png
+   :scale: 70%
 
 .. image:: hist.png
+   :scale: 70%
 
 Curve fitting with SciPy
 ------------------------
@@ -120,6 +122,7 @@ uncertainties.
 The plotted fit result is as shown below:
 
 .. image:: fit.png
+   :scale: 50%
 
 Intermission: NumPy, Matplotlib, and SciPy
 ------------------------------------------
@@ -179,6 +182,7 @@ including convolution with a Gaussian filter and the addition of noise.
 The simulated cluster image is below:
 
 .. image:: synthetic_image.png
+   :scale: 70%
 
 Running existing compiled codes
 -------------------------------
@@ -225,6 +229,7 @@ together other codes and doing system type tasks.
 
 
 .. image:: run_codes.png
+   :scale: 70%
 
 Making a publication quality image
 ----------------------------------
@@ -266,6 +271,7 @@ talk was made.
 This produces the nice image:
 
 .. image:: image_plotting.png 
+   :scale: 60%
 
 
 And much much more...

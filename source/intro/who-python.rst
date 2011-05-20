@@ -3,8 +3,7 @@ Who is using Python
 
 *"Sometimes the middle of the herd is a good place to be."*
 
-(At a CXC Users Committee meeting in response to
-"Why spend time migrating to Python?")
+(In response to the question "Why spend time migrating to Python?" at a Users Committee meeting)
 
 That was several years ago and in the interim the momentum toward Python in astronomy has
 only grown.  The ease of interfacing C / C++ / FORTRAN means many organizations
@@ -71,6 +70,7 @@ Other sciences
 Bioinformatics (computational molecular biology)
 
 .. image:: biopython.jpg
+   :scale: 60
 
 As seen at `biopython.org <http://biopython.org>`_.
 
