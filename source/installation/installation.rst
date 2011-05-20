@@ -1,7 +1,5 @@
 :tocdepth: 2
 
-.. _`installing_scientific_python`:
-
 Python Installation and Understanding Packages
 ==============================================
 

@@ -47,7 +47,7 @@ available.  Features of ActivePython include:
 - Packages can be added with a customized package manager ``pypm`` toolf which
   installs from the `ActiveState PyPM repository <http://code.activestate.com/pypm/>`_.  This
   handles the "difficult" packages like NumPy and SciPy with support for
-  dependency resolution, and also includes most packages from `PyPI`_.
+  dependency resolution, and also includes most packages from `PyPI <pypi.python.org>`_.
 
 Two tests of installing ActivePython on MacOS (snow leopard) and a linux
 CentOS-5 system were successful and were simple to perform.  Although we don't
