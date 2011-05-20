@@ -22,7 +22,6 @@ Workshop goals:
    webmodules.rst
    votools.rst
    atpy.rst
-   desktop.rst
    changes.rst
 
 :Author: Gus Muench

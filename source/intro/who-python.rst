@@ -52,7 +52,6 @@ Resources, resources, resources!
 
 - Books: 
 
-  - CfA Wolbach Library
   - `Amazon "python science engineering"
     <http://www.amazon.com/s/ref=pd_rhf_s_1?ie=UTF8&search-alias=aps&keywords=python%20science%20engineering>`_
   - `Beginning Python: From Novice to Professional

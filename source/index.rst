@@ -92,6 +92,17 @@ Having full prose text results in a document which is far more useful as a
 standalone study guide than presentation slides.  Ironically it also reduces
 the temptation to read from the screen.
 
+License
+--------
+
+The Practical Python for Astronomers workshop content is made available under
+the terms of the `Creative Commons Attribution 3.0 License
+<http://creativecommons.org/licenses/by/3.0>`_ (`legal code
+<http://creativecommons.org/licenses/by/3.0/legalcode>`_).  You may distribute,
+remix, tweak, and build upon this work, even commercially, as long as you
+credit the authors and the Smithsonian Astrophysical Observatory for the
+original creation.
+
 +---+
 |   |
 +---+

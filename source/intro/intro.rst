@@ -23,6 +23,9 @@ astronomers are likely to encounter in research.*
 
 **Agenda**
 
+The purpose of the talk today is to motivate astronomers to learn Python and start
+using it as a tool for research and analysis.
+
 .. toctree::
    :maxdepth: 1
 
