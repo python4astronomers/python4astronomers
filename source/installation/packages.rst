@@ -183,7 +183,7 @@ installation via a standard ``setup.py`` script.  This is used as follows::
 More information is available in the `Installing Python Modules
 <http://docs.python.org/install/index.html>`_ page.
 
-Where to packages get installed?
+Where do packages get installed?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An important option in the installation process is where to put the package
