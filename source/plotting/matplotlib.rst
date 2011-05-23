@@ -20,7 +20,7 @@
      log / semilog, marker props, line props
    - legend(()
    - Multiple subplots, subplots_adjust, GridSpec
-   - Tour of the MPL gallery 
+   - Tour of the MPL gallery
    - Object oriented MPL
    - Alpha opacity for markers and areas
    - Hist(): illustrate function definition w/ custom hist (with lines not bars)
@@ -33,11 +33,11 @@
    - MPL docs (tutorial pages) explaing key concepts
 
    - Useful bits that might not be obvious
-     - Freezing axes autoscale(True/False, axis=x|y|both), 
-     - hold(True/False), 
+     - Freezing axes autoscale(True/False, axis=x|y|both),
+     - hold(True/False),
      - interactive on/off (ioff(), plot()..., draw())
      - axis('equal')  axis('scaled'), xlim, ylim
-     - Remove ticks and labels (xticks([], []))  
+     - Remove ticks and labels (xticks([], []))
      - locs, labels = xticks(); xticks(locs, [])
 
    - gca() and gcf(), discussion of stateful plotting
@@ -130,7 +130,7 @@ Hints on getting from here (an idea) to there (a plot)
 - Instead use `Search <http://matplotlib.sourceforge.net/search.html>`_ and
   enter the function name.  *Most* of the high-level plotting functions are in
   the ``pyplot`` module and you can find them quickly by searching for
-  ``pyplot.<function>``, e.g. ``pyplot.errorbar``.  
+  ``pyplot.<function>``, e.g. ``pyplot.errorbar``.
 
 
 .. admonition::  Pylab and Pyplot and NumPy
@@ -172,7 +172,7 @@ Hints on getting from here (an idea) to there (a plot)
     plt.plot([1,2], [3,4])
 
   Now you should understand this is the same ``plot()`` function that you get in
-  Pylab.  
+  Pylab.
 
   See `Matplotlib, pylab, and pyplot: how are they related?
   <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
@@ -236,7 +236,7 @@ study the page of matplotlib `screenshots
 
 .. admonition Clearing the figure with clf()
    From now on we will assume that you know to clear the figure with
-   `clf()`_ before entering commands to make the next plot.  
+   `clf()`_ before entering commands to make the next plot.
 
 For every x, y pair of arguments, there is an optional third argument
 which is the format string that indicates the color and line type of
@@ -265,7 +265,7 @@ plotting several lines with different format styles in one command
 using arrays::
 
   # evenly sampled time at 200ms intervals
-  t = arange(0., 5., 0.2)   
+  t = arange(0., 5., 0.2)
 
   # red dashes, blue squares and green triangles
   # then filled circle with connecting line
@@ -284,8 +284,8 @@ using arrays::
    Make a plot that looks similar to the one above.
 
 .. raw:: html
-   
-   <div class="panel0">
+
+   <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
 ::
 
@@ -297,8 +297,8 @@ using arrays::
    axis([0, 5, 0, 4])
 
 .. raw:: html
-   
-   </div> <p class="flip0">Click to Show/Hide Solution</p>
+
+   </div>
 
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -403,7 +403,7 @@ as argument::
 
   You may have noticed that in the last workshop we mostly used NumPy arrays like
   ``arange(5)`` or ``array([1,2,3,4])`` but now you are seeing statements like
-  ``plot([1,2,3])``.  
+  ``plot([1,2,3])``.
 
 .. _controlling-line-properties:
 
@@ -437,7 +437,7 @@ to worry about this, because it is all taken care of behind the
 scenes.  Below is a script to create two figures where the first figure has two
 subplots::
 
-  def f(t):                        
+  def f(t):                 
       """Python function to calculate a decaying sinusoid"""
       val = exp(-t) * cos(2*pi*t)
       return val
@@ -451,14 +451,14 @@ subplots::
   plot(t1, f(t1), 'bo', t2, f(t2), 'k')
   title('FIGURE 1')
   text(2, 0.8, 'AXES 211')
-  
+
   subplot(212)  # 2 rows, 1 column, plot 2
   plot(t2, cos(2*pi*t2), 'r--')
   text(2, 0.8, 'AXES 212')
 
   figure(2)             # Make a second figure
   clf()
-  plot(t2, f(t2), '*') 
+  plot(t2, f(t2), '*')
   grid()
   title('FIGURE 2')
   text(2, 0.8, 'AXES 111')
@@ -477,13 +477,13 @@ Now return the second plot in the first figure and update it::
 
 The first `figure()`_ command here is optional because
 ``figure(1)`` will be created by default, just as a ``subplot(111)``
-will be created by default if you don't manually specify an axes.  
+will be created by default if you don't manually specify an axes.
 
 The `subplot()`_ command specifies ``numrows, numcols, fignum`` where
 ``fignum`` ranges from 1 to ``numrows*numcols``.  The commas in the ``subplot``
 command are optional if ``numrows*numcols<10``.  So ``subplot(211)`` is
 identical to ``subplot(2,1,1)``.  You can create an arbitrary number of
-subplots and axes.  
+subplots and axes.
 
 If you want to place an axes manually, ie, not on a rectangular grid, use the
 `axes()`_ command, which allows you to specify the location as ``axes([left,
@@ -541,16 +541,16 @@ These properties are covered in more detail in `text-properties <http://matplotl
    Make an additional normal distribution with a mean of 130.  Make a new plot
    where the two distributions are overlayed.  Use a different color and
    choose the opacities so it looks reasonable.
-  
+
    Hints:
 
    - You might want to use the ``bin`` parameter with an ``arange(min, max,
      step)`` so both histograms are binned the same.
    - The ``histtype`` parameter may also prove useful depending on your taste.
-  
+
 .. raw:: html
-   
-   <div class="panel0">
+
+   <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
 
 ::
 
@@ -560,8 +560,8 @@ These properties are covered in more detail in `text-properties <http://matplotl
   out = hist(x2, bins=bins, normed=1, facecolor='r', alpha=0.5, histtype='stepfilled')
 
 .. raw:: html
-   
-   </div> <p class="flip0">Click to Show/Hide Solution</p>
+
+   </div>
 
 Getting the fonts just right
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

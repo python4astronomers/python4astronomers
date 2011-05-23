@@ -4,14 +4,14 @@
 ---------------------
 
 Fit image data of a supernova remnant G21.5-0.9 using a 2-D multi-component
-source model.  First, download the FITS image of :download:`G21.5-0.9 <./image2.fits>` 
+source model.  First, download the FITS image of :download:`G21.5-0.9 <./image2.fits>`
 and start IPython::
 
   $ ipython -pylab
 
 If you have trouble accessing the image you can download it straight away using
 Python::
-  
+
   import urllib2
   url = "http://python4astronomers.github.com/_downloads/image2.fits"
   open("image2.fits", "wb").write(urllib2.urlopen(url).read())
@@ -163,7 +163,7 @@ Fit with ``fit`` and display the data, model, and residuals in DS9 with
   shown.
 
 .. raw:: html
-   
+
   <pre>
 
 Dataset               = 1
@@ -181,7 +181,7 @@ g1.ampl        23.3562
 bgnd.c0        0.266365
 
 .. raw:: html
-   
+
   </pre>
 
 .. image:: g21_fit.png
@@ -224,7 +224,7 @@ Sherpa method ``conf``::
   only the thawed parameters or specified parameters are shown.
 
 .. raw:: html
-   
+
    <pre>
 
 g1.ampl lower bound:    -0.399122
@@ -252,7 +252,7 @@ g1.ampl           23.3562    -0.399122     0.405767
 bgnd.c0          0.266365   -0.0152336    0.0156245
 
 .. raw:: html
-   
+
    </pre>
 
 
@@ -265,8 +265,8 @@ bgnd.c0          0.266365   -0.0152336    0.0156245
   (Hint): Try ``scipy.special.erfinv``
 
 .. raw:: html
-   
-   <div class="panel0">
+
+   <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
 
 Typically, the confidence is calculated from sigma using the error-function,
 ERF(sigma/SQRT(2)).  We can invert this operation using the inverse
@@ -277,7 +277,7 @@ error-function found in SciPy in the special functions module::
 
 .. raw:: html
 
-   </div> <p class="flip0">Click to Show/Hide Solution</p>
+   </div>
 
 Notice how the parameter confidence limits are displayed as soon as they are
 known.  The parameter confidence limits are accessed using ``get_conf_results``.

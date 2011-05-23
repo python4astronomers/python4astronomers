@@ -44,14 +44,14 @@ threads, and AHELP pages that describe each Sherpa function:
 Explore the Sherpa Object Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In a new working directory, download a MAST spectrum of :download:`3C 273 <./3c273.fits>` 
+In a new working directory, download a MAST spectrum of :download:`3C 273 <./3c273.fits>`
 and start IPython::
 
   $ ipython -pylab
 
 If you have trouble accessing the spectrum you can download it straight away
 using Python::
-  
+
   import urllib2
   url = 'http://python4astronomers.github.com/_downloads/3c273.fits'
   open('3c273.fits', 'wb').write(urllib2.urlopen(url).read())
@@ -142,8 +142,8 @@ Model parameters are themselves class objects::
   float and a ``Parameter`` object?
 
 .. raw:: html
-   
-   <div class="panel0">
+
+   <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
 
 The answer is that pl.ref is in fact an object, but its model class supports a
 special setter method ``__setattr__()`` that updates the pl.ref.val attribute
@@ -176,8 +176,8 @@ functions for a particular class attribute::
   m.ref.val
 
 .. raw:: html
-   
-   </div> <p class="flip0">Click to Show/Hide Solution</p>
+
+   </div>
 
 
 

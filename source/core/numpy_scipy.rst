@@ -5,7 +5,7 @@ NumPy
 
 `NumPy`_ is at the core of nearly every scientific Python application or
 module since it provides a fast N-d array datatype that can be manipulated in a
-vectorized form.  This will be familiar to users of IDL or Matlab. 
+vectorized form.  This will be familiar to users of IDL or Matlab.
 
 NumPy has a good and systematic `basic tutorial
 <http://www.scipy.org/Tentative_NumPy_Tutorial>`_ available.  It is highly
@@ -45,7 +45,7 @@ Setup
 Before going further you need to get the example data and script files for
 the workshop.  Now that you have a working Python installation we can do this
 without worrying about details of the platform (e.g. linux has wget,
-Mac has curl, Windows might not have tar, etc etc).  
+Mac has curl, Windows might not have tar, etc etc).
 
 Now start IPython ("ipython -pylab") or use your existing session and enter::
 
@@ -58,15 +58,15 @@ Now start IPython ("ipython -pylab") or use your existing session and enter::
 Leave this IPython session open for the rest of the workshop.
 
 .. admonition:: Exercise (for the interested reader): How did that code above work?
-   
+
    Explain what's happening in each part of the previous code snippet to grab
    the file at a URL and untar it.  Google on "python urllib2" and "python
    tarfile" to find the relevant module docs.  Figure out how you would
    use the ``tarfile`` module to create a tarfile.
 
 .. raw:: html
-   
-   <div class="panel0">
+
+   <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
 
 - ``urllib2.urlopen(url)`` opens the URL as a streaming file-like object
 - ``mode='r|' means ``tarfile`` is expecting a streaming file-like object
@@ -76,8 +76,8 @@ Leave this IPython session open for the rest of the workshop.
 Creating a tarfile is left for the reader to solve.
 
 .. raw:: html
-   
-   </div> <p class="flip0">Click to Show/Hide Solution</p>
+
+   </div>
 
 Read in the 2-d image
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -115,15 +115,15 @@ about 50 lines of Python::
   :scale: 50
 
 .. admonition:: Exercise: View the error and data quality images
-  
+
   Bring up a viewer window for the other two images.  Play with the toolbar
   buttons on the lower-left (hint: try the four on the right first, then
-  imagine a web browser for the three on the left).  Does the save button 
+  imagine a web browser for the three on the left).  Does the save button
   work for you?
 
 .. raw:: html
-   
-   <div class="panel1">
+
+   <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
 ::
 
@@ -137,8 +137,8 @@ about 50 lines of Python::
    :scale: 50
 
 .. raw:: html
-   
-   </div> <p class="flip1">Click to Show/Hide Solution</p>
+
+   </div>
 
 Now discover a little bit about the images you have read in, first with ``?``::
 
@@ -255,8 +255,8 @@ It is possible to operate with arrays of different dimensions as long as they fi
   Use ImgView to display the image of ``z``.
 
 .. raw:: html
-   
-   <div class="panel3">
+
+   <p class="flip3">Click to Show/Hide Solution</p> <div class="panel3">
 
 ::
 
@@ -270,8 +270,8 @@ It is possible to operate with arrays of different dimensions as long as they fi
    :scale: 50
 
 .. raw:: html
-   
-   </div> <p class="flip3">Click to Show/Hide Solution</p>
+
+   </div>
 
 
 Array access and slicing
@@ -298,7 +298,7 @@ The ">>>" indicates the input to Python::
    >>> a[:, 0]   # select every element in col 0
    array([ 0,  5, 10, 15])
 
-   >>> a[0:3, 1:3] 
+   >>> a[0:3, 1:3]
    array([[ 1,  2],
           [ 6,  7],
           [11, 12]])
@@ -307,7 +307,7 @@ As a first practical
 example plot column 300 of the longslit image to look at the spatial profile::
 
   figure()             # Clear the existing plot -- by default matplotlib overplots.
-  plot(img[:, 300]) 
+  plot(img[:, 300])
 
 .. image:: img_col300.png
   :scale: 50
@@ -328,14 +328,14 @@ The full slicing syntax also allows for a step size::
     104 (inclusive).  What did you learn about the index upper bound value?
 
 .. raw:: html
-   
-   <div class="panel2">
+
+   <p class="flip2">Click to Show/Hide Solution</p> <div class="panel2">
 
 ::
 
   clf()
   plot(err[254, 10:200:3])
-  dq[251:254, 101:105]  
+  dq[251:254, 101:105]
 
 The index upper bound ``i1`` is one more than the final index that gets
 included in the slice.  In other words the slice includes everything up to,
@@ -346,8 +346,8 @@ this, but for now just accept and learn it.
    :scale: 50
 
 .. raw:: html
-   
-   </div> <p class="flip2">Click to Show/Hide Solution</p>
+
+   </div>
 
 Plot the spatial profile and raw spectrum
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -380,8 +380,8 @@ cosmic-ray contamination.
   Hint: zoom into the profile plot to find the right row range.
 
 .. raw:: html
-   
-   <div class="panel4">
+
+   <p class="flip4">Click to Show/Hide Solution</p> <div class="panel4">
 
 ::
 
@@ -393,8 +393,8 @@ cosmic-ray contamination.
    :scale: 50
 
 .. raw:: html
-   
-   </div> <p class="flip4">Click to Show/Hide Solution</p>
+
+   </div>
 
 .. Solution
 
@@ -471,8 +471,8 @@ and that you can compose logical expressions::
    ``z = 0`` for every pixel of ``z`` that is within 10 units of (x,y) = (10, 15).
 
 .. raw:: html
-   
-   <div class="panel5">
+
+   <p class="flip5">Click to Show/Hide Solution</p> <div class="panel5">
 
 ::
 
@@ -480,13 +480,13 @@ and that you can compose logical expressions::
   mask = dist < 10
   z[mask] = 0
   ImgView(z)
-  
+
 .. image:: ripple_masked.png
    :scale: 50
 
 .. raw:: html
-   
-   </div> <p class="flip5">Click to Show/Hide Solution</p>
+
+   </div>
 
 .. admonition:: Detour: copy versus reference
 
@@ -630,8 +630,8 @@ Now the final step is easy and is left as an exercise.
    already did it once in a previous exercise.
 
 .. raw:: html
-   
-   <div class="panel6">
+
+   <p class="flip6">Click to Show/Hide Solution</p> <div class="panel6">
 
 ::
 
@@ -640,8 +640,8 @@ Now the final step is easy and is left as an exercise.
   plot(spectrum)
 
 .. raw:: html
-   
-   </div> <p class="flip6">Click to Show/Hide Solution</p>
+
+   </div>
 
 
 **To do**: flux calibration and wavelength calibration!
@@ -650,10 +650,10 @@ SciPy
 -----
 
 It is impossible to do justice to the full contents of the `SciPy`_ package: is
-entirely too large!  What is left as homework for the reader is to 
+entirely too large!  What is left as homework for the reader is to
 click through to the main `SciPy Reference Manual
 <http://docs.scipy.org/doc/scipy/reference/>`_ and skim the `tutorial
-<http://docs.scipy.org/doc/scipy/reference/tutorial/index.html>`_.  Keep 
+<http://docs.scipy.org/doc/scipy/reference/tutorial/index.html>`_.  Keep
 this repository of functionality in mind whenever you need some numerical
 functionality that isn't in NumPy: there is a good chance it is in SciPy:
 

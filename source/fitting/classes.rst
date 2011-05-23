@@ -88,7 +88,7 @@ return the attribute ``msg3`` when the class instance is printed with
   hw = HelloWorld()
   hw.echo()
   print hw
-  
+
 
 Class ``HelloWorld`` is of type ``Hello``, ``World``, and ``HelloWorld``::
 
@@ -115,7 +115,7 @@ Classes can contain other classes as attributes::
 
   hw = HelloWorld()
   hw.echo()
-  
+
   isinstance(hw, Hello)
   isinstance(hw, HelloWorld)
 
@@ -137,8 +137,8 @@ language operators.  Define how a class behaves using the '+' operator::
   World() + Hello()
 
 
-.. admonition:: Exercise (for the interested reader): 
-   
+.. admonition:: Exercise (for the interested reader):
+
    Define a class ``Powlaw`` that accepts two keyword arguments in its
    constructor: ``index`` and ``norm``.  The keyword arguments are initialized
    as ``index=2.0`` and ``norm=0.01``.  In the class constructor definition, set
@@ -148,8 +148,8 @@ language operators.  Define how a class behaves using the '+' operator::
    NumPy array object.  ``calc`` should return the calculated result.
 
 .. raw:: html
-   
-   <div class="panel0">
+
+   <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
 
 Answer::
 
@@ -164,5 +164,5 @@ Answer::
   p.calc(array([1,2,3]))
 
 .. raw:: html
-   
-   </div> <p class="flip0">Click to Show/Hide Solution</p>
+
+   </div>
