@@ -108,7 +108,7 @@ Install core Python
 
 Now install EPD as the core Python on your system following the instructions below:
 
-.. .. toctree::
+.. toctree::
    :maxdepth: 1
    
    macosx
