@@ -116,7 +116,7 @@ other stuff that is not expected to be in front of /usr/bin by the system
 managers.  Hence putting /usr/local/bin first is risky.
 
 In this case we make an end run and put links into a special directory
-``~/.local``, which is basically a private user version of /usr/local.
+``~/.local``, which is basically a private user version of /usr/local::
 
   mkdir -p ~/.local/bin
   cd ~/.local/bin
