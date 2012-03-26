@@ -10,55 +10,88 @@ other issues related to package incompatibilities, we strongly recommend using
 a pre-built binary Python distribution.  For MacOS in particular there are a
 whole slew of options for Python which don't play well together.  Even if you
 already have an installation on your system you will probably save time in
-the long run by starting fresh with a binary Python distribution.  There are
-two main options that we have experience installing:
+the long run by starting fresh with a binary Python distribution.
 
-**Enthought Python Distribution**
+Choosing your distribution
+-----------------------------
 
-For Windows, MacOS and linux non-root installation, **the easiest option for
-academics** is to use the `Enthought Python Distribution
-<http://www.enthought.com/products/epd.php>`_ (EPD).  For the Python for
-Astronomers workshop series held at the Harvard Center for Astrophysics in
-2011, over 50 astronomers successfully installed and used EPD on a variety of
-platforms (including Windows).  *All the installation instructions that follow
-are written assuming this option.*
+The table below lists the recommended options for installing
+scientific Python.  Note that there are *many* other installation
+options, but these cover the ones which are well-supported and likely
+to present the fewest problems.
 
-`Enthought <http://www.enthought.com>`_ is the company which leads most of the
-development of `NumPy`_ and `SciPy`_.  EPD is a bundled binary
-distribution of Python with a *large* set of useful packages built in.  The
-`Academic version <http://www.enthought.com/products/edudownload.php>`_ of EPD
-is free for use by students or employees of a degree-granting institution as
-specified in the `license terms
-<http://www.enthought.com/EPDAcademicTerms.html>`_.
+====================  ========  =========  =========  ====================== 
+Distribution            Mac      Linux      Windows    Notes
+====================  ========  =========  =========  ====================== 
+OS Package manager    MacPorts  rpm, apt       N       [1]_, [2]_, [3]_
+EPD Academic              Y         Y          Y       [4]_, [5]_
+ActiveState CE            Y	    Y          Y       [6]_
+EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_       
+====================  ========  =========  =========  ======================
 
-If you do not meet the academic license requirements but are using Python for
-research in astronomy (e.g. observatory staff scientist), we recommend
-contacting Enthought directly and requesting permission.
+.. rubric:: Notes
 
-**ActiveState Community Python Distribution**
+.. raw:: html
 
-A second option is to use the `ActiveState Community Python Distribution
-<http://www.activestate.com/activepython/downloads>`_, 
-a.k.a. ActivePython.  This has no license requirements and is freely
-available.  Features of ActivePython include:
+   <span style="font-size: small">
 
-- The initial distribution is much smaller, consisting mostly of Python and
-  some utilities.  
-- Packages can be added with a customized package manager ``pypm`` toolf which
-  installs from the `ActiveState PyPM repository <http://code.activestate.com/pypm/>`_.  This
-  handles the "difficult" packages like NumPy and SciPy with support for
-  dependency resolution, and also includes most packages from `PyPI <pypi.python.org>`_.
+.. [1] **MacPorts**:  Although there are other package managers 
+   MacPorts has the best support for Python.  MacPorts
+   has the slight drawback of being slow to install so that it can take
+   several hours to build a working Python distribution.  All the other
+   binary options take 10 minutes or less.
 
-Two tests of installing ActivePython on MacOS (snow leopard) and a linux
-CentOS-5 system were successful and were simple to perform.  Although we don't
-provide detailed instructions here, this option seems to be reasonable.
+.. [2] **Linux package managers**: 
+   For recent versions of linux distributions like Ubuntu, the
+   installed Python and supporting packages available through the
+   package manager will be sufficiently current to support science
+   analysis.  For a linux distribution like CentOS-5 this is not the
+   case.
+
+.. [3] Using an OS package manager requires root privilege.
+
+.. [4] **EPD**: 
+   The `Enthought Python Distribution
+   <http://www.enthought.com/products/epd.php>`_ is a bundled
+   binary distribution of Python with a large set of useful packages
+   built in.  This is the **simplest option for academics**.
+
+.. [5] The EPD `Academic version
+   <http://www.enthought.com/products/edudownload.php>`_ is a full
+   version of EPD that is free
+   for use by students or employees of a degree-granting institution as
+   specified in the `license terms
+   <http://www.enthought.com/EPDAcademicTerms.html>`_.
+
+.. [6] **ActivePython**: The `ActiveState Community Python Distribution
+   <http://www.activestate.com/activepython/downloads>`_, has no
+   license requirements and is freely available.  It features a 
+   package manager tool which installs from the `ActiveState PyPM
+   repository <http://code.activestate.com/pypm/>`_.  It handles the
+   "difficult" packages like PyQt and SciPy with support for
+   dependency resolution, and also includes most packages from `PyPI
+   <pypi.python.org>`_.
+
+.. [7] Available only in 32-bit for Mac and Windows.
+
+.. [8] The EPD `Free version
+   <http://www.enthought.com/products/epd_free.php>`_  provides
+   NumPy, SciPy, Matplotlib, IPython, Traits, and Chaco, 
+
+.. [9] Qt and PyQt *not* available.  
+   These are GUI toolkits which are used by a number of useful
+   applications, in particular the IPython Qt console.
+
+.. raw:: html
+
+   </span>
 
 Installation steps
 --------------------
 
 In order to follow along with the examples to be presented in the workshops
 your Python installation will need to meet the :ref:`python_pkg_requirements`.  The aim
-of this workshop is to get this set up correctly.  This will proceed in three
+of this workshop is to get this set up correctly.  This will proceed in four
 steps:
 
 - Download the appropriate Enthought Python Distribution (EPD) installer
