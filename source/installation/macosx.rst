@@ -3,15 +3,45 @@
 Mac OSX
 =======
 
-Enthought Python Distribution (EPD)
------------------------------------
+Install the distribution
+------------------------
 
-Assuming that you have downloaded the EPD disk image, open it, then double-click on
-``EPD.mpkg`` and follow the prompts to install. Choose all the defaults for
-installing (in particular use the default installation location).
+If you can follow instructions and have a little patience then MacPorts is
+probably the best option.  If anything beyond a one-click install is too much
+of a bother then choose EPD Academic or ActiveState.
+
+MacPorts
+^^^^^^^^
+
+To install Python using MacPorts follow the detailed instructions at `MacPorts
+Python installation on Mac - 10 easy steps
+<http://astrofrog.github.com/macports-python/>`_.
+
+Enthought Python Distribution (EPD)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Assuming that you have downloaded the `EPD Academic
+<http://www.enthought.com/products/edudownload.php>`_ or `EPD Free
+<http://www.enthought.com/products/epd_free.php>`_ disk image, open it, then
+double-click on ``EPD.mpkg`` and follow the prompts to install. Choose all the
+defaults for installing (in particular use the default installation location).
 
 Additional information can be found on the `Getting Started with EPD
 <http://www.enthought.com/products/epdgetstart.php?platform=mac>`_ page.
+
+ActiveState
+^^^^^^^^^^^^
+
+Download the `ActivePython community edition
+<http://www.activestate.com/activepython/downloads>`_ disk image for Python 2.7
+and run the installer, choosing all defaults at the prompts.  Next install the
+core packages from the terminal command line::
+
+  sudo /usr/local/bin/pypm -g install numpy scipy matplotlib ipython
+
+Now edit the file `~/.bash_profile` and insert the following line at the end::
+
+  export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 Quick installation check 
 ----------------------------------------
@@ -20,9 +50,15 @@ Open a new terminal window and type::
 
   which ipython
 
-You should see something like:
+You should see one of the following:
 
-  /Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython
+===========  ===========================================================================
+Dist         Path
+===========  ===========================================================================
+MacPorts     ``/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/ipython``
+EPD          ``/Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython``
+ActiveState  ``/Library/Frameworks/Python.framework/Versions/2.7/bin/ipython``
+===========  ===========================================================================
 
 If not go to the `Troubleshooting`_ section.
 
@@ -76,18 +112,13 @@ There are several ways to install XCode:
   not tested it so we can't guarantee that everything will go smoothly with
   the Enthought Python Distribution.
 
-Fortran (Optional)
+Fortran
 ------------------
 
-You may at some point come across packages which require a Fortran
-compiler, or you may want to interface Fortran and Python code. If not, you
-can proceed to the next section.
-
-The preferred compiler to interface Fortran and Python code is ``gfortran``.
-Other compilers `should` work, but if you want to be on the safe side, you
-can download a one-click installer for gfortran 4.2.3 from `this page
-<http://r.research.att.com/tools/>`_. Once you have installed it, make sure
-that typing ``gfortran`` gives something like this::
+Many of the Python scientific packages use Fortran libraries internally. To
+avoid getting obscure errors, it is highly recommended to install the latest
+``gfortran`` from `<http://r.research.att.com/tools/>`_.  Once you have
+installed it, make sure that typing ``gfortran`` gives something like this::
 
     $ gfortran
     i686-apple-darwin8-gfortran-4.2: no input files
@@ -101,9 +132,17 @@ Troubleshooting
 Path
 ^^^^^
 
-If EPD installed successfully and you can start ``python`` but not ``ipython``
+If the Python distribution installed successfully and you can start ``python`` but not ``ipython``
 (error message like ``ipython: command not found``) then there is likely a
-problem with your PATH.
+problem with your PATH.  In the instructions below use the correct PATH for your distribution:
+
+===========  ====================================================================
+Dist         Path
+===========  ====================================================================
+MacPorts     ``/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/``
+EPD          ``/Library/Frameworks/EPD64.framework/Versions/Current/bin/``
+ActiveState  ``/Library/Frameworks/Python.framework/Versions/2.7/bin/``
+===========  ====================================================================
 
 Step 1
 ######
@@ -124,8 +163,9 @@ to step 3.
 Step 3
 ########
 
-Determine if you are running csh/tcsh or bash by entering the command ``ps`` in a terminal window.
-For ``csh`` or ``tcsh`` you should edit the file ``~/.cshrc`` and add the following lines at the end::
+Determine if you are running csh/tcsh or bash by entering the command 
+``echo $0`` in a terminal window.  For ``csh`` or ``tcsh`` you should edit the file
+``~/.cshrc`` and add the following lines at the end::
 
  # Setting PATH for Enthough Python Distribution
  set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)

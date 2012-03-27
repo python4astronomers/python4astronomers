@@ -10,7 +10,7 @@ There are three options for a linux Python installation that we describe:
 System install with root
 ------------------------
 
-For a modern linux installation such as Ubuntu 10, the system Python version
+For a modern linux installation such as Ubuntu, the system Python version
 will be 2.6 or newer and all of the required core packages are available as 
 package installs.  The instructions below have been developed and tested with
 Ubuntu 10.  Corresponding packages for recent Fedora are probably available but
