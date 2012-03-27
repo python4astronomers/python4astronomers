@@ -5,12 +5,12 @@
 Installing Scientific Python 
 ==============================================
 
-Unless you are confident with (and enjoy) tracking down compiler errors and
-other issues related to package incompatibilities, we strongly recommend using
-a pre-built binary Python distribution.  For MacOS in particular there are a
-whole slew of options for Python which don't play well together.  Even if you
-already have an installation on your system you will probably save time in
-the long run by starting fresh with a binary Python distribution.
+Unless you are enjoy tracking down compiler errors and other issues related to
+package incompatibilities, we recommend using a pre-built binary Python
+distribution.  For MacOS in particular there are a whole slew of options for
+Python which don't play well together.  Even if you already have an
+installation on your system you will probably save time in the long run by
+starting fresh with a binary Python distribution.
 
 Choosing your distribution
 -----------------------------
@@ -20,13 +20,25 @@ scientific Python.  Note that there are *many* other installation
 options, but these cover the ones which are well-supported and likely
 to present the fewest problems.
 
+
+.. admonition:: For the completely impatient
+
+  The fastest way to get a basic Python installation up and running is
+  `EPD Academic <http://www.enthought.com/products/edudownload.php>`_ if you
+  meet these `license terms
+  <http://www.enthought.com/EPDAcademicTerms.html>`_ or `EPD Free
+  <http://www.enthought.com/products/epd_free.php>`_ otherwise.  Click on that
+  link, download the installer and then go to the `Install core Python`_
+  section and click on the link for your OS (Mac, Linux, or Windows).
+  
 ====================  ========  =========  =========  ====================== 
 Distribution            Mac      Linux      Windows    Notes
 ====================  ========  =========  =========  ====================== 
 OS Package manager    MacPorts  rpm, apt       N       [1]_, [2]_, [3]_
 EPD Academic              Y         Y          Y       [4]_, [5]_
 ActiveState CE            Y	    Y          Y       [6]_
-EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_       
+EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_
+STSci_Python              Y         N          Y       [10]_, [11]_
 ====================  ========  =========  =========  ======================
 
 .. rubric:: Notes
@@ -82,6 +94,14 @@ EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_
    These are GUI toolkits which are used by a number of useful
    applications, in particular the IPython Qt console.
 
+.. [10] The `STSci_Python distribution 
+   <http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python>`_
+   provides `PyRAF <http://www.stsci.edu/institute/software_hardware/pyraf>`_,
+   various analysis packages, and the core NumPy, SciPy, and Matplotlib packages.
+   Qt and PyQt are not included.
+
+.. [11] Available only as a source install on Linux.
+
 .. raw:: html
 
    </span>
@@ -91,50 +111,17 @@ Installation steps
 
 In order to follow along with the examples to be presented in the workshops
 your Python installation will need to meet the :ref:`python_pkg_requirements`.  The aim
-of this workshop is to get this set up correctly.  This will proceed in four
+of this workshop is to get this set up correctly.  This will proceed in three
 steps:
 
-- Download the appropriate Enthought Python Distribution (EPD) installer
-- Install EPD as the core Python installation 
+- Install the core Python installation 
 - Install additional packages which are used in the workshops
 - Test the installation
 
-The installation process is particular to each platform.  For all options
-except "Linux on HEAD or CF network" you will need the EPD download as
-discussed in the next section.
-
-Download EPD
-^^^^^^^^^^^^^
-
-To download EPD go to the `EPD Academic Download
-<http://www.enthought.com/products/edudownload.php>`_ page.  
-
-Here you immediately need to make a decision: 32-bit or 64-bit download?  First
-you need to establish whether your computer has a 32-bit or 64-bit processor.
-If you have a 32-bit processor then your decision is easy (32-bit) but if you
-have a 64-bit processor then either 32 or 64 will work.  See below if you don't
-know your processor architecture:
-
-- MacOSX: Follow `the MacOS instructions <http://support.apple.com/kb/ht3696>`_
-- Linux: Type ``uname -mpi`` at the command line.  If you see ``x86_64 x86_64
-  x86_64`` you have a 64-bit machine and OS.  If you see one or more ``i686``
-  or ``i386`` you are running a 32-bit OS.
-- Windows:  Follow `the Windows instructions 
-  <http://windows.microsoft.com/en-US/windows-vista/32-bit-and-64-bit-Windows-frequently-asked-questions>`_.
-
-**64-bit**
-
-- *Pro*: Faster for data- and compute-intensive applications
-- *Con*: Have to submit an email address and wait for the download link in response
-
-**32-bit**
-
-- *Pro*: Comes with the `Mayavi <http://github.enthought.com/mayavi/mayavi/>`_ 3-d
-  rendering package installed while the 64-bit does not (for technical reasons).
-  If you are interested in using this cool package you should consider choosing 32-bit.
-  Note that the standard matplotlib package supports some `3-d plotting
-  <http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_. 
-
+The installation process is particular to each platform.  For some options you
+will need to choose between 32-bit and 64-bit installations.  Generally
+speaking you should choose 64-bit, but read `64 versus 32 bit`_ for some
+caveats or if you aren't sure if your CPU is 64-bit.
 
 Install core Python
 ^^^^^^^^^^^^^^^^^^^
@@ -157,27 +144,25 @@ system one at a time, checking that each one works.  The program outputs may
 contain various "warnings", but watch for "errors" and look at the end to see
 if a successful installation was reported.
 
-Of these packages only ``pywcs`` was a significant issue during the CfA Python
-for Astronomers series.  Most Windows users and a few MacOS users had
-problems.  Since then a patch has been released, but it is still known to fail
-for 32-bit Windows XP.  This package is required to make images with ``APLpy``
-and do WCS coordinate transformations, but otherwise it is not absolutely needed.
+If you experience problems with installation for any of these packages you can
+send an email to the `astropy mailing list
+<http://mail.scipy.org/mailman/listinfo/astropy>`_.
 
 MacOS or root linux install
 ############################
 ::
 
-  easy_install --upgrade pip
-  pip install --upgrade distribute
-  pip install asciitable
-  pip install pyfits
-  pip install pywcs
-  pip install atpy
-  pip install aplpy
-  pip install pyregion
-  pip install pyparsing
-  pip install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
-  pip install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
+  sudo easy_install --upgrade pip
+  sudo pip install --upgrade distribute
+  sudo pip install asciitable
+  sudo pip install pyfits
+  sudo pip install pywcs
+  sudo pip install atpy
+  sudo pip install aplpy
+  sudo pip install pyregion
+  sudo pip install pyparsing
+  sudo pip install http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
+  sudo pip install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
 
 Non-root linux
 ############################
@@ -192,7 +177,7 @@ Non-root linux
   pip install --user aplpy
   pip install --user pyregion
   pip install --user pyparsing
-  pip install --user http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
+  pip install --user http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
   pip install --user http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
 
 Windows
@@ -335,5 +320,33 @@ Then change to a working directory, untar the file, and start up IPython::
   examine the data graphically.  For instance plot RAdeg versus DEdeg.  Look at the ``table1.dat`` file itself for
   detailed column descriptions.
 
+64 versus 32 bit
+-----------------
+
+For several of the binary installers you need to make a decision: 32-bit or
+64-bit download?  First you need to establish whether your computer has a
+32-bit or 64-bit processor.  If you have a 32-bit processor then your decision
+is easy (32-bit) but if you have a 64-bit processor then either 32 or 64 will
+work.  See below if you don't know your processor architecture:
+
+- MacOSX: Follow `the MacOS instructions <http://support.apple.com/kb/ht3696>`_
+- Linux: Type ``uname -mpi`` at the command line.  If you see ``x86_64 x86_64
+  x86_64`` you have a 64-bit machine and OS.  If you see one or more ``i686``
+  or ``i386`` you are running a 32-bit OS.
+- Windows:  Follow `the Windows instructions 
+  <http://windows.microsoft.com/en-US/windows-vista/32-bit-and-64-bit-Windows-frequently-asked-questions>`_.
+
+**64-bit**
+
+- *Pro*: Faster for data- and compute-intensive applications
+- *Con*: Have to submit an email address and wait for the download link in response
+
+**32-bit**
+
+- *Pro*: Comes with the `Mayavi <http://github.enthought.com/mayavi/mayavi/>`_ 3-d
+  rendering package installed while the 64-bit does not (for technical reasons).
+  If you are interested in using this cool package you should consider choosing 32-bit.
+  Note that the standard matplotlib package supports some `3-d plotting
+  <http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_. 
 
 .. include:: ../references.rst
