@@ -37,7 +37,7 @@ second nature.
 .. Tip::
 
   Sometimes it is convenient to make an end-run around the ``<module>.`` 
-  prefixing.  For instance when you run ``ipython -pylab`` the interpreter
+  prefixing.  For instance when you run ``ipython --pylab`` the interpreter
   does some startup processing so that a number of functions 
   from the `numpy`_ and `matplotlib`_ modules are available *without*
   using the prefix.
@@ -217,12 +217,12 @@ Windows  %APPDATA%/Python/Python2x/site-packages
 WITHOUT ``--user``
 ###################
 
-This option requires root or admin privilege because the package will be
-installed in the system area instead of your own local directories. 
+This option may require root or admin privilege because the package will be
+installed in the system area instead of your own local directories.  
+*For most astronomers running on a single-user machine this is a good option.*
 
 Installing this way has the benefit of making the package available for all users of the
-Python installation, but has the downside of possibly breaking things in a way
-that is difficult to repair (see next topic).
+Python installation, but has the downside that it is a bit more difficult to back out changes if required.
 
 How do I find a package once installed?
 #######################################
@@ -277,6 +277,40 @@ If you attempt to install a package but it does not work, your basic options are
     Do NOT just write and say "I tried to install BLAH and it failed, can 
     someone help?"
   
+Where does Python look for modules?
+-------------------------------------
+
+The official reference on `Modifying Python's Search Path
+<http://docs.python.org/install/index.html#modifying-python-s-search-path>`_
+gives all the details.  In summary:
+
+
+When the Python interpreter executes an import statement, it looks for modules
+on a search path. A default value for the path is configured into the Python
+binary when the interpreter is built. You can determine the path by importing
+the `sys <http://docs.python.org/library/sys.html#module-sys>`_ module and
+printing the value of ``sys.path``::
+
+  $ python
+  Python 2.2 (#11, Oct  3 2002, 13:31:27)
+  [GCC 2.96 20000731 (Red Hat Linux 7.3 2.96-112)] on linux2
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> import sys
+  >>> sys.path
+  ['', '/usr/local/lib/python2.3', '/usr/local/lib/python2.3/plat-linux2',
+   '/usr/local/lib/python2.3/lib-tk', '/usr/local/lib/python2.3/lib-dynload',
+   '/usr/local/lib/python2.3/site-packages']
+  >>>
+
+Within a script it is possible to adjust the search path by modify ``sys.path``
+which is just a Python list.  Generally speaking you will want to put your path
+at the front of the list using insert::
+
+  import sys
+  sys.path.insert(0, '/my/path/python/packages')
+
+You can also add paths to the search path using the `PYTHONPATH
+<http://docs.python.org/using/cmdline.html#envvar-PYTHONPATH>`_ environment variable.
 
 Multiple Pythons on your computer
 ---------------------------------
@@ -293,7 +327,7 @@ Installing within each Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that you know about all the great packages within our Scientific Python
-installation, you might want to start using them in your PyRaf or CASA
+installation, you might want to start using them in your PyRAF or CASA
 or CIAO analysis.
 
 If you start digging into Python you will likely come across the technique of
@@ -311,9 +345,15 @@ have write permission into the directories where the analysis package files
 live.  Simply enter the appropriate analysis environment, then do then
 following:
 
-- Download http://pypi.python.org/packages/source/p/pip/pip-1.0.1.tar.gz
+- At the command line do ``which python`` to verify that ``python`` is 
+  the correct one from the analysis environment.
+- Navigate to http://pypi.python.org/pypi/pip#downloads
+- Download the latest version of pip (`pip-X.Y.tar.gz`)
 - Untar that file, go in the tar directory, and do ``python setup.py install``
-- Now you can do ``pip install <package>`` for each desired package within
+- Do ``rehash`` (for csh) then  ``which pip`` to make sure the new 
+  ``pip`` got installed into your analysis environment path.
+- Now you can do ``pip install <package>`` or ``python setup.py install`` 
+  for each desired package within
   that analysis environment.
 
 It's worth noting that the original example of SciPy will not install with
@@ -328,13 +368,16 @@ then set a corresponding ``PYTHONPATH``.
 Can we share packages?
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are careful there is a way to get limited sharing between Pythons.  The
-first rule is that they need to be the same major version, i.e. all 2.6 or 2.7.
-This is because Python always includes a major version like ``python2.6/`` in
-the default search path so Python 2.7 will never find 2.6 packages.  The second
-rule is to install packages using the ``--user`` option in ``pip install`` or
-``setup.py install``.  This results in the situation shown below where each
-Python can find common packages in the local user area:
+In some cases you can successfully share between Pythons.  However, *this technique is 
+prone to breaking things in strange ways and we do not recommend it*.  Nevertheless it is
+useful to illustrate how this works.
+
+The first rule is that they need to be the same major version, i.e. all 2.6 or
+2.7.  This is because Python always includes a major version like
+``python2.6/`` in the default search path so Python 2.7 will never find 2.6
+packages.  The second rule is to install packages using the ``--user`` option
+in ``pip install`` or ``setup.py install``.  This results in the situation
+shown below where each Python can find common packages in the local user area:
 
 .. image:: antisocial_pythons_trans.png
    :width: 650
@@ -347,10 +390,23 @@ environments.
    Be very wary of installing a package with ``--user`` if one of your Python
    installations already contains that package.  This is because the local user
    version will always take precedence and thus potentially upset that Python
-   installation.  Big analysis packages like CIAO or CASA are carefully tested
-   assuming the integrated environment they provide.  If you start mucking this
-   up then all bets are off.
+   installation.  Big analysis packages like CIAO, STSci_Python or CASA are
+   carefully tested assuming the integrated environment they provide.  If you
+   start mucking this up then all bets are off.
 
+
+Virtualenv
+------------
+
+`Virtualenv <http://virtualenv.org>`_ is a very useful tool for creating isolated 
+Python environments.  As seen in the linux non-root install it provides a way
+to make a virtual clone of an existing Python environment.  This clone can then
+be used as the package installation location.
+
+One use case is wanting to install a new or experimental version of a package
+without overwriting the existing production version in your baseline environment.
+
+For a good introductory tutorial see http://iamzed.com/2009/05/07/a-primer-on-virtualenv/. 
 
 Final exercises
 ---------------

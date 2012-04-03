@@ -76,62 +76,46 @@ path)::
 
   /home/me/epd7.0/bin/ipython  
 
-Alternate non-root setup with existing Python
+Non-root setup using virtualenv
 ---------------------------------------------
 
 If you are using a computer on a system managed network which has Python 2.6 or
-2.7 installed along with NumPy, SciPy, IPython, and matplotlib, then you might
-want to look at the following.  This setup assumes you do not have root
-privilege.
+2.7 installed along with NumPy, SciPy, matplotlib, and easy_install, then you
+might want to look at the following.  This setup assumes you do not have root
+privilege and takes advantage of the `virtualenv <http://www.virtualenv.org/>`_
+package.  This allows you to install new and updated packages to a virtual
+clone of this Python installation without having root.
 
-The main configuration that is needed is to set up your path to use the correct
-Python version. Assume that the Python installation is installed in the root
-directory ``$PYTHONROOT``, so that you find ``python`` and ``ipython`` in
-``$PYTHONROOT/bin``.
+Assume that the system Python installation is installed in the root directory
+``$PYTHONROOT``, so that you find ``python`` and ``easy_install`` in
+``$PYTHONROOT/bin``.  Now install ``pip``, ``distribute``, and ``virtualenv``::
 
-Update path
-^^^^^^^^^^^^^^
-There are a couple of ways to do this.
+  $PYTHONROOT/bin/easy_install --user --upgrade virtualenv
 
-Option A: put $PYTHONROOT in path
-##################################
+Now use ``virtualenv`` to make a local virtual Python which is a clone of the
+system Python but resides in a directory (e.g. ``~/py27``) where you have write
+access::
 
-Put ``$PYTHONROOT/bin`` directly in your path:
+  ~/.local/bin/virtualenv ~/py27
 
-===== ============= =========================================
-Shell File          Command
-===== ============= =========================================
-csh   ~/.myrc         ``set path=($PYTHONROOT/bin $path)``
-bash  ~/.bashrc       ``export PATH=$PYTHONROOT/bin:$PATH``
-===== ============= =========================================
+To use this virtual Python just do:
 
-Option B: put ~/.local/bin in path
-####################################
+=====  =========================================
+Shell  Command
+=====  =========================================
+csh      ``source ~/py27/bin/activate.csh``
+bash     ``. ~/py27/bin/activate``
+=====  =========================================
 
-A slight variation occurs if the $PYTHONROOT path is actually a directory with
-a bunch of other stuff that you might not want at the top of your path.  This
-is the situation on a system-managed network at the Harvard CfA: the "modern"
-Python 2.6 installation is in /usr/local/bin, but this happens to have a lot of
-other stuff that is not expected to be in front of /usr/bin by the system
-managers.  Hence putting /usr/local/bin first is risky.
+For convience you might make an alias for these startup commands in your csh or
+bash startup file.  Once you've activated the virtual Python environment then
+you *do not* use the ``--user`` option in ``easy_install`` or ``pip install``.
+All installs will be made in your local environment.
 
-In this case we make an end run and put links into a special directory
-``~/.local``, which is basically a private user version of /usr/local::
+To finish up you need to install ``ipython`` in this virtual environment, even
+if it already exists in the system python::
 
-  mkdir -p ~/.local/bin
-  cd ~/.local/bin
-  ln -s $PYTHONROOT/bin/python ./
-  ln -s $PYTHONROOT/bin/ipython ./
-  ln -s $PYTHONROOT/bin/easy_install ./
-
-Now update your shell initialization file:
-
-===== ============= =========================================
-Shell File          Command
-===== ============= =========================================
-csh   ~/.cshrc.user   ``set path=($HOME/.local/bin $path)``
-bash  ~/.bashrc       ``export PATH=$HOME/.local/bin:$PATH``
-===== ============= =========================================
+  pip install --upgrade ipython
 
 Quick installation check 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -140,8 +124,7 @@ Open a new terminal window and type::
 
   which ipython
 
-You should see one of the following two (for options A and B respectively)::
+You should see something like the following::
 
-  $PYTHONPATH/bin/ipython    # option A
-  $HOME/.local/bin/ipython   # option B
+  ~/py27/bin/ipython
 
