@@ -8,7 +8,8 @@ Install the distribution
 
 If you can follow instructions and have a little patience then MacPorts is
 probably the best option.  If anything beyond a one-click install is too much
-of a bother then choose EPD Academic or ActiveState.
+of a bother then choose EPD Academic or ActiveState.  For something in-between
+choose Homebrew.
 
 MacPorts
 ^^^^^^^^
@@ -16,6 +17,13 @@ MacPorts
 To install Python using MacPorts follow the detailed instructions at `MacPorts
 Python installation on Mac - 10 easy steps
 <http://astrofrog.github.com/macports-python/>`_.
+
+Homebrew
+^^^^^^^^^
+
+To install Python using `Homebrew < http://mxcl.github.com/homebrew/>`_ follow
+the detailed instructions at `Install Python, NumPy, SciPy, and matplotlib on
+Mac OS X <http://penandpants.com/2012/02/24/install-python/>`_.
 
 Enthought Python Distribution (EPD)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -34,11 +34,13 @@ to present the fewest problems.
 ====================  ========  =========  =========  ====================== 
 Distribution            Mac      Linux      Windows    Notes
 ====================  ========  =========  =========  ====================== 
-OS Package manager    MacPorts  rpm, apt       N       [1]_, [2]_, [3]_
+MacPorts                  Y        --         --       [1]_
+Homebrew                  Y        --         --       [2]_
+RPM, APT                 --         Y         --       [3]_
 EPD Academic              Y         Y          Y       [4]_, [5]_
 ActiveState CE            Y	    Y          Y       [6]_
 EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_
-STSci_Python              Y         N          Y       [10]_, [11]_
+STSci_Python              Y       [10]_        Y       [11]_
 ====================  ========  =========  =========  ======================
 
 .. rubric:: Notes
@@ -47,20 +49,23 @@ STSci_Python              Y         N          Y       [10]_, [11]_
 
    <span style="font-size: small">
 
-.. [1] **MacPorts**:  Although there are other package managers 
-   MacPorts has the best support for Python.  MacPorts
-   has the slight drawback of being slow to install so that it can take
-   several hours to build a working Python distribution.  All the other
-   binary options take 10 minutes or less.
+.. [1] **MacPorts** has the best built-in support for Python and
+   is generally stable after Mac OS system or security updates.
+   MacPorts has the drawback of being slow to install so that it can
+   take several hours to build a working Python distribution. 
 
-.. [2] **Linux package managers**: 
+.. [2] **Homebrew** is a simpler and faster solution for Mac but does
+   not include Python packages and uses the MacOS libraries instead
+   of building them separately.  It has been reported that 
+   MacOS system updates can break homebrew packages, but many people
+   successfully use this system.
+  
+.. [3] **Linux package managers**: 
    For recent versions of linux distributions like Ubuntu, the
    installed Python and supporting packages available through the
    package manager will be sufficiently current to support science
    analysis.  For a linux distribution like CentOS-5 this is not the
-   case.
-
-.. [3] Using an OS package manager requires root privilege.
+   case.  *This option requires root privilege.*
 
 .. [4] **EPD**: 
    The `Enthought Python Distribution
@@ -94,13 +99,13 @@ STSci_Python              Y         N          Y       [10]_, [11]_
    These are GUI toolkits which are used by a number of useful
    applications, in particular the IPython Qt console.
 
-.. [10] The `STSci_Python distribution 
+.. [10] Available only as a source install on Linux.
+
+.. [11] The `STSci_Python distribution 
    <http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python>`_
    provides `PyRAF <http://www.stsci.edu/institute/software_hardware/pyraf>`_,
    various analysis packages, and the core NumPy, SciPy, and Matplotlib packages.
    Qt and PyQt are not included.
-
-.. [11] Available only as a source install on Linux.
 
 .. raw:: html
 
@@ -154,31 +159,31 @@ MacOS or root linux install
 
   sudo easy_install --upgrade pip
   sudo pip install --upgrade distribute
-  sudo pip install asciitable
-  sudo pip install pyfits
-  sudo pip install pywcs
-  sudo pip install atpy
-  sudo pip install aplpy
-  sudo pip install pyregion
-  sudo pip install pyparsing
-  sudo pip install http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
-  sudo pip install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
+  sudo pip install --upgrade asciitable
+  sudo pip install --upgrade pyfits
+  sudo pip install --upgrade pywcs
+  sudo pip install --upgrade atpy
+  sudo pip install --upgrade aplpy
+  sudo pip install --upgrade pyregion
+  sudo pip install --upgrade pyparsing
+  sudo pip install --upgrade http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
+  sudo pip install --upgrade http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
 
 Non-root linux
 ############################
 ::
 
-  easy_install --user --upgrade pip
-  pip install --user --upgrade distribute
-  pip install --user asciitable
-  pip install --user pyfits
-  pip install --user pywcs
-  pip install --user atpy
-  pip install --user aplpy
-  pip install --user pyregion
-  pip install --user pyparsing
-  pip install --user http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
-  pip install --user http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
+  easy_install --upgrade pip
+  pip install --upgrade distribute
+  pip install --upgrade asciitable
+  pip install --upgrade pyfits
+  pip install --upgrade pywcs
+  pip install --upgrade atpy
+  pip install --upgrade aplpy
+  pip install --upgrade pyregion
+  pip install --upgrade pyparsing
+  pip install --upgrade http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
+  pip install --upgrade http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
 
 Windows
 ############################
@@ -190,15 +195,15 @@ pyregion, and coords.
   cd C:\Python27\Scripts
   easy_install.exe --upgrade pip
   pip.exe install --upgrade distribute
-  pip.exe install asciitable
-  pip.exe install pyfits
-  pip.exe install pywcs     
-  pip.exe install atpy
-  pip.exe install aplpy
-  pip.exe install pyregion  
-  pip.exe install pyparsing
-  pip.exe install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
-  pip.exe install http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
+  pip.exe install --upgrade asciitable
+  pip.exe install --upgrade pyfits
+  pip.exe install --upgrade pywcs     
+  pip.exe install --upgrade atpy
+  pip.exe install --upgrade aplpy
+  pip.exe install --upgrade pyregion  
+  pip.exe install --upgrade pyparsing
+  pip.exe install --upgrade http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
+  pip.exe install --upgrade http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
 
 
 .. Admonition:: The soap opera of pip and easy_install and distribute and setuptools
