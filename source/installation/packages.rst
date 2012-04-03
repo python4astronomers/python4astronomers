@@ -218,11 +218,11 @@ WITHOUT ``--user``
 ###################
 
 This option may require root or admin privilege because the package will be
-installed in the system area instead of your own local directories. 
+installed in the system area instead of your own local directories.  
+*For most astronomers running on a single-user machine this is a good option.*
 
 Installing this way has the benefit of making the package available for all users of the
-Python installation, but has the downside of possibly breaking things in a way
-that is difficult to repair (see next topic).
+Python installation, but has the downside that it is a bit more difficult to back out changes if required.
 
 How do I find a package once installed?
 #######################################
@@ -277,6 +277,40 @@ If you attempt to install a package but it does not work, your basic options are
     Do NOT just write and say "I tried to install BLAH and it failed, can 
     someone help?"
   
+Where does Python look for modules?
+-------------------------------------
+
+The official reference on `Modifying Python's Search Path
+<http://docs.python.org/install/index.html#modifying-python-s-search-path>`_
+gives all the details.  In summary:
+
+
+When the Python interpreter executes an import statement, it looks for modules
+on a search path. A default value for the path is configured into the Python
+binary when the interpreter is built. You can determine the path by importing
+the `sys <http://docs.python.org/library/sys.html#module-sys>`_ module and
+printing the value of ``sys.path``::
+
+  $ python
+  Python 2.2 (#11, Oct  3 2002, 13:31:27)
+  [GCC 2.96 20000731 (Red Hat Linux 7.3 2.96-112)] on linux2
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> import sys
+  >>> sys.path
+  ['', '/usr/local/lib/python2.3', '/usr/local/lib/python2.3/plat-linux2',
+   '/usr/local/lib/python2.3/lib-tk', '/usr/local/lib/python2.3/lib-dynload',
+   '/usr/local/lib/python2.3/site-packages']
+  >>>
+
+Within a script it is possible to adjust the search path by modify ``sys.path``
+which is just a Python list.  Generally speaking you will want to put your path
+at the front of the list using insert::
+
+  import sys
+  sys.path.insert(0, '/my/path/python/packages')
+
+You can also add paths to the search path using the `PYTHONPATH
+<http://docs.python.org/using/cmdline.html#envvar-PYTHONPATH>`_ environment variable.
 
 Multiple Pythons on your computer
 ---------------------------------
