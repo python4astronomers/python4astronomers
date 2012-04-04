@@ -5,7 +5,7 @@
 Installing Scientific Python 
 ==============================================
 
-Unless you are enjoy tracking down compiler errors and other issues related to
+Unless you enjoy tracking down compiler errors and other issues related to
 package incompatibilities, we recommend using a pre-built binary Python
 distribution.  For MacOS in particular there are a whole slew of options for
 Python which don't play well together.  Even if you already have an
