@@ -120,14 +120,14 @@ corner::
 Second, let's change the scaling to something more sensible. By default,
 ``plt.imshow()`` scales the colorbar from the minimum to the maximum value. In
 our case that is not the best option. We can set a lower and upper bound and
-add a colorbar to out plot::
+add a colorbar to our plot::
 
   plt.clf()
   plt.imshow(img, origin = 'lower', vmin = -10, vmax = 65)
   plt.colorbar()
 
 Your plot should not look like this (it is possible that the colormap differs,
-if your matplot lib has different defaults set).
+if your matplotlib has different defaults set).
 
 .. image:: imgview_img.png
   :scale: 50
