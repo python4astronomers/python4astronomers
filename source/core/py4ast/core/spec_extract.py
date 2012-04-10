@@ -1,3 +1,8 @@
+import os
+# set path to save images, if not current working directory
+impath = ''
+
+
 import pyfits
 
 hdus = pyfits.open('3c120_stis.fits.gz')
@@ -5,10 +10,29 @@ img = hdus[1].data
 err = hdus[2].data
 dq = hdus[3].data
 
-from imgview import ImgView
-ImgView(img)
-ImgView(err)
-ImgView(dq)
+
+plt.clf()
+plt.imshow(img)
+
+plt.clf()
+plt.imshow(img, origin = 'lower')
+
+plt.clf()
+plt.imshow(img, origin = 'lower', vmin = -10, vmax = 65)
+plt.colorbar()
+
+plt.savefig(os.path.join(impath, 'imgview_img.png'))
+
+plt.clf()
+plt.imshow(err, origin = 'lower', vmin = 5, vmax = 25)
+plt.colorbar()
+plt.savefig(os.path.join(impath, 'imgview_err.png'))
+
+plt.clf()
+plt.imshow(dq, origin = 'lower', vmax = 25)
+plt.colorbar()
+plt.savefig(os.path.join(impath, 'imgview_dq.png'))
+
 
 spectrum = img.sum(axis=0)
 profile = img.sum(axis=1)
@@ -40,5 +64,14 @@ for col in range(img_cr.shape[1]):
     bkg[:, col] = polyval(pfit, xrows)
 
 img_bkg = img_cr - bkg
-ImgView(bkg)
-ImgView(img_bkg)
+
+plt.clf()
+plt.imshow(bkg, origin = 'lower', vmin=0, vmax=20)
+plt.colorbar()
+plt.savefig(os.path.join(impath,'bkg_fit1.png'))
+
+plt.clf()
+plt.imshow(img_bkg, origin = 'lower', vmin=0, vmax=60)
+plt.colorbar()
+plt.savefig(os.path.join(impath,'spectrum_final.png'))
+

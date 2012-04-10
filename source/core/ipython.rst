@@ -15,12 +15,16 @@ for Astronomers working directory.  Then start IPython by typing "ipython
 
 As we saw in the Introduction and Installation workshops, for interactive data
 analysis IPython has a special ``-pylab`` command line option which
-automatically imports elements of the NumPy and the Matplotlib environments.
+automatically imports elements of the NumPy and the Matplotlib environments. This is equivalent to::
+  
+  import numpy as np
+  from matplotlib import pyplot as plt
+
 This provides a Matlab-like environment allowing very simple and direct
 commands like the following::
   
-  x = arange(0, 10, 0.2)
-  y = sin(x)
+  x = plt.arange(0, 10, 0.2)
+  y = plt.sin(x)
   print x
   plot(x, y)
 
@@ -32,8 +36,8 @@ you command line history.  This lets you quickly re-do commands, perhaps with a
 slight variation based on seeing the last result.  Try cut-n-pasting the above
 lines in an IPython session.  This should bring up a plot of a sine wave.  
 
-Now hit up-arrow once and get back the ``plot(x, y)`` line.  Hit the left-arrow
-key (not backspace) once and type ``**2`` so that the line reads ``plot(x,
+Now hit up-arrow once and get back the ``plt.plot(x, y)`` line.  Hit the left-arrow
+key (not backspace) once and type ``**2`` so that the line reads ``plt.plot(x,
 y**2)``.  Now you can hit Return to see the new curve overlayed within the same
 plot window.  It is not necessary to forward-space to the end of the line, you
 can hit Return with the cursor anywhere in the line.
@@ -42,7 +46,7 @@ Now say you want to change the ``x`` values slightly.  One option is to just hit
 up-arrow 5 times, but a much faster way is to remember that the line started
 with ``x``, so type ``x`` and then start hitting up-arrow.  Only lines that
 start with ``x`` will be displayed and you are immediately at the 
-``x = arange(0, 10, 0.2)`` line.  Now use the right-arrow and backspace to change ``10`` to
+``x = np.arange(0, 10, 0.2)`` line.  Now use the right-arrow and backspace to change ``10`` to
 ``15`` and hit Return.  Of course ``y`` needs to be recalculated, so hit ``y``
 then up-arrow, then Return.  Finally ``pl`` up-arrow and Return.  Nice and fast!
 

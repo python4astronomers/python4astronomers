@@ -105,11 +105,29 @@ where the count starts from 0::
   err = hdus[2].data      # Error per pixel
   dq = hdus[3].data       # Data quality per pixel
 
-Next have a look at the images using a super-simple image viewer that I wrote in
-about 50 lines of Python::
+Next have a look at the images using one of the standard Matplotlib plotting
+functions::
 
-  from imgview import ImgView
-  ImgView(img)
+  plt.imshow(img)
+
+As you can see, it is hard to see things. So, let's set a few option for this
+plot. First, we want the origin in the lower left instead of the upper left
+corner::
+
+  plt.clf()
+  plt.imshow(img, origin = 'lower')
+
+Second, let's change the scaling to something more sensible. By default,
+``plt.imshow()`` scales the colorbar from the minimum to the maximum value. In
+our case that is not the best option. We can set a lower and upper bound and
+add a colorbar to out plot::
+
+  plt.clf()
+  plt.imshow(img, origin = 'lower', vmin = -10, vmax = 65)
+  plt.colorbar()
+
+Your plot should not look like this (it is possible that the colormap differs,
+if your matplot lib has different defaults set).
 
 .. image:: imgview_img.png
   :scale: 50
@@ -126,9 +144,15 @@ about 50 lines of Python::
    <p class="flip1">Click to Show/Hide Solution</p> <div class="panel1">
 
 ::
-
-  ImgView(err)
-  ImgView(dq)
+  
+  # Errors
+  plt.clf()
+  plt.imshow(err, origin = 'lower', vmin = 5, vmax = 25)
+  plt.colorbar()
+  # Data quality
+  plt.clf()
+  plt.imshow(dq, origin = 'lower', vmax = 25)
+  plt.colorbar()
 
 .. image:: imgview_err.png
    :scale: 50
@@ -168,15 +192,15 @@ Making arrays
 
 Arrays can be created in different ways::
 
-  >>> a = array([10, 20, 30, 40])   # create an array from a list of values
+  >>> a = np.array([10, 20, 30, 40])   # create an array from a list of values
   >>> a
   array([10, 20, 30, 40]
 
-  >>> b = arange(4)                 # create an array of 4 integers, from 0 to 3
+  >>> b = np.arange(4)                 # create an array of 4 integers, from 0 to 3
   >>> b
   array([0, 1, 2, 3]),
 
-  >>> arange(0.0, 10.0, 0.1)    # create a float array from 0 to 100 stepping by 0.1
+  >>> np.arange(0.0, 10.0, 0.1)    # create a float array from 0 to 100 stepping by 0.1
   array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ,
           1.1,  1.2,  1.3,  1.4,  1.5,  1.6,  1.7,  1.8,  1.9,  2. ,  2.1,
           2.2,  2.3,  2.4,  2.5,  2.6,  2.7,  2.8,  2.9,  3. ,  3.1,  3.2,
@@ -188,7 +212,7 @@ Arrays can be created in different ways::
           8.8,  8.9,  9. ,  9.1,  9.2,  9.3,  9.4,  9.5,  9.6,  9.7,  9.8,
           9.9]),
 
-  >>> linspace(-pi, pi, 5)      # create an array of 5 evenly spaced samples from -pi to pi
+  >>> np.linspace(-pi, pi, 5)      # create an array of 5 evenly spaced samples from -pi to pi
   array([-3.14159265, -1.57079633,  0.        ,  1.57079633,  3.14159265]))
 
 New arrays can be obtained by operating with existing arrays::
@@ -198,13 +222,13 @@ New arrays can be obtained by operating with existing arrays::
 
 Arrays may have more than one dimension::
 
-  >>> f = ones([3, 4])                 # 3 x 4 float array of ones
+  >>> f = np.ones([3, 4])                 # 3 x 4 float array of ones
   >>> f
   array([[ 1.,  1.,  1.,  1.],
          [ 1.,  1.,  1.,  1.],
          [ 1.,  1.,  1.,  1.]]),
 
-  >>> g = zeros([2, 3, 4], dtype=int)  # 3 x 4 x 5 int array of zeros
+  >>> g = np.zeros([2, 3, 4], dtype=int)  # 3 x 4 x 5 int array of zeros
   array([[[0, 0, 0, 0],
           [0, 0, 0, 0],
           [0, 0, 0, 0]],
@@ -212,20 +236,20 @@ Arrays may have more than one dimension::
           [0, 0, 0, 0],
           [0, 0, 0, 0]]]),
 
-  >>> i = zeros_like(f)                # array of zeros with same shape/type as f
+  >>> i = np.zeros_like(f)                # array of zeros with same shape/type as f
   array([[ 0.,  0.,  0.,  0.],
          [ 0.,  0.,  0.,  0.],
          [ 0.,  0.,  0.,  0.]]))
 
 You can change the dimensions of existing arrays::
 
-  >>> w = arange(12)
+  >>> w = np.arange(12)
   >>> w.shape = [3, 4]       # does not modify the total number of elements
   array([[ 0,  1,  2,  3],
          [ 4,  5,  6,  7],
          [ 8,  9, 10, 11]]),
 
-  >>> x = arange(5)
+  >>> x = np.arange(5)
   >>> x
   array([0, 1, 2, 3, 4]),
 
@@ -260,11 +284,11 @@ It is possible to operate with arrays of different dimensions as long as they fi
 
 ::
 
-   x = arange(-20, 20, 0.25)
+   x = np.arange(-20, 20, 0.25)
    y = x.reshape(-1, 1)
-   r = sqrt(x**2 + y**2)
-   z = cos(r) / (r + 5)
-   ImgView(z)
+   r = np.sqrt(x**2 + y**2)
+   z = np.cos(r) / (r + 5)
+   plt.imshow(z, origin = 'lower)
 
 .. image:: ripple.png
    :scale: 50
@@ -282,7 +306,7 @@ e.g. the 4th column or every other row.  This is called slicing.  The outputs
 below illustrate basic slicing, but you don't need to type these examples.
 The ">>>" indicates the input to Python::
 
-   >>> a = arange(20).reshape(4,5)
+   >>> a = np.arange(20).reshape(4,5)
    >>> a
    array([[ 0,  1,  2,  3,  4],
          [ 5,  6,  7,  8,  9],
@@ -306,8 +330,8 @@ The ">>>" indicates the input to Python::
 As a first practical
 example plot column 300 of the longslit image to look at the spatial profile::
 
-  figure()             # Clear the existing plot -- by default matplotlib overplots.
-  plot(img[:, 300])
+  plt.figure()             # Clear the existing plot -- by default matplotlib overplots.
+  plt.plot(img[:, 300])
 
 .. image:: img_col300.png
   :scale: 50
@@ -333,8 +357,8 @@ The full slicing syntax also allows for a step size::
 
 ::
 
-  clf()
-  plot(err[254, 10:200:3])
+  plt.clf()
+  plt.plot(err[254, 10:200:3])
   dq[251:254, 101:105]
 
 The index upper bound ``i1`` is one more than the final index that gets
@@ -355,14 +379,14 @@ Plot the spatial profile and raw spectrum
 Plot the spatial profile by summing along the wavelength direction::
 
   profile = img.sum(axis=1)
-  figure()
-  plot(profile)
+  plt.figure()
+  plt.plot(profile)
 
 Now plot the spectrum by summing along the spatial direction::
 
   spectrum = img.sum(axis=0)
-  figure()
-  plot(spectrum)
+  plt.figure()
+  plt.plot(spectrum)
 
 Since most of the sum is in the background region there is a lot of noise and
 cosmic-ray contamination.
@@ -386,8 +410,8 @@ cosmic-ray contamination.
 ::
 
   spectrum = img[250:260, :].sum(axis=0)
-  clf()
-  plot(spectrum)
+  plt.clf()
+  plt.plot(spectrum)
 
 .. image:: spectrum_clean.png
    :scale: 50
@@ -404,8 +428,8 @@ Filter cosmic rays from the background
 
 Plot five columns (wavelength) from the spectrum image as follows::
 
-  clf()
-  plot(img[:, 254:259])
+  plt.clf()
+  plt.plot(img[:, 254:259])
 
 .. image:: img_row254_noisy.png
    :scale: 50
@@ -427,15 +451,15 @@ image.
   import scipy.signal
   img_sm = scipy.signal.medfilt(img, 5)
   sigma = median(err)
-  bad = abs(img - img_sm) / sigma > 8.0
+  bad = np.abs(img - img_sm) / sigma > 8.0
   img_cr = img.copy()
   img_cr[bad] = img_sm[bad]
   img_cr[230:280,:] = img[230:280,:]  # Filter only for background
 
 Check if it worked::
 
-  clf()
-  plot(img_cr[:, 254:259])
+  plt.clf()
+  plt.plot(img_cr[:, 254:259])
 
 .. image:: img_row254_clean.png
    :scale: 50
@@ -443,7 +467,7 @@ Check if it worked::
 This introduces the important concept of slicing with a **boolean mask**.  Let's
 look at a smaller example::
 
-   >>> a = array([1, 4, -2, 4, -5])
+   >>> a = np.array([1, 4, -2, 4, -5])
    >>> neg = (a < 0)    # Parentheses here for clarity but are not required
    >>> neg
    array([False, False,  True, False,  True], dtype=bool)
@@ -455,7 +479,7 @@ look at a smaller example::
 A slightly more complex example shows that this works the same on N-d arrays
 and that you can compose logical expressions::
 
-   >>> a = arange(25).reshape(5,5)
+   >>> a = np.arange(25).reshape(5,5)
    >>> ok = (a > 6) & (a < 17)     # "ok = a > 6 & a < 17" will FAIL!
    >>> a[~ok] = 0                  # Note the "logical not" operator
    >>> a
@@ -476,10 +500,10 @@ and that you can compose logical expressions::
 
 ::
 
-  dist = sqrt((x-10)**2 + (y-15)**2)
+  dist = np.sqrt((x-10)**2 + (y-15)**2)
   mask = dist < 10
   z[mask] = 0
-  ImgView(z)
+  plt.imshow(z, origin = 'lower')
 
 .. image:: ripple_masked.png
    :scale: 50
@@ -501,7 +525,7 @@ and that you can compose logical expressions::
    Variable names in Python are just pointers to the actual Python
    object.  To see this clearly do the following::
 
-     >>> a = arange(8)
+     >>> a = np.arange(8)
      >>> b = a
      >>> id(a)     # Unique identifier for the object referred to by "a": arange(8)
      122333200
@@ -530,7 +554,7 @@ and that you can compose logical expressions::
 
    However if you do arithmetic or boolean mask then a copy is always made::
 
-     >>> a = arange(4)
+     >>> a = np.arange(4)
      >>> b = a**2
      >>> a[1] = 100
      >>> a
@@ -548,27 +572,29 @@ image which includes the source region.
 
 Let's tackle a simpler problem first and fit the background for a single column::
 
-  x = append(arange(10, 200), arange(300, 480))  # Background rows
+  x = append(np.arange(10, 200), np.arange(300, 480))  # Background rows
   y = img_cr[x, 10]         # Background rows of column 10 of cleaned image
-  figure()
-  plot(x, y)
-  pfit = polyfit(x, y, 2)   # Fit a 2nd order polynomial to (x, y) data
-  yfit = polyval(pfit, x)   # Evaluate the polynomial at x
-  plot(x, yfit)
-  grid()
+  plt.figure()
+  plt.plot(x, y)
+  pfit = np.polyfit(x, y, 2)   # Fit a 2nd order polynomial to (x, y) data
+  yfit = np.polyval(pfit, x)   # Evaluate the polynomial at x
+  plt.plot(x, yfit)
+  plt.grid()
 
 .. image:: bkg_fit0.png
    :scale: 50
 
 Now do this for every column and store the results in a background image::
 
-  xrows = arange(img_cr.shape[0])          # Array from 0 .. N_rows-1
-  bkg = zeros_like(img_cr)                 # Empty image for background fits
-  for col in arange(img_cr.shape[1]):      # Iterate over columns
-      pfit = polyfit(x, img_cr[x, col], 2) # Fit poly over bkg rows for col
-      bkg[:, col] = polyval(pfit, xrows)   # Eval poly at ALL row positions
+  xrows = np.arange(img_cr.shape[0])          # Array from 0 .. N_rows-1
+  bkg = np.zeros_like(img_cr)                 # Empty image for background fits
+  for col in np.arange(img_cr.shape[1]):      # Iterate over columns
+      pfit = np.polyfit(xrows, img_cr[xrows, col], 2) # Fit poly over bkg rows for col
+      bkg[:, col] = np.polyval(pfit, xrows)   # Eval poly at ALL row positions
 
-  ImgView(bkg)
+  plt.clf()
+  plt.imshow(bkg, origin = 'lower', vmin=0, vmax=20)
+  plt.colorbar()
 
 .. image:: bkg_fit1.png
    :scale: 50
@@ -576,7 +602,9 @@ Now do this for every column and store the results in a background image::
 Finally subtract this background and see if it worked::
 
   img_bkg = img_cr - bkg
-  ImgView(img_bkg)
+  plt.clf()
+  plt.imshow(img_bkg, origin = 'lower', vmin=0, vmax=60)
+  plt.colorbar()
 
 +------------------------------------+-----------------------------------+
 |  **Background subtracted**         |   **Original**                    |
@@ -593,13 +621,13 @@ Finally subtract this background and see if it worked::
    *slow*.   Try the following::
 
      size = 500000
-     x = arange(size)
-     a = zeros(size)
+     x = np.arange(size)
+     a = np.zeros(size)
      time for i in x: a[i] = x[i] / 2.0
 
    Now compare to the vectorized NumPy solution::
 
-     x = arange(size)
+     x = np.arange(size)
      time a = x / 2
 
    Sometimes doing things in a vectorized way is not possible or just too
@@ -608,7 +636,7 @@ Finally subtract this background and see if it worked::
    or maybe coded in C or Fortran.
 
 .. Solution
-   badimg = zeros(bad.shape)
+   badimg = np.zeros(bad.shape)
    badimg[bad] = 1
    ImgView(badimg)
 
@@ -636,8 +664,8 @@ Now the final step is easy and is left as an exercise.
 ::
 
   spectrum = img_bkg[250:260, :].sum(axis=0)
-  clf()
-  plot(spectrum)
+  plt.clf()
+  plt.plot(spectrum)
 
 .. raw:: html
 
