@@ -34,6 +34,11 @@ encounter in research.*
    fitting/fitting
    vo/vo
 
+.. toctree::
+   :hidden:
+
+   local/local.rst
+
 Sample Workshop Schedule
 -------------------------
 
