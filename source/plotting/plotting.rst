@@ -21,11 +21,19 @@ Plotting and Images
    aplpy
    ../contest/bounce
 
+**More advanced plotting (for self-study)**
+
+.. toctree::
+   :maxdepth: 1
+
+   advanced
+   publication
+
 .. Bouncing balls contest
    -----------------------
    Now the moment we've been waiting for... :ref:`contest-bouncing-balls`.
 
-:Authors: Tom Aldcroft, Tom Robitaille
+:Authors: Tom Robitaille, Tom Aldcroft
 :Copyright: 2011 Smithsonian Astrophysical Observatory
 
 .. include:: ../references.rst
