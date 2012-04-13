@@ -15,18 +15,37 @@ for Astronomers working directory.  Then start IPython by typing "ipython
 
 As we saw in the Introduction and Installation workshops, for interactive data
 analysis IPython has a special ``-pylab`` command line option which
-automatically imports elements of the NumPy and the Matplotlib environments. This is equivalent to::
+automatically imports elements of the NumPy and the Matplotlib environments. 
+This is equivalent to::
   
   import numpy as np
   from matplotlib import pyplot as plt
 
-This provides a Matlab-like environment allowing very simple and direct
-commands like the following::
+.. admonition:: Reminder: What does ``import`` do?
   
-  x = plt.arange(0, 10, 0.2)
-  y = plt.sin(x)
+  In python only basic functionality is provided in the language itself. Most of the 
+  commands we need are imported from other 
+  `module s<http://docs.python.org/tutorial/modules.html>`_. The 
+  `import <http://docs.python.org/reference/simple_stmts.html#import>`_ statement 
+  makes the functions in a module available::
+
+    print time.ctime()    # will fail
+    # need to import the time module first
+    import time
+    time.ctime()          # prints the system time
+
+  The ``as`` variant of ``import`` simply saves some typing. ``import numpy as np`` 
+  allows us to type ``np`` instead of ``numpy`` to call a numpy function::
+
+    np.sum([2,3])
+
+IPython with the  ``-pylab`` command line option provides a Matlab-like environment
+allowing very simple and direct commands like the following::
+  
+  x = np.arange(0, 10, 0.2)
+  y = np.sin(x)
   print x
-  plot(x, y)
+  plt.plot(x, y)
 
 Keyboard navigation and history
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

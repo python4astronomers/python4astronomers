@@ -209,9 +209,9 @@ lines in a plotting area, decorate the plot with labels, etc....
 figure and plotting area, and the plotting functions are directed to the
 current axes::
 
-  figure()          # Make a new figure window
-  plot([1,2,3,4])
-  ylabel('some numbers')
+  plt.figure()          # Make a new figure window
+  plt.plot([1,2,3,4])
+  plt.ylabel('some numbers')
 
 .. image:: pyplot_simple.png
 
@@ -227,14 +227,14 @@ same length as y but starts with 0.  Hence the x data are
 an arbitrary number of arguments.  For example, to plot x versus y,
 you can issue the command::
 
-    clf()
-    plot([1,2,3,4], [1,4,9,16])
+    plt.clf()
+    plt.plot([1,2,3,4], [1,4,9,16])
 
 `Plot()`_ is just the tip of the iceberg for plotting commands and you should
 study the page of matplotlib `screenshots
 <http://matplotlib.sourceforge.net/users/screenshots.html>`_ to get a better picture.
 
-.. admonition Clearing the figure with clf()
+.. admonition Clearing the figure with plt.clf()
    From now on we will assume that you know to clear the figure with
    `clf()`_ before entering commands to make the next plot.
 
@@ -245,9 +245,9 @@ MATLAB, and you concatenate a color string with a line style string.
 The default format string is 'b-', which is a solid blue line.  For
 example, to plot the above with red circles, you would issue::
 
-  clf()
-  plot([1,2,3,4], [1,4,9,16], 'ro')
-  axis([0, 6, 0, 20])
+  plt.clf()
+  plt.plot([1,2,3,4], [1,4,9,16], 'ro')
+  plt.axis([0, 6, 0, 20])
 
 .. image:: pyplot_formatstr.png
 
@@ -265,13 +265,13 @@ plotting several lines with different format styles in one command
 using arrays::
 
   # evenly sampled time at 200ms intervals
-  t = arange(0., 5., 0.2)
+  t = np.arange(0., 5., 0.2)
 
   # red dashes, blue squares and green triangles
   # then filled circle with connecting line
-  clf()
-  plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
-  plot(t, t+60, 'o', linestyle='-', color='c')
+  plt.clf()
+  plt.plot(t, t, 'r--', t, t**2, 'bs', t, t**3, 'g^')
+  plt.plot(t, t+60, 'o', linestyle='-', color='c')
 
 .. image:: pyplot_three_v2.png
    :scale: 70
@@ -291,10 +291,10 @@ using arrays::
 
    x = [1, 2, 3, 4]
    y = [3, 2, 3, 1]
-   clf()
-   plot(x, y, '-.', linewidth=10)
-   plot(x, y, 'H', markeredgecolor='b', markeredgewidth=10, markerfacecolor='r', markersize=40)
-   axis([0, 5, 0, 4])
+   plt.clf()
+   plt.plot(x, y, '-.', linewidth=10)
+   plt.plot(x, y, 'H', markeredgecolor='b', markeredgewidth=10, markerfacecolor='r', markersize=40)
+   plt.axis([0, 5, 0, 4])
 
 .. raw:: html
 
@@ -316,33 +316,33 @@ properties
 
 * Use keyword args::
 
-      x = arange(0, 10, 0.25)
-      y = sin(x)
-      clf()
-      plot(x, y, linewidth=4.0)
+      x = np.arange(0, 10, 0.25)
+      y = np.sin(x)
+      plt.clf()
+      plt.plot(x, y, linewidth=4.0)
 
 * Use the `setp()`_ command.  The example below
   uses a MATLAB-style command to set multiple properties
   on a list of lines.  ``setp`` works transparently with a list of objects
   or a single object::
 
-      clf()
-      lines = plot(x, y, 'r', x/2, y/2, 'b')
-      setp(lines, color='r', linewidth=4.0)
+      plt.clf()
+      lines = plt.plot(x, y, 'r', x/2, y/2, 'b')
+      plt.setp(lines, color='r', linewidth=4.0)
 
 * Use the setter methods of the ``Line2D`` instance.  ``plot`` returns a list
   of lines; eg ``line1, line2 = plot(x1,y1,x2,x2)``.  Below I have only
   one line so it is a list of length 1.  I use tuple unpacking in the
   ``line, = plot(x, y, 'o')`` to get the first element of the list::
 
-      clf()
-      line, = plot(x, y, '-')
+      plt.clf()
+      line, = plt.plot(x, y, '-')
       line.set_<TAB>
 
   Now change the line color, noting that in this case you need to explicitly redraw::
 
       line.set_color('m') # change color
-      draw()
+      plt.draw()
 
 .. Important::
 
@@ -393,8 +393,8 @@ To get a list of settable line properties, call the
 `setp()`_ function with a line or lines
 as argument::
 
-  lines = plot([1,2,3])
-  setp(lines)
+  lines = plt.plot([1,2,3])
+  plt.setp(lines)
 
 .. _multiple-figs-axes:
 
@@ -402,8 +402,8 @@ as argument::
 .. admonition:: Detour into Python
 
   You may have noticed that in the last workshop we mostly used NumPy arrays like
-  ``arange(5)`` or ``array([1,2,3,4])`` but now you are seeing statements like
-  ``plot([1,2,3])``.
+  ``np.arange(5)`` or ``np.array([1,2,3,4])`` but now you are seeing statements like
+  ``plt.plot([1,2,3])``.
 
 .. _controlling-line-properties:
 
@@ -439,36 +439,36 @@ subplots::
 
   def f(t):                 
       """Python function to calculate a decaying sinusoid"""
-      val = exp(-t) * cos(2*pi*t)
+      val = np.exp(-t) * np.cos(2*np.pi*t)
       return val
 
-  t1 = arange(0.0, 5.0, 0.1)
-  t2 = arange(0.0, 5.0, 0.02)
+  t1 = np.arange(0.0, 5.0, 0.1)
+  t2 = np.arange(0.0, 5.0, 0.02)
 
-  figure(1)             # Make the first figure
-  clf()
-  subplot(211)  # 2 rows, 1 column, plot 1
-  plot(t1, f(t1), 'bo', t2, f(t2), 'k')
-  title('FIGURE 1')
-  text(2, 0.8, 'AXES 211')
+  plt.figure(1)             # Make the first figure
+  plt.clf()
+  plt.subplot(211)  # 2 rows, 1 column, plot 1
+  plt.plot(t1, f(t1), 'bo', t2, f(t2), 'k')
+  plt.title('FIGURE 1')
+  plt.text(2, 0.8, 'AXES 211')
 
-  subplot(212)  # 2 rows, 1 column, plot 2
-  plot(t2, cos(2*pi*t2), 'r--')
-  text(2, 0.8, 'AXES 212')
+  plt.subplot(212)  # 2 rows, 1 column, plot 2
+  plt.plot(t2, cos(2*pi*t2), 'r--')
+  plt.text(2, 0.8, 'AXES 212')
 
-  figure(2)             # Make a second figure
-  clf()
-  plot(t2, f(t2), '*')
-  grid()
-  title('FIGURE 2')
-  text(2, 0.8, 'AXES 111')
+  plt.figure(2)             # Make a second figure
+  plt.clf()
+  plt.plot(t2, f(t2), '*')
+  plt.grid()
+  plt.title('FIGURE 2')
+  plt.text(2, 0.8, 'AXES 111')
 
 Now return the second plot in the first figure and update it::
 
-  figure(1)             # Select the existing first figure
-  subplot(212)          # Select the existing subplot 212
-  plot(t2, cos(pi*t2), 'g--')   # Add a plot to the axes
-  text(2, -0.8, 'Back to AXES 212')
+  plt.figure(1)             # Select the existing first figure
+  plt.subplot(212)          # Select the existing subplot 212
+  plt.plot(t2, cos(pi*t2), 'g--')   # Add a plot to the axes
+  plt.text(2, -0.8, 'Back to AXES 212')
 
 +--------------------------+---------------------------+
 |.. image:: mult_figs1.png |.. image:: mult_figs2.png  |
@@ -512,18 +512,18 @@ are used to add text in the indicated locations (see :ref:`text-intro`
 for a more detailed example)::
 
   mu, sigma = 100, 15
-  x = normal(mu, sigma, size=10000)
-  clf()
+  x = np.random.normal(mu, sigma, size=10000)
+  plt.clf()
 
   # the histogram of the data
-  histvals, binvals, patches = hist(x, bins=50, normed=1, facecolor='g', alpha=0.75)
+  histvals, binvals, patches = plt.hist(x, bins=50, normed=True, facecolor='g', alpha=0.75)
 
-  xlabel('Smarts')
-  ylabel('Probability')
-  title('Histogram of IQ')
-  text(60, .025, r'$\mu=100,\ \sigma=15$')
-  axis([40, 160, 0, 0.03])
-  grid(True)
+  plt.xlabel('Smarts')
+  plt.ylabel('Probability')
+  plt.title('Histogram of IQ')
+  plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+  plt.axis([40, 160, 0, 0.03])
+  plt.grid(True)
 
 .. image:: pyplot_text.png
 
@@ -532,7 +532,7 @@ All of the `text()`_ commands return an
 above, you can customize the properties by passing keyword arguments
 into the text functions or using `setp()`_::
 
-  t = xlabel('my data', fontsize=14, color='red')
+  t = plt.xlabel('my data', fontsize=14, color='red')
 
 These properties are covered in more detail in `text-properties <http://matplotlib.sourceforge.net/users/text_props.html>`_.
 
@@ -554,10 +554,10 @@ These properties are covered in more detail in `text-properties <http://matplotl
 
 ::
 
-  clf()
-  x2 = normal(130, sigma, size=10000)
-  out = hist(x, bins=bins, normed=1, facecolor='g', alpha=0.5, histtype='stepfilled')
-  out = hist(x2, bins=bins, normed=1, facecolor='r', alpha=0.5, histtype='stepfilled')
+  plt.clf()
+  x2 = np.random.normal(130, sigma, size=10000)
+  out = plt.hist(x, bins=50, normed=True, facecolor='g', alpha=0.5, histtype='stepfilled')
+  out = plt.hist(x2, bins=50, normed=True, facecolor='r', alpha=0.5, histtype='stepfilled')
 
 .. raw:: html
 
@@ -569,11 +569,11 @@ Getting the fonts just right
 The global font properties for various plot elements can be controlled using
 the `rc()`_ function::
 
-  rc("font", size=10, family='normal', weight='bold')
-  rc("axes", labelsize=10, titlesize=10)
-  rc("xtick", labelsize=10)
-  rc("ytick", labelsize=10)
-  rc("legend", fontsize=10)
+  plt.rc("font", size=10, family='normal', weight='bold')
+  plt.rc("axes", labelsize=10, titlesize=10)
+  plt.rc("xtick", labelsize=10)
+  plt.rc("ytick", labelsize=10)
+  plt.rc("legend", fontsize=10)
 
 The inconsistency here is one of the warts in matplotlib.  Ironically my favorite
 way to find these valuable commands is to google `"matplotlib makes me
@@ -592,7 +592,7 @@ matplotlib accepts TeX equation expressions in any text expression.
 For example to write the expression :math:`\sigma_i=15` in the title,
 you can write a TeX expression surrounded by dollar signs::
 
-    title(r'$\sigma_i=15$')
+    plt.title(r'$\sigma_i=15$')
 
 The ``r`` preceeding the title string is important -- it signifies that the
 string is a *raw* string and not to treate backslashes and python escapes.
@@ -617,14 +617,14 @@ two points to consider: the location being annotated represented by
 the argument ``xy`` and the location of the text ``xytext``.  Both of
 these arguments are ``(x,y)`` tuples::
 
-  clf()
-  t = arange(0.0, 5.0, 0.01)
-  s = cos(2*pi*t)
-  lines = plot(t, s, lw=2)
+  plt.clf()
+  t = np.arange(0.0, 5.0, 0.01)
+  s = np.cos(2*pi*t)
+  lines = plt.plot(t, s, lw=2)
 
-  annotate('local max', xy=(2, 1), xytext=(3, 1.5),
+  plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
            arrowprops=dict(facecolor='black', shrink=0.05))
-  ylim(-2,2)
+  plt.ylim(-2,2)
 
 .. image:: pyplot_annotate.png
 
@@ -659,7 +659,7 @@ looking at an example of the 3-d viewer that is available::
   def randrange(n, vmin, vmax):
       return (vmax-vmin)*np.random.rand(n) + vmin
 
-  fig = figure()
+  fig = plt.figure()
   ax = fig.add_subplot(111, projection='3d')
   n = 100
   for c, m, zl, zh in [('r', 'o', -50, -25), ('b', '^', -30, -5)]:

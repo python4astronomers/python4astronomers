@@ -23,6 +23,6 @@ Workshop goals:
    ipython
    numpy_scipy
 
-:Author: Tom Aldcroft
+:Author: Tom Aldcroft, Moritz Guenther
 :Copyright: 2011 Smithsonian Astrophysical Observatory
 
