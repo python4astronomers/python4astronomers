@@ -25,7 +25,7 @@ This is equivalent to::
   
   In python only basic functionality is provided in the language itself. Most of the 
   commands we need are imported from other 
-  `module s<http://docs.python.org/tutorial/modules.html>`_. The 
+  `modules <http://docs.python.org/tutorial/modules.html>`_. The 
   `import <http://docs.python.org/reference/simple_stmts.html#import>`_ statement 
   makes the functions in a module available::
 

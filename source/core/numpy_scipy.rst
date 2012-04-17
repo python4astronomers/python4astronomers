@@ -190,7 +190,7 @@ a few key features of NumPy.
 Making arrays
 #############
 
-Arrays can be created in different ways::
+Arrays can be created in different ways. The ">>>" indicates the input to Python::
 
   >>> a = np.array([10, 20, 30, 40])   # create an array from a list of values
   >>> a
@@ -276,7 +276,7 @@ It is possible to operate with arrays of different dimensions as long as they fi
   Calculate a surface ``z = cos(r) / (r + 5)`` where ``r = sqrt(x**2 +
   y**2)``.  Set ``x`` to an array that goes from -20 to 20 stepping by 0.25
   Make ``y`` the same as ``x`` but "transposed" using the ``reshape`` trick above.
-  Use ImgView to display the image of ``z``.
+  Use `plt.imshow` to display the image of ``z``.
 
 .. raw:: html
 
@@ -303,8 +303,8 @@ Array access and slicing
 
 NumPy provides powerful methods for accessing array elements or particular subsets of an array,
 e.g. the 4th column or every other row.  This is called slicing.  The outputs
-below illustrate basic slicing, but you don't need to type these examples.
-The ">>>" indicates the input to Python::
+below illustrate basic slicing, but you don't need to type these examples::
+
 
    >>> a = np.arange(20).reshape(4,5)
    >>> a
@@ -589,7 +589,7 @@ Now do this for every column and store the results in a background image::
   xrows = np.arange(img_cr.shape[0])          # Array from 0 .. N_rows-1
   bkg = np.zeros_like(img_cr)                 # Empty image for background fits
   for col in np.arange(img_cr.shape[1]):      # Iterate over columns
-      pfit = np.polyfit(xrows, img_cr[xrows, col], 2) # Fit poly over bkg rows for col
+      pfit = np.polyfit(x, img_cr[x, col], 2) # Fit poly over bkg rows for col
       bkg[:, col] = np.polyval(pfit, xrows)   # Eval poly at ALL row positions
 
   plt.clf()
