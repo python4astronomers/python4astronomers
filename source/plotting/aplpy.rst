@@ -34,7 +34,7 @@ Getting started
 
 Start off by downloading :download:`this tar file <../downloads/APLpy-example.tar>`, expand it, and go to the ``APLpy-example`` directory on the command line. Then, launch pylab::
 
-    $ ipython -pylab
+    $ ipython --pylab
 
 If you have trouble downloading the file, then start up IPython (``ipython -pylab``) and enter::
 

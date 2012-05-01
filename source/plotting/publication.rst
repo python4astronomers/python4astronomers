@@ -1,3 +1,5 @@
+.. _`publication_quality_plots`:
+
 Publication-quality plots
 =========================
 

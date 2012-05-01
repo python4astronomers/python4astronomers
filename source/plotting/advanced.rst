@@ -1,3 +1,5 @@
+.. _`advanced_plotting`:
+
 Advanced plotting
 =================
 

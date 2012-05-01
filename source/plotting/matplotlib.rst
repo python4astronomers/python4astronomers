@@ -117,7 +117,7 @@ exact source code making the plot:
   beautiful and well-behaved
 - `Line2D`_: knobs to twiddle for customizing a line or points in a plot
 
-Hints on getting from here (an idea) to there (a plot)
+Hints on getting from here (an idea) to there (a publishable plot)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Start with `Screenshots
@@ -131,52 +131,9 @@ Hints on getting from here (an idea) to there (a plot)
   enter the function name.  *Most* of the high-level plotting functions are in
   the ``pyplot`` module and you can find them quickly by searching for
   ``pyplot.<function>``, e.g. ``pyplot.errorbar``.
+- When you are ready to put your plot into a paper for publication 
+  see the page on :ref:`publication_quality_plots`.
 
-
-.. admonition::  Pylab and Pyplot and NumPy
-
-  Let's demystify what's happening when you use ``ipython -pylab`` and
-  clarify the relationship between **pylab** and **pyplot**.
-
-  `matplotlib.pyplot`_ is a collection of command style functions that make
-  matplotlib work like MATLAB.  This is just a package module that you can import::
-
-    import matplotlib.pyplot
-    print sorted(dir(matplotlib.pyplot))
-
-  Likewise pylab is also a module provided by matplotlib that you can import::
-
-    import pylab
-
-  This module is a thin wrapper around ``matplotlib.pylab`` which pulls in:
-
-  - Everything in ``matplotlib.pyplot``
-  - All top-level functions ``numpy``,``numpy.fft``, ``numpy.random``,
-  - ``numpy.linalg``
-  - A selection of other useful functions and modules from matplotlib
-
-  There is no magic, and to see for yourself do
-
-  .. sourcecode:: python
-
-     import matplotlib.pylab
-     matplotlib.pylab??       # prints the source code!!
-
-  When you do ``ipython -pylab`` it (essentially) just does::
-
-    from pylab import *
-
-  In a lot of documentation examples you will see code like::
-
-    import matplotlib.pyplot as plt  # set plt as alias for matplotlib.pyplot
-    plt.plot([1,2], [3,4])
-
-  Now you should understand this is the same ``plot()`` function that you get in
-  Pylab.
-
-  See `Matplotlib, pylab, and pyplot: how are they related?
-  <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
-  for a more discussion on the topic.
 
 Plotting 1-d data
 ------------------
@@ -186,9 +143,7 @@ The `matplotlib`_ tutorial on `Pyplot
 2002-2009 John D. Hunter; All Rights Reserved and `license
 <http://matplotlib.sourceforge.net/users/license.html>`_) is an excellent
 introduction to basic 1-d plotting.  **The content below has been adapted from the pyplot
-tutorial source with some changes and the addition of exercises.** Most notably
-the example code has been modified assuming the Pylab environment where the
-`matplotlib.pyplot`_ functions have all been imported already.
+tutorial source with some changes and the addition of exercises.** 
 
 .. The ``pylab`` mode of `matplotlib`_ is a collection of command style functions
    that make `matplotlib`_ work like matlab.  Each ``pylab`` function makes some
@@ -201,10 +156,28 @@ the example code has been modified assuming the Pylab environment where the
    related?
    <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_.
 
+Basic plots
+^^^^^^^^^^^^^
+
+So let's get started with plotting using a standard startup idiom that will work
+for both interactive and scripted plotting.  In this case we are working
+interactively so fire up ``ipython`` in the usual way::
+
+  % ipython --pylab
+
+See the `Appendix: Pylab and Pyplot and NumPy`_ for details about just what's
+going on with the ``--pylab`` switch.  Also remember if you are using IPython
+version 0.10 or earlier you need to use ``-pylab`` with just one dash.
+
+Now import ``numpy`` and ``matplotlib``::
+
+  import numpy as np
+  import matplotlib.pyplot as plt
+
 `matplotlib.pyplot`_ is a collection of command style functions that make
 matplotlib work like MATLAB.  Each ``pyplot`` function makes some change to a
 figure: eg, create a figure, create a plotting area in a figure, plot some
-lines in a plotting area, decorate the plot with labels, etc....
+lines in a plotting area, decorate the plot with labels, etc.  Plotting with
 `matplotlib.pyplot`_ is stateful, in that it keeps track of the current
 figure and plotting area, and the plotting functions are directed to the
 current axes::
@@ -281,7 +254,11 @@ using arrays::
    .. image:: big_hexes.png
       :scale: 50
 
-   Make a plot that looks similar to the one above.
+   Use the `plot()`_ documentation to make a plot that looks similar to the one
+   above.  Start with::
+
+     x = [1, 2, 3, 4]
+     y = [3, 2, 3, 1]
 
 .. raw:: html
 
@@ -447,13 +424,13 @@ subplots::
 
   plt.figure(1)             # Make the first figure
   plt.clf()
-  plt.subplot(211)  # 2 rows, 1 column, plot 1
+  plt.subplot(2, 1, 1)  # 2 rows, 1 column, plot 1
   plt.plot(t1, f(t1), 'bo', t2, f(t2), 'k')
   plt.title('FIGURE 1')
   plt.text(2, 0.8, 'AXES 211')
 
-  plt.subplot(212)  # 2 rows, 1 column, plot 2
-  plt.plot(t2, cos(2*pi*t2), 'r--')
+  plt.subplot(2, 1, 2)  # 2 rows, 1 column, plot 2
+  plt.plot(t2, np.cos(2*np.pi*t2), 'r--')
   plt.text(2, 0.8, 'AXES 212')
 
   plt.figure(2)             # Make a second figure
@@ -466,24 +443,24 @@ subplots::
 Now return the second plot in the first figure and update it::
 
   plt.figure(1)             # Select the existing first figure
-  plt.subplot(212)          # Select the existing subplot 212
-  plt.plot(t2, cos(pi*t2), 'g--')   # Add a plot to the axes
+  plt.subplot(2, 1, 2)          # Select the existing subplot 212
+  plt.plot(t2, np.cos(np.pi*t2), 'g--')   # Add a plot to the axes
   plt.text(2, -0.8, 'Back to AXES 212')
 
 +--------------------------+---------------------------+
 |.. image:: mult_figs1.png |.. image:: mult_figs2.png  |
-|   :scale: 50             |   :scale: 50              |
+|   :scale: 50 %           |   :scale: 50 %            |
 +--------------------------+---------------------------+
 
 The first `figure()`_ command here is optional because
-``figure(1)`` will be created by default, just as a ``subplot(111)``
+``figure(1)`` will be created by default, just as a ``subplot(1, 1, 1)``
 will be created by default if you don't manually specify an axes.
 
 The `subplot()`_ command specifies ``numrows, numcols, fignum`` where
 ``fignum`` ranges from 1 to ``numrows*numcols``.  The commas in the ``subplot``
-command are optional if ``numrows*numcols<10``.  So ``subplot(211)`` is
-identical to ``subplot(2,1,1)``.  You can create an arbitrary number of
-subplots and axes.
+command are optional if ``numrows*numcols<10`` so you might see calls like
+``subplot(211)`` in code, but don't do this yourself.  You can create an
+arbitrary number of subplots and axes.
 
 If you want to place an axes manually, ie, not on a rectangular grid, use the
 `axes()`_ command, which allows you to specify the location as ``axes([left,
@@ -494,11 +471,12 @@ for an example of placing axes manually and `pylab_examples-line_styles
 <http://matplotlib.sourceforge.net/examples/pylab_examples/line_styles.html>`_
 for an example with lots-o-subplots.
 
-You can clear the current figure with `clf()`_
-and the current axes with `cla()`_.  If you find
-this statefulness, annoying, don't despair, this is just a thin
-stateful wrapper around an object oriented API, which you can use
-instead (see :ref:`artist-tutorial`)
+You can clear the current figure with `clf()`_ and the current axes with
+`cla()`_.  If you find this statefulness, annoying, don't despair, this is just
+a thin stateful wrapper around an object oriented API, which you can use
+instead.  See the :ref:`advanced_plotting` page for an introduction to this
+approach, and the then `Artist tutorial
+<http://matplotlib.sourceforge.net/users/artists.html>`_ for the gory details.
 
 .. _working-with-text:
 
@@ -542,11 +520,10 @@ These properties are covered in more detail in `text-properties <http://matplotl
    where the two distributions are overlayed.  Use a different color and
    choose the opacities so it looks reasonable.
 
-   Hints:
+   Hint:
 
    - You might want to use the ``bin`` parameter with an ``arange(min, max,
      step)`` so both histograms are binned the same.
-   - The ``histtype`` parameter may also prove useful depending on your taste.
 
 .. raw:: html
 
@@ -556,8 +533,8 @@ These properties are covered in more detail in `text-properties <http://matplotl
 
   plt.clf()
   x2 = np.random.normal(130, sigma, size=10000)
-  out = plt.hist(x, bins=50, normed=True, facecolor='g', alpha=0.5, histtype='stepfilled')
-  out = plt.hist(x2, bins=50, normed=True, facecolor='r', alpha=0.5, histtype='stepfilled')
+  out = plt.hist(x, bins=50, facecolor='g', alpha=0.5)
+  out = plt.hist(x2, bins=50, facecolor='r', alpha=0.5)
 
 .. raw:: html
 
@@ -583,7 +560,9 @@ which brings up a blog post ranting about the problems with matplotlib.
 
 All of the attributes that can be controlled with the `rc()`_ command are
 listed in ``$HOME/.matplotlib/matplotlibrc`` and `Customizing matplotlib
-<http://matplotlib.sourceforge.net/users/customizing.html>`_.
+<http://matplotlib.sourceforge.net/users/customizing.html>`_.  
+
+See also the :ref:`advanced_plotting` page.
 
 Using mathematical expressions in text
 ----------------------------------------
@@ -595,7 +574,7 @@ you can write a TeX expression surrounded by dollar signs::
     plt.title(r'$\sigma_i=15$')
 
 The ``r`` preceeding the title string is important -- it signifies that the
-string is a *raw* string and not to treate backslashes and python escapes.
+string is a *raw* string and not to treate backslashes as python escapes.
 matplotlib has a built-in TeX expression parser and layout engine, and ships
 its own math fonts -- for details see the `mathtext-tutorial
 <http://matplotlib.sourceforge.net/users/mathtext.html>`_.  Thus you can use
@@ -674,3 +653,54 @@ looking at an example of the 3-d viewer that is available::
 
 To get more information check out the `mplot3d tutorial
 <http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_.
+
+Appendix: Pylab and Pyplot and NumPy
+-------------------------------------
+
+Let's demystify what's happening when you use ``ipython --pylab`` and
+clarify the relationship between **pylab** and **pyplot**.
+
+`matplotlib.pyplot`_ is a collection of command style functions that make
+matplotlib work like MATLAB.  This is just a package module that you can import::
+
+  import matplotlib.pyplot
+  print sorted(dir(matplotlib.pyplot))
+
+Likewise pylab is also a module provided by matplotlib that you can import::
+
+  import pylab
+
+This module is a thin wrapper around ``matplotlib.pylab`` which pulls in:
+
+- Everything in ``matplotlib.pyplot``
+- All top-level functions ``numpy``,``numpy.fft``, ``numpy.random``,
+- ``numpy.linalg``
+- A selection of other useful functions and modules from matplotlib
+
+There is no magic, and to see for yourself do
+
+.. sourcecode:: python
+
+   import matplotlib.pylab
+   matplotlib.pylab??       # prints the source code!!
+
+When you do ``ipython --pylab`` it (essentially) just does::
+
+  from pylab import *
+
+There is one technical detail about GUI event loops and plot window interaction
+which makes it useful to use ``--pylab`` even if you are not directly using all the
+top-level functions like ``plot()`` that get imported.
+
+In a lot of documentation examples you will see code like::
+
+  import matplotlib.pyplot as plt  # set plt as alias for matplotlib.pyplot
+  plt.plot([1,2], [3,4])
+
+Now you should understand this is the same ``plot()`` function that you get in
+Pylab.
+
+See `Matplotlib, pylab, and pyplot: how are they related?
+<http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
+for a more discussion on the topic.
+
