@@ -83,15 +83,17 @@
 .. _`ylim()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.ylim#matplotlib.pyplot.ylim
 .. _`xticks()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.xticks#matplotlib.pyplot.xticks
 .. _`yticks()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.yticks#matplotlib.pyplot.yticks
-
+.. _`Figure`: http://matplotlib.sourceforge.net/api/figure_api.html
+.. _`Axes`: http://matplotlib.sourceforge.net/api/axes_api.html
 
 Matplotlib
 ============
 
-`Matplotlib`_ is a python 2-d plotting library which produces publication quality
-figures in a variety of formats and interactive environments across
-platforms.  Matplotlib can be used in Python scripts, the Python and IPython
-shell, web application servers, and six graphical user interface toolkits.
+`Matplotlib`_ is a Python 2-d and 3-d plotting library which produces
+publication quality figures in a variety of formats and interactive
+environments across platforms.  Matplotlib can be used in Python scripts, the
+Python and IPython shell, web application servers, and six graphical user
+interface toolkits.
 
 Documentation
 -----------------
@@ -118,11 +120,14 @@ exact source code making the plot:
 - `Line2D`_: knobs to twiddle for customizing a line or points in a plot
 
 Hints on getting from here (an idea) to there (a publishable plot)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Start with `Screenshots
   <http://matplotlib.sourceforge.net/users/screenshots.html>`_ for the broad
   plotting capabilities
+- Go to the `thumbnail gallery
+  <http://matplotlib.sourceforge.net/gallery.html>`_ and scan the thumbnails to
+  find something similar.
 - Googling is unfortunately not the best way to get to the detailed help for
   particular functions.  For example `googling "matplotlib errorbar"
   <http://www.google.com/search?ie=UTF-8&q=matplotlib+errorbar&qscrl=1>`_ just gives the home page and the
@@ -407,12 +412,34 @@ Working with multiple figures and axes
 MATLAB, and `matplotlib.pyplot`_, have the concept of the current
 figure and the current axes.  All plotting commands apply to the
 current axes.  The function `gca()`_ returns the
-current axes (a :class:`matplotlib.axes.Axes` instance), and
+current axes (an `Axes`_ instance), and
 `gcf()`_ returns the current figure
-(:class:`matplotlib.figure.Figure` instance). Normally, you don't have
+(a `Figure`_ instance). Normally, you don't have
 to worry about this, because it is all taken care of behind the
-scenes.  Below is a script to create two figures where the first figure has two
-subplots::
+scenes.  
+
+.. admonition:: Figure, Axes, plot(), and subplot()
+
+  `Figure`_
+    This is the entire window where one or more subplots live.  
+    A Figure object (new window) is created with the `figure()`_ command.
+
+  `Axes`_
+    This is an object representing a subplot (which you might casually
+    call a "plot") which contains axes, ticks, lines, points, text, etc.
+
+  `plot()`_
+    This is a command that draws points or lines and returns a list of
+    `Line2D`_ objects.  One sublety is that `plot()`_ will automatically
+    call `figure()`_ and/or `subplot()`_ if neccesary to create the
+    underlying `Figure`_ and `Axes`_ objects.
+
+  `subplot()`_
+    This is a command that creates and returns a new subplot (`Axes`_) object 
+    which will be used for subsequent plotting commands.
+
+Below is a script that illustrates this by creating two figures where the first
+figure has two subplots::
 
   def f(t):                 
       """Python function to calculate a decaying sinusoid"""
