@@ -18,12 +18,13 @@ What can you do?
     1. Convert your collegue to use a different file format.
     2. Read that file in python.
 
-If you have a relatively recent version (>0.9) of `scipy` then this is a matter of two lines::
+If you have a relatively recent version (at least 0.9) of ``scipy`` then this is a matter of two lines::
     
     from scipy.io.idl import readsav
     data = readsav('myidlfile.sav')
 
 If your scipy is older, then you need to install the package `idlsave <http://astrofrog.github.com/idlsave/>`_ yourself.
+(Go back to :doc:`../installation/packages` for details on package installation.)
 
 In a normal terminal (outside ``ipython``) do::
     
@@ -47,11 +48,11 @@ Then import the package and read the data::
 
    <p class="flip6">Click to Show/Hide Solution</p> <div class="panel6">
 
-    ``data`` is a dictionary and all the variables in the ``.sav`` file are
-    fields in this dictionary. You get a list with ``data.keys()``. Then, this
-    is easy::
-        
-        plt.plot(data['x'], data['y'])
+``data`` is a dictionary and all the variables in the ``.sav`` file are
+fields in this dictionary. You get a list with ``data.keys()``. Then, this
+is easy::
+    
+    plt.plot(data['x'], data['y'])
 
 .. raw:: html
 
