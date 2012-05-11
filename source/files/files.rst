@@ -14,33 +14,13 @@ knowledge with a primer on Python data types.
 Pure Python primer
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    ../python/types
-
-Several ways to deal with ASCII tables
-
-.. toctree::
-   :maxdepth: 1
-
-   pure_python.rst
-   asciitable.rst
-
-Some binary formats of special interest for astronomers
-
-.. toctree::
-   :maxdepth: 1
-
-   pyfits.rst
-   idlsave.rst
-
-A tool to unify the interface for many different table formats
-
-.. toctree::
-   :maxdepth: 1
-
+   asciifiles.rst
+   binaryfiles.rst
    atpy.rst
    
-:Authors: Tom Robitaille, Tom Aldcroft
+:Authors: Tom Robitaille, Tom Aldcroft, Moritz Guenther
 :Copyright: 2011 Smithsonian Astrophysical Observatory
 
