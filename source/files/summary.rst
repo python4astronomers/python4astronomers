@@ -134,6 +134,10 @@ This is a complex excercise and several solutions are possible. This is one::
     Serplx.sort()
     plt.plot(Serplx, np.arange(len(Serplx), 0, -1, dtype=float)/(Serplx>Lx0).sum(), 's', label = 'Serpens')
     
+And this is how it could look like:
+
+.. image::
+    
 .. raw:: html
 
    </div>
