@@ -136,8 +136,9 @@ This is a complex excercise and several solutions are possible. This is one::
     
 And this is how it could look like:
 
-.. image::
-    
+.. image:: XLF.png
+   :scale: 50
+
 .. raw:: html
 
    </div>
