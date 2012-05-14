@@ -21,7 +21,7 @@ Let's start off by downloading :download:`this <../downloads/data.txt>` data fil
 
     $ ipython -pylab
 
-If you have trouble downloading the file, then start up IPython (``ipython -pylab``) and enter::
+If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
 
     import urllib2
     url = 'http://python4astronomers.github.com/_downloads/data.txt'
@@ -58,11 +58,33 @@ What's happened? We read the file, and the file 'pointer' is now sitting at the 
 
     f = open('data.txt', 'r')  # We need to re-open the file
     data = f.read()
+    f.close()
+
 
 Now ``data`` contains a string::
 
     >>> type(data)
     <type 'str'>
+
+.. admonition:: Closing files
+
+  Usually, you should close file when you are done with it to free up 
+  resources (memory). 
+  If you only have a couple of files in an interactive session, that is not 
+  dramatic. On the other hand, if you write scrits which deal with douzens of 
+  files, then you should start worrying about these things. Often you will see 
+  things like this::
+      
+      with open('data.txt', 'r') as f:
+          # do things with your file
+          data = f.read()
+   
+      type(data)
+  
+  Notice the indent under the ``with``. At the end of that block the 
+  file is automatically closed, even if things went wrong and an error
+  occured inside the ``with`` block.
+
 
 But what we'd really like to do is read the file line by line. There are several ways to do this, the simplest of which is to use a ``for`` loop in the following way::
 
@@ -157,6 +179,8 @@ We can put all this together to write a little script to read the data from the 
         name = columns[2]
         j = float(columns[3])
         print name, j
+        
+    f.close()
 
 The output should look like this::
 
@@ -289,14 +313,14 @@ And a possible one-liner!::
 
 Numpy
 =====
-Good old numpy provides two functions to read in ASCII data. `np.loadtxt` is meant for relatively simple tables without missing values::
+Numpy provides two functions to read in ASCII data. ``np.loadtxt`` is meant for relatively simple tables without missing values::
 
     from StringIO import StringIO   # Pretends your variable is really a file
                                     # because loadtxt expect a filename as input
     c = StringIO("0 1\n2 3")
     np.loadtxt(c)
     
-Here is a come complicated example, that is actually useful::
+Here is a more complicated example, that is actually useful::
     
     d = StringIO('''
     # Abundances of different elements
@@ -332,6 +356,21 @@ The second command ``np.genfromtxt`` is more versatile. It can fill missing valu
     data = np.genfromtxt(d, dtype=('S2', 'f4', 'f4', 'f4'), names = True, \
          skip_footer = 1, missing_values = ('nn'), filling_values=(np.nan))
 
+Examine what was returned::
+
+  data
+
+This is an instance of the NumPy `structured array
+<http://docs.scipy.org/doc/numpy/user/basics.rec.html#module-numpy.doc.structured_arrays>`_
+type, which is an efficient way to manipulate records of tabular data.  It stores
+columns of typed data and you can access either a column of data or a row of
+data at once::
+
+  data.dtype
+  data[1]
+  data['abund']
+
+
 .. _`table parameters for reading`: http://cxc.harvard.edu/contrib/asciitable/#commonly-used-parameters-for-read
 .. _`asciitable.Basic`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Basic
 .. _`asciitable.Cds`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Cds
@@ -351,8 +390,8 @@ Asciitable
 ===========
 
 If you need even more flexibility, than the `asciitable`_ module can help you.
-It natively understands some very complex formats, e.g. the CDS machine readable tables and it can automatically detec any of those format.
-If also takes care of your output in LaTeX.
+It natively understands some very complex formats, e.g. the CDS machine readable tables and it can automatically detect any of those formats.
+If also can format your output in LaTeX.
 
 The `asciitable`_ module is an extensible ASCII table reader and writer that is
 designed to handle most formats you will encounter in the wild:
@@ -368,10 +407,9 @@ designed to handle most formats you will encounter in the wild:
 * `asciitable.Rdb`_: tab-separated values with an extra line after the column definition line
 * `asciitable.Tab`_: tab-separated values
 
-`Asciitable`_ is built on a modular and extensible class structure.  The
-basic functionality required for reading or writing a table is largely broken
-into independent base class elements so that new formats can be accomodated
-by modifying the underlying class methods as needed.
+`Asciitable`_ is built on a modular and extensible class structure. This makes
+is easy to create new classes, which implement the functionality for some 
+specific table format.
 
 Reading tables
 --------------
@@ -383,20 +421,6 @@ Reading tables
   1    2    "hi there"
   3    4.2  world"""
   data = asciitable.read(table)
-
-Examine what was returned::
-
-  data
-
-This is an instance of the NumPy `structured array
-<http://docs.scipy.org/doc/numpy/user/basics.rec.html#module-numpy.doc.structured_arrays>`_
-type, which is an efficient way to manipulate records of tabular data.  It stores
-columns of typed data and you can access either a column of data or a row of
-data at once::
-
-  data.dtype
-  data[1]
-  data['col2']
 
 The first and most important argument to the `asciitable.read()`_ function is
 the table input.  There is some flexibility here and you can supply any of the following:

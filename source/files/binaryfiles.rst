@@ -6,7 +6,8 @@ Binary formats useful for astronomers
 Pyfits - Reading and writing fits files
 =======================================
 
-`PyFITS <http://packages.python.org/pyfits/>`_  is a python module developed at STScI to read and write all types of fits files. The pdf version of the `manual <http://stsdas.stsci.edu/download/docs/The_PyFITS_Handbook.pdf>`_ is several hundert pages long, but the `tutorial <http://packages.python.org/pyfits/users_guide/users_tutorial.html>`_ just goes through the basics.
+`PyFITS <http://packages.python.org/pyfits/>`_  is a Python module developed at STScI to read and write all types of fits files. The full html manual is available `here <http://stsdas.stsci.edu/download/docs/pyfits/header-refactoring/#>`_.
+The pdf version of the `manual <http://stsdas.stsci.edu/download/docs/The_PyFITS_Handbook.pdf>`_ is more than hundred pages long.
 
 .. admonition:: External resource!
 
@@ -24,7 +25,7 @@ Pyfits - Reading and writing fits files
         cd py4ast/core
         ls
 
-    Read in the fits file. Find the time and date of the observations. Then use ``plt.imshow()`` to display the intensity array using some sensible minimum and maximum value so that the spectrum is visible.
+    Read in the fits file. Find the time and date of the observation. Then use ``plt.imshow()`` to display the intensity array using some sensible minimum and maximum value so that the spectrum is visible.
 
 
 .. raw:: html
@@ -40,17 +41,14 @@ Here is a possible solution::
     head.keys()             # lists all keywords in a dictionary
     head['TDATEOBS']
     head['TTIMEOBS']
-    primary = hdus[0].data  # Primary (NULL) header data unit
     img = hdus[1].data      # Intensity data
-
 
     plt.clf()
     plt.imshow(img, origin = 'lower', vmin = -10, vmax = 65)
     plt.colorbar()
 
-Don't be surprised to recognize this piece of code. It was used before in
-the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understand the
-``pyfits`` commands in more detail.
+You might recognize this piece of code. It was used before in
+the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understand the ``pyfits`` commands in more detail.
 
 .. raw:: html
 
