@@ -36,7 +36,7 @@ Here are some hints:
     Read the tables and plot the XLF (fraction of stars vs. log(L_X)) of all
     three clusters.
 
-    Download the example data files::
+    Download the example :download:`data <../downloads/files-excercise.tar.gz>`::
 
         import urllib2, tarfile
         url = 'http://python4astronomers.github.com/_downloads/files-excercise.tar.gz'
