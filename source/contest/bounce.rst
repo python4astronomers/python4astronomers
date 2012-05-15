@@ -116,3 +116,14 @@ Below are the entries that were received for the contest.  Thanks to all who sub
 
 [*]: From a workshop organizer (not eligible for prize!)
 
+Entries from CfA 2012 Workshops
+-------------------------------
+
+Below are the entries that were received for the contest.  Thanks to all who submitted an entry!
+
+=====================================  =========================================
+:download:`bounce_kpoppenhaeger.py`         balls and thorns
+:download:`bounce_krosenfeld.py`            2d Metropolis-Hastings algorithm
+:download:`bounce_xlu_just4fun.py`          a flying dolphin
+:download:`bounce_xlu.py`                   balls with gravity and elastic force
+=====================================  =========================================
