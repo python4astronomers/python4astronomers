@@ -76,7 +76,7 @@ uncertainties of 2% of the flux::
 
   wave = dat.field('WAVELENGTH')
   flux = dat.field('FLUX') * 1e14
-  err  = dat.field('FLUX') * 0.02
+  err  = dat.field('FLUX') * 0.02e14
 
 Create a Sherpa ``Data1D`` data set from the NumPy arrays ``wave``, ``flux``, and
 ``err``.  The data arrays are accessible from the ``data`` object as the attributes
