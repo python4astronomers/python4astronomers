@@ -104,6 +104,7 @@ Pros
 - Free; non-restrictive license; Open Source
 - Becoming the standard scripting language for astronomy
 - Easy to use with IRAF tasks: PyRAF
+- Able to embed IDL code: `pIDLy <http://astronomy.sussex.ac.uk/~anthonys/pidly/>`_ and `PyIDL <http://www.cacr.caltech.edu/~mmckerns/pyIDL.html>`_
 - Many books and on-line documentation resources available (for the language and its libraries)
 - Better support for table structures
 
