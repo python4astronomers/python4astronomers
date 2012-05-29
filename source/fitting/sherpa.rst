@@ -85,8 +85,12 @@ and then the data, using the ``load_arrays`` command:
   dataset number ``1`` (which is the default); data set ids can be
   integers or strings (for example "src" and "bgnd"). Some routines
   work on a single dataset and some on all; for some commands
-  the id value can be left out to use the default (``load_arrays``
-  is not one of these).
+  the id value can be left out to use the default (``plot_data``
+  is and ``load_arrays`` isn't).
+
+.. Hint::
+  Try out ``d1 = ui.get_data()`` and ``dir(d1)``.
+
 
 Set up the model
 ^^^^^^^^^^^^^^^^
@@ -110,6 +114,10 @@ so we start with a gaussian:
   have a value, range, and can be thawed (can be adjusted during
   a fit) or frozen (will not be fixed).
 
+.. Hint::
+  Try out ``dir(g1)``. As shown below, the source expression
+  can be retrieved with ``ui.get_source``.
+
 It would be nice if the optimizer were guaranteed to find the
 best fit no matter where you start (and the quality of the data), 
 but it often helps to try and give the system a helping hand.
@@ -129,10 +137,12 @@ the model).
      g1.pos       thawed          254            0          511           
      g1.ampl      thawed  3.11272e+06      3112.72  3.11272e+09           
 
-The reason for freezing the ``fwhm`` parameter before the ``guess``
-is to avoid a strange error message
-(``ParameterErr: parameter g1.fwhm
-has a hard minimum of 1.17549e-38``). 
+.. Note::
+  The reason for freezing the ``fwhm`` parameter before the ``guess``
+  is to avoid a strange error message
+  (``ParameterErr: parameter g1.fwhm
+  has a hard minimum of 1.17549e-38``) that is specific to the
+  ``gauss1d`` model.
 
 Selecting a statistic and optimizer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -196,10 +206,12 @@ and we repeat just to make sure:
      g1.ampl        3.14129e+06 
 
 .. Note::
+  The values you get depend on both the OS and build type
+  (32 vs 64 bit).
+
+.. Hint::
   The ``fit`` command will fit all loaded datasets when called
   with no id; use ``fit(1)`` to fit a single dataset.
-
-.. Note::
   The screen output from the ``fit`` command can also be
   retrieved as a structure (a Python object) using the
   ``ui.get_fit_results()`` command.
@@ -219,6 +231,12 @@ The fit can be viewed graphically (the warnings can be ignored):
 .. image:: 3c120_fit_resid1.png
    :scale: 75
 
+.. Hint::
+  The level of screen output created by Sherpa can be controlled
+  using the Python logging module <insert link here>. Unless you
+  have used a similar library in another language, it will appear
+  needlessly complex and we unfortunately don't have time to discuss it here.
+
 Adding a component
 ^^^^^^^^^^^^^^^^^^
 
@@ -234,7 +252,7 @@ We can re-use existing components in a source expression:
      g1.ampl      thawed  3.14129e+06      3112.72  3.11272e+09           
      bgnd.c0      thawed            1            0  3.40282e+38           
 
-Rather than using ``guess``, let's see how well the optimiser does:
+Rather than using ``guess``, let's see how well the optimizer does:
 
   ui.fit()
   Dataset               = 1
@@ -299,13 +317,25 @@ data).
   The ``zip`` command is one of those utility functions that
   comes in really handy.
 
+.. Hint::
+  There are a family of commands, such as ``ui.get_data_plot``,
+  ``ui.get_model_plot``, and ``ui.get_fit_plot`` which provide
+  access to the data used to create the corresponding plot command.
+  This is one way to handle those models which include a convolution
+  component.
+
 I want to find those columns that are significantly higher than
 the background, so let's try ``bgnd.c0 + 5``:
 
   print(xi[yi > bgnd.c0 + 5])
   []
 
-Well, that was unexpected! In order to support linked parameters
+Well, that was unexpected! So what went wrong?
+
+  bgnd.c0 + 5
+  <BinaryOpParameter '(bgnd.c0 + 5)'>
+
+In order to support linked parameters
 (demonstrated in the `next section <spectrum.html>`), and a
 bunch of other sparkly goodness, the
 value `bgnd.c0` is actually a Python object. To get at its value
@@ -315,6 +345,8 @@ you have to use the ``val`` field:
   <Parameter 'c0' of model 'bgnd'>
   bgnd.c0.val
   9497.6705097123631
+  bgnd.c0.val + 5
+  9502.6705097123631
   print(xi[yi>bgnd.c0.val + 5])
   [252 253 254 255 256]
   
@@ -326,7 +358,7 @@ current session as a single file.
 
   ui.save("3c120.sherpa")
 
- This file can then be
+This file can then be
 loaded into a new session with the ``restore`` command.
 
   ipython -pylab
@@ -380,3 +412,17 @@ loaded into a new session with the ``restore`` command.
      g1.ampl        3.1326e+06  
      bgnd.c0        9497.67     
   
+.. Note::
+  The ``save`` command takes advantage of Python's pickling
+  capabilities. The result is a binary file that can be shared between
+  machines, even on a different OS or - I believe - 32 and 64 bit
+  variants. This makes sharing fits with colleagues very easy
+  - e.g. via DropBox - but has some downsides: it is not guaranteed
+  that the files can be used with different versions of Sherpa;
+  you can't manually inspect the file to see what was done;
+  and those people implementing advanced features 
+  (e.g. user models or statistics) may not 
+  support this functionality. The ``ui.save_all`` command
+  writes out a Python script, but it is aimed mainly at users who
+  load in data from files rather than with the ``load_arrays``
+  command.
