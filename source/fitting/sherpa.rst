@@ -21,6 +21,10 @@ Sherpa Overview
   - Complex model expressions are supported using a general purpose and compact
     definition syntax.
 
+  - Has a high-level UI that deals with a lot of the data management
+    and general book-keeping you come across, but the low-level API
+    can also be used (e.g. as part of a separate application).
+
 
 Documentation
 ^^^^^^^^^^^^^
@@ -40,163 +44,339 @@ threads, and AHELP pages that describe each Sherpa function:
 - `Sherpa AHELP pages
   <http://cxc.cfa.harvard.edu/sherpa/ahelp/index_alphabet.html>`_: Function information
 
+Load data into Sherpa
+^^^^^^^^^^^^^^^^^^^^^
 
-Explore the Sherpa Object Model
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In a new working directory, download a MAST spectrum of :download:`3C 273 <./3c273.fits>`
-and start IPython::
+If you still have the 3C120 data from the 
+`NumPy introduction <../core/numpy_scipy.html#setup>`
+then go to the py4ast/core directory, otherwise
 
   $ ipython -pylab
+  import urllib2, tarfile
+  url = 'http://python4astronomers.github.com/core/core_examples.tar'
+  tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+  cd py4ast/core
 
-If you have trouble accessing the spectrum you can download it straight away
-using Python::
+Now we load the Sherpa UI module 
 
-  import urllib2
-  url = 'http://python4astronomers.github.com/_downloads/3c273.fits'
-  open('3c273.fits', 'wb').write(urllib2.urlopen(url).read())
-  ls
-
-Import a few Sherpa classes needed to characterize a fit::
-
-  from sherpa.data import Data1D
-  from sherpa.models import PowLaw1D
-  from sherpa.stats import Chi2DataVar
-  from sherpa.optmethods import LevMar
-  from sherpa.fit import Fit
-
-Import the Python FITS reader ``pyfits`` and open the spectrum as a table::
-
+  import sherpa.astro.ui as ui
+  import numpy as np
   import pyfits
-  dat = pyfits.open('3c273.fits')[1].data
+  # import pycrates
+  # import pychips
 
-Access the `WAVELENGTH` and `FLUX` columns from the pyFITS ``RecArray``.  Populate
-variables represented as ``wave``, ``flux``, and ``err``.  Normalize the flux and assume
-uncertainties of 2% of the flux::
+and then the data, using the ``load_arrays`` command:
 
-  wave = dat.field('WAVELENGTH')
-  flux = dat.field('FLUX') * 1e14
-  err  = dat.field('FLUX') * 0.02e14
+  img = pyfits.open('3c120_stis.fits.gz')[1].data
+  # cr = pycrates.read_file('3c120_stis.fits.gz')
+  # img = pycrates.get_piximgvals(cr)
+  profile = img.sum(axis=1)
+  xaxis = np.arange(profile.size)
+  ui.load_arrays(1, xaxis, profile)
+  ui.plot_data()
+  # pychips.log_scale(pychips.Y_AXIS)
 
-Create a Sherpa ``Data1D`` data set from the NumPy arrays ``wave``, ``flux``, and
-``err``.  The data arrays are accessible from the ``data`` object as the attributes
-``x``, ``y``, and ``staterror``::
-
-  data = Data1D('3C 273', wave, flux, err)
-  print data
-
-Array access::
-
-  print 'x', data.x
-  print 'y', data.y
-  print 'err',  data.staterror
-
-
-Define a convenience function ``plot_data`` that calls the matplotlib functions
-``plot`` and ``errorbar`` according to certain criteria.  Plot the ``x`` and
-``y`` arrays using the format specified in the optional argument, ``fmt``.
-Clear the plot if the ``clear`` argument is ``True``.  Add the plot errorbars if
-the ``err`` array is present.  Plot the spectrum by accessing the NumPy arrays
-in the Sherpa data set using our new function and its default arguments::
-
-  def plot_data(x, y, err=None, fmt='.', clear=True):
-      if clear:
-          clf()
-      plot(x, y, fmt)
-      if err is not None:
-          errorbar(x, y, err, fmt=None, ecolor='b')
-
-  plot_data(data.x, data.y, data.staterror)
-
-.. image:: 3c273_data_mast.png
+.. image:: 3c120_data.png
    :scale: 75
 
+.. Note::
+  I will be using the CIAO version of Sherpa for the demonstation, but
+  feel free to use the standalone version. Here we load the data into
+  dataset number ``1`` (which is the default); data set ids can be
+  integers or strings (for example "src" and "bgnd"). Some routines
+  work on a single dataset and some on all; for some commands
+  the id value can be left out to use the default (``load_arrays``
+  is not one of these).
 
-Create a Sherpa power-law model ``pl``.  All Sherpa models maintain a tuple of
-parameters in ``pars``.  Access each of the model's parameter objects and print
-the ``name`` and ``val`` attributes::
+Set up the model
+^^^^^^^^^^^^^^^^
 
-  pl = PowLaw1D('pl')
-  pl.pars
-  for par in pl.pars:
-      print par.name, par.val
+The aim is to determine the approximate spatial extent of the profile,
+so we start with a gaussian:
 
-  print pl
+  ui.set_source(ui.gauss1d.g1)
+  print(g1)
+  gauss1d.g1
+     Param        Type          Value          Min          Max      Units
+     -----        ----          -----          ---          ---      -----
+     g1.fwhm      thawed           10  1.17549e-38  3.40282e+38           
+     g1.pos       thawed            0 -3.40282e+38  3.40282e+38           
+     g1.ampl      thawed            1 -3.40282e+38  3.40282e+38           
 
-Set the power-law reference to be 4000 Angstroms and print out the ``PowLaw1D``
-object and its parameter information.  Each model parameter is accessible as an
-attribute its model.  For example, the power-law amplitude is referenced with
-``pl.ampl``::
+.. Note::
+  The Sherpa UI uses fancy Python magic to create a variable with
+  the name of the model component - in this case ``g1`` - which is
+  then used to read and modify the model parameters. Parameters
+  have a value, range, and can be thawed (can be adjusted during
+  a fit) or frozen (will not be fixed).
 
-  pl.ref = 4000.
-  print pl
+It would be nice if the optimizer were guaranteed to find the
+best fit no matter where you start (and the quality of the data), 
+but it often helps to try and give the system a helping hand.
+One way to do this is via the ``guess`` command, which
+uses simple heuristics to initialize some of the
+parameter values and ranges (the algorithm used depends on
+the model).
 
-Model parameters are themselves class objects::
+  ui.freeze(g1.fwhm)
+  ui.guess(g1)
+  ui.thaw(g1.fwhm)
+  print(g1)
+  gauss1d.g1
+     Param        Type          Value          Min          Max      Units
+     -----        ----          -----          ---          ---      -----
+     g1.fwhm      thawed           10  1.17549e-38  3.40282e+38           
+     g1.pos       thawed          254            0          511           
+     g1.ampl      thawed  3.11272e+06      3112.72  3.11272e+09           
 
-  print pl.ampl
+The reason for freezing the ``fwhm`` parameter before the ``guess``
+is to avoid a strange error message
+(``ParameterErr: parameter g1.fwhm
+has a hard minimum of 1.17549e-38``). 
 
+Selecting a statistic and optimizer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. admonition:: Exercise (for the interested reader): Special methods and properties
+For this dataset we have no errors so use the least-squared statistic,
+and the default optimizer (the Levenberg-Marquardt method).
+Other choices for the statistic are gaussian - with a range of error
+estimates - or Cash, and optimizers are Simplex and a Monte-Carlo
+based method. Some situations require a particular choice, but
+it can be useful to change values to check that you
+are at the best-fit location (or, to avoid the wrath of any
+Statistician, the local minimum).
 
-  Wait. Didn't we just set ``pl.ref`` to be an float?  How can ``pl.ref`` be an
-  float and a ``Parameter`` object?
+  ui.set_stat('leastsq')
+  print(ui.get_method())
+  name    = levmar
+  ftol    = 1.19209289551e-07
+  xtol    = 1.19209289551e-07
+  gtol    = 1.19209289551e-07
+  maxfev  = None
+  epsfcn  = 1.19209289551e-07
+  factor  = 100.0
+  verbose = 0
 
-.. raw:: html
+.. Note::
+  The parameters for the optimizers (e.g. ``ftol`` for ``levmar``)
+  should be left alone unless you get *really* stuck **and** know
+  what you are doing.
 
-   <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
+Now the fit
+^^^^^^^^^^^
 
-The answer is that pl.ref is in fact an object, but its model class supports a
-special setter method ``__setattr__()`` that updates the pl.ref.val attribute
-underneath.  The ``property`` function defines custom getter and setter
-functions for a particular class attribute::
+For this example, the fit is quick (it does not take many iterations):
 
-  class Parameter(object):
-      def __init__(self):
-          # private attribute intended to be reference as 'val'.
-          self._value = 1.0
+  ui.fit()
+  Dataset               = 1
+  Method                = levmar
+  Statistic             = leastsq
+  Initial fit statistic = 5.46696e+13
+  Final fit statistic   = 9.55741e+10 at function evaluation 34
+  Data points           = 512
+  Degrees of freedom    = 509
+  Change in statistic   = 5.4574e+13
+     g1.fwhm        1.28959     
+     g1.pos         254.075     
+     g1.ampl        3.14129e+06
+   
+and we repeat just to make sure:
 
-      def _get_val(self): return self._value
-      def _set_val(self, value): self._value = value
-      # setup a 'val' attribute
-      val = property(_get_val, _set_val)
+  ui.fit()
+  Dataset               = 1
+  Method                = levmar
+  Statistic             = leastsq
+  Initial fit statistic = 9.55741e+10
+  Final fit statistic   = 9.55741e+10 at function evaluation 5
+  Data points           = 512
+  Degrees of freedom    = 509
+  Change in statistic   = 0
+     g1.fwhm        1.28959     
+     g1.pos         254.075     
+     g1.ampl        3.14129e+06 
 
-  class Model(object):
-      def __setattr__(self, name, val):
-          if isinstance(getattr(self, name, None), Parameter):
-              getattr(self, name).val = val
-          else:
-              object.__setattr__(self, name, val)
-      def __init__(self):
-          self.ref = Parameter()
+.. Note::
+  The ``fit`` command will fit all loaded datasets when called
+  with no id; use ``fit(1)`` to fit a single dataset.
 
-  m = Model()
-  m.ref
-  m.ref = 4
-  m.ref
-  m.ref.val
+.. Note::
+  The screen output from the ``fit`` command can also be
+  retrieved as a structure (a Python object) using the
+  ``ui.get_fit_results()`` command.
 
-.. raw:: html
+View the fit
+^^^^^^^^^^^^
 
-   </div>
+The fit can be viewed graphically (the warnings can be ignored):
 
+  ui.plot_fit()
+  WARNING: unable to calculate errors using current statistic: leastsq
+  ui.plot_fit_resid()
+  WARNING: unable to calculate errors using current statistic: leastsq
+  WARNING: unable to calculate errors using current statistic: leastsq
+  # pychips.limits(pychips.X_AXIS, 245, 265)
 
-
-Create a ``Fit`` object made up of a Sherpa data set, model, fit statistic, and
-optimization method.  Fit the spectrum to a power-law with least squares
-(Levenberg-Marquardt) using the chi-squared statistic with data variance::
-
-  f = Fit(data, pl, Chi2DataVar(), LevMar())
-  result = f.fit()
-  print result
-  # or alternatively
-  print result.format()
-
-Over-plot the fitted model atop the data points using our convenience function
-``plot_data``.  This time calculate the model using the best-fit parameter
-values over the ``data.x`` and plot using a custom format and indicate
-``clear=False``::
-
-  plot_data(data.x, pl(data.x), fmt="-", clear=False)
-
-.. image:: 3c273_fit_mast.png
+.. image:: 3c120_fit_resid1.png
    :scale: 75
+
+Adding a component
+^^^^^^^^^^^^^^^^^^
+
+We can re-use existing components in a source expression:
+
+  ui.set_source(g1 + ui.const1d.bgnd)
+  print(ui.get_source())
+  (gauss1d.g1 + const1d.bgnd)
+     Param        Type          Value          Min          Max      Units
+     -----        ----          -----          ---          ---      -----
+     g1.fwhm      thawed      1.28959  1.17549e-38  3.40282e+38           
+     g1.pos       thawed      254.075            0          511           
+     g1.ampl      thawed  3.14129e+06      3112.72  3.11272e+09           
+     bgnd.c0      thawed            1            0  3.40282e+38           
+
+Rather than using ``guess``, let's see how well the optimiser does:
+
+  ui.fit()
+  Dataset               = 1
+  Method                = levmar
+  Statistic             = leastsq
+  Initial fit statistic = 9.55644e+10
+  Final fit statistic   = 4.96699e+10 at function evaluation 16
+  Data points           = 512
+  Degrees of freedom    = 508
+  Change in statistic   = 4.58945e+10
+     g1.fwhm        1.28402     
+     g1.pos         254.076     
+     g1.ampl        3.1326e+06  
+     bgnd.c0        9497.67     
+
+  ui.fit()
+  Dataset               = 1
+  Method                = levmar
+  Statistic             = leastsq
+  Initial fit statistic = 4.96699e+10
+  Final fit statistic   = 4.96699e+10 at function evaluation 6
+  Data points           = 512
+  Degrees of freedom    = 508
+  Change in statistic   = 0
+     g1.fwhm        1.28402     
+     g1.pos         254.076     
+     g1.ampl        3.1326e+06  
+     bgnd.c0        9497.67     
+
+  ui.plot_fit_resid()
+  # pychips.limits(pychips.X_AXIS, 245, 265)
+
+.. image:: 3c120_fit_resid2.png
+   :scale: 75
+ 
+Evaluating the model expression directly
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Model components and source expressions can be evaluated directly,
+although this approach only works for simple models; that is those
+without convolution (either explicitly via ``ui.set_psf`` or implictly
+as happens with the handling of the response information in X-ray
+data).
+
+  xi = np.arange(250, 260)
+  src = ui.get_source()
+  yi = src(xi)
+
+  zip(xi, yi)
+  [(250, 9497.6705120244224),
+   (251, 9498.0568224326398),
+   (252, 11732.300774634092),
+   (253, 457003.64642740792),
+   (254, 3112045.5828799075),
+   (255, 754169.02805867838),
+   (256, 15685.485177760009),
+   (257, 9499.4505770869582),
+   (258, 9497.6705274404576),
+   (259, 9497.6705097123686)]
+
+.. Note::
+  The ``zip`` command is one of those utility functions that
+  comes in really handy.
+
+I want to find those columns that are significantly higher than
+the background, so let's try ``bgnd.c0 + 5``:
+
+  print(xi[yi > bgnd.c0 + 5])
+  []
+
+Well, that was unexpected! In order to support linked parameters
+(demonstrated in the `next section <spectrum.html>`), and a
+bunch of other sparkly goodness, the
+value `bgnd.c0` is actually a Python object. To get at its value
+you have to use the ``val`` field:
+
+  bgnd.c0
+  <Parameter 'c0' of model 'bgnd'>
+  bgnd.c0.val
+  9497.6705097123631
+  print(xi[yi>bgnd.c0.val + 5])
+  [252 253 254 255 256]
+  
+Saving the session
+^^^^^^^^^^^^^^^^^^
+
+The ``save`` command can be used to store the
+current session as a single file.
+
+  ui.save("3c120.sherpa")
+
+ This file can then be
+loaded into a new session with the ``restore`` command.
+
+  ipython -pylab
+  In [1]: import sherpa.astro.ui as ui
+  
+  In [2]: ui.restore("simple1.sherpa")
+   Solar Abundance Vector set to angr:  Anders E. & Grevesse N. Geochimica et Cosmochimica Acta 53, 197 (1989)
+   Cross Section Table set to bcmc:  Balucinska-Church and McCammon, 1998
+  
+  In [3]: ui.show_all()
+  Data Set: 1
+  Filter: 0.0000-511.0000 x
+  name      = 
+  x         = Int64[512]
+  y         = Float32[512]
+  staterror = None
+  syserror  = None
+  
+  Model: 1
+  (gauss1d.g1 + const1d.bgnd)
+     Param        Type          Value          Min          Max      Units
+     -----        ----          -----          ---          ---      -----
+     g1.fwhm      thawed      1.28402  1.17549e-38  3.40282e+38           
+     g1.pos       thawed      254.076            0          511           
+     g1.ampl      thawed   3.1326e+06      3112.72  3.11272e+09           
+     bgnd.c0      thawed      9497.67            0  3.40282e+38           
+  
+  Optimization Method: LevMar
+  name    = levmar
+  ftol    = 1.19209289551e-07
+  xtol    = 1.19209289551e-07
+  gtol    = 1.19209289551e-07
+  maxfev  = None
+  epsfcn  = 1.19209289551e-07
+  factor  = 100.0
+  verbose = 0
+  
+  Statistic: LeastSq
+  Least Squared
+  
+  Fit:Dataset               = 1
+  Method                = levmar
+  Statistic             = leastsq
+  Initial fit statistic = 4.96699e+10
+  Final fit statistic   = 4.96699e+10 at function evaluation 6
+  Data points           = 512
+  Degrees of freedom    = 508
+  Change in statistic   = 0
+     g1.fwhm        1.28402     
+     g1.pos         254.076     
+     g1.ampl        3.1326e+06  
+     bgnd.c0        9497.67     
+  

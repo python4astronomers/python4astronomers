@@ -3,13 +3,13 @@
 Fitting and Modeling 1-D and 2-D Data
 =====================================
 
-Workshop goals:
+Workshop goals are to use Sherpa to:
 
-- Discover Python classes and Object-Oriented Programming
 - Learn the basics of modeling and fitting with Sherpa 
-- Fit a MAST spectrum of 3c 273
-- Fit a Chandra image of G21.5-0.9
-
+   by fitting a 1D dataset (the spatial profile of the HST/STIS
+   obsercation of 3C270)
+- Fit a MAST spectrum of 3c 273 (1D with errors)
+- Fit a Chandra image of G21.5-0.9 (2D)
 
 **Agenda**
 
@@ -17,11 +17,10 @@ Workshop goals:
    :maxdepth: 1
  
    installation
-   classes
    sherpa
    spectrum
    image
 
-:Author: Brian Refsdal
-:Copyright: 2011 Smithsonian Astrophysical Observatory
+:Author: Brian Refsdal, Doug Burke
+:Copyright: 2011, 2012 Smithsonian Astrophysical Observatory
 

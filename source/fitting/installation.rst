@@ -10,11 +10,18 @@
 Sherpa Installation
 -------------------
 
-In order to follow along with the Sherpa examples presented in this workshop,
-your Python installation will need the following dependencies and Sherpa
-version 4.3.0.
+In order to follow along with the Sherpa examples presented in this
+workshop, you can use 
+`Sherpa in CIAO 4.4 <http://cxc.harvard.edu/ciao/download/>`_,
+or install the stand-alone version described below.
 
-- Sherpa Dependencies
+.. Note::
+  Unfortunately we have not updated the binary versions to match 
+  the Sherpa 4.4 release - they are still for Sherpa 4.3 - 
+  but you can try the source build of Sherpa 4.4.
+
+
+- Sherpa Dependencies (Sherpa 4.3)
 
   - Python 2.6 or 2.7 (not Python 3.x)
   - NumPy >= 1.3
