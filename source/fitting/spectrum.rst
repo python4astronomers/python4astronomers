@@ -456,3 +456,8 @@ the ``int_proj`` and ``reg_proj`` commands: ::
 
 .. image:: 3c273_g2_fwhm_gamma.png
    :scale: 75
+
+.. Note::
+  The error routines - e.g. ``conf``, ``int_proj``, and ``reg_proj`` -
+  will take advantage of multiple cores on your machine. Unfortunately
+  ``fit`` does not.
