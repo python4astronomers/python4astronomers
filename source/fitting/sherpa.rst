@@ -233,9 +233,11 @@ The fit can be viewed graphically (the warnings can be ignored):
 
 .. Hint::
   The level of screen output created by Sherpa can be controlled
-  using the Python logging module <insert link here>. Unless you
+  using the `Python logging module
+  <http://docs.python.org/library/logging.html>`.
+  Unless you
   have used a similar library in another language, it will appear
-  needlessly complex and we unfortunately don't have time to discuss it here.
+  needlessly complex (as it does a lot) and we unfortunately don't have time to discuss it here.
 
 Adding a component
 ^^^^^^^^^^^^^^^^^^
