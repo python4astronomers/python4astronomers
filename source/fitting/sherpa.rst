@@ -25,6 +25,13 @@ Sherpa Overview
   and general book-keeping you come across, but the low-level API
   can also be used (e.g. as part of a separate application).
 
+In this tutorial we will show you how Sherpa can be used to model and
+fit 1D data (without and with errors) and 2D images. Higher
+dimensionality data is supported (to some extent) but there is no
+documentation. The 1D examples are for "unbinned" data, but you can
+also handle the case where the model has to be summed (integrated)
+across each bin (for the 2D case we treat image data as point/unbinned
+for convenience and speed).
 
 Documentation
 ^^^^^^^^^^^^^
