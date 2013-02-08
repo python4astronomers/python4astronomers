@@ -96,7 +96,11 @@ Now use ``virtualenv`` to make a local virtual Python which is a clone of the
 system Python but resides in a directory (e.g. ``~/py27``) where you have write
 access::
 
-  ~/.local/bin/virtualenv ~/py27
+  ~/.local/bin/virtualenv --system-site-packages ~/py27
+
+The ``--system-site-packages`` option tells ``virtualenv`` to make links to all of the
+packages that are already installed in the system Python.  In general this is convenient,
+but you may want to start with a clean Python installation by leaving out that option.
 
 To use this virtual Python just do:
 
