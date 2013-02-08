@@ -16,7 +16,10 @@ MacPorts
 
 To install Python using MacPorts follow the detailed instructions at `MacPorts
 Python installation on Mac - 10 easy steps
-<http://astrofrog.github.com/macports-python/>`_.
+<http://astrofrog.github.com/macports-python/>`_.  Another tutorial
+on MacPorts for Python which is well-written and helpful is
+`Setting Up a Mac for Python Development
+<http://jakevdp.github.com/blog/2013/02/02/setting-up-a-mac-for-python-development/`_.
 
 Homebrew
 ^^^^^^^^^
