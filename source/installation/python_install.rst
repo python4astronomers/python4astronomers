@@ -41,6 +41,7 @@ EPD Academic              Y         Y          Y       [4]_, [5]_
 ActiveState CE            Y	    Y          Y       [6]_
 EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_
 STSci_Python              Y       [10]_        Y       [11]_
+Anaconda CE               Y         Y          Y       [12]_
 ====================  ========  =========  =========  ======================
 
 .. rubric:: Notes
@@ -106,6 +107,13 @@ STSci_Python              Y       [10]_        Y       [11]_
    provides `PyRAF <http://www.stsci.edu/institute/software_hardware/pyraf>`_,
    various analysis packages, and the core NumPy, SciPy, and Matplotlib packages.
    Qt and PyQt are not included.
+
+.. [12] The `Anaconda Community Edition <https://store.continuum.io/cshop/anaconda>`_
+   distribution from Continuum Analytics provides 64-bit support on all platforms.
+   It includes the usual `core scientific packages
+   <http://docs.continuum.io/anaconda/1.2/pkgs.html>`_ and some interesting
+   next-generation packages `Numba <http://numba.pydata.org/numba-doc/0.6/index.html>`_ and 
+   `Blaze <http://continuum.io/blog/blaze>`_.
 
 .. raw:: html
 
