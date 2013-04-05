@@ -33,6 +33,7 @@ encounter in research.*
    files/files
    fitting/fitting
    vo/vo
+   astropy/astropy
 
 .. toctree::
    :hidden:
