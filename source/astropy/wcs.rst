@@ -1,3 +1,5 @@
+.. _wcs-transformations:
+
 WCS Transformations
 ===================
 

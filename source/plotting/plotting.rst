@@ -2,6 +2,8 @@
 
 .. Python4Astronomers documentation file
 
+.. _plotting-and-images:
+
 Plotting and Images
 ===================
 

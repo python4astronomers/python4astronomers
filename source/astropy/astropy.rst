@@ -29,7 +29,8 @@ Before you proceed
 ------------------
 Please download this
 :download:`this tar file <../downloads/astropy_examples.tar>` and extract
-the content, either by clicking on the lik or by executing this pytho code::
+the content, either by clicking on the link or by executing this
+python code::
 
     import urllib2, tarfile
     url = 'http://python4astronomers.github.io/_downloads/astropy_examples.tar'

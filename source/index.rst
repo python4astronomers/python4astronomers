@@ -34,6 +34,7 @@ encounter in research.*
    fitting/fitting
    vo/vo
    astropy/astropy
+   astropy-UVES/UVES
 
 .. toctree::
    :hidden:

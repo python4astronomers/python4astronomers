@@ -1,3 +1,5 @@
+.. _handling-fits-files:
+
 Handling FITS files
 ===================
 
