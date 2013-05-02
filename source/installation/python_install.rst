@@ -20,29 +20,77 @@ scientific Python.  Note that there are *many* other installation
 options, but these cover the ones which are well-supported and likely
 to present the fewest problems.
 
+Anaconda: The easiest and fastest solution
+-------------------------------------------
 
-.. admonition:: For the completely impatient
+The fastest way to get a basic Python installation up and running is
+`Anaconda <https://store.continuum.io/cshop/anaconda>`_
+Click on that link and download the installer (using the button marked
+``free`` on the top right of the page). It will ask you for your email
+and then you get an installer for your OS (Mac, Linux, or Windows).
+Read `64 versus 32 bit`_ if you aren't sure if your CPU is 64-bit.
 
-  The fastest way to get a basic Python installation up and running is
-  `EPD Academic <http://www.enthought.com/products/edudownload.php>`_ if you
-  meet these `license terms
-  <http://www.enthought.com/EPDAcademicTerms.html>`_ or `EPD Free
-  <http://www.enthought.com/products/epd_free.php>`_ otherwise.  Click on that
-  link, download the installer and then go to the `Install core Python`_
-  section and click on the link for your OS (Mac, Linux, or Windows).
-  
+By default Anaconda is installed into your home directory (no root acress
+required), but you can pick another location if you wish.
+To use the Anaconda python installation, simply add that directory to your
+path (instructions on the Anaconda page).
+
+Anaconda includes the usual `core scientific packages
+<http://docs.continuum.io/anaconda/pkgs.html>`_ and some interesting
+next-generation packages `Numba <http://numba.pydata.org/numba-doc/0.6/index.html>`_ and `Blaze <http://continuum.io/blog/blaze>`_.
+Also, Anaconda is the only packed installation so far that comes bundeled
+with Astropy.
+
+After you set up Anaconda, you should install one more astromy package, 
+that you are likely to use. Use the following commands::
+
+  pip install --upgrade aplpy
+
+Now, you are done, your python should be up and running and can skip the 
+rest of this page.
+
+.. note::
+
+   Installing Anaconda, you will probably have more than one python
+   installation on your computer, e.g. a python included in the OS,
+   Anaconda plus possible CASA or Sherpa. In general, that is not a problem.
+   It also protects you from screwing up your system, should anything
+   go wrong when you install additional packages. See :ref:`multiple-pythons`
+   for more information.
+
+Alternatives to Anaconda
+-------------------------
+
+Anaconda is not the only binary package available; alternatives are EPD,
+ActiveState and STSci_Python (see table below for details).
+
+
 ====================  ========  =========  =========  ====================== 
 Distribution            Mac      Linux      Windows    Notes
 ====================  ========  =========  =========  ====================== 
-MacPorts                  Y        --         --       [1]_
-Homebrew                  Y        --         --       [2]_
-RPM, APT                 --         Y         --       [3]_
 EPD Academic              Y         Y          Y       [4]_, [5]_
 ActiveState CE            Y	    Y          Y       [6]_
 EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_
 STSci_Python              Y       [10]_        Y       [11]_
 Anaconda CE               Y         Y          Y       [12]_
 ====================  ========  =========  =========  ======================
+
+
+The second option is to use a package manager like RPM or APT on Linux and
+MacPorts or HomeBrew on Macs. Many of the packages we need are available
+in those package mangers; they are complied to work with your system python.
+
+
+====================  ========  =========  =========  ====================== 
+Distribution            Mac      Linux      Windows    Notes
+====================  ========  =========  =========  ====================== 
+MacPorts                  Y        --         --       [1]_
+Homebrew                  Y        --         --       [2]_
+RPM, APT                 --         Y         --       [3]_
+====================  ========  =========  =========  ======================
+
+The last option is to compile everything from source. While possible, this
+is beyond the scope of this introduction.
 
 .. rubric:: Notes
 
@@ -111,7 +159,7 @@ Anaconda CE               Y         Y          Y       [12]_
 .. [12] The `Anaconda Community Edition <https://store.continuum.io/cshop/anaconda>`_
    distribution from Continuum Analytics provides 64-bit support on all platforms.
    It includes the usual `core scientific packages
-   <http://docs.continuum.io/anaconda/1.2/pkgs.html>`_ and some interesting
+   <http://docs.continuum.io/anaconda/pkgs.html>`_ and some interesting
    next-generation packages `Numba <http://numba.pydata.org/numba-doc/0.6/index.html>`_ and 
    `Blaze <http://continuum.io/blog/blaze>`_.
 
@@ -167,15 +215,11 @@ MacOS or root linux install
 
   sudo easy_install --upgrade pip
   sudo pip install --upgrade distribute
-  sudo pip install --upgrade asciitable
-  sudo pip install --upgrade pyfits
-  sudo pip install --upgrade pywcs
-  sudo pip install --upgrade atpy
+  sudo pip install --upgrade astropy
   sudo pip install --upgrade aplpy
   sudo pip install --upgrade pyregion
   sudo pip install --upgrade pyparsing
-  sudo pip install --upgrade http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
-  sudo pip install --upgrade http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
+
 
 Non-root linux
 ############################
@@ -183,15 +227,11 @@ Non-root linux
 
   easy_install --upgrade pip
   pip install --upgrade distribute
-  pip install --upgrade asciitable
-  pip install --upgrade pyfits
-  pip install --upgrade pywcs
-  pip install --upgrade atpy
+  pip install --upgrade astropy
   pip install --upgrade aplpy
   pip install --upgrade pyregion
   pip install --upgrade pyparsing
-  pip install --upgrade http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
-  pip install --upgrade http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
+
 
 Windows
 ############################
@@ -203,15 +243,10 @@ pyregion, and coords.
   cd C:\Python27\Scripts
   easy_install.exe --upgrade pip
   pip.exe install --upgrade distribute
-  pip.exe install --upgrade asciitable
-  pip.exe install --upgrade pyfits
-  pip.exe install --upgrade pywcs     
-  pip.exe install --upgrade atpy
-  pip.exe install --upgrade aplpy
-  pip.exe install --upgrade pyregion  
+  pip.exe install --upgrade astropy
+  pip.exe install --upgrade aplpy  
+  pip.exe install --upgrade pyregion
   pip.exe install --upgrade pyparsing
-  pip.exe install --upgrade http://stsdas.stsci.edu/astrolib/vo-0.7.2.tar.gz
-  pip.exe install --upgrade http://stsdas.stsci.edu/astrolib/coords-0.37.tar.gz
 
 
 .. Admonition:: The soap opera of pip and easy_install and distribute and setuptools
@@ -262,10 +297,7 @@ meet the requirements, and finally you should see a plot of a sine wave.
 
 To check the other required packages, do the following from within ipython::
 
-  import asciitable
-  import pyfits
-  import pywcs
-  import atpy
+  import astropy
   import aplpy
 
 Try it out!
@@ -295,13 +327,13 @@ Then change to a working directory, untar the file, and start up IPython::
 
    In my ``~/.cshrc`` file I define an alias that I commonly use::
 
-     alias pylab "ipython -pylab"
+     alias pylab "ipython --pylab"
 
 
 .. admonition:: Exercise: Read a table and examine it
   
-  Look at the documentation for the `asciitable.read()
-  <http://cxc.harvard.edu/contrib/asciitable/#reading-tables>`_ function in
+  Look at the documentation for the `astropy.Table.read() 
+  <http://docs.astropy.org/en/v0.2.1/table/io.html>`_ function in
   `asciitable`_.  Follow the very first example and use the ``read()`` function
   to read the data in the file ``table1.dat`` into the variable named ``data``.
 
@@ -349,17 +381,5 @@ work.  See below if you don't know your processor architecture:
 - Windows:  Follow `the Windows instructions 
   <http://windows.microsoft.com/en-US/windows-vista/32-bit-and-64-bit-Windows-frequently-asked-questions>`_.
 
-**64-bit**
-
-- *Pro*: Faster for data- and compute-intensive applications
-- *Con*: Have to submit an email address and wait for the download link in response
-
-**32-bit**
-
-- *Pro*: Comes with the `Mayavi <http://github.enthought.com/mayavi/mayavi/>`_ 3-d
-  rendering package installed while the 64-bit does not (for technical reasons).
-  If you are interested in using this cool package you should consider choosing 32-bit.
-  Note that the standard matplotlib package supports some `3-d plotting
-  <http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_. 
 
 .. include:: ../references.rst
