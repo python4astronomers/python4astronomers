@@ -46,35 +46,6 @@ You should see::
 
 .. _linux_nonroot:
 
-User install of EPD without root
---------------------------------
-
-Assuming that you have downloaded the appropriate EPD tar file for your system,
-follow the instructions for `Getting Started with EPD
-<http://www.enthought.com/products/epdgetstart.php?platform=linux>`_ for Linux.
-
-Once installed then follow the Getting Started page and look at Pylab and plain
-Python.
-
-Next you need to edit the appropriate shell startup file (e.g. ``~/.cshrc`` or
-``~/.bash_profile``) and update your path to include the EPD path.  For
-instance if you specified to install EPD in ``/home/me/epd7.0`` then the
-following will work::
-
-  export PATH=/home/me/epd7.0/bin:$PATH  # bash
-  set path=(/home/me/epd7.0/bin $path)   # csh or tcsh
-
-Quick installation check 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Open a new terminal window and type::
-
-  which ipython
-
-You should see (where ``/home/me/epd7.0`` is replaced by your installation root
-path)::
-
-  /home/me/epd7.0/bin/ipython  
 
 Non-root setup using virtualenv
 ---------------------------------------------

@@ -62,18 +62,13 @@ Alternatives to Anaconda
 -------------------------
 
 Anaconda is not the only binary package available; alternatives are EPD,
-ActiveState and STSci_Python (see table below for details).
-
-
-====================  ========  =========  =========  ====================== 
-Distribution            Mac      Linux      Windows    Notes
-====================  ========  =========  =========  ====================== 
-EPD Academic              Y         Y          Y       [4]_, [5]_
-ActiveState CE            Y	    Y          Y       [6]_
-EPD Free                  Y         Y          Y       [7]_, [8]_, [9]_
-STSci_Python              Y       [10]_        Y       [11]_
-Anaconda CE               Y         Y          Y       [12]_
-====================  ========  =========  =========  ======================
+ActiveState and STSci_Python (see table below for details). They work in a
+similar way, but have more restrictive licenses (EPD) or less complete
+package lists.
+Notable is the `STSci_Python distribution 
+<http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python>`_
+becaue it provides `PyRAF <http://www.stsci.edu/institute/software_hardware/pyraf>`_, as well as various analysis packages, and the core NumPy, SciPy, and Matplotlib packages. Howeverm the GUIs Qt and PyQt are not included.
+Use your prefered internet search engine, if you need EPD or AcitveState python.
 
 
 The second option is to use a package manager like RPM or APT on Linux and
@@ -81,13 +76,12 @@ MacPorts or HomeBrew on Macs. Many of the packages we need are available
 in those package mangers; they are complied to work with your system python.
 
 
-====================  ========  =========  =========  ====================== 
-Distribution            Mac      Linux      Windows    Notes
-====================  ========  =========  =========  ====================== 
-MacPorts                  Y        --         --       [1]_
-Homebrew                  Y        --         --       [2]_
-RPM, APT                 --         Y         --       [3]_
-====================  ========  =========  =========  ======================
+=====================  ========  =========  =========  ====================== 
+Distribution             Mac      Linux      Windows    Notes
+=====================  ========  =========  =========  ====================== 
+MacPorts                   Y        --         --       [1]_
+Linux Package Manager     --         Y         --       [2]_
+=====================  ========  =========  =========  ======================
 
 The last option is to compile everything from source. While possible, this
 is beyond the scope of this introduction.
@@ -102,73 +96,21 @@ is beyond the scope of this introduction.
    is generally stable after Mac OS system or security updates.
    MacPorts has the drawback of being slow to install so that it can
    take several hours to build a working Python distribution. 
-
-.. [2] **Homebrew** is a simpler and faster solution for Mac but does
-   not include Python packages and uses the MacOS libraries instead
-   of building them separately.  It has been reported that 
-   MacOS system updates can break homebrew packages, but many people
-   successfully use this system.
   
-.. [3] **Linux package managers**: 
+.. [2] **Linux package managers**: 
    For recent versions of linux distributions like Ubuntu, the
    installed Python and supporting packages available through the
    package manager will be sufficiently current to support science
    analysis.  For a linux distribution like CentOS-5 this is not the
    case.  *This option requires root privilege.*
 
-.. [4] **EPD**: 
-   The `Enthought Python Distribution
-   <http://www.enthought.com/products/epd.php>`_ is a bundled
-   binary distribution of Python with a large set of useful packages
-   built in.  This is the **simplest option for academics**.
-
-.. [5] The EPD `Academic version
-   <http://www.enthought.com/products/edudownload.php>`_ is a full
-   version of EPD that is free
-   for use by students or employees of a degree-granting institution as
-   specified in the `license terms
-   <http://www.enthought.com/EPDAcademicTerms.html>`_.
-
-.. [6] **ActivePython**: The `ActiveState Community Python Distribution
-   <http://www.activestate.com/activepython/downloads>`_, has no
-   license requirements and is freely available.  It features a 
-   package manager tool which installs from the `ActiveState PyPM
-   repository <http://code.activestate.com/pypm/>`_.  It handles the
-   "difficult" packages like PyQt and SciPy with support for
-   dependency resolution, and also includes most packages from `PyPI
-   <pypi.python.org>`_.
-
-.. [7] Available only in 32-bit for Mac and Windows.
-
-.. [8] The EPD `Free version
-   <http://www.enthought.com/products/epd_free.php>`_  provides
-   NumPy, SciPy, Matplotlib, IPython, Traits, and Chaco, 
-
-.. [9] Qt and PyQt *not* available.  
-   These are GUI toolkits which are used by a number of useful
-   applications, in particular the IPython Qt console.
-
-.. [10] Available only as a source install on Linux.
-
-.. [11] The `STSci_Python distribution 
-   <http://www.stsci.edu/institute/software_hardware/pyraf/stsci_python>`_
-   provides `PyRAF <http://www.stsci.edu/institute/software_hardware/pyraf>`_,
-   various analysis packages, and the core NumPy, SciPy, and Matplotlib packages.
-   Qt and PyQt are not included.
-
-.. [12] The `Anaconda Community Edition <https://store.continuum.io/cshop/anaconda>`_
-   distribution from Continuum Analytics provides 64-bit support on all platforms.
-   It includes the usual `core scientific packages
-   <http://docs.continuum.io/anaconda/pkgs.html>`_ and some interesting
-   next-generation packages `Numba <http://numba.pydata.org/numba-doc/0.6/index.html>`_ and 
-   `Blaze <http://continuum.io/blog/blaze>`_.
 
 .. raw:: html
 
    </span>
 
 Installation steps
---------------------
+^^^^^^^^^^^^^^^^^^^
 
 In order to follow along with the examples to be presented in the workshops
 your Python installation will need to meet the :ref:`python_pkg_requirements`.  The aim
@@ -186,8 +128,6 @@ caveats or if you aren't sure if your CPU is 64-bit.
 
 Install core Python
 ^^^^^^^^^^^^^^^^^^^
-
-Now install EPD as the core Python on your system following the instructions below:
 
 .. toctree::
    :maxdepth: 1
