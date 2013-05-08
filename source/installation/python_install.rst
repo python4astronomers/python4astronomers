@@ -20,6 +20,8 @@ speaking you should choose 64-bit, but read `64 versus 32 bit`_ for some caveats
 or if you aren't sure if your CPU is 64-bit.
 
 
+.. _`anaconda_option`:
+
 Install core Python
 --------------------
 
@@ -28,8 +30,6 @@ package incompatibilities, we recommend using a pre-built binary Python
 distribution.  Even if you already have an installation on your system you will
 probably save time in the long run by starting fresh with a binary Python
 distribution.
-
-.. _anaconda_option:
 
 **Anaconda: The easiest and fastest option**
 
@@ -40,7 +40,7 @@ Click on that link and download the installer (using the button marked
 and then you get an installer for your OS (Mac, Linux, or Windows).
 Read `64 versus 32 bit`_ if you aren't sure if your CPU is 64-bit.
 
-By default Anaconda is installed into your home directory (no root acress
+By default Anaconda is installed into your home directory (no root access
 required), but you can pick another location if you wish.
 To use the Anaconda python installation, simply add that directory to your
 path, following the instructions on the Anaconda page.
@@ -62,7 +62,9 @@ Anaconda includes the usual `core scientific packages
 
 There are a number of :ref:`recommended_options` besides Anaconda, and you are
 encouraged to explore these options and decide what might be right for you.
-Each of the other options has different features and strengths.
+This includes the use of system package managers like MacPorts or linux RPM.
+Each of the other options has different features and strengths, and no single
+solution works for everybody.
 
 
 Install additional packages
@@ -79,6 +81,12 @@ installation was reported.
   pip install --upgrade aplpy
   pip install --upgrade pyregion
   pip install --upgrade pyparsing
+
+Note that if you have used a root-installation option like MacPorts or a linux
+package manager to install Python, then you will need to use the ``sudo`` prefix
+in each of these commands, e.g.::
+
+  sudo pip install --upgrade aplpy
 
 If you experience problems with installation for any of these packages you can
 send an email to the `astropy mailing list

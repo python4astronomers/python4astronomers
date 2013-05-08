@@ -23,7 +23,7 @@ Homebrew                  Y        --         --       [3]_
 RPM, APT                 --         Y         --       [4]_
 ActiveState CE            Y         Y          Y       [5]_
 Enthought Canopy          Y         Y          Y       [6]_, [7]_
-STSci_Python              Y        [8]_        Y       [9]_,
+STSci_Python              Y        [8]_        Y       [9]_
 yt Project                Y         Y         --       [10]_
 ====================  ========  =========  =========  ======================
 
@@ -87,7 +87,7 @@ yt Project                Y         Y         --       [10]_
    various analysis packages, and the core NumPy, SciPy, and Matplotlib packages.
    Qt and PyQt are not included.
 
-.. [10] Provides NumPy, Matplotlib, HDF5, and `yt <http://yt-project.org/>` 
+.. [10] Provides NumPy, Matplotlib, HDF5, and `yt <http://yt-project.org/>`_
    (astrophysical simulation analysis).  See `Installing yt
    <http://yt-project.org/doc/orientation/installing.html>`_.
 
