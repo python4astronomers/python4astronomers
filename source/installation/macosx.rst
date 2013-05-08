@@ -1,16 +1,10 @@
 .. _Mac_OSX:
 
-Mac OSX
-=======
-
-Install the distribution
-------------------------
+MacPorts
+========
 
 If you can follow instructions and have a little patience then MacPorts is
-probably the best option.  
-
-MacPorts
-^^^^^^^^
+a very good option for a long-term commitment to using Python on a Mac.
 
 To install Python using MacPorts follow the detailed instructions at `MacPorts
 Python installation on Mac - 10 easy steps

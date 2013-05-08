@@ -1,10 +1,12 @@
-Linux 
+.. _linux_install:
+
+Linux
 ==========================
 
-There are three options for a linux Python installation that we describe:
+Here we provide further details for two methods of installing Python on a linux
+system without using a standalone distribution like Anaconda:
 
 - System install in /usr/bin and /usr/lib where you have root privilege
-- User installation of EPD in a non-system directory without root
 - Non-root setup with an existing full-featured Python on the system
 
 System install with root

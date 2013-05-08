@@ -58,7 +58,7 @@ If you still have the 3C120 data from the
 `NumPy introduction <../core/numpy_scipy.html#setup>`_
 then go to the py4ast/core directory, otherwise ::
 
-  $ ipython -pylab
+  $ ipython --pylab
   import urllib2, tarfile
   url = 'http://python4astronomers.github.com/core/core_examples.tar'
   tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
@@ -369,7 +369,7 @@ current session as a single file.::
 This file can then be
 loaded into a new session with the ``restore`` command.::
 
-  ipython -pylab
+  ipython --pylab
   In [1]: import sherpa.astro.ui as ui
   
   In [2]: ui.restore("simple1.sherpa")

@@ -11,7 +11,7 @@ Explore the Sherpa Object Model
 In a new working directory, download a MAST spectrum of :download:`3C 273 <./3c273.fits>`
 and start IPython::
 
-  $ ipython -pylab
+  $ ipython --pylab
 
 If you have trouble accessing the spectrum you can download it straight away
 using Python::

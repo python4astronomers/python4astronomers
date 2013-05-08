@@ -15,3 +15,4 @@
 .. _ds9: http://hea-www.harvard.edu/RD/ds9
 .. _TOPCAT: http://www.star.bris.ac.uk/~mbt/topcat
 .. _Directory: http://nvo.stsci.edu/vor10/index.aspx
+.. _astropy: http://astropy.org

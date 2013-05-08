@@ -19,7 +19,7 @@ there are more types that we did not speak about. One of these is the
 
 Let's start off by downloading :download:`this <../downloads/data.txt>` data file, then launching IPython the directory where you have the file::
 
-    $ ipython -pylab
+    $ ipython --pylab
 
 If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
 
