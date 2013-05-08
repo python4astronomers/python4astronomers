@@ -31,9 +31,9 @@ distribution.  Even if you already have an installation on your system you will
 probably save time in the long run by starting fresh with a binary Python
 distribution.
 
-**Anaconda: The easiest and fastest option**
+**Anaconda: an easy and fast option**
 
-The fastest way to get a basic Python installation up and running is
+On of the fastest way to get a basic Python installation up and running is
 `Anaconda <https://store.continuum.io/cshop/anaconda>`_.
 Click on that link and download the installer (using the button marked
 ``free`` on the top right of the page). It will ask you for your email
