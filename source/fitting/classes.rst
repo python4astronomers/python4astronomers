@@ -7,7 +7,7 @@ Basics
 
 Begin by starting IPython with pylab::
 
-  $ ipython -pylab
+  $ ipython --pylab
 
 
 Classes definitions include the ``class`` declaration, an identifier, and a

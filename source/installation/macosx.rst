@@ -1,18 +1,10 @@
 .. _Mac_OSX:
 
-Mac OSX
-=======
-
-Install the distribution
-------------------------
+MacPorts
+========
 
 If you can follow instructions and have a little patience then MacPorts is
-probably the best option.  If anything beyond a one-click install is too much
-of a bother then choose EPD Academic or ActiveState.  For something in-between
-choose Homebrew.
-
-MacPorts
-^^^^^^^^
+a very good option for a long-term commitment to using Python on a Mac.
 
 To install Python using MacPorts follow the detailed instructions at `MacPorts
 Python installation on Mac - 10 easy steps
@@ -21,38 +13,6 @@ on MacPorts for Python which is well-written and helpful is
 `Setting Up a Mac for Python Development
 <http://jakevdp.github.com/blog/2013/02/02/setting-up-a-mac-for-python-development>`_.
 
-Homebrew
-^^^^^^^^^
-
-To install Python using `Homebrew <http://mxcl.github.com/homebrew/>`_ follow
-the detailed instructions at `Install Python, NumPy, SciPy, and matplotlib on
-Mac OS X <http://penandpants.com/2012/02/24/install-python/>`_.
-
-Enthought Python Distribution (EPD)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Assuming that you have downloaded the `EPD Academic
-<http://www.enthought.com/products/edudownload.php>`_ or `EPD Free
-<http://www.enthought.com/products/epd_free.php>`_ disk image, open it, then
-double-click on ``EPD.mpkg`` and follow the prompts to install. Choose all the
-defaults for installing (in particular use the default installation location).
-
-Additional information can be found on the `Getting Started with EPD
-<http://www.enthought.com/products/epdgetstart.php?platform=mac>`_ page.
-
-ActiveState
-^^^^^^^^^^^^
-
-Download the `ActivePython community edition
-<http://www.activestate.com/activepython/downloads>`_ disk image for Python 2.7
-and run the installer, choosing all defaults at the prompts.  Next install the
-core packages from the terminal command line::
-
-  sudo /usr/local/bin/pypm -g install numpy scipy matplotlib ipython
-
-Now edit the file `~/.bash_profile` and insert the following line at the end::
-
-  export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 Quick installation check 
 ----------------------------------------
@@ -67,8 +27,6 @@ You should see one of the following:
 Dist         Path
 ===========  ===========================================================================
 MacPorts     ``/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/ipython``
-EPD          ``/Library/Frameworks/EPD64.framework/Versions/Current/bin/ipython``
-ActiveState  ``/Library/Frameworks/Python.framework/Versions/2.7/bin/ipython``
 ===========  ===========================================================================
 
 If not go to the `Troubleshooting`_ section.
@@ -151,8 +109,6 @@ problem with your PATH.  In the instructions below use the correct PATH for your
 Dist         Path
 ===========  ====================================================================
 MacPorts     ``/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/``
-EPD          ``/Library/Frameworks/EPD64.framework/Versions/Current/bin/``
-ActiveState  ``/Library/Frameworks/Python.framework/Versions/2.7/bin/``
 ===========  ====================================================================
 
 Step 1

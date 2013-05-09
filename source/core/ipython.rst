@@ -11,7 +11,7 @@ Before going further, open a new terminal window and change to your main Python
 for Astronomers working directory.  Then start IPython by typing "ipython
 -pylab" at the command prompt::
 
-  % ipython -pylab
+  % ipython --pylab
 
 As we saw in the Introduction and Installation workshops, for interactive data
 analysis IPython has a special ``-pylab`` command line option which

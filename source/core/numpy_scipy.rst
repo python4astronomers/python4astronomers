@@ -47,7 +47,7 @@ the workshop.  Now that you have a working Python installation we can do this
 without worrying about details of the platform (e.g. linux has wget,
 Mac has curl, Windows might not have tar, etc etc).
 
-Now start IPython ("ipython -pylab") or use your existing session and enter::
+Now start IPython ("ipython --pylab") or use your existing session and enter::
 
   import urllib2, tarfile
   url = 'http://python4astronomers.github.com/core/core_examples.tar'

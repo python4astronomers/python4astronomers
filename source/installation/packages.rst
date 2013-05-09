@@ -183,6 +183,7 @@ installation via a standard ``setup.py`` script.  This is used as follows::
 More information is available in the `Installing Python Modules
 <http://docs.python.org/install/index.html>`_ page.
 
+
 Where do packages get installed?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -312,12 +313,14 @@ at the front of the list using insert::
 You can also add paths to the search path using the `PYTHONPATH
 <http://docs.python.org/using/cmdline.html#envvar-PYTHONPATH>`_ environment variable.
 
+.. _multiple_pythons:
+
 Multiple Pythons on your computer
 ---------------------------------
 
-Apart from being a scary thought, this is a practical problem that you are
+This is a practical problem that you are
 likely to encounter.  Straight away you probably have the system Python
-(/usr/bin) and the EPD Python.  Then if you install PyRaf, CIAO, and CASA you
+(/usr/bin) and the Anaconda Python.  Then if you install PyRaf, CIAO, and CASA you
 will get one more Python installation for each analysis package (there are good
 reasons for this).  **In general, different Python installations cannot
 reliably share packages or resources**.  Each installation should be considered
