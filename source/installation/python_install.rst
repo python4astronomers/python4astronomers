@@ -274,7 +274,7 @@ Then change to a working directory, untar the file, and start up IPython::
   
   Look at the documentation for the `astropy.Table.read() 
   <http://docs.astropy.org/en/v0.2.1/table/io.html>`_ function in
-  `asciitable`_.  Follow the very first example and use the ``read()`` function
+  `astropy`_.  Follow the very first example and use the ``read()`` function
   to read the data in the file ``table1.dat`` into the variable named ``data``.
 
   This table is in the "ApJ machine-readable format" (which is actually a bit

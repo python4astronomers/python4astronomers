@@ -4,7 +4,8 @@
 .. _`IPython`: http://ipython.scipy.org/moin/
 .. _CIAO: http://cxc.harvard.edu/ciao/
 .. _SAS: http://xmm.vilspa.esa.es/sas/
-.. _asciitable: http://cxc.harvard.edu/contrib/asciitable
+.. _`astropy`: http://astropy.org
+.. _`astropy.io.ascii`: http://docs.astropy.org/en/v0.2.1/io/ascii/index.html
 .. _pyfits: http://www.stsci.edu/resources/software_hardware/pyfits
 .. _ATpy: http://atpy.github.com
 .. _APLpy: http://aplpy.github.com

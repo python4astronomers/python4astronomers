@@ -71,7 +71,7 @@ Now ``data`` contains a string::
   Usually, you should close file when you are done with it to free up 
   resources (memory). 
   If you only have a couple of files in an interactive session, that is not 
-  dramatic. On the other hand, if you write scrits which deal with douzens of 
+  dramatic. On the other hand, if you write scripts which deal with douzens of 
   files, then you should start worrying about these things. Often you will see 
   things like this::
       
@@ -370,44 +370,44 @@ data at once::
   data[1]
   data['abund']
 
+.. _`astropy.io.ascii.latex.AASTex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.AASTex.html#astropy.io.ascii.latex.AASTex
+.. _`astropy.io.ascii.basic.Basic`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Basic.html#astropy.io.ascii.basic.Basic
+.. _`astropy.io.ascii.cds.Cds`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.cds.Cds.html#astropy.io.ascii.cds.Cds
+.. _`astropy.io.ascii.basic.CommentedHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.CommentedHeader.html#astropy.io.ascii.basic.CommentedHeader
+.. _`astropy.io.ascii.daophot.Daophot`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.daophot.Daophot.html#astropy.io.ascii.daophot.Daophot
+.. _`astropy.io.ascii.fixedwidth.FixedWidth`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.fixedwidth.FixedWidth.html#astropy.io.ascii.fixedwidth.FixedWidth
+.. _`astropy.io.ascii.ipac.Ipac`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.ipac.Ipac.html#astropy.io.ascii.ipac.Ipac
+.. _`astropy.io.ascii.latex.Latex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.Latex.html#astropy.io.ascii.latex.Latex
+.. _`astropy.io.ascii.basic.NoHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.NoHeader.html#astropy.io.ascii.basic.NoHeader
+.. _`astropy.io.ascii.basic.Rdb`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Rdb.html#astropy.io.ascii.basic.Rdb
+.. _`astropy.io.ascii.sextractor.SExtractor`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.sextractor.SExtractor.html#astropy.io.ascii.sextractor.SExtractor
+.. _`astropy.io.ascii.basic.Tab`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Tab.html#astropy.io.ascii.basic.Tab
+.. _`ascii.read()`: http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#parameters-for-read
 
-.. _`table parameters for reading`: http://cxc.harvard.edu/contrib/asciitable/#commonly-used-parameters-for-read
-.. _`asciitable.Basic`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Basic
-.. _`asciitable.Cds`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Cds
-.. _`asciitable.CommentedHeader`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.CommentedHeader
-.. _`asciitable.Daophot`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Daophot
-.. _`asciitable.Ipac`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Ipac
-.. _`asciitable.Latex`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Latex
-.. _`asciitable.AASTex`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.AASTex
-.. _`asciitable.Memory`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Memory
-.. _`asciitable.NoHeader`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.NoHeader
-.. _`asciitable.Rdb`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Rdb
-.. _`asciitable.Tab`: http://cxc.harvard.edu/contrib/asciitable/#asciitable.Tab
-.. _`asciitable.read()`: http://cxc.harvard.edu/contrib/asciitable/#reading-tables
-.. _`asciitable.write()`: http://cxc.harvard.edu/contrib/asciitable/#writing-tables
+astropy.io.ascii
+================
 
-Asciitable
-===========
-
-If you need even more flexibility, than the `asciitable`_ module can help you.
+If you need even more flexibility, than the `astropy.io.ascii`_ module can help you.
 It natively understands some very complex formats, e.g. the CDS machine readable tables and it can automatically detect any of those formats.
 If also can format your output in LaTeX.
 
-The `asciitable`_ module is an extensible ASCII table reader and writer that is
+The `astropy.io.ascii`_ module is an extensible ASCII table reader and writer that is
 designed to handle most formats you will encounter in the wild:
 
-* `asciitable.Basic`_: basic table with customizable delimiters and header configurations
-* `asciitable.Cds`_: `CDS format table <http://vizier.u-strasbg.fr/doc/catstd.htx>`_ (also Vizier and ApJ machine readable tables)
-* `asciitable.CommentedHeader`_: column names given in a line that begins with the comment character
-* `asciitable.Daophot`_: table from the IRAF DAOphot package
-* `asciitable.Ipac`_: `IPAC format table <http://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html>`_
-* `asciitable.Latex`_,`asciitable.AASTex`_: Write your tables in LeTeX!
-* `asciitable.Memory`_: table already in memory (list of lists, dict of lists, etc)
-* `asciitable.NoHeader`_: basic table with no header where columns are auto-named
-* `asciitable.Rdb`_: tab-separated values with an extra line after the column definition line
-* `asciitable.Tab`_: tab-separated values
+* `astropy.io.ascii.latex.AASTex`_: AASTeX `deluxetable` used for AAS journals
+* `astropy.io.ascii.basic.Basic`_: basic table with customizable delimiters and header configurations
+* `astropy.io.ascii.cds.Cds`_: `CDS format table <http://vizier.u-strasbg.fr/doc/catstd.htx>`_ (also Vizier and ApJ machine readable tables)
+* `astropy.io.ascii.basic.CommentedHeader`_: column names given in a line that begins with the comment character
+* `astropy.io.ascii.daophot.Daophot`_: table from the IRAF DAOphot package
+* `astropy.io.ascii.fixedwidth.FixedWidth`_: table with fixed-width columns (see also `fixed_width_gallery <http://docs.astropy.org/en/v0.2.1/io/ascii/fixed_width_gallery.html#fixed-width-gallery>`_)
+* `astropy.io.ascii.ipac.Ipac`_: `IPAC format table <http://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html>`_
+* `astropy.io.ascii.latex.Latex`_: LaTeX table with datavalue in the `tabular` environment
+* `astropy.io.ascii.basic.NoHeader`_: basic table with no header where columns are auto-named
+* `astropy.io.ascii.basic.Rdb`_: tab-separated values with an extra line after the column definition line
+* `astropy.io.ascii.sextractor.SExtractor`_: `SExtractor format table <http://www.astromatic.net/software/sextractor>`_
+* `astropy.io.ascii.basic.Tab`_: tab-separated values
 
-`Asciitable`_ is built on a modular and extensible class structure. This makes
+`astropy.io.ascii`_ is built on a modular and extensible class structure. This makes
 is easy to create new classes, which implement the functionality for some 
 specific table format.
 
@@ -415,14 +415,14 @@ Reading tables
 --------------
 ::
 
-  import asciitable
+  from astropy.io import ascii
   table = """
   col1 col2 col3
   1    2    "hi there"
   3    4.2  world"""
-  data = asciitable.read(table)
+  data = ascii.read(table)
 
-The first and most important argument to the `asciitable.read()`_ function is
+The first and most important argument to the `ascii.read()`_ function is
 the table input.  There is some flexibility here and you can supply any of the following:
 
   - Name of a file (string)
@@ -434,7 +434,7 @@ Guessing
 ^^^^^^^^^^
 
 Even though it seems obvious to a human, parsing this table to get the right
-column names, data values and data types is not trivial.  `Asciitable`_ needed
+column names, data values and data types is not trivial.  `astropy.io.ascii`_ needed
 to figure out (or guess):
 
 - Overall table format (DAOphot, CDS, RDB, Basic, etc)
@@ -442,9 +442,9 @@ to figure out (or guess):
 - Column names (which row, maybe preceded by #)
 - Quote character (single or double quote)
 
-By default `asciitable`_ will try each format it knows and use the first one
+By default `astropy.io.ascii`_ will try each format it knows and use the first one
 that gives a "reasonable" answer.  The details are in the `Guess table format
-<http://cxc.harvard.edu/contrib/asciitable/#guess-table-format>`_ section.  
+<http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#guess-table-format>`_ section.  
 Sometimes it will fail, e.g.::
 
   table = """
@@ -452,34 +452,31 @@ Sometimes it will fail, e.g.::
     1  & hi there
     3  & world
   """
-  asciitable.read(table)
+  ascii.read(table)
 
 This gives an ominous looking stack trace, but actually all that happened is
-that `asciitable`_ guessed every format it knows and nothing worked.  The
+that `astropy.io.ascii`_ guessed every format it knows and nothing worked.  The
 standard set of column delimiters is space, comma, tab, and the vertical bar.
 In this case you simply need to give it some help::
 
-  asciitable.read(table, delimiter="&")
+  ascii.read(table, delimiter="&")
 
-The full list of `table parameters for reading`_ includes common options like
+The full list of parameters for reading includes common options like
 ``Reader``, ``delimiter``, ``quote_char``, and ``comment``.  
 
-The ``Reader`` option specifies the overall class of table format as documented
-in the `Extension Reader Classes
-<http://cxc.harvard.edu/contrib/asciitable/#extension-reader-classes>`_ section.
 
 No guessing
 ^^^^^^^^^^^^
 
 For some tricky tables you will want to disable guessing and explicitly provide
-the relevant table format information to the `asciitable.read()`_ function.
-A big advantage in this strategy is that `asciitable`_ can then provide more
+the relevant table format information to the `ascii.read()`_ function.
+A big advantage in this strategy is that `astropy.io.ascii`_ can then provide more
 detailed information if it still fails to parse the table, e.g.::
 
-  asciitable.read(table, guess=False, Reader=asciitable.Basic)
+  ascii.read(table, guess=False, Reader=ascii.Basic)
 
 This produces a message (after the stacktrace) that should be a pretty good
-clue that `asciitable`_ is using the wrong column delimiter::
+clue that `astropy.io.ascii`_ is using the wrong column delimiter::
 
   InconsistentTableError: Number of header columns (3) inconsistent with data columns (4) at data line 0
   Header values: ['col1', '&', 'col2']
@@ -489,14 +486,12 @@ clue that `asciitable`_ is using the wrong column delimiter::
 Writing
 -------
 
-You can write ASCII tables using the `asciitable.write()`_ function.  There is
-a lot of flexibility in the format of the `input data
-<http://cxc.harvard.edu/contrib/asciitable/#input-data-formats>`_ to be
-written:
+You can write ASCII tables using the `ascii.write() <http://docs.astropy.org/en/v0.2.1/io/ascii/index.html#writing-tables>`_ function. There is a lot of flexibility in the format of the input data to be written:
 
 - Existing ASCII table with metadata
-- Data from asciitable.read()
+- Data from ascii.read()
 - NumPy structured array or record array
+- astropy.table.Table object
 - Sequence of sequences
 - Dict of sequences
 
@@ -507,30 +502,30 @@ as space-delimited::
   col1,col2,col3
   1,hello world,2.5
   3,again,5.0"""
-  dat = asciitable.read(table)
+  dat = ascii.read(table)
 
   import sys
-  asciitable.write(dat, sys.stdout)  # print to terminal instead of to file
+  ascii.write(dat, sys.stdout)  # print to terminal instead of to file
 
 We can use a different column delimiter::
 
-  asciitable.write(dat, sys.stdout, delimiter='|')
+  ascii.write(dat, sys.stdout, delimiter='|')
 
 or a different table writer class::
 
-  asciitable.write(dat, sys.stdout, Writer=asciitable.Latex)
+  ascii.write(dat, sys.stdout, Writer=ascii.Latex)
 
 As a final example, imagine you've gathered basic information about 5 galaxies
 which you want to write as an ASCII table.  You could just use pure Python file I/O as
 shown earlier, but then you may need to be careful about quoting and formatting (and why
-rewrite the same code every time when it is already done!).  Instead just use `asciitable`_::
+rewrite the same code every time when it is already done!).  Instead just use `astropy.io.ascii`_::
 
   types = ['barred spiral', 'spiral', 'peculiar (ring)', 'elliptical', 'elliptical']
-  redshifts = array([0.024221, 0.132, 0.22, 0.34, 0.45])
-  lums = array([1e40, 1.2e40, 2e40, 3e40, 4e40])
+  redshifts = np.array([0.024221, 0.132, 0.22, 0.34, 0.45])
+  lums = np.array([1e40, 1.2e40, 2e40, 3e40, 4e40])
   table = {'type': types, 'redshift': redshifts, 'lum': lums}
 
-  asciitable.write(table, 'galaxies.dat', formats={'redshift': '%.5f', 'lum': '%.2e'})
+  ascii.write(table, 'galaxies.dat', formats={'redshift': '%.5f', 'lum': '%.2e'})
   cat galaxies.dat
 
 .. admonition::  Exercise: scraping table data from the web
@@ -539,7 +534,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
    <http://www.crummy.com/software/BeautifulSoup/>`_ package which will parse
    HTML pages into nice data structures.  **QUIT** your IPython session and from the command line do::
      
-     easy_install [--user] BeautifulSoup
+     pip --upgrade [--user] BeautifulSoup
 
    Use the ``--user`` flag if you prefer to install the package into your local
    user area instead of within the system Python installation.
@@ -566,19 +561,19 @@ rewrite the same code every time when it is already done!).  Instead just use `a
    want to start with::
 
      import urllib2
-     import asciitable
+     from astropy.io import ascii
      html = urllib2.urlopen('http://hea-www.harvard.edu/XJET/').read()  # Get web page as string
      table1 = html2tsv(html, 0)   # Parse the first table in the web page
      table2 = html2tsv(html, 1)   # Parse the second table
      table3 = html2tsv(html, 2)   # Parse the third table
 
    Now examine what you got in the ``table`` variables and use
-   `asciitable.read()`_ to parse the right one into a table.  Then plot a
+   `ascii.read() ` to parse the right one into a table.  Then plot a
    histogram of the redshift distribution in this sample.
 
    **HINT**: the table has missing values so include ``fill_values=('', '-1')`` in
-   the call to `asciitable.read()`_.  `Asciitable`_ has robust functionality to `replace bad or
-   missing values <http://cxc.cfa.harvard.edu/contrib/asciitable/#replace-bad-or-missing-values>`_.
+   the call to `ascii.read()`_.  `astropy.io.ascii`_ has robust functionality to `replace bad or
+   missing values <http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#replace-bad-or-missing-values>`_.
 
 .. raw:: html
 

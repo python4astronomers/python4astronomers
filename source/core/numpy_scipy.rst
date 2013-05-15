@@ -88,8 +88,8 @@ three identically sized images providing the 2-d spectral intensity, error
 values, and data quality for each pixel.  The slit direction is along the rows
 (up and down) and wavelength is in columns (left to right).  ::
 
-  import pyfits
-  hdus = pyfits.open('3c120_stis.fits.gz')
+  from astropy.io import fits
+  hdus = fits.open('3c120_stis.fits.gz')
   hdus
 
 Use the ``?`` to get a little more detail on the ``hdus`` object::

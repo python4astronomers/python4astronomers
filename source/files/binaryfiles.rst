@@ -3,16 +3,15 @@
 Binary formats useful for astronomers
 *************************************
 
-Pyfits - Reading and writing fits files
-=======================================
+astropy.io.fits - Reading and writing fits files
+================================================
 
-`PyFITS <http://packages.python.org/pyfits/>`_  is a Python module developed at STScI to read and write all types of fits files. The full html manual is available `here <http://stsdas.stsci.edu/download/docs/pyfits/header-refactoring/#>`_.
-The pdf version of the `manual <http://stsdas.stsci.edu/download/docs/The_PyFITS_Handbook.pdf>`_ is more than hundred pages long.
+`astropy.io.fits <http://docs.astropy.org/en/v0.2.1/io/fits/index.html>`_  is a Python module developed at STScI to read and write all types of fits files. The full html manual is available `here <http://docs.astropy.org/en/v0.2.1/io/fits/index.html>`_.
 
 .. admonition:: External resource!
 
-    The PyFITS tutorial itself is good for our purpose and since this
-    is the internet I will not reinvent the wheel. Read the `Pyfits tutorial <http://packages.python.org/pyfits/users_guide/users_tutorial.html>`_
+    The astropy.io.fits tutorial itself is good for our purpose and since this
+    is the internet I will not reinvent the wheel. Read the manual `here <http://docs.astropy.org/en/v0.2.1/io/fits/index.html>`_
     then come back to this page for an exercise.
 
 .. admonition::  Exercise
@@ -34,8 +33,8 @@ The pdf version of the `manual <http://stsdas.stsci.edu/download/docs/The_PyFITS
 
 Here is a possible solution::
     
-    import pyfits
-    hdus = pyfits.open('3c120_stis.fits.gz')
+    from astropy.io import fits
+    hdus = fits.open('3c120_stis.fits.gz')
     hdus.info()
     head = hdus[0].header
     head.keys()             # lists all keywords in a dictionary
@@ -48,7 +47,7 @@ Here is a possible solution::
     plt.colorbar()
 
 You might recognize this piece of code. It was used before in
-the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understand the ``pyfits`` commands in more detail.
+the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understand the ``astropy.io.fits`` commands in more detail.
 
 .. raw:: html
 
