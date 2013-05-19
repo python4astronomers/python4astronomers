@@ -159,6 +159,7 @@ MacOS or root linux install
   sudo pip install --upgrade aplpy
   sudo pip install --upgrade pyregion
   sudo pip install --upgrade pyparsing
+  sudo pip install --upgrade atpy
 
 
 Non-root linux
@@ -171,6 +172,7 @@ Non-root linux
   pip install --upgrade aplpy
   pip install --upgrade pyregion
   pip install --upgrade pyparsing
+  pip install --upgrade atpy
 
 
 Windows
@@ -187,6 +189,7 @@ pyregion, and coords.
   pip.exe install --upgrade aplpy  
   pip.exe install --upgrade pyregion
   pip.exe install --upgrade pyparsing
+  pip.ext install --upgrade aty
 
 
 .. Admonition:: The soap opera of pip and easy_install and distribute and setuptools
@@ -219,7 +222,7 @@ core scientific Python installation, do the following and check version numbers:
 
   % python -V
   % ipython -V
-  % ipython -pylab
+  % ipython --pylab
   import numpy
   import scipy
   import scipy.linalg
@@ -253,12 +256,12 @@ Then change to a working directory, untar the file, and start up IPython::
   tar xvf ~/Downloads/install_examples.tar   # or wherever your browser puts downloads
   cd py4ast/install
   ls
-  ipython -pylab
+  ipython --pylab
 
 .. tip::
    For all of the workshops you should always start Python using the command::
    
-     ipython -pylab  # (for Windows start the Pylab application)
+     ipython --pylab  # (for Windows start the Pylab application)
 
    This will automatically load all of the main plotting functions from
    `Matplotlib`_ (e.g. ``plot()``, ``hist()``, and many more) as well as common

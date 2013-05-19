@@ -3,7 +3,7 @@
 Python Built-in Types and Operations
 ====================================
 
-Python supports a number of built-in types and operations. This tutorial covers the most common types, but information about additional types is available `here <http://docs.python.org/library/stdtypes.html>`_
+Python supports a number of built-in types and operations. This tutorial covers the most common types, but information about additional types is available `here <http://docs.python.org/library/stdtypes.html>`_.
 
 Basic numeric types
 -------------------
