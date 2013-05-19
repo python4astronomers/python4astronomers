@@ -534,7 +534,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
    <http://www.crummy.com/software/BeautifulSoup/>`_ package which will parse
    HTML pages into nice data structures.  **QUIT** your IPython session and from the command line do::
      
-     pip --upgrade [--user] BeautifulSoup
+     pip install --upgrade [--user] BeautifulSoup
 
    Use the ``--user`` flag if you prefer to install the package into your local
    user area instead of within the system Python installation.
