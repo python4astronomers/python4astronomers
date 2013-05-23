@@ -29,15 +29,15 @@ Reading a table and plotting
 ----------------------------
 
 The Fermi Gamma-ray satellite has a nice catalog of AGN available through
-HEASARC.  The script below will read in the catalog data using the `asciitable`_
+HEASARC.  The script below will read in the catalog data using the `astropy.io.ascii`_
 module, do some basic filtering with `NumPy`_, and make a couple of plots with
 `matplotlib`_ ::
 
-  import asciitable   # Make external package available
+  import astropy.io.ascii as ascii   # Make external package available
 
   # Read table.  
   # ==> dat[column_name] and dat[row_number] both valid <==
-  dat = asciitable.read('fermi_agn.dat')
+  dat = ascii.read('fermi_agn.dat')
 
   redshift = dat['redshift']    # array of values from 'redshift' column
   flux = dat['photon_flux']
@@ -143,7 +143,7 @@ This example demonstrates how to create a synthetic image of a cluster,
 including convolution with a Gaussian filter and the addition of noise.
 ::
 
-  import pyfits
+  import astropy.io.fits as fits
   from scipy.ndimage import gaussian_filter
 
   # Create empty image
@@ -177,7 +177,7 @@ including convolution with a Gaussian filter and the addition of noise.
   image += random.normal(3., 0.01, image.shape)
 
   # Write out to FITS image
-  pyfits.writeto('cluster.fits', image, clobber=True)
+  pits.writeto('cluster.fits', image, clobber=True)
 
 The simulated cluster image is below:
 
@@ -193,7 +193,7 @@ together other codes and doing system type tasks.
 ::
 
   import os
-  import asciitable
+  import astropy.io.ascii as ascii
 
   smoothing = 30  # Smoothing window length
   freqs = [2, 4]  # Frequency values for making data
@@ -218,7 +218,7 @@ together other codes and doing system type tasks.
           open(filename, 'w').write(out)
 
           # Parse the output string as a table
-          dat = asciitable.read(out)
+          dat = ascii.read(out)
 
           # Make a plot
           subplot(2, 2, plot_num)

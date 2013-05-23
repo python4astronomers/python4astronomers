@@ -373,9 +373,9 @@ data at once::
 .. _`astropy.io.ascii.AASTex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.AASTex.html#astropy.io.ascii.latex.AASTex
 .. _`astropy.io.ascii.Basic`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Basic.html#astropy.io.ascii.basic.Basic
 .. _`astropy.io.ascii.Cds`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.cds.Cds.html#astropy.io.ascii.cds.Cds
-.. _`astropy.io.ascii.basic.CommentedHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.CommentedHeader.html#astropy.io.ascii.basic.CommentedHeader
+.. _`astropy.io.ascii.CommentedHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.CommentedHeader.html#astropy.io.ascii.basic.CommentedHeader
 .. _`astropy.io.ascii.Daophot`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.daophot.Daophot.html#astropy.io.ascii.daophot.Daophot
-.. _`astropy.io.ascii.fixedwidth.FixedWidth`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.fixedwidth.FixedWidth.html#astropy.io.ascii.fixedwidth.FixedWidth
+.. _`astropy.io.ascii.FixedWidth`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.fixedwidth.FixedWidth.html#astropy.io.ascii.fixedwidth.FixedWidth
 .. _`astropy.io.ascii.Ipac`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.ipac.Ipac.html#astropy.io.ascii.ipac.Ipac
 .. _`astropy.io.ascii.Latex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.Latex.html#astropy.io.ascii.latex.Latex
 .. _`astropy.io.ascii.NoHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.NoHeader.html#astropy.io.ascii.basic.NoHeader
@@ -568,7 +568,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
      table3 = html2tsv(html, 2)   # Parse the third table
 
    Now examine what you got in the ``table`` variables and use
-   `ascii.read() ` to parse the right one into a table.  Then plot a
+   `ascii.read()`_ to parse the right one into a table.  Then plot a
    histogram of the redshift distribution in this sample.
 
    **HINT**: the table has missing values so include ``fill_values=('', '-1')`` in

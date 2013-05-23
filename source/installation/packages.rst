@@ -312,7 +312,7 @@ at the front of the list using insert::
 You can also add paths to the search path using the `PYTHONPATH
 <http://docs.python.org/using/cmdline.html#envvar-PYTHONPATH>`_ environment variable.
 
-.. _multiple_pythons:
+.. _multiple-pythons:
 
 Multiple Pythons on your computer
 ---------------------------------

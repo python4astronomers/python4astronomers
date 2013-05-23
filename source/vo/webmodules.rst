@@ -37,7 +37,7 @@ webpage are available::
 In this particular example the data request is handled after the
 initial response has been examined; the data is streamed into a local
 variable ``data`` and then saved to a local file. As demonstrated in
-the :doc:`asciitable portion </files/asciitable>` of the :doc:`Reading
+the :doc:`ASCII files portion </files/asciifiles>` of the :doc:`Reading
 and Writing Files </files/files>` workshop, one alternatively could
 parse the returned data stream into a table for further use.
 

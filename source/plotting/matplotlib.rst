@@ -85,6 +85,7 @@
 .. _`yticks()`: http://matplotlib.sourceforge.net/api/pyplot_api.html?highlight=plot.yticks#matplotlib.pyplot.yticks
 .. _`Figure`: http://matplotlib.sourceforge.net/api/figure_api.html
 .. _`Axes`: http://matplotlib.sourceforge.net/api/axes_api.html
+.. _`Text intro`: http://matplotlib.sourceforge.net/users/text_intro.html#text-intro
 
 Matplotlib
 ============
@@ -108,7 +109,7 @@ exact source code making the plot:
   <http://matplotlib.sourceforge.net/users/navigation_toolbar.html>`_: how to use the plot window for zooming etc.
 - `Screenshots <http://matplotlib.sourceforge.net/users/screenshots.html>`_: screenshots and code for about 20 key types of matplotlib functionality
 - `Thumbnail gallery <http://matplotlib.sourceforge.net/gallery.html>`_: hundreds of thumbnails (find a plot like the one you want to make)
-- `Text intro <http://matplotlib.sourceforge.net/users/text_intro.html#text-intro>`_: manipulate text
+- `Text intro`_: manipulate text
 - `Mathematical expressions
   <http://matplotlib.sourceforge.net/users/mathtext.html#mathtext-tutorial>`_:
   put math in figure text or labels
@@ -513,7 +514,7 @@ Working with text
 The `text()`_ command can be used to add text in
 an arbitrary location, and the `xlabel()`_,
 `ylabel()`_ and `title()`_
-are used to add text in the indicated locations (see :ref:`text-intro`
+are used to add text in the indicated locations (see `Text intro`_
 for a more detailed example)::
 
   mu, sigma = 100, 15

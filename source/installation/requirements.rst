@@ -23,9 +23,7 @@ Required additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - `pip <http://pypi.python.org/pypi/pip>`_ >= 1.0
-- `asciitable`_ >= 0.5.0
-- `pyfits`_ >= 2.3.0
-- `pywcs <https://trac6.assembla.com/astrolib>`_ >= 1.9
+- `astropy`_ >= 0.2
 - `ATpy`_ >= 0.9.4
 - `APLpy`_ >= 0.9.5 (pyparsing, pyregion, PIL, montage are optional but useful)
 
