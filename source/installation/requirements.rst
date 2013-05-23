@@ -5,19 +5,21 @@ Python requirements
 -----------------------
 
 Following are a list of core, required and optional (but useful) packages for the workshops.
+Many of the minimum required versions are fairly old and it is recommended to
+use the most recent release in most cases.
 
 Core
 ^^^^^
 
-- Python 2.6 or 2.7 (not Python 3.x [#]_)
+- Python 2.6 or 2.7 (Python 3 [#]_)
 - IPython >= 0.10
-- NumPy >= 1.3
+- NumPy >= 1.5
 - SciPy >= 0.7.2
 - Matplotlib >= 1.0
 - distribute (aka setuptools) >= 0.6
 
-.. [#] Python 3.x is the "next generation" Python but for astronomy analysis
-       Python 2.x is still the best choice.
+.. [#] Python 3.2 or greater will work for most of this tutorial, but the
+       examples have not been tested or made Python 3 compatible.
 
 Required additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -26,6 +28,7 @@ Required additional packages
 - `astropy`_ >= 0.2
 - `ATpy`_ >= 0.9.4
 - `APLpy`_ >= 0.9.5 (pyparsing, pyregion, PIL, montage are optional but useful)
+- `astropy`_ >= 0.2.1
 
 Useful additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,17 +1,20 @@
-Linux 
+.. _linux_install:
+
+Linux
 ==========================
 
-There are three options for a linux Python installation that we describe:
+Here we provide further details for two methods of installing scientific Python on a linux
+system.  In this case you will *not* use a standalone Python distribution like Anaconda or
+Enthought, but instead use the operating system installation of Python:
 
 - System install in /usr/bin and /usr/lib where you have root privilege
-- User installation of EPD in a non-system directory without root
 - Non-root setup with an existing full-featured Python on the system
 
 System install with root
 ------------------------
 
 For a modern linux installation such as Ubuntu, the system Python version
-will be 2.6 or newer and all of the required core packages are available as 
+will be 2.6 or newer and all of the required core packages are available as
 package installs.  The instructions below have been developed and tested with
 Ubuntu 10.  Corresponding packages for recent Fedora are probably available but
 this has not been verified.  In this case you will NOT use the Enthought Python
@@ -33,7 +36,7 @@ Install the core packages for analysis with the following::
   sudo apt-get install python-matplotlib
   sudo apt-get install python-setuptools
 
-Quick installation check 
+Quick installation check
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open a new terminal window and type::
@@ -92,7 +95,14 @@ if it already exists in the system python::
 
   pip install --upgrade ipython
 
-Quick installation check 
+.. Note::
+
+   You can make managing your virtual environments even easier with the popular
+   `virtualenvwrapper <http://virtualenvwrapper.readthedocs.org/en/latest/>`_
+   package.
+
+
+Quick installation check
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Open a new terminal window and type::
@@ -102,4 +112,3 @@ Open a new terminal window and type::
 You should see something like the following::
 
   ~/py27/bin/ipython
-

@@ -116,3 +116,13 @@ original creation.
 
 :Authors: Tom Aldcroft, Tom Robitaille, Brian Refsdal, Gus Muench
 :Copyright: 2011 Smithsonian Astrophysical Observatory
+
+.. toctree::
+   :hidden:
+
+   astropy/data/README
+   fitting/classes
+   installation/recommended_options
+   installation/requirements
+   intro/comparison
+   references

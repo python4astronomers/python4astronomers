@@ -35,6 +35,17 @@ Loading the data
   staterror = None
   syserror  = None
 
+.. Note::
+  The ``load_data`` command may not work in the stand-alone version of
+  Sherpa. If not, you can use ``pyfits`` to load in the data and then
+  ``load_arrays``, for example::
+
+    import pyfits
+    dat = pyfits.open('3c273.fits')[1].data
+    wlen = dat.field('WAVELENGTH')
+    flux = dat.field('FLUX')
+    ui.load_arrays(1, wlen, flux)
+
 As the file contains two columns, they are taken to be the ``x`` and
 ``y`` data values. The y values are small (of order 10^-14): ::
 

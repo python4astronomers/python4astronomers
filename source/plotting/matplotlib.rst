@@ -637,10 +637,9 @@ these arguments are ``(x,y)`` tuples::
 
 In this basic example, both the ``xy`` (arrow tip) and ``xytext``
 locations (text location) are in data coordinates.  There are a
-variety of other coordinate systems one can choose -- see
-:ref:`annotations-tutorial` and :ref:`plotting-guide-annotation` for
-details.  More examples can be found in
-:ref:`pylab_examples-annotation_demo`.
+variety of other coordinate systems one can choose -- see the
+`Annotations introduction <http://matplotlib.org/users/annotations_intro.html>`_
+for more details and links to examples.
 
 Plotting 2-d data
 ------------------------
