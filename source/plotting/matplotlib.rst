@@ -715,7 +715,7 @@ This module is a thin wrapper around ``matplotlib.pylab`` which pulls in:
 
 - Everything in ``matplotlib.pyplot``
 - All top-level functions ``numpy``, ``numpy.fft``, ``numpy.random``,
-   ``numpy.linalg``
+  ``numpy.linalg``
 - A selection of other useful functions and modules from matplotlib
 
 There is no magic, and to see for yourself do
