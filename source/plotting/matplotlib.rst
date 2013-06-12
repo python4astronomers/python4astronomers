@@ -175,10 +175,15 @@ See the `Appendix: Pylab and Pyplot and NumPy`_ for details about just what's
 going on with the ``--pylab`` switch.  Also remember if you are using IPython
 version 0.10 or earlier you need to use ``-pylab`` with just one dash.
 
-Now import ``numpy`` and ``matplotlib``::
+The following two statements are made for you automatically if you
+started ``ipython`` with the ``--pylab`` switch, and cause
+both ``numpy`` and ``matplotlib`` to be imported::
 
   import numpy as np
   import matplotlib.pyplot as plt
+
+When writing your own Python code - e.g. as a script - then you will need
+to include the above two lines.
 
 `matplotlib.pyplot`_ is a collection of command style functions that make
 matplotlib work like MATLAB.  Each ``pyplot`` function makes some change to a
