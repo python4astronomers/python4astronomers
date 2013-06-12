@@ -692,6 +692,8 @@ looking at an example of the 3-d viewer that is available::
   ax.set_ylabel('Y Label')
   ax.set_zlabel('Z Label')
 
+.. image:: pyplot_3d.png
+
 To get more information check out the `mplot3d tutorial
 <http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_.
 
