@@ -308,6 +308,32 @@ in quite handy.
 You *can* use the close button to close the window, but it is best to
 use the `close()`_ command to avoid memory leaks.
 
+Saving the plot
+^^^^^^^^^^^^^^^
+
+As discussed above, you can use the GUI to save the plot, but the
+`savefig()`_ command is often more useful, and has many options::
+
+    plt.savefig('fig.png')
+    plt.savefig('fig.pdf')
+
+Note that you can save a figure multiple times (e.g. as different
+formats). The supported formats depend on the backend being used, but
+normally include png, pdf, ps, eps and svg::
+
+  plt.savefig('fig')   # creates fig.png (unless you have changed the default format)
+  plt.savefig('fig.pdf')  # creates a PDF file, fig.pdf
+  plt.savefig('fig', format='svg')  # creates a SVG file called fig
+  plt.savefig('fig.svg', 'format='ps') # creates a PS file called fig.svg (do not do this!)
+
+The default format (used in the first line) can be queried, or
+changed, by saying::
+
+    >>> rcParams['savefig.format']
+    'png'
+    >>> rcParams['savefig.format'] = 'pdf'
+    >>> plt.savefig('foo')  # creates foo.pdf
+
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
