@@ -478,7 +478,7 @@ Now return the second plot in the first figure and update it::
   plt.figure(1)             # Select the existing first figure
   plt.subplot(2, 1, 2)          # Select the existing subplot 212
   plt.plot(t2, np.cos(np.pi*t2), 'g--')   # Add a plot to the axes
-  plt.text(2, -0.8, 'Back to AXES 212')
+  plt.text(0.2, -0.8, 'Back to AXES 212', color='g', size=18)   # add a colored label, increasing the font size
 
 +--------------------------+---------------------------+
 |.. image:: mult_figs1.png |.. image:: mult_figs2.png  |
