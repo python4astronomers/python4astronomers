@@ -511,6 +511,15 @@ instead.  See the :ref:`advanced_plotting` page for an introduction to this
 approach, and the then `Artist tutorial
 <http://matplotlib.sourceforge.net/users/artists.html>`_ for the gory details.
 
+Figures can be deleted with the `close()`_ command::
+
+  plt.close(2)    # Remove the second figure
+
+You can use the 'close button' provided by the window manager
+to remove the figure, but if you do this you must *still* call
+the `close()`_ command, to ensure that memory allocated by pyplot
+for the figure is released.
+
 .. _working-with-text:
 
 Working with text
