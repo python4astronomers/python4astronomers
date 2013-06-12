@@ -86,6 +86,7 @@
 .. _`Figure`: http://matplotlib.sourceforge.net/api/figure_api.html
 .. _`Axes`: http://matplotlib.sourceforge.net/api/axes_api.html
 .. _`Text intro`: http://matplotlib.sourceforge.net/users/text_intro.html#text-intro
+.. _`savefig()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.savefig
 
 Matplotlib
 ============
@@ -288,6 +289,24 @@ using arrays::
 .. raw:: html
 
    </div>
+
+What are all these icons for?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The figures are enclosed in a window that looks a little like the
+following
+(it depends on the OS and matplotlib backend being used):
+
+.. image:: pyplot_window.png
+
+The icons at the bottom of the window allow you to zoom in or out of
+the plot, pan around, and save the plot as a "hardcopy" format (e.g.
+PNG, postscript, or PDF).
+The first icon will reset you to the original axis limits, which comes
+in quite handy.
+
+You *can* use the close button to close the window, but it is best to
+use the `close()`_ command to avoid memory leaks.
 
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
