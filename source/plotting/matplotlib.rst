@@ -714,7 +714,7 @@ Likewise pylab is also a module provided by matplotlib that you can import::
 This module is a thin wrapper around ``matplotlib.pylab`` which pulls in:
 
 - Everything in ``matplotlib.pyplot``
-- All top-level functions ``numpy``,``numpy.fft``, ``numpy.random``,
+- All top-level functions ``numpy``, ``numpy.fft``, ``numpy.random``,
 - ``numpy.linalg``
 - A selection of other useful functions and modules from matplotlib
 
