@@ -473,13 +473,6 @@ figure has two subplots::
   plt.title('FIGURE 2')
   plt.text(2, 0.8, 'AXES 111')
 
-Now return the second plot in the first figure and update it::
-
-  plt.figure(1)             # Select the existing first figure
-  plt.subplot(2, 1, 2)          # Select the existing subplot 212
-  plt.plot(t2, np.cos(np.pi*t2), 'g--')   # Add a plot to the axes
-  plt.text(0.2, -0.8, 'Back to AXES 212', color='g', size=18)   # add a colored label, increasing the font size
-
 +--------------------------+---------------------------+
 |.. image:: mult_figs1.png |.. image:: mult_figs2.png  |
 |   :scale: 50 %           |   :scale: 50 %            |
@@ -503,6 +496,13 @@ coordinates.  See `pylab_examples-axes_demo
 for an example of placing axes manually and `pylab_examples-line_styles
 <http://matplotlib.sourceforge.net/examples/pylab_examples/line_styles.html>`_
 for an example with lots-o-subplots.
+
+You can move back to existing subplots, or indeed figures, as shown below::
+
+  plt.figure(1)             # Select the existing first figure
+  plt.subplot(2, 1, 2)          # Select the existing subplot 212
+  plt.plot(t2, np.cos(np.pi*t2), 'g--')   # Add a plot to the axes
+  plt.text(0.2, -0.8, 'Back to AXES 212', color='g', size=18)   # add a colored label, increasing the font size
 
 You can clear the current figure with `clf()`_ and the current axes with
 `cla()`_.  If you find this statefulness, annoying, don't despair, this is just
