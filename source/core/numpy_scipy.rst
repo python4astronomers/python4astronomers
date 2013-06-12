@@ -170,7 +170,7 @@ Now discover a little bit about the images you have read in, first with ``?``::
 
 Next use ``help`` and note the slightly different information that you get::
 
-  help img
+  help(img)
 
 Use tab completion to see all the methods in short form::
 
