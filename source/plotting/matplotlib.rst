@@ -334,6 +334,30 @@ changed, by saying::
     >>> rcParams['savefig.format'] = 'pdf'
     >>> plt.savefig('foo')  # creates foo.pdf
 
+Some common-ish Python errors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here's a couple of errors you may come across::
+
+    >>> plt.clf
+    <function matplotlib.pyplot.clf>
+    >>> x = np.arange(5)
+    >>> x.size()
+    TypeError: 'int' object is not callable
+
+Since ``clf`` is a function then you need to add ``()`` to actually
+call (being able to refer to a function as a "thing" is incredibly
+powerful, which is what has happened here, but it's not much use
+if you just want to clear the current figure).
+
+For the second case, ``x.size`` returns an integer (in this case
+``5``), which we then call as a function, which results in the
+somewhat cryptic messsage above. For new users it would be nice if it 
+said, "hold on, size isn't callable", but then this would inhibit
+useful - if complex - statements such as::
+
+    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
