@@ -576,7 +576,7 @@ These properties are covered in more detail in `text-properties <http://matplotl
   plt.clf()
   x2 = np.random.normal(130, sigma, size=10000)
   out = plt.hist(x, bins=50, facecolor='g', alpha=0.5)
-  out = plt.hist(x2, bins=50, facecolor='r', alpha=0.5)
+  out2 = plt.hist(x2, bins=50, facecolor='r', alpha=0.5)
 
 .. raw:: html
 
