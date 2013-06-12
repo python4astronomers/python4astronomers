@@ -218,7 +218,8 @@ you can issue the command::
 study the page of matplotlib `screenshots
 <http://matplotlib.sourceforge.net/users/screenshots.html>`_ to get a better picture.
 
-.. admonition Clearing the figure with plt.clf()
+.. admonition:: Clearing the figure with plt.clf()
+
    From now on we will assume that you know to clear the figure with
    `clf()`_ before entering commands to make the next plot.
 
