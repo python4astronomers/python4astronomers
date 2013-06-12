@@ -516,10 +516,14 @@ Figures can be deleted with the `close()`_ command::
 
   plt.close(2)    # Remove the second figure
 
-You can use the 'close button' provided by the window manager
-to remove the figure, but if you do this you must *still* call
-the `close()`_ command, to ensure that memory allocated by pyplot
-for the figure is released.
+.. admonition:: Using close
+
+  You can use the 'close button' provided by the window manager
+  to remove the figure, but if you do this you must *still* call
+  the `close()`_ command, to ensure that memory allocated by pyplot
+  for the figure is released. This is only really an issue for
+  long-running ``ipython`` sessions; if you just create a single
+  plot and then exit you do not need to use ``close``.
 
 .. _working-with-text:
 
