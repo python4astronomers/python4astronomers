@@ -86,6 +86,7 @@
 .. _`Figure`: http://matplotlib.sourceforge.net/api/figure_api.html
 .. _`Axes`: http://matplotlib.sourceforge.net/api/axes_api.html
 .. _`Text intro`: http://matplotlib.sourceforge.net/users/text_intro.html#text-intro
+.. _`savefig()`: http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.savefig
 
 Matplotlib
 ============
@@ -175,10 +176,15 @@ See the `Appendix: Pylab and Pyplot and NumPy`_ for details about just what's
 going on with the ``--pylab`` switch.  Also remember if you are using IPython
 version 0.10 or earlier you need to use ``-pylab`` with just one dash.
 
-Now import ``numpy`` and ``matplotlib``::
+The following two statements are made for you automatically if you
+started ``ipython`` with the ``--pylab`` switch, and cause
+both ``numpy`` and ``matplotlib`` to be imported::
 
   import numpy as np
   import matplotlib.pyplot as plt
+
+When writing your own Python code - e.g. as a script - then you will need
+to include the above two lines.
 
 `matplotlib.pyplot`_ is a collection of command style functions that make
 matplotlib work like MATLAB.  Each ``pyplot`` function makes some change to a
@@ -213,7 +219,8 @@ you can issue the command::
 study the page of matplotlib `screenshots
 <http://matplotlib.sourceforge.net/users/screenshots.html>`_ to get a better picture.
 
-.. admonition Clearing the figure with plt.clf()
+.. admonition:: Clearing the figure with plt.clf()
+
    From now on we will assume that you know to clear the figure with
    `clf()`_ before entering commands to make the next plot.
 
@@ -282,6 +289,74 @@ using arrays::
 .. raw:: html
 
    </div>
+
+What are all these icons for?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The figures are enclosed in a window that looks a little like the
+following
+(it depends on the OS and matplotlib backend being used):
+
+.. image:: pyplot_window.png
+
+The icons at the bottom of the window allow you to zoom in or out of
+the plot, pan around, and save the plot as a "hardcopy" format (e.g.
+PNG, postscript, or PDF).
+The first icon will reset you to the original axis limits, which comes
+in quite handy.
+
+You *can* use the close button to close the window, but it is best to
+use the `close()`_ command to avoid memory leaks.
+
+Saving the plot
+^^^^^^^^^^^^^^^
+
+As discussed above, you can use the GUI to save the plot, but the
+`savefig()`_ command is often more useful, and has many options::
+
+    plt.savefig('fig.png')
+    plt.savefig('fig.pdf')
+
+Note that you can save a figure multiple times (e.g. as different
+formats). The supported formats depend on the backend being used, but
+normally include png, pdf, ps, eps and svg::
+
+  plt.savefig('fig')   # creates fig.png (unless you have changed the default format)
+  plt.savefig('fig.pdf')  # creates a PDF file, fig.pdf
+  plt.savefig('fig', format='svg')  # creates a SVG file called fig
+  plt.savefig('fig.svg', 'format='ps') # creates a PS file called fig.svg (do not do this!)
+
+The default format (used in the first line) can be queried, or
+changed, by saying::
+
+    >>> rcParams['savefig.format']
+    'png'
+    >>> rcParams['savefig.format'] = 'pdf'
+    >>> plt.savefig('foo')  # creates foo.pdf
+
+Some common-ish Python errors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here's a couple of errors you may come across::
+
+    >>> plt.clf
+    <function matplotlib.pyplot.clf>
+    >>> x = np.arange(5)
+    >>> x.size()
+    TypeError: 'int' object is not callable
+
+Since ``clf`` is a function then you need to add ``()`` to actually
+call it (being able to refer to a function as a "thing" is incredibly
+powerful, which is what has happened here, but it's not much use
+if you just want to clear the current figure).
+
+For the second case, ``x.size`` returns an integer (in this case
+``5``), which we then call as a function, leading to the
+somewhat cryptic messsage above. For new users it would be nice if it 
+said "hold on, size isn't callable", but then this would inhibit
+useful - if complex - statements such as::
+
+    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
 
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -468,13 +543,6 @@ figure has two subplots::
   plt.title('FIGURE 2')
   plt.text(2, 0.8, 'AXES 111')
 
-Now return the second plot in the first figure and update it::
-
-  plt.figure(1)             # Select the existing first figure
-  plt.subplot(2, 1, 2)          # Select the existing subplot 212
-  plt.plot(t2, np.cos(np.pi*t2), 'g--')   # Add a plot to the axes
-  plt.text(2, -0.8, 'Back to AXES 212')
-
 +--------------------------+---------------------------+
 |.. image:: mult_figs1.png |.. image:: mult_figs2.png  |
 |   :scale: 50 %           |   :scale: 50 %            |
@@ -499,12 +567,32 @@ for an example of placing axes manually and `pylab_examples-line_styles
 <http://matplotlib.sourceforge.net/examples/pylab_examples/line_styles.html>`_
 for an example with lots-o-subplots.
 
+You can move back to existing subplots, or indeed figures, as shown below::
+
+  plt.figure(1)             # Select the existing first figure
+  plt.subplot(2, 1, 2)          # Select the existing subplot 212
+  plt.plot(t2, np.cos(np.pi*t2), 'g--')   # Add a plot to the axes
+  plt.text(0.2, -0.8, 'Back to AXES 212', color='g', size=18)   # add a colored label, increasing the font size
+
 You can clear the current figure with `clf()`_ and the current axes with
 `cla()`_.  If you find this statefulness, annoying, don't despair, this is just
 a thin stateful wrapper around an object oriented API, which you can use
 instead.  See the :ref:`advanced_plotting` page for an introduction to this
 approach, and the then `Artist tutorial
 <http://matplotlib.sourceforge.net/users/artists.html>`_ for the gory details.
+
+Figures can be deleted with the `close()`_ command::
+
+  plt.close(2)    # Remove the second figure
+
+.. admonition:: Using close
+
+  You can use the 'close button' provided by the window manager
+  to remove the figure, but if you do this you must *still* call
+  the `close()`_ command, to ensure that memory allocated by pyplot
+  for the figure is released. This is only really an issue for
+  long-running ``ipython`` sessions; if you just create a single
+  plot and then exit you do not need to use ``close``.
 
 .. _working-with-text:
 
@@ -562,7 +650,7 @@ These properties are covered in more detail in `text-properties <http://matplotl
   plt.clf()
   x2 = np.random.normal(130, sigma, size=10000)
   out = plt.hist(x, bins=50, facecolor='g', alpha=0.5)
-  out = plt.hist(x2, bins=50, facecolor='r', alpha=0.5)
+  out2 = plt.hist(x2, bins=50, facecolor='r', alpha=0.5)
 
 .. raw:: html
 
@@ -678,6 +766,8 @@ looking at an example of the 3-d viewer that is available::
   ax.set_ylabel('Y Label')
   ax.set_zlabel('Z Label')
 
+.. image:: pyplot_3d.png
+
 To get more information check out the `mplot3d tutorial
 <http://matplotlib.sourceforge.net/mpl_toolkits/mplot3d/tutorial.html>`_.
 
@@ -700,8 +790,8 @@ Likewise pylab is also a module provided by matplotlib that you can import::
 This module is a thin wrapper around ``matplotlib.pylab`` which pulls in:
 
 - Everything in ``matplotlib.pyplot``
-- All top-level functions ``numpy``,``numpy.fft``, ``numpy.random``,
-- ``numpy.linalg``
+- All top-level functions ``numpy``, ``numpy.fft``, ``numpy.random``,
+  ``numpy.linalg``
 - A selection of other useful functions and modules from matplotlib
 
 There is no magic, and to see for yourself do
