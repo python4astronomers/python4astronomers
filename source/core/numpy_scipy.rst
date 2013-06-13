@@ -228,7 +228,7 @@ Arrays may have more than one dimension::
          [ 1.,  1.,  1.,  1.],
          [ 1.,  1.,  1.,  1.]]),
 
-  >>> g = np.zeros([2, 3, 4], dtype=int)  # 3 x 4 x 5 int array of zeros
+  >>> g = np.zeros([2, 3, 4], dtype=int)  # 2 x 3 x 4 int array of zeros
   array([[[0, 0, 0, 0],
           [0, 0, 0, 0],
           [0, 0, 0, 0]],
