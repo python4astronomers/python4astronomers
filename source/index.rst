@@ -115,7 +115,7 @@ original creation.
 +---+
 
 :Authors: Tom Aldcroft, Tom Robitaille, Brian Refsdal, Gus Muench
-:Copyright: 2011 Smithsonian Astrophysical Observatory
+:Copyright: 2011, 2012, 2013 Smithsonian Astrophysical Observatory
 
 .. toctree::
    :hidden:

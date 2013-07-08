@@ -228,7 +228,7 @@ Arrays may have more than one dimension::
          [ 1.,  1.,  1.,  1.],
          [ 1.,  1.,  1.,  1.]]),
 
-  >>> g = np.zeros([2, 3, 4], dtype=int)  # 3 x 4 x 5 int array of zeros
+  >>> g = np.zeros([2, 3, 4], dtype=int)  # 2 x 3 x 4 int array of zeros
   array([[[0, 0, 0, 0],
           [0, 0, 0, 0],
           [0, 0, 0, 0]],
@@ -262,7 +262,11 @@ You can change the dimensions of existing arrays::
          [3],
          [4]]))
 
-It is possible to operate with arrays of different dimensions as long as they fit well (broadcasting)::
+It is possible to operate with arrays of different dimensions as long
+as they fit well (this is known as
+`broadcasting
+<http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html>`_
+in NumPy)::
 
   >>> x + y * 10
   array([[ 0,  1,  2,  3,  4],
