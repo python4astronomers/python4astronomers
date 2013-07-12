@@ -140,7 +140,7 @@ In some cases, it can be desirable to show two different x axes (e.g. distance a
 
     fig = plt.figure()
     ax1 = fig.add_subplot(1, 1, 1)
-    ax2 = ax.twinx()
+    ax2 = ax1.twinx()
 
 creates a new set of axes (``ax2``) that shares the x-axis with ``ax1``, but can have a separate y-axis (similarly, ``twiny`` would return a second set of axes sharing the y-axis, but with a separate x-axis). As an example, we can use this to plot two different quantities as a function of time::
 

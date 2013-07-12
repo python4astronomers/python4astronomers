@@ -107,10 +107,10 @@ Showing data values
 So far we typed ``print x`` to look at the value of ``x``.  However,
 most of the time for interactive analysis it is faster and better to simply
 type ``x`` (or whatever the object name) followed by <Return>.  This returns
-the "representation" of the object which is often a cleaner and more
+the "representation" of the object, which is often a cleaner and more
 informative than the "string" version that gets returned with ``print``.  In 
-many cases the "representation" of an object the same as Python
-code to create that object.
+many cases the "representation" of an object is the same as the Python
+code used to create that object.
 
 Try::
 
