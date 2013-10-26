@@ -34,7 +34,7 @@ distribution.
 **Anaconda: an easy and fast option**
 
 On of the fastest way to get a basic Python installation up and running is
-`Anaconda <https://store.continuum.io/cshop/anaconda>`_.
+`Anaconda <http://continuum.io/downloads>`_.
 Click on that link and download the installer (using the button marked
 ``free`` on the top right of the page). It will ask you for your email
 and then you get an installer for your OS (Mac, Linux, or Windows).

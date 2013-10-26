@@ -100,6 +100,8 @@ uncertainties.
   x = random.uniform(-10., 10., n)  
   y = exp(-(x - 3.)**2 / 4) * 10. + random.normal(0., 2., n)
   e = random.uniform(0.1, 1., n)
+  # Note: these error bars don't reflect the distribution from which
+  # they were drawn! Chi^2 of the fit will be poor.
 
   # Fit
   popt, pcov = curve_fit(gaussian, x, y, sigma=e)

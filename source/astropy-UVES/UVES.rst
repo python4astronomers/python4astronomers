@@ -247,7 +247,7 @@ than two lines::
         wavelength_zero_point : float
         optical_arm : string
         '''
-        sp = fits.open(filelist[0])
+        sp = fits.open(filename)
         header = sp[0].header
 
         return header['EXPTIME'], header['CRVAL1'], header['HIERARCH ESO INS PATH']
