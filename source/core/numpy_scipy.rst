@@ -212,7 +212,7 @@ Arrays can be created in different ways. The ">>>" indicates the input to Python
           8.8,  8.9,  9. ,  9.1,  9.2,  9.3,  9.4,  9.5,  9.6,  9.7,  9.8,
           9.9]),
 
-  >>> np.linspace(-pi, pi, 5)      # create an array of 5 evenly spaced samples from -pi to pi
+  >>> np.linspace(-np.pi, np.pi, 5)      # create an array of 5 evenly spaced samples from -pi to pi
   array([-3.14159265, -1.57079633,  0.        ,  1.57079633,  3.14159265]))
 
 New arrays can be obtained by operating with existing arrays::
