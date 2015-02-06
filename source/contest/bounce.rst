@@ -29,9 +29,12 @@ window.
 
 ::
 
-  figure(1)
-  clf()
-  axis([-10, 10, -10, 10])
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  plt.figure(1)
+  plt.clf()
+  plt.axis([-10, 10, -10, 10])
 
   # Define properties of the "bouncing balls"
   n = 10
