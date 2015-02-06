@@ -33,11 +33,13 @@ HEASARC.  The script below will read in the catalog data using the `astropy.io.a
 module, do some basic filtering with `NumPy`_, and make a couple of plots with
 `matplotlib`_ ::
 
-  import astropy.io.ascii as ascii   # Make external package available
+  # Make external packages available
+  from astropy.io import ascii
 
   # Read table.  
   # ==> dat[column_name] and dat[row_number] both valid <==
-  dat = ascii.read('fermi_agn.dat')
+  data_url = 'https://raw.githubusercontent.com/python4astronomers/python4astronomers/stable/examples/tables/fermi_agn.dat'
+  dat = ascii.read(data_url)
 
   redshift = dat['redshift']    # array of values from 'redshift' column
   flux = dat['photon_flux']
@@ -66,7 +68,7 @@ module, do some basic filtering with `NumPy`_, and make a couple of plots with
   title('$\Gamma$ for low-z and high-z samples')
   legend(loc='upper left')
 
-  asciitable.write(dat[with_z], 'fermi_agn_with_z.dat')
+  ascii.write(dat[with_z], 'fermi_agn_with_z.dat')
 
 .. image:: scatter.png
    :scale: 70%
@@ -195,7 +197,7 @@ together other codes and doing system type tasks.
 ::
 
   import os
-  import astropy.io.ascii as ascii
+  from astropy.io import ascii
 
   smoothing = 30  # Smoothing window length
   freqs = [2, 4]  # Frequency values for making data
@@ -255,7 +257,7 @@ talk was made.
                        vmin_b=-2,vmax_b=50)
 
   # Create a new figure
-  fig = aplpy.FITSFigure('rgb_2d.fits')
+  fig = aplpy.FITSFigure('rgb.fits')
 
   # Show the RGB image
   fig.show_rgb('rgb.png')

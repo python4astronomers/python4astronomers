@@ -11,32 +11,28 @@ use the most recent release in most cases.
 Core
 ^^^^^
 
-- Python 2.6 or 2.7 (Python 3 [#]_)
-- IPython >= 0.10
-- NumPy >= 1.5
-- SciPy >= 0.7.2
+- Python >= 2.6.5, 2.7.x, or Python >= 3.3 [#]_
+- IPython >= 1.0
+- NumPy >= 1.6
+- SciPy >= 0.8
 - Matplotlib >= 1.0
-- distribute (aka setuptools) >= 0.6
+- setuptools (best to keep this up-to-date)
 
-.. [#] Python 3.2 or greater will work for most of this tutorial, but the
-       examples have not been tested or made Python 3 compatible.
+.. [#] Python 3.3 or greater will work for most of this tutorial, but the
+       examples have not been uniformly tested or made Python 3 compatible.
 
 Required additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- `pip <http://pypi.python.org/pypi/pip>`_ >= 1.0
-- `astropy`_ >= 0.2
-- `ATpy`_ >= 0.9.4
+- `pip <http://pypi.python.org/pypi/pip>`_ (best to keep this up-to-date)
+- `astropy`_ >= 0.4
 - `APLpy`_ >= 0.9.5 (pyparsing, pyregion, PIL, montage are optional but useful)
-- `astropy`_ >= 0.2.1
 
 Useful additional packages
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- `coords <https://trac6.assembla.com/astrolib>`_
-- `vo.table <https://trac6.assembla.com/astrolib>`_
 - `pyparsing <http://pyparsing.wikispaces.com/>`_
-- `pyregion <http://leejjoon.github.com/pyregion/>`_
+- `pyregion <http://pyregion.readthedocs.org/en/latest/>`_
 - `PIL <http://www.pythonware.com/products/pil>`_
 - `Montage <http://montage.ipac.caltech.edu/>`_ (compiled application and library)
 

@@ -28,7 +28,7 @@ Workshop materials
 
 All the workshop materials will be available through the web site:
 
- `<http://python4astronomers.github.com>`_
+ `<http://python4astronomers.github.io>`_
 
 - Presentations
 - Tutorial and example scripts

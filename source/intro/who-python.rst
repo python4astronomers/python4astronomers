@@ -5,8 +5,9 @@ Who is using Python
 
 (In response to the question "Why spend time migrating to Python?" at a Users Committee meeting)
 
-That was several years ago and in the interim the momentum toward Python in astronomy has
-only grown.  The ease of interfacing C / C++ / FORTRAN means many organizations
+That was in 2007 and in the interim Python has become firmly established as the
+primary scripting language in astronomy.
+The ease of interfacing C / C++ / FORTRAN means many organizations
 are using Python user front-ends with a combination of compiled code + Python
 on the back-end.
 
@@ -29,10 +30,8 @@ Resources, resources, resources!
   - CfA pythonusers mailing list (over 100 subscribers)
   - `astropython.org <http://astropython.org>`_
   - `astropy <http://mail.scipy.org/mailman/listinfo/astropy>`_ mailing list
-  - `stackoverflow <http://stackoverflow.com/questions/tagged/python>`_ (~50000
-    questions answered ca. Mar-2011)
-  - Conferences: `SciPy <http://conference.scipy.org/scipy2011>`_ and
-    `EuroSciPy <http://www.euroscipy.org/>`_
+  - `stackoverflow <http://stackoverflow.com/questions/tagged/python>`_ 
+  - Conferences: `SciPy <http://conference.scipy.org/>`_ and `EuroSciPy <http://www.euroscipy.org/>`_
 
 - Tutorials
 

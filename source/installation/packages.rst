@@ -18,8 +18,9 @@ modules is useful because of the ability to `import
 <http://docs.python.org/reference/simple_stmts.html#import>`_ the module
 functionality into your script or IPython session, for instance::
 
-  import atpy
-  data = atpy.Table('my_table.fits')
+  import astropy
+  import astropy.table
+  data = astropy.table.Table.read('my_table.fits')
 
 You'll see ``import`` in virtually every Python script and soon it will be
 second nature.  
@@ -50,7 +51,7 @@ second nature.
   current namespace (in other words make them available without prefixing).
   For instance you could do::
   
-    from atpy import *
+    from astropy.table import *
     data = Table('my_table.fits')
   
   A general rule of thumb is that ``from <module> import *`` is OK for
@@ -158,7 +159,7 @@ process you already saw many examples of ``pip install`` in action.  Features in
   - Will accept a local tar file (assuming it contains an installable Python package) or a URL
     pointing to a tar file.
   - Can install in the user package area via ``pip install <package or URL>
-    --user`` (see discussion further down)
+    --user`` (but see discussion further down)
 
 **python setup.py install**
 
@@ -189,9 +190,20 @@ Where do packages get installed?
 
 An important option in the installation process is where to put the package
 files.  We've seen the ``--user`` option in ``pip install`` and ``python
-setup.py install``.  What's up with that?  In general, if you don't have to you
-should not use ``--user``, but see the discussion in `Multiple Pythons on
-your computer`_ for a reason you might.
+setup.py install``.  What's up with that?  In the section below we document
+how this works.  See the discussion in `Multiple Pythons on
+your computer`_ for a reason you might want to do this, but first please read
+this warning:
+
+.. Warning::
+   
+   We strongly recommend against installing packages with ``--user`` unless you
+   are an expert and really understand what you are doing, .  This is because
+   the local user version will always take precedence and can thus potentially
+   disrupt other Python installations and cause hard-to-understand problems.
+   Big analysis packages like CIAO, STSci_Python or CASA are carefully tested
+   assuming the integrated environment they provide.  If you start mucking this
+   up then all bets are off.
 
 WITH ``--user``
 ################
@@ -199,7 +211,7 @@ WITH ``--user``
 Packages get installed in a local user-owned directory when you do something
 like either of the following::
 
-  pip install --user asciitable 
+  pip install --user aplpy
   python setup.py install --user
 
 This puts the packages into:
@@ -211,19 +223,24 @@ Windows  %APPDATA%/Python/Python2x/site-packages
 =======  ==============================================
 
 .. Note::
-  On Mac if you did not use the EPD Python Framework then you may see user
+  On Mac if you did not use Anaconda or the EPD Python Framework then you may see user
   packages within ``~/.local/lib`` as for linux.  This depends on whether Python
   is installed as a MacOS Framework or not.
 
 WITHOUT ``--user``
 ###################
 
-This option may require root or admin privilege because the package will be
-installed in the system area instead of your own local directories.  
-*For most astronomers running on a single-user machine this is a good option.*
+If you use Anaconda or a non-root Python installation then there is no issue
+with permissions on any platform since the entire installation is local to a
+directory you own.
 
-Installing this way has the benefit of making the package available for all users of the
-Python installation, but has the downside that it is a bit more difficult to back out changes if required.
+However, installing to a system-wide Python installation will require root or
+admin privilege.  Installing this way has the benefit of making the package
+available for all users of the Python installation, but has the downside that
+it is more difficult to back out changes if required.  In general we recommend
+using *only* the system package manager (e.g. ``yum``) to install packages to
+the system Python.  This will ensure integrity of your system Python, which is
+important even if you are the only user.
 
 How do I find a package once installed?
 #######################################
@@ -253,9 +270,10 @@ This gives something like::
 Uninstalling packages
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-There is no simple and fully consistent way to do this.  The Python
-community is working on this one.  In most simple cases, however, you can just
-delete the module file or directory that is revealed by the technique shown above.
+There is no simple and fully consistent way to do this unless you use solutions
+like Anaconda or Canopy.  The Python community is working on this one.  In most
+simple cases, however, you can just delete the module file or directory that is
+revealed by the technique shown above.
 
 Getting help on package installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -371,9 +389,13 @@ then set a corresponding ``PYTHONPATH``.
 Can we share packages?
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-In some cases you can successfully share between Pythons.  However, *this technique is 
-prone to breaking things in strange ways and we do not recommend it*.  Nevertheless it is
-useful to illustrate how this works.
+In some cases you can successfully share between Pythons.  Although we don't
+recommend doing this it is nevertheless useful to illustrate how this works.
+
+.. Warning::
+   
+   This technique is prone to breaking things in strange ways and we do not
+   recommend it.
 
 The first rule is that they need to be the same major version, i.e. all 2.6 or
 2.7.  This is because Python always includes a major version like
@@ -388,16 +410,6 @@ shown below where each Python can find common packages in the local user area:
 Be sure to test that the package you installed works within the other Python
 environments.
 
-.. Caution::
-   
-   Be very wary of installing a package with ``--user`` if one of your Python
-   installations already contains that package.  This is because the local user
-   version will always take precedence and thus potentially upset that Python
-   installation.  Big analysis packages like CIAO, STSci_Python or CASA are
-   carefully tested assuming the integrated environment they provide.  If you
-   start mucking this up then all bets are off.
-
-
 Virtualenv
 ------------
 
@@ -409,7 +421,19 @@ be used as the package installation location.
 One use case is wanting to install a new or experimental version of a package
 without overwriting the existing production version in your baseline environment.
 
-For a good introductory tutorial see http://iamzed.com/2009/05/07/a-primer-on-virtualenv/. 
+For a good introductory tutorial see
+http://iamzed.com/2009/05/07/a-primer-on-virtualenv/.
+
+
+Anaconda environments
+----------------------
+
+The Anaconda Python distribution, in conjunction with the ``conda`` package
+manager, makes it easy maintain multiple Python environments under one tree.
+This is extremely useful if you need to install different versions of
+packages, perhaps for testing or for running a particular application which
+has certain package requirements.  See `Python Packages and Environments with
+conda <http://www.continuum.io/blog/conda>`_ for an introduction.
 
 Final exercises
 ---------------
