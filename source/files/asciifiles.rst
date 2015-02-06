@@ -370,19 +370,19 @@ data at once::
   data[1]
   data['abund']
 
-.. _`astropy.io.ascii.AASTex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.AASTex.html#astropy.io.ascii.latex.AASTex
-.. _`astropy.io.ascii.Basic`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Basic.html#astropy.io.ascii.basic.Basic
-.. _`astropy.io.ascii.Cds`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.cds.Cds.html#astropy.io.ascii.cds.Cds
-.. _`astropy.io.ascii.CommentedHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.CommentedHeader.html#astropy.io.ascii.basic.CommentedHeader
-.. _`astropy.io.ascii.Daophot`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.daophot.Daophot.html#astropy.io.ascii.daophot.Daophot
-.. _`astropy.io.ascii.FixedWidth`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.fixedwidth.FixedWidth.html#astropy.io.ascii.fixedwidth.FixedWidth
-.. _`astropy.io.ascii.Ipac`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.ipac.Ipac.html#astropy.io.ascii.ipac.Ipac
-.. _`astropy.io.ascii.Latex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.Latex.html#astropy.io.ascii.latex.Latex
-.. _`astropy.io.ascii.NoHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.NoHeader.html#astropy.io.ascii.basic.NoHeader
-.. _`astropy.io.ascii.Rdb`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Rdb.html#astropy.io.ascii.basic.Rdb
-.. _`astropy.io.ascii.SExtractor`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.sextractor.SExtractor.html#astropy.io.ascii.sextractor.SExtractor
-.. _`astropy.io.ascii.Tab`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Tab.html#astropy.io.ascii.basic.Tab
-.. _`ascii.read()`: http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#parameters-for-read
+.. _`AASTex`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.AASTex.html
+.. _`Basic`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.Basic.html
+.. _`Cds`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.Cds.html
+.. _`CommentedHeader`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.CommentedHeader.html
+.. _`Daophot`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.daophot.Daophot.html
+.. _`FixedWidth`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.FixedWidth.html
+.. _`Ipac`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.Ipac.html
+.. _`Latex`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.Latex.html
+.. _`NoHeader`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.NoHeader.html
+.. _`Rdb`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.Rdb.html
+.. _`SExtractor`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.SExtractor.html
+.. _`Tab`: http://astropy.readthedocs.org/en/stable/api/astropy.io.ascii.Tab.html
+.. _`ascii.read()`: http://astropy.readthedocs.org/en/stable/io/ascii/read.html#parameters-for-read
 
 astropy.io.ascii
 ================
@@ -394,18 +394,18 @@ If also can format your output in LaTeX.
 The `astropy.io.ascii`_ module is an extensible ASCII table reader and writer that is
 designed to handle most formats you will encounter in the wild:
 
-* `astropy.io.ascii.AASTex`_: AASTeX ``deluxetable`` used for AAS journals
-* `astropy.io.ascii.Basic`_: basic table with customizable delimiters and header configurations
-* `astropy.io.ascii.Cds`_: `CDS format table <http://vizier.u-strasbg.fr/doc/catstd.htx>`_ (also Vizier and ApJ machine readable tables)
-* `astropy.io.ascii.CommentedHeader`_: column names given in a line that begins with the comment character
-* `astropy.io.ascii.Daophot`_: table from the IRAF DAOphot package
-* `astropy.io.ascii.FixedWidth`_: table with fixed-width columns (see also `fixed_width_gallery <http://docs.astropy.org/en/v0.2.1/io/ascii/fixed_width_gallery.html#fixed-width-gallery>`_)
-* `astropy.io.ascii.Ipac`_: `IPAC format table <http://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html>`_
-* `astropy.io.ascii.Latex`_: LaTeX table with datavalue in the ``tabular`` environment
-* `astropy.io.ascii.NoHeader`_: basic table with no header where columns are auto-named
-* `astropy.io.ascii.Rdb`_: tab-separated values with an extra line after the column definition line
-* `astropy.io.ascii.SExtractor`_: `SExtractor format table <http://www.astromatic.net/software/sextractor>`_
-* `astropy.io.ascii.Tab`_: tab-separated values
+* `AASTex`_: AASTeX ``deluxetable`` used for AAS journals
+* `Basic`_: basic table with customizable delimiters and header configurations
+* `Cds`_: `CDS format table <http://vizier.u-strasbg.fr/doc/catstd.htx>`_ (also Vizier and ApJ machine readable tables)
+* `CommentedHeader`_: column names given in a line that begins with the comment character
+* `Daophot`_: table from the IRAF DAOphot package
+* `FixedWidth`_: table with fixed-width columns (see also `fixed_width_gallery <http://astropy.readthedocs.org/en/stable/io/ascii/fixed_width_gallery.html#fixed-width-gallery>`_)
+* `Ipac`_: `IPAC format table <http://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html>`_
+* `Latex`_: LaTeX table with datavalue in the ``tabular`` environment
+* `NoHeader`_: basic table with no header where columns are auto-named
+* `Rdb`_: tab-separated values with an extra line after the column definition line
+* `SExtractor`_: `SExtractor format table <http://www.astromatic.net/software/sextractor>`_
+* `Tab`_: tab-separated values
 
 `astropy.io.ascii`_ is built on a modular and extensible class structure. This makes
 is easy to create new classes, which implement the functionality for some 
@@ -444,7 +444,7 @@ to figure out (or guess):
 
 By default `astropy.io.ascii`_ will try each format it knows and use the first one
 that gives a "reasonable" answer.  The details are in the `Guess table format
-<http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#guess-table-format>`_ section.  
+<http://astropy.readthedocs.org/en/stable/io/ascii/read.html#guess-table-format>`_ section.  
 Sometimes it will fail, e.g.::
 
   table = """
@@ -486,7 +486,7 @@ clue that `astropy.io.ascii`_ is using the wrong column delimiter::
 Writing
 -------
 
-You can write ASCII tables using the `ascii.write() <http://docs.astropy.org/en/v0.2.1/io/ascii/index.html#writing-tables>`_ function. There is a lot of flexibility in the format of the input data to be written:
+You can write ASCII tables using the `ascii.write() <http://astropy.readthedocs.org/en/stable/io/ascii/index.html#writing-tables>`_ function. There is a lot of flexibility in the format of the input data to be written:
 
 - Existing ASCII table with metadata
 - Data from ascii.read()
@@ -573,7 +573,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
 
    **HINT**: the table has missing values so include ``fill_values=('', '-1')`` in
    the call to `ascii.read()`_.  `astropy.io.ascii`_ has robust functionality to `replace bad or
-   missing values <http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#replace-bad-or-missing-values>`_.
+   missing values <http://astropy.readthedocs.org/en/stable/io/ascii/read.html#replace-bad-or-missing-values>`_.
 
 .. raw:: html
 

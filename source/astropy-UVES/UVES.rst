@@ -280,12 +280,12 @@ Units and constants in astropy
 Often, one has to keep track of the units for certain values. Was the wavelength
 given in Angstrom or in nm? In X-ray observations, a common unit of wavelength is
 keV. How many nm is 0.65 keV?
-`astropy.units <http://docs.astropy.org/en/v0.2.1/units/index.html>`_
+`astropy.units <http://astropy.readthedocs.org/en/stable/units/index.html>`_
 offers a framework that can take
 care of this book-keeping and propagate the units through many (but not all)
 mathematical operations (e.g. addition, division, multiplication). 
 Furthermore, 
-`astropy.constants <http://docs.astropy.org/en/v0.2.1/constants/index.html>`_  supplies the values of
+`astropy.constants <http://astropy.readthedocs.org/en/stable/constants/index.html>`_  supplies the values of
 many physical and astronomical constants.
 The easiest way to attach a unit to a number is by multiplication::
 
@@ -374,7 +374,7 @@ to tell astropy that this number is dimensionless and does not carry any scaling
     wavelength = wavelength * (1. * u.dimensionless_unscaled+ heliocentric/c)
 
 I want to mention one more feature here (check out 
-`astropy.units <http://docs.astropy.org/en/v0.2.1/units/index.html>`_ for
+`astropy.units <http://astropy.readthedocs.org/en/stable/units/index.html>`_ for
 more): The ability to convert the spectral axis to frequencies or energies.
 Normally, a unit of length is not equivalent to a unit of energy or to a
 frequency, but this conversion makes sense for the wavelength of a spectrum.
@@ -478,7 +478,7 @@ spectroscopically estimated surface gravity::
 
 Converting times
 ----------------
-`astropy.time <http://docs.astropy.org/en/v0.2.1/time/index.html>`_ 
+`astropy.time <http://astropy.readthedocs.org/en/stable/time/index.html>`_ 
 provides methods to convert times and dates between different
 systems and formats. Since the ESO fits headers already contain the time of the
 observation in different systems, we could just read the keyword in the time
@@ -589,7 +589,7 @@ Using ``numpy`` array notation we can actually process all spectra at once::
 Now, we want to generate a LaTeX table of the observation times, period
 and equivalent width that we can directly paste into our manuscript. To do so,
 we first collect all the columns and make an ``astropy.table.Table`` object. (Please
-check `astropy.table <http://docs.astropy.org/en/v0.2.1/table/index.html>`_
+check `astropy.table <http://astropy.readthedocs.org/en/stable/table/index.html>`_
 or :ref:`tabular-data` for more
 details on ``Table``). So, here is the code::
 
