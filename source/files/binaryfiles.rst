@@ -1,3 +1,5 @@
+.. include:: ../references.rst
+
 :tocdepth: 2
 
 Binary formats useful for astronomers
@@ -6,12 +8,12 @@ Binary formats useful for astronomers
 astropy.io.fits - Reading and writing fits files
 ================================================
 
-`astropy.io.fits <http://docs.astropy.org/en/v0.2.1/io/fits/index.html>`_  is a Python module developed at STScI to read and write all types of fits files. The full html manual is available `here <http://docs.astropy.org/en/v0.2.1/io/fits/index.html>`_.
+`astropy.io.fits`_  is a Python module developed at STScI to read and write all types of fits files.
 
 .. admonition:: External resource!
 
-    The astropy.io.fits tutorial itself is good for our purpose and since this
-    is the internet I will not reinvent the wheel. Read the manual `here <http://docs.astropy.org/en/v0.2.1/io/fits/index.html>`_
+    The `astropy.io.fits`_ tutorial itself is good for our purpose and since this
+    is the internet I will not reinvent the wheel. Read the manual
     then come back to this page for an exercise.
 
 .. admonition::  Exercise
@@ -47,7 +49,7 @@ Here is a possible solution::
     plt.colorbar()
 
 You might recognize this piece of code. It was used before in
-the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understand the ``astropy.io.fits`` commands in more detail.
+the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understand the `astropy.io.fits`_ commands in more detail.
 
 .. raw:: html
 

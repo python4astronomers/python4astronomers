@@ -1,3 +1,5 @@
+.. include:: ../references.rst
+
 
 1-D data with errors
 --------------------

@@ -1,3 +1,4 @@
+.. include:: ../references.rst
 
 The low-level Sherpa API
 ------------------------
@@ -32,7 +33,7 @@ Import a few Sherpa classes needed to characterize a fit::
   from sherpa.optmethods import LevMar
   from sherpa.fit import Fit
 
-Import the Python FITS reader ``astropy.io.fits`` and open the spectrum as a table::
+Import the Python FITS reader `astropy.io.fits`_ and open the spectrum as a table::
 
   from astropy.io import fits
   dat = fits.open('3c273.fits')[1].data

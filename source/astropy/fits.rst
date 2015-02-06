@@ -1,9 +1,11 @@
+.. include:: ../references.rst
+
 .. _handling-fits-files:
 
 Handling FITS files
 ===================
 
-.. note:: If you are already familiar with PyFITS, `astropy.io.fits` is in
+.. note:: If you are already familiar with PyFITS, `astropy.io.fits`_ is in
           fact the same code as the latest version of PyFITS, and you can
           adapt old scripts that use PyFITS to use Astropy by simply doing::
 
@@ -17,7 +19,7 @@ Documentation
 -------------
 
 For more information about the features presented below, you can read the
-`astropy.io.fits <http://docs.astropy.org/en/v0.2/io/fits/index.html>`_ docs.
+`astropy.io.fits`_ docs.
 
 
 
@@ -215,14 +217,14 @@ Accessing Tabular Data
 
 In Astropy 0.2, FITS tables cannot be read/written directly from the ``Table``
 class. To create a ``Table`` object from a FITS table, you can use
-``astropy.io.fits``::
+`astropy.io.fits`_::
 
     >>> from astropy.io import fits
     >>> from astropy.table import Table
     >>> data = fits.getdata('catalog.fits', 1)
     >>> t = Table(data)
     
-and to write out, you can use ``astropy.io.fits``, converting the table to a
+and to write out, you can use `astropy.io.fits`_, converting the table to a
 Numpy array::
 
     >>> fits.writeto('new_catalog.fits', np.array(t))
@@ -285,7 +287,7 @@ Practical Exercises
     Using Matplotlib, make an all-sky plot of the LAT Background Model in the
     Plate Carée projection showing the LAT Point Source Catalog overlaid with
     markers, and with the correct coordinates on the axes. You should do this
-    using only ``astropy.io.fits``, Numpy, and Matplotlib (no WCS or
+    using only `astropy.io.fits`_, Numpy, and Matplotlib (no WCS or
     coordinate conversion library). Hint: the -CAR projection is such that the
     x pixel position is proportional to longitude, and the y pixel position to
     latitude. Bonus points for a pretty colormap.

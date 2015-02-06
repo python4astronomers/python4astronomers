@@ -147,7 +147,7 @@ This example demonstrates how to create a synthetic image of a cluster,
 including convolution with a Gaussian filter and the addition of noise.
 ::
 
-  import astropy.io.fits as fits
+  from astropy.io import fits
   from scipy.ndimage import gaussian_filter
 
   # Create empty image

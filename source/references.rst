@@ -4,7 +4,6 @@
 .. _`IPython`: http://ipython.org
 .. _CIAO: http://cxc.harvard.edu/ciao/
 .. _SAS: http://xmm.vilspa.esa.es/sas/
-.. _astropy_doc: http://astropy.readthedocs.org/en/stable
 .. _APLpy: http://aplpy.github.com
 .. _SAMPy: http://pypi.python.org/pypi/sampy
 .. _COATPy: https://github.com/python4vo/coatpy
@@ -14,5 +13,6 @@
 .. _TOPCAT: http://www.star.bris.ac.uk/~mbt/topcat
 .. _Directory: http://nvo.stsci.edu/vor10/index.aspx
 .. _astropy: http://astropy.org
+.. _astropy_doc: http://astropy.readthedocs.org/en/stable
 .. _`astropy.io.ascii`: http://astropy.readthedocs.org/en/stable/io/ascii/
 .. _`astropy.io.fits`: http://astropy.readthedocs.org/en/stable/io/fits/
