@@ -178,14 +178,14 @@ The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
 
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
     
-We use `pyfits`_ to open the image file and examine its contents.
+We use `astropy.io.fits`_ to open the image file and examine its contents.
 ::
 
-    import pyfits
+    from astropy.io import fits
     import aplpy
     import matplotlib.pyplot as plt
     
-    hdulist = pyfits.open(filename)
+    hdulist = fits.open(filename)
 
     # check for multiple FITS extensions and their contents
     # in this case the "PRIMARY" header is empty

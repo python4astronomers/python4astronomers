@@ -37,11 +37,11 @@ Loading the data
 
 .. Note::
   The ``load_data`` command may not work in the stand-alone version of
-  Sherpa. If not, you can use ``pyfits`` to load in the data and then
+  Sherpa. If not, you can use `astropy.io.fits`_ to load in the data and then
   ``load_arrays``, for example::
 
-    import pyfits
-    dat = pyfits.open('3c273.fits')[1].data
+    from astropy.io import fits
+    dat = fits.open('3c273.fits')[1].data
     wlen = dat.field('WAVELENGTH')
     flux = dat.field('FLUX')
     ui.load_arrays(1, wlen, flux)
