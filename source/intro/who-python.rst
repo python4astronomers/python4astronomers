@@ -29,7 +29,7 @@ Resources, resources, resources!
 
   - CfA pythonusers mailing list (over 100 subscribers)
   - `astropython.org <http://astropython.org>`_
-  - `astropy <http://mail.scipy.org/mailman/listinfo/astropy>`_ mailing list
+  - `astropy mailing list <http://mail.scipy.org/mailman/listinfo/astropy>`_
   - `stackoverflow <http://stackoverflow.com/questions/tagged/python>`_ 
   - Conferences: `SciPy <http://conference.scipy.org/>`_ and `EuroSciPy <http://www.euroscipy.org/>`_
 

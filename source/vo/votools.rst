@@ -82,15 +82,16 @@ As with the web queries you can wrap up the parameters in a dictionary::
 enter the query URL for the target catalog (see sidebar), and create a catalog
 handler ``ic348cxo`` that wraps the query tool. We use the ``getRaw`` function
 of the ConeSearch to retrieve the raw string result that we then dump into a
-file and extract back the data using `ATpy`_::
+file and extract back the data using `astropy`_::
 
+    from astropy.table import Table
     url = "http://vizier.u-strasbg.fr/viz-bin/votable/-A?-source=J/AJ/122/866&"
     ic348cxo = ConeSearch(url)
     
     with open('ic348cxo.xml','wb') as f:
         f.write(ic348cxo.getRaw(**params))
         
-    data = atpy.Table(f.name,type='vo')
+    data = Table.read(f.name, format='votable')
     
     
 Image Search

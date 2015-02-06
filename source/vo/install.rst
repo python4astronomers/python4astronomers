@@ -7,7 +7,7 @@ Modules
 
 This class assumes that you have have installed Scientific Python packages
 such as numpy, as well as the :ref:`python_pkg_requirements` modules used in preceding
-classes (e.g., `ATpy`_, `APLpy`_, etc). In addition the
+classes (e.g., `APLpy`_, etc). In addition the
 following modules should be installed for this class (may require sudo)::
 
     easy_install http://stsdas.stsci.edu/astrolib/vo-0.6.tar.gz
