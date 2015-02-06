@@ -35,7 +35,7 @@ matplotlib routines and are widely used in scientific code.
   `import <http://docs.python.org/reference/simple_stmts.html#import>`_ statement 
   makes the functions in a module available::
 
-    print time.ctime()    # will fail
+    print(time.ctime())   # will fail
     # need to import the time module first
     import time
     time.ctime()          # prints the system time
@@ -122,7 +122,7 @@ Try::
 
   y = dict((x, 'value is %d' % x**2) for x in range(10))
   y
-  print y
+  print(y)
 
 Further resources
 ^^^^^^^^^^^^^^^^^^

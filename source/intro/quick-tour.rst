@@ -109,9 +109,9 @@ uncertainties.
   popt, pcov = curve_fit(gaussian, x, y, sigma=e)
 
   # Print results
-  print "Scale =  %.3f +/- %.3f" % (popt[0], sqrt(pcov[0, 0]))
-  print "Offset = %.3f +/- %.3f" % (popt[1], sqrt(pcov[1, 1]))
-  print "Sigma =  %.3f +/- %.3f" % (popt[2], sqrt(pcov[2, 2]))
+  print("Scale =  %.3f +/- %.3f" % (popt[0], sqrt(pcov[0, 0])))
+  print("Offset = %.3f +/- %.3f" % (popt[1], sqrt(pcov[1, 1])))
+  print("Sigma =  %.3f +/- %.3f" % (popt[2], sqrt(pcov[2, 2])))
 
   # Plot data
   errorbar(x, y, yerr=e, linewidth=1, color='black', fmt=None)
@@ -213,7 +213,7 @@ together other codes and doing system type tasks.
       for noise in noises:
           # Run the compiled code "make_data" to make data as a list of x, y, y_smooth
           cmd = 'make_data %s %s %s' % (freq, noise, smoothing)
-          print 'Running', cmd
+          print('Running {0}'.format(cmd))
           out = os.popen(cmd).read()
           # out now contains the output from <cmd> as a single string
 

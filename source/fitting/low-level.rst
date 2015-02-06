@@ -9,9 +9,12 @@ Explore the Sherpa Object Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In a new working directory, download a MAST spectrum of :download:`3C 273 <./3c273.fits>`
-and start IPython::
+and start IPython along with the standard imports::
 
-  $ ipython --pylab
+  $ ipython --matplotlib
+
+  import numpy as np
+  import matplotlib.pyplot as plt
 
 If you have trouble accessing the spectrum you can download it straight away
 using Python::
@@ -19,7 +22,7 @@ using Python::
   import urllib2
   url = 'http://python4astronomers.github.com/_downloads/3c273.fits'
   open('3c273.fits', 'wb').write(urllib2.urlopen(url).read())
-  ls
+  %ls
 
 Import a few Sherpa classes needed to characterize a fit::
 
@@ -29,10 +32,10 @@ Import a few Sherpa classes needed to characterize a fit::
   from sherpa.optmethods import LevMar
   from sherpa.fit import Fit
 
-Import the Python FITS reader ``pyfits`` and open the spectrum as a table::
+Import the Python FITS reader ``astropy.io.fits`` and open the spectrum as a table::
 
-  import pyfits
-  dat = pyfits.open('3c273.fits')[1].data
+  from astropy.io import fits
+  dat = fits.open('3c273.fits')[1].data
 
 Access the `WAVELENGTH` and `FLUX` columns from the pyFITS ``RecArray``.  Populate
 variables represented as ``wave``, ``flux``, and ``err``.  Normalize the flux and assume
@@ -47,13 +50,13 @@ Create a Sherpa ``Data1D`` data set from the NumPy arrays ``wave``, ``flux``, an
 ``x``, ``y``, and ``staterror``::
 
   data = Data1D('3C 273', wave, flux, err)
-  print data
+  print(data)
 
 Array access::
 
-  print 'x', data.x
-  print 'y', data.y
-  print 'err',  data.staterror
+  print('x {0}'.format(data.x))
+  print('y {0}'.format(data.y))
+  print('err {0}'.format(data.staterror))
 
 
 Define a convenience function ``plot_data`` that calls the matplotlib functions
@@ -65,10 +68,10 @@ in the Sherpa data set using our new function and its default arguments::
 
   def plot_data(x, y, err=None, fmt='.', clear=True):
       if clear:
-          clf()
-      plot(x, y, fmt)
+          plt.clf()
+      plt.plot(x, y, fmt)
       if err is not None:
-          errorbar(x, y, err, fmt=None, ecolor='b')
+          plt.errorbar(x, y, err, fmt=None, ecolor='b')
 
   plot_data(data.x, data.y, data.staterror)
 
@@ -83,9 +86,9 @@ the ``name`` and ``val`` attributes::
   pl = PowLaw1D('pl')
   pl.pars
   for par in pl.pars:
-      print par.name, par.val
+      print('{0} {1}'.format(par.name, par.val))
 
-  print pl
+  print(pl)
 
 Set the power-law reference to be 4000 Angstroms and print out the ``PowLaw1D``
 object and its parameter information.  Each model parameter is accessible as an
@@ -93,11 +96,11 @@ attribute its model.  For example, the power-law amplitude is referenced with
 ``pl.ampl``::
 
   pl.ref = 4000.
-  print pl
+  print(pl)
 
 Model parameters are themselves class objects::
 
-  print pl.ampl
+  print(pl.ampl)
 
 
 .. admonition:: Exercise (for the interested reader): Special methods and properties
@@ -151,9 +154,9 @@ optimization method.  Fit the spectrum to a power-law with least squares
 
   f = Fit(data, pl, Chi2DataVar(), LevMar())
   result = f.fit()
-  print result
+  print(result)
   # or alternatively
-  print result.format()
+  print(result.format())
 
 Over-plot the fitted model atop the data points using our convenience function
 ``plot_data``.  This time calculate the model using the best-fit parameter

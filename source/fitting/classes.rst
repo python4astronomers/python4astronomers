@@ -25,12 +25,12 @@ declaration indicating a no-op.
 Class instances are mutable, meaning that attributes and functions can be added
 after instantiation::
 
-  print h.msg
+  print(h.msg)
 
 There is no attribute ``msg``, so add one::
 
   h.msg = "Hello World!"
-  print h.msg
+  print(h.msg)
 
 Create a class with a static string attribute ``msg1`` and a class method
 ``echo`` to print the attribute.  Comments begin with a ``#`` and extend to the
@@ -40,12 +40,12 @@ end of the line::
       # static attribute string "msg1"
       msg1 = "Hello"
       def echo(self):
-          print self.msg1
+          print(self.msg1)
 
-  print "Hello's msg1:", Hello.msg1
+  print("Hello's msg1: {0}".format(Hello.msg1))
   h = Hello()
   h.echo()
-  print h
+  print(h)
 
 Create a class with a constructor definition.  Initialize an attribute ``msg2``
 at class instance creation time::
@@ -56,11 +56,11 @@ at class instance creation time::
           # attribute "msg2" initialized in constructor
           self.msg2 = msg2
       def echo(self):
-          print self.msg2
+          print(self.msg2)
 
   w = World()
   w.echo()
-  print w
+  print(w)
 
 
 Multiple Inheritance
@@ -87,7 +87,7 @@ return the attribute ``msg3`` when the class instance is printed with
 
   hw = HelloWorld()
   hw.echo()
-  print hw
+  print(hw)
 
 
 Class ``HelloWorld`` is of type ``Hello``, ``World``, and ``HelloWorld``::
@@ -126,12 +126,12 @@ language operators.  Define how a class behaves using the '+' operator::
   class Hello:
       msg = "Hello"
       def __add__(self, lhs):
-          print self.msg + lhs.msg
+          print(self.msg + lhs.msg)
 
   class World:
       msg = "World"
       def __add__(self, rhs):
-          print self.msg + rhs.msg
+          print(self.msg + rhs.msg)
 
   Hello() + World()
   World() + Hello()

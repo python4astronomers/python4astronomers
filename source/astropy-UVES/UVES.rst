@@ -253,7 +253,7 @@ than two lines::
     # Let's just print the setup on the screen
     # We'll see if it's all the same.
     for f in filelist:
-        print read_setup(f)
+        print(read_setup(f))
 
 .. raw:: html
 
@@ -427,7 +427,7 @@ spectroscopically estimated surface gravity::
     of the following wavelengths relative to :math:`H_\alpha`::
 
         waveclosetoHa = np.array([6562.,6563,6565.]) * u.AA
-        print wave2doppler(waveclosetoHa, 656.489 * u.nm)
+        print(wave2doppler(waveclosetoHa, 656.489 * u.nm))
 
     I get -132, -86 and +5 km/s.
     
@@ -441,7 +441,7 @@ spectroscopically estimated surface gravity::
         doppler = ((w-w0)/w0 * c)
         return doppler
 
-    print wave2doppler(waveclosetoHa, 656.489 * u.nm).decompose().to(u.km/u.s)
+    print(wave2doppler(waveclosetoHa, 656.489 * u.nm).decompose().to(u.km/u.s))
 
 .. raw:: html
 
@@ -579,7 +579,7 @@ for the first spectrum::
 
     ew = fcaII[0,:] - 1.
     ew = ew[:-1] * np.diff(wcaII.to(u.AA).value)
-    print ew.sum()
+    print(ew.sum())
 
 Using ``numpy`` array notation we can actually process all spectra at once::
 

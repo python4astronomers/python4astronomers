@@ -156,7 +156,7 @@ The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
     The returned array contains **66** fields! 
     ::
         
-        print image_table.dtype.names     
+        print(image_table.dtype.names)
         
     If all we want is the actual data then the important column is **URL**
     while the **filename** column is also useful.
@@ -183,16 +183,16 @@ We use `pyfits`_ to open the image file and examine its contents.
 
     import pyfits
     import aplpy
-    import matplotlib.pyplot as mpl
+    import matplotlib.pyplot as plt
     
     hdulist = pyfits.open(filename)
 
     # check for multiple FITS extensions and their contents
     # in this case the "PRIMARY" header is empty
     for hdu in hdulist:
-        print hdu.name, type(hdu.data)
+        print('name: {0}  type: {1}'.format(hdu.name, type(hdu.data)))
     
-    fig = mpl.figure(figsize=(15, 7))
+    fig = plt.figure(figsize=(15, 7))
     f1 = aplpy.FITSFigure(filename, hdu=1, subplot=[0.1,0.1,0.3,0.65], figure=fig)    
     f1.set_tick_labels_font(size='x-small')
     f1.set_axis_labels_font(size='small')
@@ -211,7 +211,3 @@ We use `pyfits`_ to open the image file and examine its contents.
     f3.hide_yaxis_label()
     f3.hide_ytick_labels()
     f3.show_colorscale(cmap='spring')
-
-        
-        
-    

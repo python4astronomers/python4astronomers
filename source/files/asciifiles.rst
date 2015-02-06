@@ -90,12 +90,12 @@ But what we'd really like to do is read the file line by line. There are several
 
     f = open('data.txt', 'r')
     for line in f:
-        print repr(line)
+        print(repr(line))
 
 Notice the indent before ``print``, which is necessary to indicate that we are inside the loop (there is no ``end for`` in Python). Note that we are using ``repr()`` to show any invisible characters (this will be useful in a minute). The output should now look something like this::
 
     >>> for line in f:
-            print repr(line)
+            print(repr(line))
 
     'RAJ        DEJ                          Jmag   e_Jmag\n'
     '2000 (deg) 2000 (deg) 2MASS             (mag)  (mag) \n'
@@ -178,7 +178,7 @@ We can put all this together to write a little script to read the data from the 
         columns = line.split()
         name = columns[2]
         j = float(columns[3])
-        print name, j
+        print(name, j)
         
     f.close()
 

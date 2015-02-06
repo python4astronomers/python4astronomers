@@ -340,7 +340,7 @@ ERF(sigma/SQRT(2)).  We can invert this operation using the inverse
 error-function found in SciPy in the special functions module::
 
   import scipy.special
-  print scipy.special.erfinv(0.90)*numpy.sqrt(2)
+  print(scipy.special.erfinv(0.90) * numpy.sqrt(2))
 
 .. raw:: html
 
@@ -355,7 +355,7 @@ Save the 90% calculated parameter limits::
   f.write("NAME VALUE MIN MAX\n")
   for name, val, minval, maxval in zip(results.parnames,results.parvals,results.parmins,results.parmaxes):
       line = [name, str(val), str(val+minval), str(val+maxval)]
-      print line
+      print(line)
       f.write(" ".join(line)+"\n")
 
   f.close()

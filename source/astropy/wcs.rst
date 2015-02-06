@@ -160,7 +160,7 @@ image have a valid position on the sky.
     values = image[py, px]
 
     # Print out the values
-    print values
+    print(values)
 
 which gives::
 

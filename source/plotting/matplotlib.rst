@@ -781,7 +781,7 @@ clarify the relationship between **pylab** and **pyplot**.
 matplotlib work like MATLAB.  This is just a package module that you can import::
 
   import matplotlib.pyplot
-  print sorted(dir(matplotlib.pyplot))
+  print(sorted(dir(matplotlib.pyplot)))
 
 Likewise pylab is also a module provided by matplotlib that you can import::
 
