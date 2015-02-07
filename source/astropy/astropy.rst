@@ -1,5 +1,5 @@
-Astropy
-=======
+Astropy I: core functions
+=========================
 
 `Astropy <http://www.astropy.org>`_ is a community-developed core Python
 package for Astronomy (with the term used in the broad sense, from Solar

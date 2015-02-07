@@ -1,4 +1,4 @@
-Analyzing UVES Spectroscopy with Astropy
+Astropy II: Analyzing UVES Spectroscopy
 ========================================
 
 This tutorial follows my real live data analysis of MN Lup and the code developed
