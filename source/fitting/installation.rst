@@ -12,7 +12,7 @@ Sherpa Installation
 
 In order to follow along with the Sherpa examples presented in this
 workshop, you can use 
-`Sherpa in CIAO 4.4 <http://cxc.harvard.edu/ciao/download/>`_,
+`Sherpa in CIAO <http://cxc.harvard.edu/ciao/download/>`_,
 or install the stand-alone version described below.
 
 .. Note::

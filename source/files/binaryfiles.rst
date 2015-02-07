@@ -76,27 +76,11 @@ What can you do?
     1. Convert your collegue to use a different file format.
     2. Read that file in python.
 
-If you have a relatively recent version (at least 0.9) of ``scipy`` then this is a matter of two lines::
+With any relatively recent version ``scipy`` (at least 0.9) then this is a matter of two lines::
     
     from scipy.io.idl import readsav
     data = readsav('myidlfile.sav')
 
-If your scipy is older, then you need to install the package `idlsave <http://astrofrog.github.com/idlsave/>`_ yourself.
-(Go back to :doc:`../installation/packages` for details on package installation.)
-
-In a normal terminal (outside ``ipython``) do::
-    
-    pip install --upgrade idlsave
-    
-or, if you install packages as root user on your system::
-    
-    sudo pip install --upgrade idlsave
-
-Then import the package and read the data::
-    
-    import idlsave
-    data = idlsave.read('myidlfile.sav')
-    
 .. admonition::  Exercise: Where is your data?
 
     ``idlsave`` already prints some information on the screen while reading the file. Inspect the object ``data``, find out how you use it and plot

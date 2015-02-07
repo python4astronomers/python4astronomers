@@ -15,6 +15,10 @@ Workshop goals are to use Sherpa to:
 
 - Fit the MAST 3C 273 data using the low-level API
 
+.. Note::
+
+    Sherpa currently does not support Python 3.
+
 **Agenda**
 
 .. toctree::

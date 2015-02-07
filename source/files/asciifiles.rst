@@ -478,6 +478,9 @@ rewrite the same code every time when it is already done!).  Instead just use `a
 
 .. admonition::  Exercise: scraping table data from the web
 
+   *Note: this exercise only works on Python 2 due to BeautifulSoup doing something
+   differently in Python 3.  Five cheers to the person who can fix this!*
+
    To do this exercise you must first install the `BeautifulSoup
    <http://www.crummy.com/software/BeautifulSoup/>`_ package which will parse
    HTML pages into nice data structures.  **QUIT** your IPython session and from the command line do::
@@ -586,7 +589,9 @@ Here is a more complicated example, that is actually useful::
 The resulting plot clearly shows the inverse first ionization potential effect.
 That means, that elements of a large FIP are enhanced in the corona.
 
-The second command ``np.genfromtxt`` is more versatile. It can fill missing values in a table, read column names, exclude some columns etc. Here is an example::
+The second command ``np.genfromtxt`` is more versatile. It can fill missing
+values in a table, read column names, exclude some columns etc. Here is an
+example (which only works in Python 2 as of Numpy 1.9)::
 
     d = StringIO('''
     #element abund error FIP

@@ -54,7 +54,7 @@ Manipulating these behaves the way you would expect, so an operation (``+``, ``-
     >>> 8 * complex(-3.3,1)
     (-26.4+8j)  # int * complex = complex
 
-However, there is one case where this happens but is not desirable, and that you should be aware of, which is the division of two integer numbers::
+However, there is one case in Python 2 where this happens but is not desirable, and that you should be aware of, which is the division of two integer numbers::
 
     >>> 3 / 2
     1
@@ -70,6 +70,9 @@ After typing this, we can use the Python 3.x syntax::
 
     >>> 3 // 2
     1
+
+If you are writing new code in Python 2 then it's a fine idea to start each
+file with ``from __future__ import division`` at the top.
 
 Another way to prevent this is to cast at least one of the integers in the division to a ``float``::
 
@@ -240,20 +243,13 @@ This will show the available attributes and methods for the Python list
 remember object methods!**
 ::
 
-    In [17]: a.<TAB>
-    a.__add__           a.__ge__            a.__iter__          a.__repr__          a.append
-    a.__class__         a.__getattribute__  a.__le__            a.__reversed__      a.count
-    a.__contains__      a.__getitem__       a.__len__           a.__rmul__          a.extend
-    a.__delattr__       a.__getslice__      a.__lt__            a.__setattr__       a.index
-    a.__delitem__       a.__gt__            a.__mul__           a.__setitem__       a.insert
-    a.__delslice__      a.__hash__          a.__ne__            a.__setslice__      a.pop
-    a.__doc__           a.__iadd__          a.__new__           a.__sizeof__        a.remove
-    a.__eq__            a.__imul__          a.__reduce__        a.__str__           a.reverse
-    a.__format__        a.__init__          a.__reduce_ex__     a.__subclasshook__  a.sort
+::
 
-For the most part you can ignore all the ones that begin with ``__`` since
-they are generally are internal methods that are not called directly.  At
-the end you see useful looking functions like ``append`` or ``sort`` which
+  In [17]: a.<TAB>
+  a.append   a.extend   a.insert   a.remove   a.sort     
+  a.count    a.index    a.pop      a.reverse  
+
+Here you see useful looking functions like ``append`` or ``sort`` which
 you can get help for and use::
 
     a.sort
