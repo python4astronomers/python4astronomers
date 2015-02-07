@@ -110,7 +110,8 @@ header keywords using standard item notation::
     >>> hdu.header['INSTRUME']
     'LAT'
 
-Provided that we started up ``ipython`` with the ``--pylab`` flag, we can plot
+Provided that we started up ``ipython`` with the ``--matplotlib`` flag and did
+``import matplotlib.pyplot as plt``, we can plot
 one of the slices in photon energy::
 
     >>> plt.imshow(hdu.data[0,:,:], origin='lower')

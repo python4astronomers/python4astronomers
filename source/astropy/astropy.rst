@@ -38,9 +38,13 @@ python code::
     cd data
     ls
 
-Then start up IPython with the ``--pylab`` option to enable easy plotting::
+Then start up IPython with the ``--matplotlib`` option to enable interactive
+plotting and then import numpy and matplotlib::
 
-    ipython --pylab
+    $ ipython --matplotlib
+
+    import numpy as np
+    import matplotlib.pyplot as plt
 
 Acknowledgments
 ---------------

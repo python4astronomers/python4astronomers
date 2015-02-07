@@ -370,7 +370,8 @@ current session as a single file.::
 This file can then be
 loaded into a new session with the ``restore`` command.::
 
-  ipython --pylab
+  $ ipython --matplotlib
+
   In [1]: import sherpa.astro.ui as ui
   
   In [2]: ui.restore("simple1.sherpa")

@@ -31,9 +31,14 @@ python code::
     cd UVES
     ls
 
-Then start up IPython with the ``--pylab`` option to enable easy plotting::
+Then start up IPython with the ``--matplotlib`` option and do the usual imports
+to enable interactive plotting::
 
-    ipython --pylab
+    $ ipython --matplotlib
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
 
 Acknowledgments
 ---------------

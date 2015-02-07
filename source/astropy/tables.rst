@@ -178,7 +178,8 @@ standard). We can see a quick overview of the table with::
     J235944.7+220014 359.93625  22.00389     17    __..     0.052     0.015 -0.01  0.27  0.37  0.35      0
     J235959.1+083355 359.99625   8.56528     10    __..      0.12     0.018  0.54  0.13  0.10  0.17      9
 
-Since we are using IPython with the ``--pylab`` option, we can easily make a
+Since we are using IPython with the ``--matplotlib`` option along with 
+``import matplotlib.pyplot as plt``, we can easily make a
 histogram of the count rates::
 
     >>> plt.hist(t['Count'], range=[0., 2], bins=100)

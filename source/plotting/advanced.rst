@@ -193,7 +193,7 @@ This is very powerful, as it allows you to customize virtually *all* elements in
 
 .. admonition:: Exercise: Explore customization
 
-    Run the above example in ``ipython --pylab``, and try and use the title
+    Run the above example in ``ipython --matplotlib``, and try and use the title
     and points objects to change the points to be red, and the title to have
     an ``x-large`` font size.
 

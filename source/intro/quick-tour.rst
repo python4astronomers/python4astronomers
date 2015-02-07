@@ -21,9 +21,10 @@ Quick tour of Python
    C-COSMOS browse (live demo)
    
 In the spirit of this workshop let's jump in to real Python analysis code.
-These examples assume you are using `pylab
+These examples assume you are using the IPython `pylab
 <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
-(you'll understand what that is after the 2nd hands-on session).
+mode which automatically imports a number of numerical and plotting routines
+into the session.
 
 Reading a table and plotting
 ----------------------------

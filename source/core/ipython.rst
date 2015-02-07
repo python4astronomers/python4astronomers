@@ -11,7 +11,7 @@ Before going further, open a new terminal window and change to your main Python
 for Astronomers working directory.  Then start IPython by typing "ipython
 --matplotlib" at the command prompt::
 
-  % ipython --matplotlib
+  $ ipython --matplotlib
 
 As we saw in the Introduction and Installation workshops, for interactive data
 analysis IPython has a special ``--matplotlib`` command line option which makes
@@ -45,7 +45,7 @@ matplotlib routines and are widely used in scientific code.
 
     np.sum([2,3])
 
-IPython with the  ``-pylab`` command line option provides a Matlab-like environment
+IPython with the  ``--matplotlib`` command line option provides a Matlab-like environment
 allowing very simple and direct commands like the following::
   
   x = np.arange(0, 10, 0.2)

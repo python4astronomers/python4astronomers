@@ -5,10 +5,12 @@ Python Classes
 Basics
 ^^^^^^
 
-Begin by starting IPython with pylab::
+Begin by starting IPython and importing numpy and matplotlib::
 
-  $ ipython --pylab
+  $ ipython --matplotlib
 
+  import numpy as np
+  import matplotlib.pyplot as plt
 
 Classes definitions include the ``class`` declaration, an identifier, and a
 colon::

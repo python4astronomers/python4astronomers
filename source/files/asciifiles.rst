@@ -19,9 +19,14 @@ there are more types that we did not speak about. One of these is the
 
 Let's start off by downloading :download:`this <../downloads/data.txt>` data file, then launching IPython the directory where you have the file::
 
-    $ ipython --pylab
+    $ ipython --matplotlib
 
-If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
+Do the usual imports of numpy and matplotlib::
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+If you have trouble downloading the file, then from within IPython enter::
 
     import urllib2
     url = 'http://python4astronomers.github.com/_downloads/data.txt'

@@ -102,9 +102,9 @@ Test the installation
 To do a very basic test whether you meet the requirements and have a functioning
 core scientific Python installation, do the following and check version numbers::
 
-  % python -V
-  % ipython -V
-  % ipython --matplotlib
+  $ python -V
+  $ ipython -V
+  $ ipython --matplotlib
   import numpy
   import scipy
   import scipy.linalg
@@ -139,15 +139,15 @@ First download the `<install_examples.tar>`_ tar file which has example data
 files that will be used in subsequent exercises.
 Then change to a working directory, untar the file, and start up IPython::
 
-  tar xvf ~/Downloads/install_examples.tar   # or wherever your browser puts downloads
-  cd py4ast/install
-  ls
-  ipython --matplotlib
+  $ tar xvf ~/Downloads/install_examples.tar   # or wherever your browser puts downloads
+  $ cd py4ast/install
+  $ ls
+  $ ipython --matplotlib
 
 .. tip::
    For all of the workshops you should always start Python using the shell command::
 
-     ipython --matplotlib  # (for Windows start the Pylab application)
+     $ ipython --matplotlib  # (for Windows start the Pylab application)
 
    Once IPython has started, make numpy and matplotlib available with::
 

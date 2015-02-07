@@ -19,9 +19,9 @@ Reading in an existing table
 
 First, download :download:`this <../downloads/catalog.fits.gz>` FITS table, then launch IPython in the directory where you have the file::
 
-    $ ipython --pylab
+    $ ipython --matplotlib
 
-If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
+If you have trouble downloading the file, then within your IPython session enter::
 
     import urllib2
     url = 'http://python4astronomers.github.com/_downloads/catalog.fits.gz'

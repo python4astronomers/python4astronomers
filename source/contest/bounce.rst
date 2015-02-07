@@ -62,7 +62,7 @@ window.
     
 In order to run this you should copy the lines above into a file
 called ``bounce.py`` in your working directory.  Then start IPython as usual
-with ``ipython --pylab`` or with the Pylab application on Windows and enter the following::
+with ``ipython --matplotlib`` or with the Pylab application on Windows and enter the following::
 
   execfile("bounce.py")
 

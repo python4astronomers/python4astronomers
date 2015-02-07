@@ -7,7 +7,12 @@ Fit image data of a supernova remnant G21.5-0.9 using a 2-D multi-component
 source model.  First, download the FITS image of :download:`G21.5-0.9 <./image2.fits>`
 and start IPython::
 
-  $ ipython --pylab
+  $ ipython --matplotlib
+
+Do the usual imports of numpy and matplotlib::
+
+  import numpy as np
+  import matplotlib.pyplot as plt
 
 If you have trouble accessing the image you can download it straight away using
 Python::
