@@ -38,9 +38,10 @@ Start off by downloading :download:`this tar file <../downloads/APLpy-example.ta
 
 If you have trouble downloading the file, then within your IPython session enter::
 
-    import urllib2, tarfile
+    from astropy.extern.six.moves.urllib import request
+    import tarfile
     url = 'http://python4astronomers.github.com/_downloads/APLpy-example.tar'
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
     cd APLpy-example
     ls
 
@@ -137,8 +138,9 @@ To show the y-axis labels in dd:mm format::
 
     If you have trouble downloading the file, then within your IPython session enter::
 
-        import urllib2, tarfile
+        from astropy.extern.six.moves.urllib import request
+        import tarfile
         url = 'http://python4astronomers.github.com/_downloads/m82_wise.tar'
-        tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+        tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
         cd m82_wise
         ls

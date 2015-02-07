@@ -38,9 +38,10 @@ Here are some hints:
 
     Download the example :download:`data <../downloads/files-excercise.tar.gz>`::
 
-        import urllib2, tarfile
+        from astropy.extern.six.moves.urllib import request
+        import tarfile
         url = 'http://python4astronomers.github.com/_downloads/files-excercise.tar.gz'
-        tarfile.open(fileobj=urllib2.urlopen(url), mode='r|gz').extractall()
+        tarfile.open(fileobj=request.urlopen(url), mode='r|gz').extractall()
         cd files
         ls
 

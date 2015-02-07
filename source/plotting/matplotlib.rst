@@ -346,7 +346,7 @@ somewhat cryptic messsage above. For new users it would be nice if it
 said "hold on, size isn't callable", but then this would inhibit
 useful - if complex - statements such as::
 
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
 
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

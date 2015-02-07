@@ -20,9 +20,10 @@ astropy.io.fits
 
     Use the following code to download a FITS file for this exercise::
         
-        import urllib2, tarfile
+        from astropy.extern.six.moves.urllib import request
+        import tarfile
         url = 'http://python4astronomers.github.com/core/core_examples.tar'
-        tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+        tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
         cd py4ast/core
         ls
 
@@ -65,9 +66,9 @@ IDL is still a very common tool in astronomy. While IDL packages exist to read a
 Here is an examplary ``.sav`` :download:`file <../downloads/myidlfile.sav>`. 
 If you have trouble downloading the file, then use IPython::
 
-    import urllib2
+    from astropy.extern.six.moves.urllib import request
     url = 'http://python4astronomers.github.com/_downloads/myidlfile.sav'
-    open('myidlfile.sav', 'wb').write(urllib2.urlopen(url).read())
+    open('myidlfile.sav', 'wb').write(request.urlopen(url).read())
     ls
 
 

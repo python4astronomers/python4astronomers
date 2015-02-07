@@ -60,9 +60,10 @@ then go to the py4ast/core directory, otherwise ::
 
   $ ipython --matplotlib
 
-  import urllib2, tarfile
+  from astropy.extern.six.moves.urllib import request
+  import tarfile
   url = 'http://python4astronomers.github.com/core/core_examples.tar'
-  tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+  tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
   cd py4ast/core
 
 Now we load the Sherpa UI module and other requirements::

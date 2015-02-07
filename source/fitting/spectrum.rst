@@ -15,9 +15,9 @@ and start IPython ::
 If you have trouble accessing the spectrum you can download it straight away
 using Python  ::
 
-  import urllib2
+  from astropy.extern.six.moves.urllib import request
   url = 'http://python4astronomers.github.com/_downloads/3c273.fits'
-  open('3c273.fits', 'wb').write(urllib2.urlopen(url).read())
+  open('3c273.fits', 'wb').write(request.urlopen(url).read())
 
 We also need to load in Sherpa ::
 

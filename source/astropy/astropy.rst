@@ -32,9 +32,10 @@ Please download this
 the content, either by clicking on the link or by executing this
 python code::
 
-    import urllib2, tarfile
+    from astropy.extern.six.moves.urllib import request
+    import tarfile
     url = 'http://python4astronomers.github.io/_downloads/astropy_examples.tar'
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
     cd data
     ls
 

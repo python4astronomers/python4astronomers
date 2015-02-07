@@ -17,9 +17,9 @@ Do the usual imports of numpy and matplotlib::
 If you have trouble accessing the image you can download it straight away using
 Python::
 
-  import urllib2
+  from astropy.extern.six.moves.urllib import request
   url = "http://python4astronomers.github.com/_downloads/image2.fits"
-  open("image2.fits", "wb").write(urllib2.urlopen(url).read())
+  open("image2.fits", "wb").write(request.urlopen(url).read())
   ls
 
 Here we eschew the advice of keeping modules separate and load the

@@ -28,9 +28,9 @@ Do the usual imports of numpy and matplotlib::
 
 If you have trouble downloading the file, then from within IPython enter::
 
-    import urllib2
+    from astropy.extern.six.moves.urllib import request
     url = 'http://python4astronomers.github.com/_downloads/data.txt'
-    open('data.txt', 'wb').write(urllib2.urlopen(url).read())
+    open('data.txt', 'wb').write(request.urlopen(url).read())
     ls
 
 Now let's try and get the contents of the file into IPython. We start off by creating a file object::
@@ -516,9 +516,9 @@ rewrite the same code every time when it is already done!).  Instead just use `a
     You'll
    want to start with::
 
-     import urllib2
+     from astropy.extern.six.moves.urllib import request
      from astropy.io import ascii
-     html = urllib2.urlopen('http://hea-www.harvard.edu/XJET/').read()  # Get web page as string
+     html = request.urlopen('http://hea-www.harvard.edu/XJET/').read()  # Get web page as string
      table1 = html2tsv(html, 0)   # Parse the first table in the web page
      table2 = html2tsv(html, 1)   # Parse the second table
      table3 = html2tsv(html, 2)   # Parse the third table
