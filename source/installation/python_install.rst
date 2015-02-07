@@ -19,6 +19,11 @@ You may need to choose between 32-bit and 64-bit installations.  Generally
 speaking you should choose 64-bit, but read `64 versus 32 bit`_ for some caveats
 or if you aren't sure if your CPU is 64-bit.
 
+For this workshop you can use either Python 2.6, 2.7 or Python 3 (version >=
+3.3).  On the general question of whether to use Python 2 or Python 3, at this
+point the major package support for both is quite similar, and (as of
+early 2015) it appears that in the overall community Python 3 usage is
+becoming substantial.
 
 .. _`anaconda_option`:
 
