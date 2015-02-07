@@ -1,14 +1,14 @@
 :tocdepth: 2
 
-Several ways to handle ASCII data
-*********************************
+Reading and Writing tabular ASCII data
+***************************************
 
 Astronomers love storing tabular data in human-readable ASCII tables.
 Unfortunately there is very little agreement on a standard way to do this,
 unlike e.g. FITS.
 
-Reading and Writing files in Pure Python
-========================================
+Pure Python
+===========
 
 Reading
 -------

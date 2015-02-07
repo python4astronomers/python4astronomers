@@ -2,13 +2,13 @@
 
 :tocdepth: 2
 
-Binary formats useful for astronomers
-*************************************
+Reading and Writing binary data
+*******************************
 
-astropy.io.fits - Reading and writing fits files
-================================================
+astropy.io.fits
+===============
 
-`astropy.io.fits`_  is a Python module developed at STScI to read and write all types of fits files.
+`astropy.io.fits`_  is a Python module developed at STScI to read and write all types of FITS files.
 
 .. admonition:: External resource!
 
@@ -18,7 +18,7 @@ astropy.io.fits - Reading and writing fits files
 
 .. admonition::  Exercise
 
-    Use the following code to download a fits file for this exercise::
+    Use the following code to download a FITS file for this exercise::
         
         import urllib2, tarfile
         url = 'http://python4astronomers.github.com/core/core_examples.tar'
@@ -26,7 +26,7 @@ astropy.io.fits - Reading and writing fits files
         cd py4ast/core
         ls
 
-    Read in the fits file. Find the time and date of the observation. Then use ``plt.imshow()`` to display the intensity array using some sensible minimum and maximum value so that the spectrum is visible.
+    Read in the FITS file. Find the time and date of the observation. Then use ``plt.imshow()`` to display the intensity array using some sensible minimum and maximum value so that the spectrum is visible.
 
 
 .. raw:: html
@@ -60,7 +60,7 @@ the :doc:`../core/numpy_scipy` part of the tutorial, but now you should understa
 Reading IDL .sav files
 ======================
 
-IDL is still a very common tool in astronomy. While IDL packages exist to read and write data in simple (ASCII) or standardized file formats (fits), that users of all platforms can use, IDL also offers a binary file format with an undocumented, proprietary structure. However, acess to this file format (usually called ``.sav``) is very simple and convenient in IDL. Therefore, many IDL users dump their data in this way and you might be forced to read ``.sav`` files a collegue has sent you.
+IDL is still a very common tool in astronomy. While IDL packages exist to read and write data in simple (ASCII) or standardized file formats (FITS), that users of all platforms can use, IDL also offers a binary file format with an undocumented, proprietary structure. However, acess to this file format (usually called ``.sav``) is very simple and convenient in IDL. Therefore, many IDL users dump their data in this way and you might be forced to read ``.sav`` files a collegue has sent you.
 
 Here is an examplary ``.sav`` :download:`file <../downloads/myidlfile.sav>`. 
 If you have trouble downloading the file, then use IPython::
