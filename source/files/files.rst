@@ -19,7 +19,6 @@ Pure Python primer
    ../python/types
    asciifiles.rst
    binaryfiles.rst
-   atpy.rst
    summary.rst
    
 :Authors: Tom Robitaille, Tom Aldcroft, Moritz Guenther
