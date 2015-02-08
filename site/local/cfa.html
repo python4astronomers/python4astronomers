@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Python information for CfA &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Local information" href="local.html" />
+    <link rel="next" title="gll_psc_v08.fit" href="../astropy/data/README.html" />
+    <link rel="prev" title="Local information" href="local.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../astropy/data/README.html" title="gll_psc_v08.fit">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="local.html" title="Local information">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="local.html" accesskey="U">Local information</a> &raquo;</li>
+      
+      <li>Python information for CfA</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="python-information-for-cfa">
+<h1>Python information for CfA<a class="headerlink" href="#python-information-for-cfa" title="Permalink to this headline">¶</a></h1>
+<p>These instructions apply to the Harvard/Smithsonian Center for Astrophysics.</p>
+<div class="section" id="using-python-the-head-network">
+<h2>Using Python the HEAD network<a class="headerlink" href="#using-python-the-head-network" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="using-python-on-the-cf-network">
+<h2>Using Python on the CF network<a class="headerlink" href="#using-python-on-the-cf-network" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="scipy-matplotlib-and-the-rest-in-ciao-on-head">
+<h2>SciPy, matplotlib (and the rest) in CIAO on HEAD<a class="headerlink" href="#scipy-matplotlib-and-the-rest-in-ciao-on-head" title="Permalink to this headline">¶</a></h2>
+<p>First get into CIAO in the usual way:</p>
+<div class="highlight-python"><div class="highlight"><pre>source /soft/ciao/bin/ciao.csh         # tcsh
+. /soft/ciao/bin/ciao.sh               # bash
+</pre></div>
+</div>
+<p>Now set your local installation prefix to a directory of your choosing where
+you have write permission and make some directories:</p>
+<div class="highlight-python"><div class="highlight"><pre>set prefix=$HOME/ciaopy  # tcsh
+prefix=$HOME/ciaopy      # bash
+
+mkdir -p $prefix/bin
+mkdir -p $prefix/build
+mkdir -p $prefix/include
+mkdir -p $prefix/lib
+</pre></div>
+</div>
+<p>Set up a couple of paths.  You&#8217;ll probably want to do something similar to this
+path setup in your shell startup file:</p>
+<div class="highlight-python"><div class="highlight"><pre># tcsh
+setenv PATH $prefix/bin:$PATH  # tcsh
+setenv PYTHONPATH $prefix/lib/python2.7/site-packages
+
+# bash
+export PATH=$prefix/bin:$PATH
+export PYTHONPATH=$prefix/lib/python2.7/site-packages
+
+mkdir -p $PYTHONPATH
+</pre></div>
+</div>
+<p>Now copy binary versions of the numerical libraries that are needed by SciPy.
+These have only been verified to work on CentOS-5 on the HEAD network:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $prefix/lib
+tar xf /proj/sot/ska/export/lapack_blas_atlas_x86-64.tar.gz
+</pre></div>
+</div>
+<p>Now go to the build directory and untar the source distributions for the SciPy and distribute packages:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $prefix/build
+tar xf /proj/sot/ska/pkgs/scipy-0.10.0.tar.gz
+tar xf /proj/sot/ska/pkgs/distribute-0.6.19.tar.gz
+</pre></div>
+</div>
+<p>First build and install <tt class="docutils literal"><span class="pre">distribute</span></tt>.  This provides <tt class="docutils literal"><span class="pre">setuptools</span></tt> and
+<tt class="docutils literal"><span class="pre">easy_install</span></tt>.  It turns out that in this exercise <tt class="docutils literal"><span class="pre">easy_install</span></tt> works
+better than <tt class="docutils literal"><span class="pre">pip</span></tt> because it provides a <tt class="docutils literal"><span class="pre">--prefix</span></tt> option that works.</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $prefix/build/distribute-0.6.19
+ciaorun python setup.py install --prefix=$prefix
+</pre></div>
+</div>
+<p>Now set up the configuration file to build SciPy from source:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $prefix/build/scipy-0.10.0
+
+rm -f site.cfg
+echo &quot;[DEFAULT]&quot; &gt; site.cfg
+echo &quot;library_dirs = ${prefix}/lib&quot; &gt;&gt; site.cfg
+echo &quot;include_dirs = ${prefix}/include&quot; &gt;&gt; site.cfg
+echo &quot;[lapack_opt]&quot; &gt;&gt; site.cfg
+echo &quot;libraries = lapack, f77blas, cblas, atlas&quot; &gt;&gt; site.cfg
+echo &quot;[fftw]&quot; &gt;&gt; site.cfg
+echo &quot;libraries = fftw3&quot; &gt;&gt; site.cfg
+</pre></div>
+</div>
+<p>Start building and go get a coffee or read a paper for a little while, hopefully less than a half hour:</p>
+<div class="highlight-python"><div class="highlight"><pre>rm -f build.log install.log
+ciaorun python setup.py build --fcompiler=gnu95 &gt;&amp; build.log
+ciaorun python setup.py install --prefix=$prefix &gt;&amp; install.log
+</pre></div>
+</div>
+<p>Inspect <tt class="docutils literal"><span class="pre">build.log</span></tt> and <tt class="docutils literal"><span class="pre">install.log</span></tt> for errors (e.g.
+<tt class="docutils literal"><span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">error</span> <span class="pre">build.log</span></tt>).  If this looks OK then change to
+a different directory and start up <tt class="docutils literal"><span class="pre">sherpa</span></tt> or <tt class="docutils literal"><span class="pre">chips</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $prefix/build
+sherpa
+</pre></div>
+</div>
+<p>Now within <tt class="docutils literal"><span class="pre">sherpa</span></tt> do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<p>Now quit and install the rest:</p>
+<div class="highlight-python"><div class="highlight"><pre>ciaorun easy_install --verbose --prefix=$prefix matplotlib
+ciaorun easy_install --verbose --prefix=$prefix asciitable
+ciaorun easy_install --verbose --prefix=$prefix pywcs
+ciaorun easy_install --verbose --prefix=$prefix pyfits
+ciaorun easy_install --verbose --prefix=$prefix atpy
+ciaorun easy_install --verbose --prefix=$prefix aplpy
+ciaorun easy_install --verbose --prefix=$prefix nose
+</pre></div>
+</div>
+<p>Once again fire up <tt class="docutils literal"><span class="pre">sherpa</span></tt> or <tt class="docutils literal"><span class="pre">chips</span></tt> and do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s">&#39;TkAgg&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">asciitable</span>
+<span class="kn">import</span> <span class="nn">pyfits</span>
+<span class="kn">import</span> <span class="nn">pywcs</span>
+<span class="kn">import</span> <span class="nn">atpy</span>
+<span class="kn">import</span> <span class="nn">aplpy</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Hopefully you are done and have a CIAO Python that you can use for all your analysis!</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Python information for CfA</a><ul>
+<li><a class="reference internal" href="#using-python-the-head-network">Using Python the HEAD network</a></li>
+<li><a class="reference internal" href="#using-python-on-the-cf-network">Using Python on the CF network</a></li>
+<li><a class="reference internal" href="#scipy-matplotlib-and-the-rest-in-ciao-on-head">SciPy, matplotlib (and the rest) in CIAO on HEAD</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="local.html"
+                        title="previous chapter">Local information</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../astropy/data/README.html"
+                        title="next chapter">gll_psc_v08.fit</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/local/cfa.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

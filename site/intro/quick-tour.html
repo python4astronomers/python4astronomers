@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quick tour of Python &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Introduction and Motivation" href="intro.html" />
+    <link rel="next" title="Who is using Python" href="who-python.html" />
+    <link rel="prev" title="Why use Python?" href="why-python.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="who-python.html" title="Who is using Python">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="why-python.html" title="Why use Python?">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="intro.html" accesskey="U">Introduction and Motivation</a> &raquo;</li>
+      
+      <li>Quick tour of Python</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="quick-tour-of-python">
+<h1>Quick tour of Python<a class="headerlink" href="#quick-tour-of-python" title="Permalink to this headline">¶</a></h1>
+<p>In the spirit of this workshop let&#8217;s jump in to real Python analysis code.
+These examples assume you are using the IPython <a class="reference external" href="http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related">pylab</a>
+mode which automatically imports a number of numerical and plotting routines
+into the session.</p>
+<div class="section" id="reading-a-table-and-plotting">
+<h2>Reading a table and plotting<a class="headerlink" href="#reading-a-table-and-plotting" title="Permalink to this headline">¶</a></h2>
+<p>The Fermi Gamma-ray satellite has a nice catalog of AGN available through
+HEASARC.  The script below will read in the catalog data using the <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/ascii/">astropy.io.ascii</a>
+module, do some basic filtering with <a class="reference external" href="http://numpy.org/">NumPy</a>, and make a couple of plots with
+<a class="reference external" href="http://matplotlib.org/">matplotlib</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Make external packages available</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">ascii</span>
+
+<span class="c"># Read table.</span>
+<span class="c"># ==&gt; dat[column_name] and dat[row_number] both valid &lt;==</span>
+<span class="n">data_url</span> <span class="o">=</span> <span class="s">&#39;https://raw.githubusercontent.com/python4astronomers/python4astronomers/stable/examples/tables/fermi_agn.dat&#39;</span>
+<span class="n">dat</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+
+<span class="n">redshift</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;redshift&#39;</span><span class="p">]</span>    <span class="c"># array of values from &#39;redshift&#39; column</span>
+<span class="n">flux</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;photon_flux&#39;</span><span class="p">]</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;spectral_index&#39;</span><span class="p">]</span>
+
+<span class="c"># Select rows that have a measured redshift</span>
+<span class="n">with_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">redshift</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">999</span><span class="p">)</span>
+
+<span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="s">&#39;.b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;All&#39;</span><span class="p">)</span>  <span class="c"># First plot!</span>
+<span class="n">semilogx</span><span class="p">(</span><span class="n">flux</span><span class="p">[</span><span class="n">with_z</span><span class="p">],</span> <span class="n">gamma</span><span class="p">[</span><span class="n">with_z</span><span class="p">],</span> <span class="s">&#39;or&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;With Z&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid</span><span class="p">()</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Flux (photon/cm$^2$/s)&#39;</span><span class="p">)</span>   <span class="c"># latex works</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Spectral index $\Gamma$&#39;</span><span class="p">)</span>
+
+<span class="c"># Select low- and high-z samples</span>
+<span class="n">lowz</span> <span class="o">=</span> <span class="n">with_z</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">redshift</span> <span class="o">&lt;</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">highz</span> <span class="o">=</span> <span class="n">with_z</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">redshift</span> <span class="o">&gt;=</span> <span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>    <span class="c"># values from 1.2 to 3.0 by 0.1</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">gamma</span><span class="p">[</span><span class="n">lowz</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;z &lt; 0.8&#39;</span><span class="p">)</span>
+<span class="n">hist</span><span class="p">(</span><span class="n">gamma</span><span class="p">[</span><span class="n">highz</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;z &gt; 0.8&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Spectral index $\Gamma$&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&#39;$\Gamma$ for low-z and high-z samples&#39;</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="n">ascii</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="n">with_z</span><span class="p">],</span> <span class="s">&#39;fermi_agn_with_z.dat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/scatter.png"><img alt="../_images/scatter.png" src="../_images/scatter.png" style="width: 358.4px; height: 288.4px;" /></a>
+<a class="reference internal image-reference" href="../_images/hist.png"><img alt="../_images/hist.png" src="../_images/hist.png" style="width: 358.4px; height: 288.4px;" /></a>
+</div>
+<div class="section" id="curve-fitting-with-scipy">
+<h2>Curve fitting with SciPy<a class="headerlink" href="#curve-fitting-with-scipy" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://scipy.org/">SciPy</a> provides <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">curve_fit</a>,
+a simple and useful implementation of the Levenburg-Marquardt non-linear
+minimization algorithm.  This example shows a code to generate a fake dataset
+and then fit with a gaussian, returning the covariance matrix for parameter
+uncertainties.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="c"># Create a function</span>
+<span class="c"># ==&gt; First encounter with *whitespace* in Python &lt;==</span>
+<span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">val</span>
+
+<span class="c"># Generate fake data.</span>
+<span class="c"># Note: functions in random package, array arithmetic (exp)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">3.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mf">10.</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="c"># Note: these error bars don&#39;t reflect the distribution from which</span>
+<span class="c"># they were drawn! Chi^2 of the fit will be poor.</span>
+
+<span class="c"># Fit</span>
+<span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">gaussian</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+
+<span class="c"># Print results</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Scale =  </span><span class="si">%.3f</span><span class="s"> +/- </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pcov</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Offset = </span><span class="si">%.3f</span><span class="s"> +/- </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pcov</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Sigma =  </span><span class="si">%.3f</span><span class="s"> +/- </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">popt</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pcov</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])))</span>
+
+<span class="c"># Plot data</span>
+<span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="c"># Plot model</span>
+<span class="n">xm</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c"># 100 evenly spaced points</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xm</span><span class="p">,</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">xm</span><span class="p">,</span> <span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">popt</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="c"># Save figure</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s">&#39;fit.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The plotted fit result is as shown below:</p>
+<a class="reference internal image-reference" href="../_images/fit.png"><img alt="../_images/fit.png" src="../_images/fit.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="section" id="intermission-numpy-matplotlib-and-scipy">
+<h2>Intermission: NumPy, Matplotlib, and SciPy<a class="headerlink" href="#intermission-numpy-matplotlib-and-scipy" title="Permalink to this headline">¶</a></h2>
+<p>These three packages are the workhorses of scientific Python.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://numpy.org/">NumPy</a> is the fundamental package for scientific computing in Python [<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">NumPy Reference</a>]</li>
+<li><a class="reference external" href="http://matplotlib.org/">Matplotlib</a> is one of many plotting packages.  Started as a Matlab clone.</li>
+<li><a class="reference external" href="http://scipy.org/">SciPy</a> is a collection of mathematical algorithms and convenience
+functions [<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/">SciPy Reference</a>]</li>
+</ul>
+</div>
+<div class="section" id="synthetic-images">
+<h2>Synthetic images<a class="headerlink" href="#synthetic-images" title="Permalink to this headline">¶</a></h2>
+<p>This example demonstrates how to create a synthetic image of a cluster,
+including convolution with a Gaussian filter and the addition of noise.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
+
+<span class="c"># Create empty image</span>
+<span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">))</span>
+
+<span class="c"># Set number of stars</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c"># Generate random positions</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">nx</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span> <span class="o">*</span> <span class="n">pi</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="c"># Generate random fluxes</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c"># Compute position</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">nx</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">ny</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+<span class="c"># Add stars to image</span>
+<span class="c"># ==&gt; First for loop and if statement &lt;==</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nx</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ny</span><span class="p">:</span>
+        <span class="n">image</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c"># Convolve with a gaussian</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># Add noise</span>
+<span class="n">image</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c"># Write out to FITS image</span>
+<span class="n">pits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;cluster.fits&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">clobber</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The simulated cluster image is below:</p>
+<a class="reference internal image-reference" href="../_images/synthetic_image.png"><img alt="../_images/synthetic_image.png" src="../_images/synthetic_image.png" style="width: 357.0px; height: 334.6px;" /></a>
+</div>
+<div class="section" id="running-existing-compiled-codes">
+<h2>Running existing compiled codes<a class="headerlink" href="#running-existing-compiled-codes" title="Permalink to this headline">¶</a></h2>
+<p>In addition to just doing computations and plotting, Python is great for gluing
+together other codes and doing system type tasks.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">ascii</span>
+
+<span class="n">smoothing</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c"># Smoothing window length</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c"># Frequency values for making data</span>
+<span class="n">noises</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="c"># Noise amplitude inputs</span>
+
+<span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">clf</span><span class="p">()</span>
+
+<span class="c"># Loop over freq and noise values, running standalone code to create noisy data</span>
+<span class="c"># and smooth it.  Get the data back into Python and plot.</span>
+<span class="n">plot_num</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">freq</span> <span class="ow">in</span> <span class="n">freqs</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">noise</span> <span class="ow">in</span> <span class="n">noises</span><span class="p">:</span>
+        <span class="c"># Run the compiled code &quot;make_data&quot; to make data as a list of x, y, y_smooth</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="s">&#39;make_data </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">smoothing</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Running {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmd</span><span class="p">))</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="c"># out now contains the output from &lt;cmd&gt; as a single string</span>
+
+        <span class="c"># Write the output to a file</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="s">&#39;data_</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span>
+        <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="c"># Parse the output string as a table</span>
+        <span class="n">dat</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="c"># Make a plot</span>
+        <span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">plot_num</span><span class="p">)</span>
+        <span class="n">plot</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">])</span>
+        <span class="n">plot</span><span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;y_smooth&#39;</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+
+        <span class="n">plot_num</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/run_codes.png"><img alt="../_images/run_codes.png" src="../_images/run_codes.png" style="width: 568.4px; height: 428.4px;" /></a>
+</div>
+<div class="section" id="making-a-publication-quality-image">
+<h2>Making a publication quality image<a class="headerlink" href="#making-a-publication-quality-image" title="Permalink to this headline">¶</a></h2>
+<p>Making a publication quality image is a snap in Python using the <a class="reference external" href="http://aplpy.github.com">APLpy</a> package.  Images can be made interactively or
+(reproducibly) with a script.  Let&#8217;s see how the cover image for today&#8217;s
+talk was made.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
+
+<span class="c"># Convert all images to common projection</span>
+<span class="n">aplpy</span><span class="o">.</span><span class="n">make_rgb_cube</span><span class="p">([</span><span class="s">&#39;m1.fits&#39;</span><span class="p">,</span> <span class="s">&#39;i3.fits&#39;</span><span class="p">,</span> <span class="s">&#39;i2.fits&#39;</span><span class="p">],</span> <span class="s">&#39;rgb.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Make 3-color image</span>
+<span class="n">aplpy</span><span class="o">.</span><span class="n">make_rgb_image</span><span class="p">(</span><span class="s">&#39;rgb.fits&#39;</span><span class="p">,</span> <span class="s">&#39;rgb.png&#39;</span><span class="p">,</span>
+                     <span class="n">vmin_r</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">vmax_r</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+                     <span class="n">vmin_g</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax_g</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+                     <span class="n">vmin_b</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span><span class="n">vmax_b</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c"># Create a new figure</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;rgb.fits&#39;</span><span class="p">)</span>
+
+<span class="c"># Show the RGB image</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show_rgb</span><span class="p">(</span><span class="s">&#39;rgb.png&#39;</span><span class="p">)</span>
+
+<span class="c"># Add contours</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="s">&#39;sc.fits&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">&#39;gist_heat&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+
+<span class="c"># Overlay a grid</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_grid</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c"># Save image</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;plot.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces the nice image:</p>
+<a class="reference internal image-reference" href="../_images/image_plotting.png"><img alt="../_images/image_plotting.png" src="../_images/image_plotting.png" style="width: 523.8px; height: 471.0px;" /></a>
+</div>
+<div class="section" id="and-much-much-more">
+<h2>And much much more...<a class="headerlink" href="#and-much-much-more" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fast access to big (1e9 rows) tables with <a class="reference external" href="http://www.pytables.org">PyTables</a> + <a class="reference external" href="http://www.hdfgroup.org/HDF5/">HDF5</a></li>
+<li>3-d plotting and surface rendering with <a class="reference external" href="http://mayavi.sourceforge.net/">Mayavi</a></li>
+<li>Sophisticated data modeling with advanced statistics with <a class="reference external" href="http://cxc.harvard.edu/sherpa/">Sherpa</a></li>
+<li><a class="reference external" href="http://www.astropython.org/blog/2011/3/Querying-tables-in-the-virtual-observatory">Query VO tables</a>
+and <a class="reference external" href="https://gist.github.com/855678">broadcast</a> or
+<a class="reference external" href="https://gist.github.com/855678">retrieve</a> tables to VO applications like
+<a class="reference external" href="http://www.star.bris.ac.uk/~mbt/topcat">TOPCAT</a>.</li>
+<li>GUI application to quickly view thousands of X-ray survey image cutouts</li>
+<li>Python-based web site for browsing a complex multi-wavelength survey</li>
+<li><a class="reference external" href="http://conference.scipy.org/scipy2010/slides/tom_aldcroft_chandra.pdf">Thermal modeling of the Chandra X-ray satellite</a></li>
+<li>Interactive multi-user plots accessed through a web browser (!)</li>
+<li>Distributed computing with <a class="reference external" href="http://mpi4py.scipy.org/">MPI for Python</a></li>
+<li>Make a little <a class="reference external" href="http://youtube.com">video distribution web site</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Quick tour of Python</a><ul>
+<li><a class="reference internal" href="#reading-a-table-and-plotting">Reading a table and plotting</a></li>
+<li><a class="reference internal" href="#curve-fitting-with-scipy">Curve fitting with SciPy</a></li>
+<li><a class="reference internal" href="#intermission-numpy-matplotlib-and-scipy">Intermission: NumPy, Matplotlib, and SciPy</a></li>
+<li><a class="reference internal" href="#synthetic-images">Synthetic images</a></li>
+<li><a class="reference internal" href="#running-existing-compiled-codes">Running existing compiled codes</a></li>
+<li><a class="reference internal" href="#making-a-publication-quality-image">Making a publication quality image</a></li>
+<li><a class="reference internal" href="#and-much-much-more">And much much more...</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="why-python.html"
+                        title="previous chapter">Why use Python?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="who-python.html"
+                        title="next chapter">Who is using Python</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/intro/quick-tour.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

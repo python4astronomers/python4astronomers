@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Summary and excercise &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Reading and Writing files" href="files.html" />
+    <link rel="next" title="Fitting and Modeling 1-D and 2-D Data" href="../fitting/fitting.html" />
+    <link rel="prev" title="Reading and Writing binary data" href="binaryfiles.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../fitting/fitting.html" title="Fitting and Modeling 1-D and 2-D Data">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="binaryfiles.html" title="Reading and Writing binary data">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="files.html" accesskey="U">Reading and Writing files</a> &raquo;</li>
+      
+      <li>Summary and excercise</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="summary-and-excercise">
+<h1>Summary and excercise<a class="headerlink" href="#summary-and-excercise" title="Permalink to this headline">¶</a></h1>
+<p>These pages show a way to read most of the files astronomers will need in their day-to-day work.
+However, no format is so obscure that is could not be used and there are certainly
+files out there that will not fall into one of the categories above.
+Here are some hints:</p>
+<ul>
+<li><p class="first">If it is an ASCII file, often some manual editing will do the job.
+E.g. in a space-separated table there are missing values:</p>
+<div class="highlight-python"><div class="highlight"><pre>col1 col2 col3
+aaaa  1    2
+bbbb       3
+cccc  4    5
+</pre></div>
+</div>
+<p>In a text editor put <tt class="docutils literal"><span class="pre">nan</span></tt> in the empty space and <tt class="docutils literal"><span class="pre">aciitable</span></tt> will read the file.</p>
+</li>
+<li><p class="first">Google. No file format is too obscure to find a reader for it.</p>
+</li>
+<li><p class="first">When writing files, use standard formats like fits, ascii, hdu5 and not
+your personal, undocumented binary format.</p>
+</li>
+</ul>
+<div class="admonition-final-exercise admonition">
+<p class="first admonition-title">Final exercise</p>
+<p>A word of warning: This excercise makes use of almost all concepts shown in
+the tutorial this far, don&#8217;t get frustrated. If you are stuck, you are
+allowed to peak at the solution!</p>
+<p>We want to compare the X-ray luminosity function (XLF) of young
+star-forming regions.</p>
+<p>The data is taken from the literature, but comes in different formats.
+Read the tables and plot the XLF (fraction of stars vs. log(L_X)) of all
+three clusters.</p>
+<p>Download the example <a class="reference download internal" href="../_downloads/files-excercise.tar.gz"><tt class="xref download docutils literal"><span class="pre">data</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre>from astropy.extern.six.moves.urllib import request
+import tarfile
+url = &#39;http://python4astronomers.github.com/_downloads/files-excercise.tar.gz&#39;
+tarfile.open(fileobj=request.urlopen(url), mode=&#39;r|gz&#39;).extractall()
+cd files
+ls
+</pre></div>
+</div>
+<p>In your directory there are 3 files:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">COUP.fits</span></tt></dt>
+<dd>The final results of the Chandra Orion Ultradeep project (COUP).
+The logarithmic X-ray luminosities are in column <tt class="docutils literal"><span class="pre">Ltc</span></tt>.</dd>
+<dt><tt class="docutils literal"><span class="pre">IC348.dat</span></tt></dt>
+<dd>CDS machine readable table, downloaded directly from CDS.
+All documentation is in the file itself. Open the file in your
+preferred text viewer (vi, emacs, less) and you will see that column
+<tt class="docutils literal"><span class="pre">XLum</span></tt> contains the X-ray luminosities in unites of 1e28 erg/s.</dd>
+</dl>
+</div></blockquote>
+<p>Read each data file and put the X-ray luminosity in a varible. Normalize all
+luminosity functions to 1 at log(L_X) = 29.3.
+Make a plot.</p>
+<p><strong>Hint 1</strong> All tables have missing L_X values. Be careful when plotting.
+Remember boolean masks from <a class="reference internal" href="../core/numpy_scipy.html"><em>NumPy</em></a>?:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">index_good_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">dat</span><span class="p">[</span><span class="s">&#39;Ltc&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c"># make new array, which only has good L_X values</span>
+<span class="n">good_LX_values</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;Ltc&#39;</span><span class="p">][</span><span class="n">index_good_data</span><span class="p">]</span>
+
+<span class="c"># These two lines can be concatenated:</span>
+<span class="n">good_LX_values</span> <span class="o">=</span> <span class="n">dat</span><span class="p">[</span><span class="s">&#39;Ltc&#39;</span><span class="p">][</span><span class="n">dat</span><span class="p">[</span><span class="s">&#39;Ltc&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Hint 2</strong> If you have all you luminosities in vector called <cite>L_X</cite> then
+this code will plot a good XLF:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">L_X</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="c"># np.arange(len(L_X)) makes a y-axis from 0 to len(L_X)</span>
+<span class="c"># np.arange(len(L_X), 0, -1) makes a y-axis from len(L_X) to 0</span>
+<span class="c"># -&gt; dtype = float, because 4 / 5 = 0 (integer devision)</span>
+<span class="n">yaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">L_X</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">L_X</span><span class="p">,</span> <span class="n">yaxis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Extra points</strong>:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">Winston2010tab4.txt</span></tt></dt>
+<dd>From Winston and al (2010). I took this table from the journal
+page and just pasted it into a text file. Open the file in your
+preferred text viewer (vi, emacs, less) to decide how
+you could read this file.
+The logarithmic X-ray luminosities are in column <tt class="docutils literal"><span class="pre">L_X</span></tt>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<p class="flip7">Click to Show/Hide Solution</p> <div class="panel7"><p>This is a complex excercise and several solutions are possible. This is one:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">asciitable</span>
+<span class="kn">import</span> <span class="nn">atpy</span>
+
+<span class="n">COUP</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;COUP.fits&#39;</span><span class="p">)</span>
+<span class="c"># atpy.Table(... , type = &#39;ascii&#39;) tells atpy to use asciitable to read the file</span>
+<span class="n">IC348</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;IC348.dat&#39;</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+<span class="c"># take only L_X greater than 0, that gets rid of nans etc.</span>
+<span class="c"># Nans in the table mark missing values and things like that.</span>
+<span class="n">couplx</span><span class="o">=</span><span class="n">COUP</span><span class="o">.</span><span class="n">Ltc</span><span class="p">[</span><span class="n">COUP</span><span class="o">.</span><span class="n">Ltc</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">]</span>
+<span class="c"># L_X is in linear units of 1e28 erg/s</span>
+<span class="c"># take logarithm and add 25</span>
+<span class="n">IC348lx</span> <span class="o">=</span> <span class="mf">28.</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">IC348</span><span class="o">.</span><span class="n">XLum</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">IC348</span><span class="o">.</span><span class="n">XLum</span><span class="p">)])</span>
+
+<span class="c"># sort - highest first</span>
+<span class="n">couplx</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">IC348lx</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="n">Lx0</span> <span class="o">=</span> <span class="mf">29.3</span>    <span class="c"># normalize L_X at 29.3</span>
+
+<span class="c"># np.arange(len(couplx)) makes a y-axis from 0 to len(couplx)</span>
+<span class="c"># np.arange(len(couplx), 0, -1) makes a y-axis from len(couplx) to 0</span>
+<span class="c"># -&gt; dtype = float, because 4 / 5 = 0 (integer devision)</span>
+<span class="c"># (IC348lx&gt;Lx0).sum()  -&gt; number of sources brighther than Lx0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">couplx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">couplx</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">couplx</span><span class="o">&gt;</span><span class="n">Lx0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s">&#39;ONC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">IC348lx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">IC348lx</span><span class="p">),</span><span class="mi">0</span> <span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">IC348lx</span><span class="o">&gt;</span><span class="n">Lx0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">3.</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s">&#39;IC 348&#39;</span><span class="p">)</span>
+
+<span class="c"># add some nice labels etc.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;log $L_X$ [erg/s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">28</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="c">#Extra points</span>
+<span class="n">winston</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;Winston2010tab4.txt&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> \
+<span class="n">Reader</span> <span class="o">=</span> <span class="n">asciitable</span><span class="o">.</span><span class="n">Tab</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s">&#39;#&#39;</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fill_values</span><span class="o">=</span><span class="p">([</span><span class="s">&#39; ... &#39;</span><span class="p">,</span> <span class="s">&#39;nan&#39;</span><span class="p">]))</span>
+<span class="n">Serplx</span> <span class="o">=</span> <span class="n">winston</span><span class="o">.</span><span class="n">L_X</span><span class="p">[</span><span class="n">winston</span><span class="o">.</span><span class="n">L_X</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">Serplx</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Serplx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Serplx</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Serplx</span><span class="o">&gt;</span><span class="n">Lx0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;Serpens&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And this is how it could look like:</p>
+<a class="reference internal image-reference" href="../_images/XLF.png"><img alt="../_images/XLF.png" src="../_images/XLF.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div></div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Summary and excercise</a></li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="binaryfiles.html"
+                        title="previous chapter">Reading and Writing binary data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../fitting/fitting.html"
+                        title="next chapter">Fitting and Modeling 1-D and 2-D Data</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/files/summary.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

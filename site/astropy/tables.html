@@ -1,0 +1,644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tabular data &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Astropy I: core functions" href="astropy.html" />
+    <link rel="next" title="Handling FITS files" href="fits.html" />
+    <link rel="prev" title="Astropy I: core functions" href="astropy.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="fits.html" title="Handling FITS files">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="astropy.html" title="Astropy I: core functions">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="astropy.html" accesskey="U">Astropy I: core functions</a> &raquo;</li>
+      
+      <li>Tabular data</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tabular-data">
+<span id="id1"></span><h1>Tabular data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">¶</a></h1>
+<p>Astropy includes a class for representing arbitrary tabular data in
+<tt class="docutils literal"><span class="pre">astropy.table</span></tt>, called <tt class="docutils literal"><span class="pre">Table</span></tt>. This class can be imported with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+</pre></div>
+</div>
+<p>You may need to also import the <tt class="docutils literal"><span class="pre">Column</span></tt> class, depending on how you are
+definining your table (see below):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span><span class="p">,</span> <span class="n">Column</span>
+</pre></div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>For more information about the features presented below, you can read the
+<a class="reference external" href="http://astropy.readthedocs.org/en/stable/table/index.html">astropy.table</a> docs.</p>
+</div>
+<div class="section" id="constructing-and-manipulating-tables">
+<h2>Constructing and Manipulating tables<a class="headerlink" href="#constructing-and-manipulating-tables" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of ways of constructing tables. One simple way is to start
+from existing lists or arrays:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">8.2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>There are a few ways to examine the table.  You can get detailed information
+about the table values and column definitions as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">&lt;Table rows=3 names=(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;)&gt;</span>
+<span class="go">array([(1, 2.0, &#39;x&#39;), (4, 5.0, &#39;y&#39;), (5, 8.2, &#39;z&#39;)],</span>
+<span class="go">      dtype=[(&#39;a&#39;, &#39;&lt;i8&#39;), (&#39;b&#39;, &#39;&lt;f8&#39;), (&#39;c&#39;, &#39;|S1&#39;)])</span>
+</pre></div>
+</div>
+<p>If you print the table (either from the noteboook or in a text console
+session) then a formatted version appears:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">  a   b   c</span>
+<span class="go">--- --- ---</span>
+<span class="go">  1 2.0   x</span>
+<span class="go">  4 5.0   y</span>
+<span class="go">  5 8.2   z</span>
+</pre></div>
+</div>
+<p>Now examine some high-level information about the table:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">colnames</span>
+<span class="go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>Access the data by column or row using the same syntax as for Numpy structured
+arrays:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span>       <span class="c"># Column &#39;a&#39;</span>
+<span class="go">&lt;Column name=&#39;a&#39; units=None format=None description=None&gt;</span>
+<span class="go">array([1, 4, 5])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>    <span class="c"># Row 1 of column &#39;a&#39;</span>
+<span class="go">4</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>         <span class="c"># Row obj for with row 1 values</span>
+<span class="go">&lt;Row 1 of table</span>
+<span class="go">  values=(4, 5.0, &#39;y&#39;)</span>
+<span class="go">  dtype=[(&#39;a&#39;, &#39;&lt;i8&#39;), (&#39;b&#39;, &#39;&lt;f8&#39;), (&#39;c&#39;, &#39;|S1&#39;)]&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;a&#39;</span><span class="p">]</span>    <span class="c"># Column &#39;a&#39; of row 1</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>One can retrieve a subset of a table by rows (using a slice) or columns (using
+column names), where the subset is returned as a new table:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>      <span class="c"># Table object with rows 0 and 1</span>
+<span class="go"> a   b   c</span>
+<span class="go">--- --- ---</span>
+<span class="go">  1 2.0   x</span>
+<span class="go">  4 5.0   y</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">]</span>  <span class="c"># Table with cols &#39;a&#39;, &#39;c&#39;</span>
+<span class="go"> a   c</span>
+<span class="go">--- ---</span>
+<span class="go">  1   x</span>
+<span class="go">  4   y</span>
+<span class="go">  5   z</span>
+</pre></div>
+</div>
+<p>Modifying table values in place is flexible and works as one would expect:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>       <span class="c"># Set all column values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>              <span class="c"># Set row 2 of column &#39;a&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="s">&quot;W&quot;</span><span class="p">)</span>        <span class="c"># Set all row values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>              <span class="c"># Set column &#39;b&#39; of row 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">][</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span>         <span class="c"># Set column &#39;c&#39; of rows 0 and 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go"> a    b    c</span>
+<span class="go">--- ----- ---</span>
+<span class="go"> -1 100.0   x</span>
+<span class="go">  8 100.0   W</span>
+<span class="go"> 30   8.2   z</span>
+</pre></div>
+</div>
+<p>Add, remove, and rename columns with the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">Column</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;d&#39;</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">remove_column</span><span class="p">(</span><span class="s">&#39;c&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">rename_column</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;A&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">colnames</span>
+<span class="go">[&#39;A&#39;, &#39;b&#39;, &#39;d&#39;]</span>
+</pre></div>
+</div>
+<p>Adding a new row of data to the table is as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">add_row</span><span class="p">([</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>Lastly, one can create a table with support for missing values, for example by setting
+<tt class="docutils literal"><span class="pre">masked=True</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">),</span> <span class="n">masked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="p">[</span><span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>
+<span class="go">&lt;Table rows=3 names=(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;)&gt;</span>
+<span class="go">masked_array(data = [(--, 2.0, &#39;x&#39;) (--, 5.0, &#39;y&#39;) (5, 8.2, &#39;z&#39;)],</span>
+<span class="go">             mask = [(True, False, False) (True, False, False) (False, False, False)],</span>
+<span class="go">       fill_value = (999999, 1e+20, &#39;N&#39;),</span>
+<span class="go">            dtype = [(&#39;a&#39;, &#39;&lt;i8&#39;), (&#39;b&#39;, &#39;&lt;f8&#39;), (&#39;c&#39;, &#39;|S1&#39;)])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go"> a   b   c</span>
+<span class="go">--- --- ---</span>
+<span class="go"> -- 2.0   x</span>
+<span class="go"> -- 5.0   y</span>
+<span class="go">  5 8.2   z</span>
+</pre></div>
+</div>
+<p>Finally, every table can have meta-data attached to it via the <tt class="docutils literal"><span class="pre">meta</span></tt>
+attribute, which can be used like a Python dictionary:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s">&#39;creator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;me&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-and-writing-tables">
+<h2>Reading and writing tables<a class="headerlink" href="#reading-and-writing-tables" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">Table</span></tt> objects include <tt class="docutils literal"><span class="pre">read</span></tt> and <tt class="docutils literal"><span class="pre">write</span></tt> methods that can be used to
+easily read and write the tables to different formats. The tutorial directory
+contains a file named rosat.vot which is the ROSAT All-Sky Bright Source
+Catalogue (1RXS) (Voges+ 1999) in the VO Table format.</p>
+<p>You can read this in as a <tt class="docutils literal"><span class="pre">Table</span></tt> object by simply doing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;rosat.vot&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;votable&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(just ignore the warnings, which are due to Vizier not complying with the VO
+standard). We can see a quick overview of the table with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go">     _1RXS        RAJ2000   DEJ2000  PosErr NewFlag   Count    e_Count   HR1  e_HR1  HR2  e_HR2 Extent</span>
+<span class="go">---------------- --------- --------- ------ ------- --------- --------- ----- ----- ----- ----- ------</span>
+<span class="go">J000000.0-392902   0.00000 -39.48403     19    __..      0.13     0.035  0.69  0.25  0.28  0.24      0</span>
+<span class="go">J000007.0+081653   0.02917   8.28153     10    TT..      0.19     0.021  0.89  0.10  0.24  0.13      0</span>
+<span class="go">J000010.0-633543   0.04167 -63.59528     11    __..      0.19     0.031 -0.36  0.13 -0.35  0.23     13</span>
+<span class="go">J000011.9+052318   0.04958   5.38833      7    __..      0.26     0.026  0.24  0.10  0.00  0.13      0</span>
+<span class="go">J000012.6+014621   0.05250   1.77250     11    __..     0.081     0.016  0.05  0.20  0.00  0.26     14</span>
+<span class="go">J000013.5+575628   0.05625  57.94125      8    __..      0.12     0.017  0.57  0.12  0.32  0.14      0</span>
+<span class="go">J000019.5-261032   0.08125 -26.17556     12    __..      0.12     0.022 -0.26  0.17  0.19  0.29      0</span>
+<span class="go">             ...       ...       ...    ...     ...       ...       ...   ...   ...   ...   ...    ...</span>
+<span class="go">J235929.2-255851 359.87164 -25.98083     10    _T..      0.23     0.028 -0.43  0.11 -0.30  0.26     13</span>
+<span class="go">J235929.3+334329 359.87207  33.72472     11    __..      0.16     0.024 -0.62  0.12 -0.56  0.66     12</span>
+<span class="go">J235930.9-401541 359.87875 -40.26139     18    __..      0.13     0.037 -0.73  0.18  0.02  0.82      0</span>
+<span class="go">J235940.9-314342 359.92041 -31.72847     19    __..     0.058     0.017  0.17  0.30  0.33  0.34      0</span>
+<span class="go">J235941.2+830719 359.92166  83.12195     10    __..     0.066     0.011  0.72  0.14  0.19  0.17      0</span>
+<span class="go">J235944.7+220014 359.93625  22.00389     17    __..     0.052     0.015 -0.01  0.27  0.37  0.35      0</span>
+<span class="go">J235959.1+083355 359.99625   8.56528     10    __..      0.12     0.018  0.54  0.13  0.10  0.17      9</span>
+</pre></div>
+</div>
+<p>Since we are using IPython with the <tt class="docutils literal"><span class="pre">--matplotlib</span></tt> option along with
+<tt class="docutils literal"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></tt>, we can easily make a
+histogram of the count rates:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;Count&#39;</span><span class="p">],</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/count_hist.png" src="../_images/count_hist.png" />
+<p>It is easy to select a subset of the table matching a given criterion:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t_bright</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t_bright</span><span class="p">)</span>
+<span class="go">3627</span>
+</pre></div>
+</div>
+<p>Criteria can be combined:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t_sub</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">230.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">260.</span><span class="p">)</span> <span class="o">&amp;</span>
+<span class="go">              (t[&#39;DEJ2000&#39;] &gt; -60.) &amp; (t[&#39;DEJ2000&#39;] &lt; -20)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">t_sub</span><span class="p">)</span>
+<span class="go">642</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="practical-exercises">
+<h2>Practical Exercises<a class="headerlink" href="#practical-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-excercise admonition">
+<p class="first admonition-title">Excercise</p>
+<p class="last">Try and find a way to make a table of the ROSAT point source catalog that
+contains only the RA, Dec, and count rate. Hint: you can see what methods
+are available on an object by typing e.g. <tt class="docutils literal"><span class="pre">t.</span></tt> and then pressing
+<tt class="docutils literal"><span class="pre">&lt;TAB&gt;</span></tt>. You can also find help on a method by typing e.g.
+<tt class="docutils literal"><span class="pre">t.add_column?</span></tt>.</p>
+</div>
+<p class="flip1">Click to Show/Hide Solution</p> <div class="panel1"><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">keep_columns</span><span class="p">([</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">,</span> <span class="s">&#39;DEJ2000&#39;</span><span class="p">,</span> <span class="s">&#39;Count&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t</span>
+<span class="go"> RAJ2000   DEJ2000    Count</span>
+<span class="go">--------- --------- ---------</span>
+<span class="go">  0.00000 -39.48403      0.13</span>
+<span class="go">  0.02917   8.28153      0.19</span>
+<span class="go">  0.04167 -63.59528      0.19</span>
+<span class="go">  0.04958   5.38833      0.26</span>
+<span class="go">  0.05250   1.77250     0.081</span>
+<span class="go">  0.05625  57.94125      0.12</span>
+<span class="go">  0.08125 -26.17556      0.12</span>
+<span class="go">      ...       ...       ...</span>
+<span class="go">359.87207  33.72472      0.16</span>
+<span class="go">359.87875 -40.26139      0.13</span>
+<span class="go">359.92041 -31.72847     0.058</span>
+<span class="go">359.92166  83.12195     0.066</span>
+<span class="go">359.93625  22.00389     0.052</span>
+<span class="go">359.99625   8.56528      0.12</span>
+
+<span class="go">Note that you can also do this with::</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t_new</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">,</span> <span class="s">&#39;DEJ2000&#39;</span><span class="p">,</span> <span class="s">&#39;Count&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">t_new</span>
+<span class="go"> RAJ2000   DEJ2000    Count</span>
+<span class="go">--------- --------- ---------</span>
+<span class="go">  0.00000 -39.48403      0.13</span>
+<span class="go">  0.02917   8.28153      0.19</span>
+<span class="go">  0.04167 -63.59528      0.19</span>
+<span class="go">  0.04958   5.38833      0.26</span>
+<span class="go">  0.05250   1.77250     0.081</span>
+<span class="go">  0.05625  57.94125      0.12</span>
+<span class="go">  0.08125 -26.17556      0.12</span>
+<span class="go">      ...       ...       ...</span>
+<span class="go">359.87207  33.72472      0.16</span>
+<span class="go">359.87875 -40.26139      0.13</span>
+<span class="go">359.92041 -31.72847     0.058</span>
+<span class="go">359.92166  83.12195     0.066</span>
+<span class="go">359.93625  22.00389     0.052</span>
+<span class="go">359.99625   8.56528      0.12</span>
+</pre></div>
+</div>
+</div><div class="admonition-excercise-2 admonition">
+<p class="first admonition-title">Excercise 2</p>
+<p class="last">Make an all-sky equatorial plot of the ROSAT sources, with all sources
+shown in black, and only the sources with a count rate larger than 2.
+shown in red.</p>
+</div>
+<p class="flip2">Click to Show/Hide Solution</p> <div class="panel2"><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;rosat.vot&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;votable&#39;</span><span class="p">)</span>
+<span class="n">t_bright</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;Count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">2.</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="s">&#39;DEJ2000&#39;</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_bright</span><span class="p">[</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">],</span> <span class="n">t_bright</span><span class="p">[</span><span class="s">&#39;DEJ2000&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">360.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;Right Ascension&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;Declination&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;tables_level2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/tables_level2.png" src="../_images/tables_level2.png" />
+</div><div class="admonition-excercise-3 admonition">
+<p class="first admonition-title">Excercise 3</p>
+<p class="last">Try and write out the ROSAT catalog into a format that you can read into
+another software package (see <a class="reference external" href="http://docs.astropy.org/en/v0.2/table/io.html">here</a> for more details). For
+example, try and write out the catalog into CSV format, then read it into
+a spreadsheet software package (e.g. Excel, Google Docs, Numbers,
+OpenOffice).</p>
+</div>
+<p class="flip3">Click to Show/Hide Solution</p> <div class="panel3"><p>To write out the file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;rosat2.csv&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you should be able to load it into another software package.</p>
+</div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Tabular data</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#constructing-and-manipulating-tables">Constructing and Manipulating tables</a></li>
+<li><a class="reference internal" href="#reading-and-writing-tables">Reading and writing tables</a></li>
+<li><a class="reference internal" href="#practical-exercises">Practical Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="astropy.html"
+                        title="previous chapter">Astropy I: core functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fits.html"
+                        title="next chapter">Handling FITS files</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/astropy/tables.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

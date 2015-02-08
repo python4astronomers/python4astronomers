@@ -1,0 +1,828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1-D data with errors &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Fitting and Modeling 1-D and 2-D Data" href="fitting.html" />
+    <link rel="next" title="2-D Fitting in Sherpa" href="image.html" />
+    <link rel="prev" title="Sherpa Overview" href="sherpa.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="image.html" title="2-D Fitting in Sherpa">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="sherpa.html" title="Sherpa Overview">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="fitting.html" accesskey="U">Fitting and Modeling 1-D and 2-D Data</a> &raquo;</li>
+      
+      <li>1-D data with errors</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="d-data-with-errors">
+<h1>1-D data with errors<a class="headerlink" href="#d-data-with-errors" title="Permalink to this headline">¶</a></h1>
+<p>Here we are going to fit a 1-D spectrum with errors, so our input will be
+three arrays: x values, y values, and errors on the y values.</p>
+<p>In a new working directory, download a MAST spectrum of <a class="reference download internal" href="../_downloads/3c273.fits"><tt class="xref download docutils literal"><span class="pre">3C</span> <span class="pre">273</span></tt></a>
+and start IPython</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython --matplotlib
+</pre></div>
+</div>
+<p>If you have trouble accessing the spectrum you can download it straight away
+using Python</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.extern.six.moves.urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://python4astronomers.github.com/_downloads/3c273.fits&#39;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;3c273.fits&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>We also need to load in Sherpa</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sherpa.ui</span> <span class="kn">as</span> <span class="nn">ui</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="section" id="loading-the-data">
+<h2>Loading the data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>ui.load_data(&#39;3c273.fits&#39;)
+print(ui.get_data())
+name      = 3c273.fits
+x         = Float64[1024]
+y         = Float64[1024]
+staterror = None
+syserror  = None
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The <tt class="docutils literal"><span class="pre">load_data</span></tt> command may not work in the stand-alone version of
+Sherpa. If not, you can use <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a> to load in the data and then
+<tt class="docutils literal"><span class="pre">load_arrays</span></tt>, for example:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="n">dat</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;3c273.fits&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">wlen</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;WAVELENGTH&#39;</span><span class="p">)</span>
+<span class="n">flux</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;FLUX&#39;</span><span class="p">)</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">load_arrays</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">wlen</span><span class="p">,</span> <span class="n">flux</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>As the file contains two columns, they are taken to be the <tt class="docutils literal"><span class="pre">x</span></tt> and
+<tt class="docutils literal"><span class="pre">y</span></tt> data values. The y values are small (of order 10^-14):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="mf">4.3317031058773416e-14</span>
+<span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">ui</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="mf">9.1256637866471944e-14</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The numpy ptp routine returns the range of the data, and is short
+for &#8220;peak to peak&#8221;.</p>
+</div>
+</div>
+<div class="section" id="re-scaling-the-data">
+<h2>Re-scaling the data<a class="headerlink" href="#re-scaling-the-data" title="Permalink to this headline">¶</a></h2>
+<p>Whilst Sherpa can deal with small (and large) values, it can be
+visually
+easier to deal with values closer to unity, so we re-scale the data
+values:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">d1</span> <span class="o">=</span> <span class="n">ui</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="n">d1</span><span class="o">.</span><span class="n">y</span> <span class="o">*=</span> <span class="mf">1e14</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I am taking advantage of Sherpa&#8217;s use of python objects to directly
+change the y values of the data.</p>
+</div>
+<p>and add in errors (for the sake of this example we assume a 2 percent
+error on each data point).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">d1</span><span class="o">.</span><span class="n">staterror</span> <span class="o">==</span> <span class="bp">None</span>
+<span class="bp">True</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">set_staterror</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">fractional</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">d1</span><span class="o">.</span><span class="n">staterror</span> <span class="o">==</span> <span class="bp">None</span>
+<span class="bp">False</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">plot_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_data_errors.png"><img alt="../_images/3c273_data_errors.png" src="../_images/3c273_data_errors.png" style="width: 432.0px; height: 324.0px;" /></a>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">I could have used <tt class="docutils literal"><span class="pre">d1.staterror</span> <span class="pre">=</span> <span class="pre">0.02</span> <span class="pre">*</span> <span class="pre">d1.y</span></tt> instead of the
+<tt class="docutils literal"><span class="pre">set_staterror</span></tt> command.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Sherpa supports both statistical and systematic errors. Here we
+will be dealing with statistical errors only.</p>
+</div>
+</div>
+<div class="section" id="filtering-the-data">
+<h2>Filtering the data<a class="headerlink" href="#filtering-the-data" title="Permalink to this headline">¶</a></h2>
+<p>It can be useful to only fit a subset of the data - e.g. to
+concentrate on a particular feature - and then go back and fit
+all the data. The Sherpa commands are <tt class="docutils literal"><span class="pre">notice</span></tt> and <tt class="docutils literal"><span class="pre">ignore</span></tt>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">5700</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From this point the extra data will not be used by Sherpa, whether
+in a fit or a plot command.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Try <tt class="docutils literal"><span class="pre">ui.plot_data()</span></tt> and compare the results to the original plot.</p>
+</div>
+</div>
+<div class="section" id="fitting-the-continuum">
+<h2>Fitting the continuum<a class="headerlink" href="#fitting-the-continuum" title="Permalink to this headline">¶</a></h2>
+<p>We start with a powerlaw model, with a normalization defined
+at 4000 Angstroms.</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.set_source(ui.powlaw1d.pow1)
+pow1.ref = 4000.0
+print(pow1)
+powlaw1d.pow1
+   Param        Type          Value          Min          Max      Units
+   -----        ----          -----          ---          ---      -----
+   pow1.gamma   thawed            1          -10           10
+   pow1.ref     frozen         4000 -3.40282e+38  3.40282e+38
+   pow1.ampl    thawed            1            0  3.40282e+38
+</pre></div>
+</div>
+<p>Check the statistic:</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.get_stat()
+Chi Squared with Gehrels variance
+ui.get_stat_name()
+&#39;chi2gehrels&#39;
+</pre></div>
+</div>
+<p>Since we have explicitly given an error column all the chi-square
+statistics will give the same result (the Gehrels part of the name is
+used to indicate how errors are estimated from the data).</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.fit()
+Dataset               = 1
+Method                = levmar
+Statistic             = chi2gehrels
+Initial fit statistic = 1.41325e+06
+Final fit statistic   = 20230.3 at function evaluation 16
+Data points           = 983
+Degrees of freedom    = 981
+Probability [Q-value] = 0
+Reduced statistic     = 20.6221
+Change in statistic   = 1.39302e+06
+   pow1.gamma     1.98798
+   pow1.ampl      4.42533
+ui.plot_fit()
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_fit_powerlaw.png"><img alt="../_images/3c273_fit_powerlaw.png" src="../_images/3c273_fit_powerlaw.png" style="width: 432.0px; height: 324.0px;" /></a>
+</div>
+<div class="section" id="viewing-the-results">
+<h2>Viewing the results<a class="headerlink" href="#viewing-the-results" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>results = ui.get_fit_results()
+print(results)
+datasets       = (1,)
+itermethodname = none
+methodname     = levmar
+statname       = chi2gehrels
+succeeded      = True
+parnames       = (&#39;pow1.gamma&#39;, &#39;pow1.ampl&#39;)
+parvals        = (1.9879834342270963, 4.4253291641631725)
+statval        = 20230.3241618
+istatval       = 1413250.24877
+dstatval       = 1393019.92461
+numpoints      = 983
+dof            = 981
+qval           = 0.0
+rstat          = 20.6221449152
+message        = successful termination
+nfev           = 16
+</pre></div>
+</div>
+<p>or we can use the <tt class="docutils literal"><span class="pre">show_fit</span></tt> command, which pipes information
+through a pager (typically <tt class="docutils literal"><span class="pre">less</span></tt> or <tt class="docutils literal"><span class="pre">more</span></tt>).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">show_fit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">There are number of <tt class="docutils literal"><span class="pre">show_*</span></tt> commands; try tab completion to
+find them all.</p>
+</div>
+</div>
+<div class="section" id="adding-lines-to-the-fit">
+<h2>Adding lines to the fit<a class="headerlink" href="#adding-lines-to-the-fit" title="Permalink to this headline">¶</a></h2>
+<p>I have decided to include 4 gaussians to deal with the strongest lines
+in the spectrum:</p>
+<div class="highlight-python"><div class="highlight"><pre>for n in range(1, 5):
+    ui.create_model_component(&quot;gauss1d&quot;, &quot;g{}&quot;.format(n))
+
+ui.set_source(pow1 + g1 + g2 + g3 + g4)
+ui.get_source()
+&lt;BinaryOpModel model instance &#39;((((powlaw1d.pow1 + gauss1d.g1) + gauss1d.g2) + gauss1d.g3) + gauss1d.g4)&#39;&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I could just have included the components in the <tt class="docutils literal"><span class="pre">set_source</span></tt>
+expression directly: e.g. <tt class="docutils literal"><span class="pre">set_source(pow1</span> <span class="pre">+</span> <span class="pre">ui.gauss1d.g1</span> <span class="pre">+</span> <span class="pre">..)</span></tt>.</p>
+</div>
+<p>Manual selection for the starting point suggests:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">g1</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">3250</span>
+<span class="n">g2</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">g3</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">5260</span>
+<span class="n">g4</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">5600</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I could also set the min/max values for these parameters to ensure
+they remain in a valid range: for example <tt class="docutils literal"><span class="pre">ui.set_par(g1.pos,</span> <span class="pre">3250,</span> <span class="pre">min=3000,</span> <span class="pre">max=5700)</span></tt>.</p>
+</div>
+<p>We also shift the starting value for the FWHM:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="n">g1</span><span class="p">,</span> <span class="n">g2</span><span class="p">,</span> <span class="n">g3</span><span class="p">,</span> <span class="n">g4</span><span class="p">]:</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">fwhm</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since the parameters are just Python objects we can pass them around
+as we would other objects.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We do not use <tt class="docutils literal"><span class="pre">guess</span></tt> here since it is not designed to work on
+multi-copmponent data: all the gaussians would be centered at
+a wavelength of 3240.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>ui.fit()
+Dataset               = 1
+Method                = levmar
+Statistic             = chi2gehrels
+Initial fit statistic = 19336.7
+Final fit statistic   = 4767.96 at function evaluation 196
+Data points           = 983
+Degrees of freedom    = 969
+Probability [Q-value] = 0
+Reduced statistic     = 4.92049
+Change in statistic   = 14568.7
+   pow1.gamma     2.10936
+   pow1.ampl      4.34391
+   g1.fwhm        40.2425
+   g1.pos         3239.92
+   g1.ampl        2.81148
+   g2.fwhm        68.9131
+   g2.pos         5032.03
+   g2.ampl        0.677329
+   g3.fwhm        129.595
+   g3.pos         5280.45
+   g3.ampl        0.304465
+   g4.fwhm        78.9905
+   g4.pos         5634.3
+   g4.ampl        1.61164
+
+ui.plot_fit_delchi()
+</pre></div>
+</div>
+<img alt="../_images/3c273_fit_lines_delchi.png" src="../_images/3c273_fit_lines_delchi.png" />
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Since we have errors we can now look at the residuals in terms of
+&#8216;sigma&#8217;.</p>
+</div>
+</div>
+<div class="section" id="more-gaussians">
+<h2>More gaussians<a class="headerlink" href="#more-gaussians" title="Permalink to this headline">¶</a></h2>
+<p>I want to know if there&#8217;s a broad-line component for the 3240 Angstrom
+line, and I want to show you how to &#8220;link&#8221; model parameters, so I will
+assume that the broad-line component has four times the width of the
+narrow component.</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.gauss1d.g1broad
+&lt;Gauss1D model instance &#39;gauss1d.g1broad&#39;&gt;
+g1broad.pos = g1.pos
+g1broad.fwhm = g1.fwhm * 4
+ui.set_source(ui.get_source() + g1broad)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can create model components whenever you want; it need
+not be within a <tt class="docutils literal"><span class="pre">set_source</span></tt> call. Similarly, source expressions
+can be treated as a variable.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>print(ui.get_source())
+(((((powlaw1d.pow1 + gauss1d.g1) + gauss1d.g2) + gauss1d.g3) + gauss1d.g4) + gauss1d.g1broad)
+   Param        Type          Value          Min          Max      Units
+   -----        ----          -----          ---          ---      -----
+   pow1.gamma   thawed      2.10936          -10           10
+   pow1.ref     frozen         4000 -3.40282e+38  3.40282e+38
+   pow1.ampl    thawed      4.34391            0  3.40282e+38
+   g1.fwhm      thawed      40.2425  1.17549e-38  3.40282e+38
+   g1.pos       thawed      3239.92 -3.40282e+38  3.40282e+38
+   g1.ampl      thawed      2.81148 -3.40282e+38  3.40282e+38
+   g2.fwhm      thawed      68.9131  1.17549e-38  3.40282e+38
+   g2.pos       thawed      5032.03 -3.40282e+38  3.40282e+38
+   g2.ampl      thawed     0.677329 -3.40282e+38  3.40282e+38
+   g3.fwhm      thawed      129.595  1.17549e-38  3.40282e+38
+   g3.pos       thawed      5280.45 -3.40282e+38  3.40282e+38
+   g3.ampl      thawed     0.304465 -3.40282e+38  3.40282e+38
+   g4.fwhm      thawed      78.9905  1.17549e-38  3.40282e+38
+   g4.pos       thawed       5634.3 -3.40282e+38  3.40282e+38
+   g4.ampl      thawed      1.61164 -3.40282e+38  3.40282e+38
+   g1broad.fwhm linked       160.97      expr: (g1.fwhm * 4)
+   g1broad.pos  linked      3239.92             expr: g1.pos
+   g1broad.ampl thawed            1 -3.40282e+38  3.40282e+38
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The parameter values indicate when they are linked, and to what,
+in the output above.</p>
+</div>
+<p>Since I am interested in the first line, and the other lines are
+unlikely to change the fit significantly, we freeze them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">freeze</span><span class="p">(</span><span class="n">g2</span><span class="p">,</span> <span class="n">g3</span><span class="p">,</span> <span class="n">g4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and filter out parts of the data that &#8220;look messy&#8221; (e.g. the Fe
+complex).</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.ignore(3360, 4100)
+ui.fit()
+Dataset               = 1
+Method                = levmar
+Statistic             = chi2gehrels
+Initial fit statistic = 4802.25
+Final fit statistic   = 2307.19 at function evaluation 92
+Data points           = 714
+Degrees of freedom    = 708
+Probability [Q-value] = 2.14817e-168
+Reduced statistic     = 3.25874
+Change in statistic   = 2495.06
+   pow1.gamma     2.01481
+   pow1.ampl      4.22548
+   g1.fwhm        28.882
+   g1.pos         3239.96
+   g1.ampl        2.26982
+   g1broad.ampl   1.0672
+
+ui.plot_fit_delchi()
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_fit_broadline_ignore.png"><img alt="../_images/3c273_fit_broadline_ignore.png" src="../_images/3c273_fit_broadline_ignore.png" style="width: 432.0px; height: 324.0px;" /></a>
+<p>Now we add back in the &#8220;ugly&#8221; part of the spectrum and
+plot up the contribution from just the power-law component.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">5700</span><span class="p">)</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">()</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">plot_model_component</span><span class="p">(</span><span class="n">pow1</span><span class="p">,</span> <span class="n">overplot</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_fit_broadline_component.png"><img alt="../_images/3c273_fit_broadline_component.png" src="../_images/3c273_fit_broadline_component.png" style="width: 432.0px; height: 324.0px;" /></a>
+</div>
+<div class="section" id="what-about-errors">
+<h2>What about errors?<a class="headerlink" href="#what-about-errors" title="Permalink to this headline">¶</a></h2>
+<p>It is no good just being able to fit parameter values, we want
+to know errors on these values. Since the overall fit is not
+particularly good (a reduced chi-square of over 3), here I focus
+on a single line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">notice</span><span class="p">()</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span><span class="mi">4900</span><span class="p">,</span> <span class="mi">5150</span><span class="p">)</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">notice</span></tt> and <tt class="docutils literal"><span class="pre">ignore</span></tt> commands behave differently
+when no previous filter has been applied to when they are being
+used to adjust a previously-filtered data set.</p>
+</div>
+<p>Here we fit just the <tt class="docutils literal"><span class="pre">g2</span></tt> and <tt class="docutils literal"><span class="pre">pow1</span></tt> components:</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.freeze(g1, g1broad, g3, g4)
+ui.thaw(g2)
+ui.fit()
+Dataset               = 1
+Method                = levmar
+Statistic             = chi2gehrels
+Initial fit statistic = 45.9588
+Final fit statistic   = 38.8045 at function evaluation 37
+Data points           = 91
+Degrees of freedom    = 86
+Probability [Q-value] = 0.999997
+Reduced statistic     = 0.451215
+Change in statistic   = 7.15427
+   pow1.gamma     1.90087
+   pow1.ampl      4.0954
+   g2.fwhm        73.7743
+   g2.pos         5031.71
+   g2.ampl        0.69471
+
+ui.plot_model(overplot=True)
+# pychips.set_curve([&#39;*.color&#39;, &#39;blue&#39;])
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_g2.png"><img alt="../_images/3c273_g2.png" src="../_images/3c273_g2.png" style="width: 432.0px; height: 324.0px;" /></a>
+<p>The reduced chi-square value is significantly less than 1, which
+suggests that the errors have been over-estimated, but let&#8217;s continue
+with the analysis:</p>
+<div class="highlight-python"><div class="highlight"><pre>ui.get_fit_results().rstat
+0.45121542024712424
+ui.conf()
+pow1.gamma lower bound:       -0.165746
+g2.pos lower bound:   -0.937708
+g2.pos upper bound:   0.937708
+pow1.gamma upper bound:       0.165746
+g2.ampl lower bound:  -0.0189111
+g2.ampl upper bound:  0.0189111
+pow1.ampl lower bound:        -0.149452
+pow1.ampl upper bound:        0.154944
+g2.fwhm lower bound:  -2.71108
+g2.fwhm upper bound:  2.80876
+Dataset               = 1
+Confidence Method     = confidence
+Iterative Fit Method  = None
+Fitting Method        = levmar
+Statistic             = chi2gehrels
+confidence 1-sigma (68.2689%) bounds:
+   Param            Best-Fit  Lower Bound  Upper Bound
+   -----            --------  -----------  -----------
+   pow1.gamma        1.90087    -0.165746     0.165746
+   pow1.ampl          4.0954    -0.149452     0.154944
+   g2.fwhm           73.7743     -2.71108      2.80876
+   g2.pos            5031.71    -0.937708     0.937708
+   g2.ampl           0.69471   -0.0189111    0.0189111
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It should hopefully come as no suprise to find out that there is
+a <tt class="docutils literal"><span class="pre">get_conf_results</span></tt> command that returns the <tt class="docutils literal"><span class="pre">conf</span></tt> results
+as a Python object.</p>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">covar</span></tt> command can also be used; for a <em>good</em> search space
+it should return the same results, but is not as robust for
+more-complicated situations.</p>
+</div>
+<p>We can look at the search surface for one or two parameters with
+the <tt class="docutils literal"><span class="pre">int_proj</span></tt> and <tt class="docutils literal"><span class="pre">reg_proj</span></tt> commands:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">int_proj</span><span class="p">(</span><span class="n">g2</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+<span class="n">ui</span><span class="o">.</span><span class="n">int_proj</span><span class="p">(</span><span class="n">g2</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5030</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5033</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">int_proj</span></tt> is short for interval projection, and <tt class="docutils literal"><span class="pre">reg_proj</span></tt>
+stands for region projection. Both commands create a plot showing
+how the statistic value changes as the parameter(s) vary (by
+re-fitting all the other thawed parameters).</p>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_g2_pos.png"><img alt="../_images/3c273_g2_pos.png" src="../_images/3c273_g2_pos.png" style="width: 432.0px; height: 324.0px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ui</span><span class="o">.</span><span class="n">reg_proj</span><span class="p">(</span><span class="n">g2</span><span class="o">.</span><span class="n">fwhm</span><span class="p">,</span> <span class="n">pow1</span><span class="o">.</span><span class="n">gamma</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_g2_fwhm_gamma.png"><img alt="../_images/3c273_g2_fwhm_gamma.png" src="../_images/3c273_g2_fwhm_gamma.png" style="width: 432.0px; height: 324.0px;" /></a>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The error routines - e.g. <tt class="docutils literal"><span class="pre">conf</span></tt>, <tt class="docutils literal"><span class="pre">int_proj</span></tt>, and <tt class="docutils literal"><span class="pre">reg_proj</span></tt> -
+will take advantage of multiple cores on your machine. Unfortunately
+<tt class="docutils literal"><span class="pre">fit</span></tt> does not.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">1-D data with errors</a><ul>
+<li><a class="reference internal" href="#loading-the-data">Loading the data</a></li>
+<li><a class="reference internal" href="#re-scaling-the-data">Re-scaling the data</a></li>
+<li><a class="reference internal" href="#filtering-the-data">Filtering the data</a></li>
+<li><a class="reference internal" href="#fitting-the-continuum">Fitting the continuum</a></li>
+<li><a class="reference internal" href="#viewing-the-results">Viewing the results</a></li>
+<li><a class="reference internal" href="#adding-lines-to-the-fit">Adding lines to the fit</a></li>
+<li><a class="reference internal" href="#more-gaussians">More gaussians</a></li>
+<li><a class="reference internal" href="#what-about-errors">What about errors?</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sherpa.html"
+                        title="previous chapter">Sherpa Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="image.html"
+                        title="next chapter">2-D Fitting in Sherpa</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/fitting/spectrum.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

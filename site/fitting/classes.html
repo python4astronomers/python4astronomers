@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Python Classes &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="next" title="Recommended installation options" href="../installation/recommended_options.html" />
+    <link rel="prev" title="gll_psc_v08.fit" href="../astropy/data/README.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../installation/recommended_options.html" title="Recommended installation options">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="../astropy/data/README.html" title="gll_psc_v08.fit">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      
+      <li>Python Classes</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="python-classes">
+<h1>Python Classes<a class="headerlink" href="#python-classes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>Begin by starting IPython and importing numpy and matplotlib:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython --matplotlib
+
+import numpy as np
+import matplotlib.pyplot as plt
+</pre></div>
+</div>
+<p>Classes definitions include the <tt class="docutils literal"><span class="pre">class</span></tt> declaration, an identifier, and a
+colon:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This class <tt class="docutils literal"><span class="pre">MyClass</span></tt> isn&#8217;t very interesting since it does not contain any
+methods or attributes.  The <tt class="docutils literal"><span class="pre">pass</span></tt> is simply a placeholder in the class
+declaration indicating a no-op.</p>
+<p>Class instances are mutable, meaning that attributes and functions can be added
+after instantiation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is no attribute <tt class="docutils literal"><span class="pre">msg</span></tt>, so add one:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">h</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Hello World!&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a class with a static string attribute <tt class="docutils literal"><span class="pre">msg1</span></tt> and a class method
+<tt class="docutils literal"><span class="pre">echo</span></tt> to print the attribute.  Comments begin with a <tt class="docutils literal"><span class="pre">#</span></tt> and extend to the
+end of the line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Hello</span><span class="p">:</span>
+    <span class="c"># static attribute string &quot;msg1&quot;</span>
+    <span class="n">msg1</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span>
+    <span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg1</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Hello&#39;s msg1: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Hello</span><span class="o">.</span><span class="n">msg1</span><span class="p">))</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">Hello</span><span class="p">()</span>
+<span class="n">h</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a class with a constructor definition.  Initialize an attribute <tt class="docutils literal"><span class="pre">msg2</span></tt>
+at class instance creation time:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">World</span><span class="p">:</span>
+    <span class="c"># class constructor</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg2</span><span class="o">=</span><span class="s">&quot;World&quot;</span><span class="p">):</span>
+        <span class="c"># attribute &quot;msg2&quot; initialized in constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg2</span> <span class="o">=</span> <span class="n">msg2</span>
+    <span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg2</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">World</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-inheritance">
+<h2>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>Create a class that inherits from <tt class="docutils literal"><span class="pre">Hello</span></tt> and <tt class="docutils literal"><span class="pre">World</span></tt>.  Initialize an
+attribute <tt class="docutils literal"><span class="pre">msg3</span></tt> using attributes from inherited classes.  Override the method
+<tt class="docutils literal"><span class="pre">echo</span></tt> to call methods from inherited classes.  Define the <tt class="docutils literal"><span class="pre">__str__</span></tt> to
+return the attribute <tt class="docutils literal"><span class="pre">msg3</span></tt> when the class instance is printed with
+<tt class="docutils literal"><span class="pre">print</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">(</span><span class="n">Hello</span><span class="p">,</span> <span class="n">World</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># self.msg1 is from Hello</span>
+        <span class="c"># self.msg2 is from World</span>
+        <span class="c"># World constructor is needed since msg2 is not static!</span>
+        <span class="n">World</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg1</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg2</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span>
+    <span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">Hello</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">World</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg3</span>
+
+<span class="n">hw</span> <span class="o">=</span> <span class="n">HelloWorld</span><span class="p">()</span>
+<span class="n">hw</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hw</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Class <tt class="docutils literal"><span class="pre">HelloWorld</span></tt> is of type <tt class="docutils literal"><span class="pre">Hello</span></tt>, <tt class="docutils literal"><span class="pre">World</span></tt>, and <tt class="docutils literal"><span class="pre">HelloWorld</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">isinstance</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">Hello</span><span class="p">)</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">World</span><span class="p">)</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">HelloWorld</span><span class="p">)</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">MyClass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-notes-on-classes">
+<h2>Additional Notes on Classes<a class="headerlink" href="#additional-notes-on-classes" title="Permalink to this headline">¶</a></h2>
+<p>Classes can contain other classes as attributes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">HelloWorld</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s">&quot;World World&quot;</span><span class="p">):</span>
+        <span class="c"># create Hello and World objects as attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">Hello</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">World</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">echo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># call their echo methods</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+
+<span class="n">hw</span> <span class="o">=</span> <span class="n">HelloWorld</span><span class="p">()</span>
+<span class="n">hw</span><span class="o">.</span><span class="n">echo</span><span class="p">()</span>
+
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">Hello</span><span class="p">)</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">HelloWorld</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Classes have special methods that can be defined to correspond to certain
+language operators.  Define how a class behaves using the &#8216;+&#8217; operator:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Hello</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span>
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lhs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">+</span> <span class="n">lhs</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">World</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;World&quot;</span>
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rhs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">+</span> <span class="n">rhs</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="n">Hello</span><span class="p">()</span> <span class="o">+</span> <span class="n">World</span><span class="p">()</span>
+<span class="n">World</span><span class="p">()</span> <span class="o">+</span> <span class="n">Hello</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition-exercise-for-the-interested-reader admonition">
+<p class="first admonition-title">Exercise (for the interested reader):</p>
+<p class="last">Define a class <tt class="docutils literal"><span class="pre">Powlaw</span></tt> that accepts two keyword arguments in its
+constructor: <tt class="docutils literal"><span class="pre">index</span></tt> and <tt class="docutils literal"><span class="pre">norm</span></tt>.  The keyword arguments are initialized
+as <tt class="docutils literal"><span class="pre">index=2.0</span></tt> and <tt class="docutils literal"><span class="pre">norm=0.01</span></tt>.  In the class constructor definition, set
+<tt class="docutils literal"><span class="pre">index</span></tt> and <tt class="docutils literal"><span class="pre">norm</span></tt> as class attributes.  Define a class method <tt class="docutils literal"><span class="pre">calc</span></tt>
+which takes an argument <tt class="docutils literal"><span class="pre">wave</span></tt> and computes a power-law on <tt class="docutils literal"><span class="pre">wave</span></tt> using
+<tt class="docutils literal"><span class="pre">index</span></tt> and <tt class="docutils literal"><span class="pre">norm</span></tt>.  The <tt class="docutils literal"><span class="pre">wave</span></tt> argument can be assumed to be a 1-D
+NumPy array object.  <tt class="docutils literal"><span class="pre">calc</span></tt> should return the calculated result.</p>
+</div>
+<p class="flip0">Click to Show/Hide Solution</p> <div class="panel0"><p>Answer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Powlaw</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
+    <span class="k">def</span> <span class="nf">calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wave</span><span class="p">):</span>
+         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">*</span><span class="p">(</span><span class="n">wave</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Powlaw</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">calc</span><span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Python Classes</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a></li>
+<li><a class="reference internal" href="#additional-notes-on-classes">Additional Notes on Classes</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../astropy/data/README.html"
+                        title="previous chapter">gll_psc_v08.fit</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../installation/recommended_options.html"
+                        title="next chapter">Recommended installation options</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/fitting/classes.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

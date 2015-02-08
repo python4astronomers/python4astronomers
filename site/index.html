@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Practical Python for Astronomers &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="#" />
+    <link rel="next" title="Introduction and Motivation" href="intro/intro.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="#"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="intro/intro.html" title="Introduction and Motivation">
+	  next &raquo;
+	</a>
+      </li>
+      <li>
+	<a href="#">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      
+       
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="practical-python-for-astronomers">
+<span id="guide"></span><h1>Practical Python for Astronomers<a class="headerlink" href="#practical-python-for-astronomers" title="Permalink to this headline">¶</a></h1>
+<p>Practical Python for Astronomers is a series of hands-on workshops to explore
+the Python language and the powerful analysis tools it provides. <em>The emphasis
+is on using Python to solve real-world problems that astronomers are likely to
+encounter in research.</em></p>
+<ul class="simple">
+<li>The workshops immediately make use of the full suite of plotting,
+analysis, and file reading tools.</li>
+<li>Along the way elements of the Python language such as data types, control structures,
+functions, and objects are introduced.</li>
+<li>This is an interactive experience using tutorial examples run by participants on their laptops.</li>
+</ul>
+<p><strong>Workshop topics</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro/intro.html">Introduction and Motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/installation.html">Python Installation and Understanding Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core/core.html">Core packages for analysis: IPython, NumPy, and SciPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contest/bounce.html">CONTEST: Make a fun bouncing balls demo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting/plotting.html">Plotting and Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/files.html">Reading and Writing files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fitting/fitting.html">Fitting and Modeling 1-D and 2-D Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="astropy/astropy.html">Astropy I: core functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="astropy-UVES/UVES.html">Astropy II: Analyzing UVES Spectroscopy</a></li>
+</ul>
+</div>
+<p><strong>Archival topic</strong></p>
+<p>The following topic is based on packages that are not being actively
+developed and have been superceded.  However there are still useful concepts
+presented here and we keep it for reference.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vo/vo.html">Online Astronomy and the virtual observatory</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="sample-workshop-schedule">
+<h2>Sample Workshop Schedule<a class="headerlink" href="#sample-workshop-schedule" title="Permalink to this headline">¶</a></h2>
+<p>The workshop schedule is as follows.  Except for the first introductory session all
+workshops are hands-on and participants should bring a laptop.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="51%" />
+<col width="27%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Date</th>
+<th class="head">Topic</th>
+<th class="head">Location and time</th>
+<th class="head">Presenter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TBD</td>
+<td>Introduction to Python for Astronomers</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>TBD</td>
+<td>Installation and Understanding Packages</td>
+<td>TDB</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>TBD</td>
+<td>Core packages - NumPy, iPython, SciPy</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>TBD</td>
+<td>Plotting and Images</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>TBD</td>
+<td>Reading and Writing Files</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>TBD</td>
+<td>Fitting and Modeling 1-d and 2-d data</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>TBD</td>
+<td>VO and Online astronomy</td>
+<td>TBD</td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="about-the-workshops">
+<h2>About the Workshops<a class="headerlink" href="#about-the-workshops" title="Permalink to this headline">¶</a></h2>
+<p>The content presented here is suitable for self-study by those wishing to learn
+Python for astronomy or other scientific research applications.</p>
+<p><strong>A greater goal is for those knowledgable in Python to teach the workshop
+series at their local institutions, adapting the content as desired.</strong> To that
+end we have developed the content in <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a>
+RestructuredText and hosted the source on github at
+<a class="reference external" href="https://github.com/python4astronomers/">https://github.com/python4astronomers/</a>.  Anyone interested can clone the
+repository or download a tarball and make modifications needed to present the
+material locally.</p>
+<p>We would also welcome comments, fixes, or suggestions for improvement.  This
+can be done as a Github issue or pull request, or by sending email to
+<a class="reference external" href="mailto:aldcroft&#37;&#52;&#48;head&#46;cfa&#46;harvard&#46;edu">aldcroft<span>&#64;</span>head<span>&#46;</span>cfa<span>&#46;</span>harvard<span>&#46;</span>edu</a>.</p>
+<p>The workshop material here was presented in the Spring of 2011 at the Harvard /
+Smithsonian Center for Astrophysics.  A range of about 25 to 50 people
+participated in the different workshops, which were 1.5 hours in duration.
+Based on our experience a 2 hour slot would have been more reasonable to allow
+time for the exercises and discussion.</p>
+</div>
+<div class="section" id="about-the-format">
+<h2>About the Format<a class="headerlink" href="#about-the-format" title="Permalink to this headline">¶</a></h2>
+<p>The workshop presentations are formatted as Sphinx web documents instead of the
+more traditional slide presentation.  This was a natural choice for the
+authors who all use <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a> for Python documenation.  Further inspiration was
+drawn from <a class="reference external" href="http://www.sal.ksu.edu/faculty/tim/prof-day/index.html">Dumping PowerPoint in Favor of Web Sites</a>.  This site
+highlights by discussion and examples the advantages in using a web-based study
+guide.  In particular we found the non-linear format (e.g. jumping to different
+sections or web sites) and ability to show longer examples were quite valuable.</p>
+<p>Having full prose text results in a document which is far more useful as a
+standalone study guide than presentation slides.  Ironically it also reduces
+the temptation to read from the screen.</p>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>The Practical Python for Astronomers workshop content is made available under
+the terms of the <a class="reference external" href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 License</a> (<a class="reference external" href="http://creativecommons.org/licenses/by/3.0/legalcode">legal code</a>).  You may distribute,
+remix, tweak, and build upon this work, even commercially, as long as you
+credit the authors and the Smithsonian Astrophysical Observatory for the
+original creation.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Tom Aldcroft, Tom Robitaille, Brian Refsdal, Gus Muench</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Copyright:</th><td class="field-body">2011, 2012, 2013 Smithsonian Astrophysical Observatory</td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Practical Python for Astronomers</a><ul>
+<li><a class="reference internal" href="#sample-workshop-schedule">Sample Workshop Schedule</a></li>
+<li><a class="reference internal" href="#about-the-workshops">About the Workshops</a></li>
+<li><a class="reference internal" href="#about-the-format">About the Format</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="intro/intro.html"
+                        title="next chapter">Introduction and Motivation</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="_sources/index.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

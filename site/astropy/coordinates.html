@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Celestial Coordinates &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Astropy I: core functions" href="astropy.html" />
+    <link rel="next" title="Astropy II: Analyzing UVES Spectroscopy" href="../astropy-UVES/UVES.html" />
+    <link rel="prev" title="WCS Transformations" href="wcs.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../astropy-UVES/UVES.html" title="Astropy II: Analyzing UVES Spectroscopy">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="wcs.html" title="WCS Transformations">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="astropy.html" accesskey="U">Astropy I: core functions</a> &raquo;</li>
+      
+      <li>Celestial Coordinates</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="celestial-coordinates">
+<h1>Celestial Coordinates<a class="headerlink" href="#celestial-coordinates" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>For more information about the features presented below, you can read the
+<a class="reference external" href="http://docs.astropy.org/en/v0.2/coordinates/index.html">astropy.coordinates</a> docs.</p>
+</div>
+<div class="section" id="representing-and-converting-coordinates">
+<h2>Representing and converting coordinates<a class="headerlink" href="#representing-and-converting-coordinates" title="Permalink to this headline">¶</a></h2>
+<p>Astropy includes a framework to represent celestial coordinates and transform
+between them. Astropy 0.2 only includes a few common coordinate systems (ICRS,
+FK4, FK5, and Galactic), but future versions will include more built-in
+coordinate systems, and users can already define their own systems. In addition,
+while the current version only supports transformation of individual scalar
+coordinates, arrays will be supported in future.</p>
+<p>Coordinate objects are instantiated with a flexible and natural approach that
+supports both numeric angle values and (limited) string parsing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">coordinates</span> <span class="k">as</span> <span class="n">coord</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coord</span><span class="o">.</span><span class="n">ICRSCoordinates</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="mf">10.68458</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mf">41.26917</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">))</span>
+<span class="go">&lt;ICRSCoordinates RA=10.68458 deg, Dec=41.26917 deg&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coord</span><span class="o">.</span><span class="n">ICRSCoordinates</span><span class="p">(</span><span class="s">&#39;00h42m44.3s +41d16m9s&#39;</span><span class="p">)</span>
+<span class="go">&lt;ICRSCoordinates RA=10.68458 deg, Dec=41.26917 deg&gt;</span>
+</pre></div>
+</div>
+<p>The individual components of a coordinate are <tt class="docutils literal"><span class="pre">Angle</span></tt> objects, and their
+values are accessed using special attributes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">ICRSCoordinates</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="mf">10.68458</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="mf">41.26917</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">ra</span>
+<span class="go">&lt;RA 10.68458 deg&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hours</span>
+<span class="go">0.7123053333333333</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hms</span>
+<span class="go">(0.0, 42, 44.2992000000001)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">dec</span>
+<span class="go">&lt;Dec 41.26917 deg&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">radians</span>
+<span class="go">0.7202828960652683</span>
+</pre></div>
+</div>
+<p>To convert to some other coordinate system, the easiest method is to use
+attribute-style access with short names for the built-in systems:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">galactic</span>
+<span class="go">&lt;GalacticCoordinates l=121.17422 deg, b=-21.57283 deg&gt;</span>
+</pre></div>
+</div>
+<p>but explicit transformations via the <tt class="docutils literal"><span class="pre">transform_to</span></tt> method are also
+available:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">GalacticCoordinates</span><span class="p">)</span>
+<span class="go">&lt;GalacticCoordinates l=121.17422 deg, b=-21.57283 deg&gt;</span>
+</pre></div>
+</div>
+<p>The <cite>astropy.coordinates</cite> subpackage also provides a quick way to get coordinates for
+named objects (with an internet connection). All coordinate classes have a
+special class method, <cite>from_name()</cite>, that accepts a string and queries <a class="reference external" href="http://cds.u-strasbg.fr/cgi-bin/Sesame">Sesame</a> to retrieve coordinates for that
+object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c_eq</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">ICRSCoordinates</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s">&quot;M16&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c_eq</span>
+<span class="go">&lt;ICRSCoordinates RA=274.70000 deg, Dec=-13.80670 deg&gt;</span>
+</pre></div>
+</div>
+<p>This works for any coordinate class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">c_gal</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">GalacticCoordinates</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s">&quot;M16&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c_gal</span>
+<span class="go">&lt;GalacticCoordinates l=16.95408 deg, b=0.79335 deg&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is intended to be a convenience, and is very simple. If you
+need precise coordinates for an object you should find the appropriate
+reference for that measurement and input the coordinates manually.</p>
+</div>
+</div>
+<div class="section" id="practical-exercises">
+<h2>Practical Exercises<a class="headerlink" href="#practical-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-excercise-1 admonition">
+<p class="first admonition-title">Excercise 1</p>
+<p class="last">Find the coordinates of the Crab Nebula in ICRS coordinates, and convert
+them to Galactic Coordinates</p>
+</div>
+<p class="flip1">Click to Show/Hide Solution</p> <div class="panel1"><div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">coordinates</span> <span class="k">as</span> <span class="n">coord</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crab</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">ICRSCoordinates</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s">&#39;M1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">crab</span>
+<span class="go">&lt;ICRSCoordinates RA=83.63308 deg, Dec=22.01450 deg&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">crab_gal</span> <span class="o">=</span> <span class="n">crab</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">GalacticCoordinates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">crab_gal</span>
+<span class="go">&lt;GalacticCoordinates l=-175.44248 deg, b=-5.78434 deg&gt;</span>
+</pre></div>
+</div>
+</div><div class="admonition-excercise-2 admonition">
+<p class="first admonition-title">Excercise 2</p>
+<p class="last">Using the ROSAT Point source catalog (from excercise 1 in <a class="reference internal" href="tables.html"><em>Tabular data</em></a>), convert all the
+equatorial coordinates to Galactic coordinates, and make a new plot (but
+don&#8217;t worry about the bright sources).</p>
+</div>
+<p class="flip2">Click to Show/Hide Solution</p> <div class="panel2"><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">coordinates</span> <span class="k">as</span> <span class="n">coord</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&#39;rosat.vot&#39;</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;votable&#39;</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="n">eq</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">FK5Coordinates</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">&#39;RAJ2000&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s">&#39;DEJ2000&#39;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">))</span>
+    <span class="n">gal</span> <span class="o">=</span> <span class="n">eq</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">GalacticCoordinates</span><span class="p">)</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gal</span><span class="o">.</span><span class="n">l</span><span class="o">.</span><span class="n">degrees</span><span class="p">)</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gal</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">degrees</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">180.</span><span class="p">,</span> <span class="o">-</span><span class="mf">180.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;Galactic Longitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;Galactic Latitude&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;coord_level2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/coord_level2.png" src="../_images/coord_level2.png" />
+</div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Celestial Coordinates</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#representing-and-converting-coordinates">Representing and converting coordinates</a></li>
+<li><a class="reference internal" href="#practical-exercises">Practical Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="wcs.html"
+                        title="previous chapter">WCS Transformations</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../astropy-UVES/UVES.html"
+                        title="next chapter">Astropy II: Analyzing UVES Spectroscopy</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/astropy/coordinates.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

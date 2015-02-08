@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Linux &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Recommended installation options" href="recommended_options.html" />
+    <link rel="next" title="Python requirements" href="requirements.html" />
+    <link rel="prev" title="MacPorts" href="macosx.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="requirements.html" title="Python requirements">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="macosx.html" title="MacPorts">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="recommended_options.html" accesskey="U">Recommended installation options</a> &raquo;</li>
+      
+      <li>Linux</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="linux">
+<span id="linux-install"></span><h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<p>Here we provide further details for two methods of installing scientific Python on a linux
+system.  In this case you will <em>not</em> use a standalone Python distribution like Anaconda or
+Enthought, but instead use the operating system installation of Python:</p>
+<ul class="simple">
+<li>System install in /usr/bin and /usr/lib where you have root privilege</li>
+<li>Non-root setup with an existing full-featured Python on the system</li>
+</ul>
+<div class="section" id="system-install-with-root">
+<h2>System install with root<a class="headerlink" href="#system-install-with-root" title="Permalink to this headline">¶</a></h2>
+<p>For a modern linux installation such as Ubuntu, the system Python version
+will be 2.6 or newer and all of the required core packages are available as
+package installs.  The instructions below have been developed and tested with
+Ubuntu 10.  Corresponding packages for recent Fedora are probably available but
+this has not been verified.  In this case you will NOT use the Enthought Python
+Distribution.</p>
+<p>The benefit of using a root install via the system package manager is that it
+is simple and all dependencies are managed for you.  The downside is that the
+package versions tend to be older and so you don&#8217;t keep up with the latest
+code development.  In Ubuntu 10 the core packages (NumPy, Matplotlib) are a
+year or so out of date.  Unless you are really pushing for the latest features,
+the older stable versions will work perfectly well.</p>
+<p>Install the core packages for analysis with the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-dev
+sudo apt-get install ipython
+sudo apt-get install python-numpy
+sudo apt-get install python-scipy
+sudo apt-get install python-matplotlib
+sudo apt-get install python-setuptools
+</pre></div>
+</div>
+<div class="section" id="quick-installation-check">
+<h3>Quick installation check<a class="headerlink" href="#quick-installation-check" title="Permalink to this headline">¶</a></h3>
+<p>Open a new terminal window and type:</p>
+<div class="highlight-python"><div class="highlight"><pre>which ipython
+</pre></div>
+</div>
+<p>You should see:</p>
+<div class="highlight-python"><div class="highlight"><pre>/usr/bin/ipython
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="non-root-setup-using-virtualenv">
+<span id="linux-nonroot"></span><h2>Non-root setup using virtualenv<a class="headerlink" href="#non-root-setup-using-virtualenv" title="Permalink to this headline">¶</a></h2>
+<p>If you are using a computer on a system managed network which has Python 2.6 or
+2.7 installed along with NumPy, SciPy, matplotlib, and easy_install, then you
+might want to look at the following.  This setup assumes you do not have root
+privilege and takes advantage of the <a class="reference external" href="http://www.virtualenv.org/">virtualenv</a>
+package.  This allows you to install new and updated packages to a virtual
+clone of this Python installation without having root.</p>
+<p>Assume that the system Python installation is installed in the root directory
+<tt class="docutils literal"><span class="pre">$PYTHONROOT</span></tt>, so that you find <tt class="docutils literal"><span class="pre">python</span></tt> and <tt class="docutils literal"><span class="pre">easy_install</span></tt> in
+<tt class="docutils literal"><span class="pre">$PYTHONROOT/bin</span></tt>.  Now install <tt class="docutils literal"><span class="pre">pip</span></tt>, <tt class="docutils literal"><span class="pre">distribute</span></tt>, and <tt class="docutils literal"><span class="pre">virtualenv</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$PYTHONROOT/bin/easy_install --user --upgrade virtualenv
+</pre></div>
+</div>
+<p>Now use <tt class="docutils literal"><span class="pre">virtualenv</span></tt> to make a local virtual Python which is a clone of the
+system Python but resides in a directory (e.g. <tt class="docutils literal"><span class="pre">~/py27</span></tt>) where you have write
+access:</p>
+<div class="highlight-python"><div class="highlight"><pre>~/.local/bin/virtualenv --system-site-packages ~/py27
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">--system-site-packages</span></tt> option tells <tt class="docutils literal"><span class="pre">virtualenv</span></tt> to make links to all of the
+packages that are already installed in the system Python.  In general this is convenient,
+but you may want to start with a clean Python installation by leaving out that option.</p>
+<p>To use this virtual Python just do:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Shell</th>
+<th class="head">Command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>csh</td>
+<td><tt class="docutils literal"><span class="pre">source</span> <span class="pre">~/py27/bin/activate.csh</span></tt></td>
+</tr>
+<tr class="row-odd"><td>bash</td>
+<td><tt class="docutils literal"><span class="pre">.</span> <span class="pre">~/py27/bin/activate</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>For convience you might make an alias for these startup commands in your csh or
+bash startup file.  Once you&#8217;ve activated the virtual Python environment then
+you <em>do not</em> use the <tt class="docutils literal"><span class="pre">--user</span></tt> option in <tt class="docutils literal"><span class="pre">easy_install</span></tt> or <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></tt>.
+All installs will be made in your local environment.</p>
+<p>To finish up you need to install <tt class="docutils literal"><span class="pre">ipython</span></tt> in this virtual environment, even
+if it already exists in the system python:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install --upgrade ipython
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can make managing your virtual environments even easier with the popular
+<a class="reference external" href="http://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>
+package.</p>
+</div>
+<div class="section" id="id1">
+<h3>Quick installation check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Open a new terminal window and type:</p>
+<div class="highlight-python"><div class="highlight"><pre>which ipython
+</pre></div>
+</div>
+<p>You should see something like the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>~/py27/bin/ipython
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Linux</a><ul>
+<li><a class="reference internal" href="#system-install-with-root">System install with root</a><ul>
+<li><a class="reference internal" href="#quick-installation-check">Quick installation check</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#non-root-setup-using-virtualenv">Non-root setup using virtualenv</a><ul>
+<li><a class="reference internal" href="#id1">Quick installation check</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="macosx.html"
+                        title="previous chapter">MacPorts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="next chapter">Python requirements</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/installation/linux.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

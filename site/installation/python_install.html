@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installing Scientific Python &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Python Installation and Understanding Packages" href="installation.html" />
+    <link rel="next" title="MacPorts" href="macosx.html" />
+    <link rel="prev" title="Python Installation and Understanding Packages" href="installation.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="macosx.html" title="MacPorts">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="installation.html" title="Python Installation and Understanding Packages">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="installation.html" accesskey="U">Python Installation and Understanding Packages</a> &raquo;</li>
+      
+      <li>Installing Scientific Python</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installing-scientific-python">
+<span id="id1"></span><h1>Installing Scientific Python<a class="headerlink" href="#installing-scientific-python" title="Permalink to this headline">¶</a></h1>
+<p>The aim of this workshop is to get you set up with a working scientific Python
+installation which meets the <a class="reference internal" href="requirements.html#python-pkg-requirements"><em>Python requirements</em></a>.  This will proceed
+in four steps:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-core-python">Install core Python</a></li>
+<li><a class="reference internal" href="#install-additional-packages">Install additional packages</a></li>
+<li><a class="reference internal" href="#test-the-installation">Test the installation</a></li>
+<li><a class="reference internal" href="#take-your-python-for-a-spin">Take your Python for a spin!</a></li>
+</ul>
+<p>The installation process is particular to each operating system and platform.
+You may need to choose between 32-bit and 64-bit installations.  Generally
+speaking you should choose 64-bit, but read <a class="reference internal" href="#versus-32-bit">64 versus 32 bit</a> for some caveats
+or if you aren&#8217;t sure if your CPU is 64-bit.</p>
+<p>For this workshop you can use either Python 2.6, 2.7 or Python 3 (version &gt;=
+3.3).  On the general question of whether to use Python 2 or Python 3, at this
+point the major package support for both is quite similar, and (as of
+early 2015) it appears that in the overall community Python 3 usage is
+becoming substantial.</p>
+<div class="section" id="install-core-python">
+<span id="anaconda-option"></span><h2>Install core Python<a class="headerlink" href="#install-core-python" title="Permalink to this headline">¶</a></h2>
+<p>Unless you enjoy tracking down compiler errors and other issues related to
+package incompatibilities, we recommend using a pre-built binary Python
+distribution.  Even if you already have an installation on your system you will
+probably save time in the long run by starting fresh with a binary Python
+distribution.</p>
+<p><strong>Anaconda: an easy and fast option</strong></p>
+<p>On of the fastest way to get a basic Python installation up and running is
+<a class="reference external" href="http://continuum.io/downloads">Anaconda</a>.
+Click on that link and download the installer (using the button marked
+<tt class="docutils literal"><span class="pre">free</span></tt> on the top right of the page). It will ask you for your email
+and then you get an installer for your OS (Mac, Linux, or Windows).
+Read <a class="reference internal" href="#versus-32-bit">64 versus 32 bit</a> if you aren&#8217;t sure if your CPU is 64-bit.</p>
+<p>By default Anaconda is installed into your home directory (no root access
+required), but you can pick another location if you wish.
+To use the Anaconda python installation, simply add that directory to your
+path, following the instructions on the Anaconda page.</p>
+<p>Anaconda includes the usual <a class="reference external" href="http://docs.continuum.io/anaconda/pkgs.html">core scientific packages</a> (including <a class="reference external" href="http://astropy.org">astropy</a>), and some interesting next-generation packages <a class="reference external" href="http://numba.pydata.org/">Numba</a> and <a class="reference external" href="http://blaze.pydata.org">Blaze</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">After installing Anaconda, you will probably have more than one Python
+installation on your computer, e.g. a Python included in the OS,
+Anaconda plus possible CASA or CIAO/Sherpa. In general that is not a problem,
+but see <a class="reference internal" href="packages.html#multiple-pythons"><em>Multiple Pythons on your computer</em></a> for more information on managing this situation.</p>
+</div>
+<p><strong>Alternate options</strong></p>
+<p>There are a number of <a class="reference internal" href="recommended_options.html#recommended-options"><em>Recommended installation options</em></a> besides Anaconda, and you are
+encouraged to explore these options and decide what might be right for you.
+This includes the use of system package managers like MacPorts or linux RPM.
+Each of the other options has different features and strengths, and no single
+solution works for everybody.</p>
+</div>
+<div class="section" id="install-additional-packages">
+<h2>Install additional packages<a class="headerlink" href="#install-additional-packages" title="Permalink to this headline">¶</a></h2>
+<p>After you set up your core Python installation, you should install a few more
+packages that are used in the tutorials.  Copy and paste the lines below one at
+a time, checking that each one works.  The program outputs may contain various
+&#8220;warnings&#8221;, but watch for &#8220;errors&#8221; and look at the end to see if a successful
+installation was reported.</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install --upgrade astropy  # NOT required for Anaconda
+pip install --upgrade aplpy
+pip install --upgrade pyregion
+pip install --upgrade pyparsing
+</pre></div>
+</div>
+<p>Note that if you have used a root-installation option like MacPorts or a linux
+package manager to install Python, then you will need to use the <tt class="docutils literal"><span class="pre">sudo</span></tt> prefix
+in each of these commands, e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo pip install --upgrade aplpy
+</pre></div>
+</div>
+<p>If you experience problems with installation for any of these packages you can
+send an email to the <a class="reference external" href="http://mail.scipy.org/mailman/listinfo/astropy">astropy mailing list</a>.</p>
+</div>
+<div class="section" id="test-the-installation">
+<span id="installation-test"></span><h2>Test the installation<a class="headerlink" href="#test-the-installation" title="Permalink to this headline">¶</a></h2>
+<p>To do a very basic test whether you meet the requirements and have a functioning
+core scientific Python installation, do the following and check version numbers:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python -V
+$ ipython -V
+$ ipython --matplotlib
+import numpy
+import scipy
+import scipy.linalg
+import matplotlib.pyplot as plt
+
+print(numpy.__version__)
+print(scipy.__version__)
+print(matplotlib.__version__)
+
+x = numpy.linspace(0, 20, 100)
+plt.plot(x, sin(x))
+print(scipy.linalg.eig([[1,2],[3,4]]))
+</pre></div>
+</div>
+<p>The commands above should succeed with no errors.  The version numbers should
+meet the requirements, and finally you should see a plot of a sine wave.</p>
+<p>To check the other required packages, do the following from within ipython:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">astropy</span>
+<span class="kn">import</span> <span class="nn">aplpy</span>
+<span class="kn">import</span> <span class="nn">pyregion</span>
+<span class="kn">import</span> <span class="nn">pyparsing</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="take-your-python-for-a-spin">
+<h2>Take your Python for a spin!<a class="headerlink" href="#take-your-python-for-a-spin" title="Permalink to this headline">¶</a></h2>
+<p>If you are following along with the Python for Astronomers tutorial and have
+finished installing Python, you can give a real test drive now.</p>
+<p>First download the <a class="reference external" href="install_examples.tar">install_examples.tar</a> tar file which has example data
+files that will be used in subsequent exercises.
+Then change to a working directory, untar the file, and start up IPython:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ tar xvf ~/Downloads/install_examples.tar   # or wherever your browser puts downloads
+$ cd py4ast/install
+$ ls
+$ ipython --matplotlib
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>For all of the workshops you should always start Python using the shell command:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython --matplotlib  # (for Windows start the Pylab application)
+</pre></div>
+</div>
+<p>Once IPython has started, make numpy and matplotlib available with:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-exercise-read-a-table-and-examine-it admonition">
+<p class="first admonition-title">Exercise: Read a table and examine it</p>
+<p>Look at the documentation for the <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/ascii/index.html">astropy.Table.read()</a> function in
+<a class="reference external" href="http://astropy.org">astropy</a>.  Follow the very first example and use the <tt class="docutils literal"><span class="pre">read()</span></tt> function
+to read the data in the file <tt class="docutils literal"><span class="pre">table1.dat</span></tt> into the variable named <tt class="docutils literal"><span class="pre">data</span></tt>.</p>
+<p>This table is in the &#8220;ApJ machine-readable format&#8221; (which is actually a bit
+tricky for machines to read).  This is very similar to the table format used
+by CDS / Vizier for input and storage of tables in astronomy.</p>
+<p>Once you have read the table into the variable <tt class="docutils literal"><span class="pre">data</span></tt> then print the table,
+print the column <tt class="docutils literal"><span class="pre">RAdeg</span></tt>, and print the 3rd row.</p>
+<p>Hints:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">You can print a <tt class="docutils literal"><span class="pre">&lt;variable&gt;</span></tt> by just typing <tt class="docutils literal"><span class="pre">print</span> <span class="pre">&lt;variable&gt;</span></tt> at the command line, for example <tt class="docutils literal"><span class="pre">print</span> <span class="pre">data</span></tt>.</p>
+</li>
+<li><p class="first">You can get tons of useful information about a variable with <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">help</span> <span class="pre">&lt;variable&gt;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">?</span> <span class="pre">&lt;variable&gt;</span></tt></li>
+</ul>
+</div></blockquote>
+<p>These two commands are pretty similar except that <tt class="docutils literal"><span class="pre">?</span></tt> gives a little bit more information
+and in a more raw form.</p>
+</li>
+<li><p class="first">The object returned by <tt class="docutils literal"><span class="pre">asciitable.read()</span></tt> is a NumPy record array,
+which is just a fancy way of saying a table where you can access rows or columns of data.</p>
+</li>
+<li><p class="first">You can get the column names and types with <tt class="docutils literal"><span class="pre">print</span> <span class="pre">data.dtype</span></tt></p>
+</li>
+<li><p class="first">To print a column of data use <tt class="docutils literal"><span class="pre">print</span> <span class="pre">data[&quot;&lt;column_name&gt;&quot;]</span></tt>, for example <tt class="docutils literal"><span class="pre">print</span> <span class="pre">data[&quot;Name&quot;]</span></tt></p>
+</li>
+<li><p class="first">To print a row of data use <tt class="docutils literal"><span class="pre">print</span> <span class="pre">data[&lt;row_number&gt;]</span></tt></p>
+</li>
+</ul>
+</div></blockquote>
+<p class="last">Optional: use the <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot">plot</a>
+and <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hist">hist</a>
+functions to examine the data graphically.  For instance plot RAdeg versus
+DEdeg.  Look at the <tt class="docutils literal"><span class="pre">table1.dat</span></tt> file itself for detailed column
+descriptions.</p>
+</div>
+</div>
+<div class="section" id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="versus-32-bit">
+<h3>64 versus 32 bit<a class="headerlink" href="#versus-32-bit" title="Permalink to this headline">¶</a></h3>
+<p>For several of the binary installers you need to make a decision: 32-bit or
+64-bit download?  First you need to establish whether your computer has a
+32-bit or 64-bit processor.  If you have a 32-bit processor then your decision
+is easy (32-bit) but if you have a 64-bit processor then either 32 or 64 will
+work.  See below if you don&#8217;t know your processor architecture:</p>
+<ul class="simple">
+<li>MacOSX: Follow <a class="reference external" href="http://support.apple.com/kb/ht3696">the MacOS instructions</a></li>
+<li>Linux: Type <tt class="docutils literal"><span class="pre">uname</span> <span class="pre">-mpi</span></tt> at the command line.  If you see <tt class="docutils literal"><span class="pre">x86_64</span> <span class="pre">x86_64</span>
+<span class="pre">x86_64</span></tt> you have a 64-bit machine and OS.  If you see one or more <tt class="docutils literal"><span class="pre">i686</span></tt>
+or <tt class="docutils literal"><span class="pre">i386</span></tt> you are running a 32-bit OS.</li>
+<li>Windows:  Follow <a class="reference external" href="http://windows.microsoft.com/en-US/windows-vista/32-bit-and-64-bit-Windows-frequently-asked-questions">the Windows instructions</a>.</li>
+</ul>
+</div>
+<div class="section" id="details-for-specific-options">
+<h3>Details for specific options<a class="headerlink" href="#details-for-specific-options" title="Permalink to this headline">¶</a></h3>
+<p>The following two topic pages go into a bit more detail for MacOS and linux options that
+do not use a standalone Python distribution installer:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="macosx.html">MacPorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Installing Scientific Python</a><ul>
+<li><a class="reference internal" href="#install-core-python">Install core Python</a></li>
+<li><a class="reference internal" href="#install-additional-packages">Install additional packages</a></li>
+<li><a class="reference internal" href="#test-the-installation">Test the installation</a></li>
+<li><a class="reference internal" href="#take-your-python-for-a-spin">Take your Python for a spin!</a></li>
+<li><a class="reference internal" href="#appendix">Appendix</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Python Installation and Understanding Packages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="macosx.html"
+                        title="next chapter">MacPorts</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/installation/python_install.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

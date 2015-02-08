@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>APLpy &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Plotting and Images" href="plotting.html" />
+    <link rel="next" title="CONTEST: Make a fun bouncing balls demo" href="../contest/bounce.html" />
+    <link rel="prev" title="Python Objects - or what’s with the periods everywhere?" href="../python/objects.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../contest/bounce.html" title="CONTEST: Make a fun bouncing balls demo">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="../python/objects.html" title="Python Objects - or what’s with the periods everywhere?">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="plotting.html" accesskey="U">Plotting and Images</a> &raquo;</li>
+      
+      <li>APLpy</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="aplpy">
+<h1>APLpy<a class="headerlink" href="#aplpy" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://aplpy.github.com">APLpy</a> (the Astronomical Plotting Library in Python) is a Python module aimed at producing publication-quality plots of astronomical imaging data in FITS format. It effectively provides a layer on top of Matplotlib to enable plotting of Astronomical images, and allows users to:</p>
+<ul class="simple">
+<li>Make plots interactively or using scripts</li>
+<li>Show grayscale, colorscale, and 3-color RGB images of FITS files</li>
+<li>Generate co-aligned FITS cubes to make 3-color RGB images</li>
+<li>Overlay any number of contour sets</li>
+<li>Overlay markers with fully customizable symbols</li>
+<li>Plot customizable shapes like circles, ellipses, and rectangles</li>
+<li>Overlay ds9 region files</li>
+<li>Overlay coordinate grids</li>
+<li>Show colorbars, scalebars, and beams</li>
+<li>Easily customize the appearance of labels and ticks</li>
+<li>Hide, show, and remove different contour and marker layers</li>
+<li>Pan, zoom, and save any view as a full publication-quality plot</li>
+<li>Save plots as EPS, PDF, PS, PNG, and SVG</li>
+</ul>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>The APLpy <a class="reference external" href="http://aplpy.github.com/documentation/index.html">Documentation</a> contains all the information needed to run APLpy successfully. The most important page is the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> which provides concise instructions for all of the APLpy functions.</p>
+</div>
+<div class="section" id="when-things-go-wrong">
+<h2>When things go wrong<a class="headerlink" href="#when-things-go-wrong" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If you have issues with the installation, either send an email to a mailing list (e.g. astropy or pythonusers for CfA astronomers), or contact the authors directly at <a class="reference external" href="mailto:astropython&#37;&#52;&#48;gmail&#46;com">astropython<span>&#64;</span>gmail<span>&#46;</span>com</a>.</li>
+<li>If you run into what you believe is a bug, please report it at the GitHub <a class="reference external" href="https://github.com/aplpy/aplpy/issues">Issue Tracker</a>.</li>
+</ul>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Start off by downloading <a class="reference download internal" href="../_downloads/APLpy-example.tar"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">tar</span> <span class="pre">file</span></tt></a>, expand it, and go to the <tt class="docutils literal"><span class="pre">APLpy-example</span></tt> directory on the command line. Then, launch IPython:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython --matplotlib
+</pre></div>
+</div>
+<p>If you have trouble downloading the file, then within your IPython session enter:</p>
+<div class="highlight-python"><div class="highlight"><pre>from astropy.extern.six.moves.urllib import request
+import tarfile
+url = &#39;http://python4astronomers.github.com/_downloads/APLpy-example.tar&#39;
+tarfile.open(fileobj=request.urlopen(url), mode=&#39;r|&#39;).extractall()
+cd APLpy-example
+ls
+</pre></div>
+</div>
+<p>Import the <tt class="docutils literal"><span class="pre">aplpy</span></tt> module (note the lowercase module name):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">aplpy</span>
+</pre></div>
+</div>
+<p>And create a new figure to plot the FITS file with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="s">&#39;ngc2264_cutout.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This should open up a matplotlib window and will show an empty set of axes with coordinates. From now on, you will interact with the figure by calling methods associated with <tt class="docutils literal"><span class="pre">f</span></tt>. For example, show the image as a grayscale:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The automatic settings for the stretch should be decent, but there are of course options to allow custom min/max levels. You can now try panning around and zooming in like you would do in Matplotlib, and you will notice the coordinates updating. Press the Home button to reset the view.</p>
+<p>Next, let&#8217;s overlay a set of contours from a different image:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_contour</span><span class="p">(</span><span class="s">&#39;ngc2264_cutout_mips.fits&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also add a coordinate grid:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">add_grid</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And finally let&#8217;s add a scalebar to make the plot look sciency:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">add_scalebar</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span> <span class="s">&#39;0.5pc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now save our masterpiece either by clicking on the Save icon in the matplotlib window, or doing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;my_first_plot.eps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The latter is recommended because it will automatically figure out the best resolution with which to output your plot. Your plot should look something like this:</p>
+<img alt="../_images/aplpy_example.png" src="../_images/aplpy_example.png" />
+<div class="admonition-exercise-1 admonition">
+<p class="first admonition-title">Exercise 1</p>
+<p class="last">Use the  <tt class="docutils literal"><span class="pre">help</span></tt> or <tt class="docutils literal"><span class="pre">?</span></tt> functionality in <tt class="docutils literal"><span class="pre">ipython</span></tt> to figure out how to set the min/max levels on the grayscale manually, and to change the stretch function to a square-root stretch. Also use the Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> to figure out how to change the grayscale to a colorscale.</p>
+</div>
+<p class="flip9">Click to Show/Hide Solution</p> <div class="panel9"><p>To manually set the levels:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">200.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To additionally use a square-root stretch:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_grayscale</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">200.</span><span class="p">,</span> <span class="n">stretch</span><span class="o">=</span><span class="s">&#39;sqrt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To change to a colorscale:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that the colormap can be set using for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">show_colorscale</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s">&#39;gist_heat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where the value of the cmap argument can be any of the names listed on <a class="reference external" href="http://www.scipy.org/Cookbook/Matplotlib/Show_colormaps">this</a> page.</p>
+</div><div class="admonition-exercise-2 admonition">
+<p class="first admonition-title">Exercise 2</p>
+<p class="last">Use the <a class="reference external" href="http://aplpy.github.com/documentation/quick_reference.html">Quick Reference Guide</a> to manually set the tick spacing on both axes. In the default view for the example FITS file above, the arcseconds in the declination are not useful (they are always zero). Try and change the format of the y-axis labels so that they only include degrees and arcminutes.</p>
+</div>
+<p class="flip8">Click to Show/Hide Solution</p> <div class="panel8"><p>To set the tick spacing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">set_xspacing</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">ticks</span><span class="o">.</span><span class="n">set_yspacing</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To show the y-axis labels in dd:mm format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">tick_labels</span><span class="o">.</span><span class="n">set_yformat</span><span class="p">(</span><span class="s">&#39;dd:mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div class="admonition-exercise-3 admonition">
+<p class="first admonition-title">Exercise 3</p>
+<p>Use APLpy to plot one of your own FITS images! If you don&#8217;t have any FITS files at hand, you can play with <a class="reference download internal" href="../_downloads/m82_wise.tar"><tt class="xref download docutils literal"><span class="pre">this</span></tt></a> newly-released WISE data of M82!</p>
+<p>If you have trouble downloading the file, then within your IPython session enter:</p>
+<div class="last highlight-python"><div class="highlight"><pre>from astropy.extern.six.moves.urllib import request
+import tarfile
+url = &#39;http://python4astronomers.github.com/_downloads/m82_wise.tar&#39;
+tarfile.open(fileobj=request.urlopen(url), mode=&#39;r|&#39;).extractall()
+cd m82_wise
+ls
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">APLpy</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#when-things-go-wrong">When things go wrong</a></li>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../python/objects.html"
+                        title="previous chapter">Python Objects - or what&#8217;s with the periods everywhere?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../contest/bounce.html"
+                        title="next chapter">CONTEST: Make a fun bouncing balls demo</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/plotting/aplpy.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

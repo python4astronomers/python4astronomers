@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Who is using Python &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Introduction and Motivation" href="intro.html" />
+    <link rel="next" title="Logistics and open discussion" href="wrapup.html" />
+    <link rel="prev" title="Quick tour of Python" href="quick-tour.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="wrapup.html" title="Logistics and open discussion">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="quick-tour.html" title="Quick tour of Python">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="intro.html" accesskey="U">Introduction and Motivation</a> &raquo;</li>
+      
+      <li>Who is using Python</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="who-is-using-python">
+<h1>Who is using Python<a class="headerlink" href="#who-is-using-python" title="Permalink to this headline">¶</a></h1>
+<p><em>&#8220;Sometimes the middle of the herd is a good place to be.&#8221;</em></p>
+<p>(In response to the question &#8220;Why spend time migrating to Python?&#8221; at a Users Committee meeting)</p>
+<p>That was in 2007 and in the interim Python has become firmly established as the
+primary scripting language in astronomy.
+The ease of interfacing C / C++ / FORTRAN means many organizations
+are using Python user front-ends with a combination of compiled code + Python
+on the back-end.</p>
+<ul class="simple">
+<li>Radio / Submm (NRAO, ESO, JAOJ, CSIRO): <a class="reference external" href="casa.nrao.edu">CASA</a></li>
+<li>IR: <a class="reference external" href="http://herschel.esac.esa.int/HIPE_download.shtml">HIPE</a> (Herschel Interactive Processing Environment)</li>
+<li>Optical: <a class="reference external" href="http://www.stsci.edu/resources/software_hardware/pyraf/stsci_python">STSci</a> (PyRAF, PyFITS)</li>
+<li>Optical: <a class="reference external" href="http://www.gemini.edu/sciops/data/dataSoftware.html">Gemini IRAF</a> package - new development in Python</li>
+<li>Optical: <a class="reference external" href="http://www.eso.org/sci/software/sampo/pymidas/">ESO PyMidas</a></li>
+<li>X-ray: Chandra <a class="reference external" href="http://cxc.harvard.edu/ciao/index.html">CIAO</a> and <a class="reference external" href="http://cxc.harvard.edu/sherpa/">Sherpa</a></li>
+<li>Gamma-ray: Fermi <a class="reference external" href="http://fermi.gsfc.nasa.gov/ssc/data/analysis/">Science Analysis tools</a></li>
+</ul>
+<div class="section" id="why-join-the-herd">
+<h2>Why join the herd?<a class="headerlink" href="#why-join-the-herd" title="Permalink to this headline">¶</a></h2>
+<p>Resources, resources, resources!</p>
+<ul class="simple">
+<li>Discussions and people answering questions<ul>
+<li>CfA pythonusers mailing list (over 100 subscribers)</li>
+<li><a class="reference external" href="http://astropython.org">astropython.org</a></li>
+<li><a class="reference external" href="http://mail.scipy.org/mailman/listinfo/astropy">astropy mailing list</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/tagged/python">stackoverflow</a></li>
+<li>Conferences: <a class="reference external" href="http://conference.scipy.org/">SciPy</a> and <a class="reference external" href="http://www.euroscipy.org/">EuroSciPy</a></li>
+</ul>
+</li>
+<li>Tutorials<ul>
+<li><a class="reference external" href="http://conference.scipy.org/scipy2010/tutorials.html">SciPy Intro and Advanced tutorials</a> <a class="footnote-reference" href="#id2" id="id1">[1]</a></li>
+<li><a class="reference external" href="http://www.scipy.org/Additional_Documentation/Astronomy_Tutorial">SciPy astronomy tutorial</a> (144 pages!)</li>
+<li><a class="reference external" href="http://diveintopython.org/toc/index.html">Dive into Python</a></li>
+<li>... and many more ...</li>
+</ul>
+</li>
+<li>Lists of resources<ul>
+<li><a class="reference external" href="http://oneau.wordpress.com/2010/10/02/python-for-astronomy/">Comfort at 1 AU</a></li>
+<li><a class="reference external" href="http://www.astropython.org/resources">Astropython.org resources</a></li>
+<li><a class="reference external" href="http://www.astro.washington.edu/users/rowen/AstroPy.html">Astronomical Python</a></li>
+</ul>
+</li>
+<li>Books:<ul>
+<li><a class="reference external" href="http://www.amazon.com/s/ref=pd_rhf_s_1?ie=UTF8&amp;search-alias=aps&amp;keywords=python%20science%20engineering">Amazon &#8220;python science engineering&#8221;</a></li>
+<li><a class="reference external" href="http://www.amazon.com/Beginning-Python-Professional-Magnus-Hetland/dp/159059519X">Beginning Python: From Novice to Professional</a></li>
+<li><a class="reference external" href="http://www.amazon.com/Learning-Python-Powerful-Object-Oriented-Programming/dp/0596158068/">Learning Python</a></li>
+<li>... and hundreds more ...</li>
+</ul>
+</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>I could not untar the &#8220;tgz&#8221; (tar.gz) version but the &#8220;zip&#8221; archive was fine.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-sciences">
+<h2>Other sciences<a class="headerlink" href="#other-sciences" title="Permalink to this headline">¶</a></h2>
+<p>Bioinformatics (computational molecular biology)</p>
+<a class="reference internal image-reference" href="../_images/biopython.jpg"><img alt="../_images/biopython.jpg" src="../_images/biopython.jpg" style="width: 420.0px; height: 118.2px;" /></a>
+<p>As seen at <a class="reference external" href="http://biopython.org">biopython.org</a>.</p>
+<p>From the SciPy <a class="reference external" href="http://www.scipy.org/Topical_Software">Topical Software</a> wiki:</p>
+<ul class="simple">
+<li>Artificial intelligence &amp; machine learning</li>
+<li>Bayesian Statistics</li>
+<li>Biology (including Neuroscience)</li>
+<li>Dynamical systems</li>
+<li>Economics and Econometrics</li>
+<li>Electromagnetics</li>
+<li>Electrical Engineering</li>
+<li>Geosciences</li>
+<li>Molecular modeling</li>
+<li>Signal processing</li>
+<li>Symbolic math, number theory, etc.</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Who is using Python</a><ul>
+<li><a class="reference internal" href="#why-join-the-herd">Why join the herd?</a></li>
+<li><a class="reference internal" href="#other-sciences">Other sciences</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="quick-tour.html"
+                        title="previous chapter">Quick tour of Python</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wrapup.html"
+                        title="next chapter">Logistics and open discussion</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/intro/who-python.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

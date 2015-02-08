@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The low-level Sherpa API &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Fitting and Modeling 1-D and 2-D Data" href="fitting.html" />
+    <link rel="next" title="Astropy I: core functions" href="../astropy/astropy.html" />
+    <link rel="prev" title="2-D Fitting in Sherpa" href="image.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="../astropy/astropy.html" title="Astropy I: core functions">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="image.html" title="2-D Fitting in Sherpa">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="fitting.html" accesskey="U">Fitting and Modeling 1-D and 2-D Data</a> &raquo;</li>
+      
+      <li>The low-level Sherpa API</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-low-level-sherpa-api">
+<h1>The low-level Sherpa API<a class="headerlink" href="#the-low-level-sherpa-api" title="Permalink to this headline">¶</a></h1>
+<p>Here we repeat our <a class="reference external" href="spectrum.html">fit to the 3C273 spectrum</a>, but
+with the low-level API (and without going quite as far in the analysis).</p>
+<div class="section" id="explore-the-sherpa-object-model">
+<h2>Explore the Sherpa Object Model<a class="headerlink" href="#explore-the-sherpa-object-model" title="Permalink to this headline">¶</a></h2>
+<p>In a new working directory, download a MAST spectrum of <a class="reference download internal" href="../_downloads/3c273.fits"><tt class="xref download docutils literal"><span class="pre">3C</span> <span class="pre">273</span></tt></a>
+and start IPython along with the standard imports:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ ipython --matplotlib
+
+import numpy as np
+import matplotlib.pyplot as plt
+</pre></div>
+</div>
+<p>If you have trouble accessing the spectrum you can download it straight away
+using Python:</p>
+<div class="highlight-python"><div class="highlight"><pre>from astropy.extern.six.moves.urllib import request
+url = &#39;http://python4astronomers.github.com/_downloads/3c273.fits&#39;
+open(&#39;3c273.fits&#39;, &#39;wb&#39;).write(request.urlopen(url).read())
+%ls
+</pre></div>
+</div>
+<p>Import a few Sherpa classes needed to characterize a fit:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sherpa.data</span> <span class="kn">import</span> <span class="n">Data1D</span>
+<span class="kn">from</span> <span class="nn">sherpa.models</span> <span class="kn">import</span> <span class="n">PowLaw1D</span>
+<span class="kn">from</span> <span class="nn">sherpa.stats</span> <span class="kn">import</span> <span class="n">Chi2DataVar</span>
+<span class="kn">from</span> <span class="nn">sherpa.optmethods</span> <span class="kn">import</span> <span class="n">LevMar</span>
+<span class="kn">from</span> <span class="nn">sherpa.fit</span> <span class="kn">import</span> <span class="n">Fit</span>
+</pre></div>
+</div>
+<p>Import the Python FITS reader <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a> and open the spectrum as a table:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="n">dat</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;3c273.fits&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Access the <cite>WAVELENGTH</cite> and <cite>FLUX</cite> columns from the pyFITS <tt class="docutils literal"><span class="pre">RecArray</span></tt>.  Populate
+variables represented as <tt class="docutils literal"><span class="pre">wave</span></tt>, <tt class="docutils literal"><span class="pre">flux</span></tt>, and <tt class="docutils literal"><span class="pre">err</span></tt>.  Normalize the flux and assume
+uncertainties of 2% of the flux:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">wave</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;WAVELENGTH&#39;</span><span class="p">)</span>
+<span class="n">flux</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;FLUX&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e14</span>
+<span class="n">err</span>  <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="s">&#39;FLUX&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.02e14</span>
+</pre></div>
+</div>
+<p>Create a Sherpa <tt class="docutils literal"><span class="pre">Data1D</span></tt> data set from the NumPy arrays <tt class="docutils literal"><span class="pre">wave</span></tt>, <tt class="docutils literal"><span class="pre">flux</span></tt>, and
+<tt class="docutils literal"><span class="pre">err</span></tt>.  The data arrays are accessible from the <tt class="docutils literal"><span class="pre">data</span></tt> object as the attributes
+<tt class="docutils literal"><span class="pre">x</span></tt>, <tt class="docutils literal"><span class="pre">y</span></tt>, and <tt class="docutils literal"><span class="pre">staterror</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">data</span> <span class="o">=</span> <span class="n">Data1D</span><span class="p">(</span><span class="s">&#39;3C 273&#39;</span><span class="p">,</span> <span class="n">wave</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Array access:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&#39;x {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;y {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;err {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">staterror</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Define a convenience function <tt class="docutils literal"><span class="pre">plot_data</span></tt> that calls the matplotlib functions
+<tt class="docutils literal"><span class="pre">plot</span></tt> and <tt class="docutils literal"><span class="pre">errorbar</span></tt> according to certain criteria.  Plot the <tt class="docutils literal"><span class="pre">x</span></tt> and
+<tt class="docutils literal"><span class="pre">y</span></tt> arrays using the format specified in the optional argument, <tt class="docutils literal"><span class="pre">fmt</span></tt>.
+Clear the plot if the <tt class="docutils literal"><span class="pre">clear</span></tt> argument is <tt class="docutils literal"><span class="pre">True</span></tt>.  Add the plot errorbars if
+the <tt class="docutils literal"><span class="pre">err</span></tt> array is present.  Plot the spectrum by accessing the NumPy arrays
+in the Sherpa data set using our new function and its default arguments:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">clear</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">plot_data</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">staterror</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_data_mast.png"><img alt="../_images/3c273_data_mast.png" src="../_images/3c273_data_mast.png" style="width: 609.0px; height: 459.0px;" /></a>
+<p>Create a Sherpa power-law model <tt class="docutils literal"><span class="pre">pl</span></tt>.  All Sherpa models maintain a tuple of
+parameters in <tt class="docutils literal"><span class="pre">pars</span></tt>.  Access each of the model&#8217;s parameter objects and print
+the <tt class="docutils literal"><span class="pre">name</span></tt> and <tt class="docutils literal"><span class="pre">val</span></tt> attributes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pl</span> <span class="o">=</span> <span class="n">PowLaw1D</span><span class="p">(</span><span class="s">&#39;pl&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">pars</span>
+<span class="k">for</span> <span class="n">par</span> <span class="ow">in</span> <span class="n">pl</span><span class="o">.</span><span class="n">pars</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;{0} {1}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">par</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">.</span><span class="n">val</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set the power-law reference to be 4000 Angstroms and print out the <tt class="docutils literal"><span class="pre">PowLaw1D</span></tt>
+object and its parameter information.  Each model parameter is accessible as an
+attribute its model.  For example, the power-law amplitude is referenced with
+<tt class="docutils literal"><span class="pre">pl.ampl</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pl</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="mf">4000.</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Model parameters are themselves class objects:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">ampl</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-exercise-for-the-interested-reader-special-methods-and-properties admonition">
+<p class="first admonition-title">Exercise (for the interested reader): Special methods and properties</p>
+<p class="last">Wait. Didn&#8217;t we just set <tt class="docutils literal"><span class="pre">pl.ref</span></tt> to be an float?  How can <tt class="docutils literal"><span class="pre">pl.ref</span></tt> be an
+float and a <tt class="docutils literal"><span class="pre">Parameter</span></tt> object?</p>
+</div>
+<p class="flip0">Click to Show/Hide Solution</p> <div class="panel0"><p>The answer is that pl.ref is in fact an object, but its model class supports a
+special setter method <tt class="docutils literal"><span class="pre">__setattr__()</span></tt> that updates the pl.ref.val attribute
+underneath.  The <tt class="docutils literal"><span class="pre">property</span></tt> function defines custom getter and setter
+functions for a particular class attribute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Parameter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># private attribute intended to be reference as &#39;val&#39;.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="k">def</span> <span class="nf">_get_val</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+    <span class="k">def</span> <span class="nf">_set_val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="c"># setup a &#39;val&#39; attribute</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_val</span><span class="p">,</span> <span class="n">_set_val</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">),</span> <span class="n">Parameter</span><span class="p">):</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">object</span><span class="o">.</span><span class="n">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">()</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ref</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ref</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ref</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ref</span><span class="o">.</span><span class="n">val</span>
+</pre></div>
+</div>
+</div><p>Create a <tt class="docutils literal"><span class="pre">Fit</span></tt> object made up of a Sherpa data set, model, fit statistic, and
+optimization method.  Fit the spectrum to a power-law with least squares
+(Levenberg-Marquardt) using the chi-squared statistic with data variance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="n">Fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pl</span><span class="p">,</span> <span class="n">Chi2DataVar</span><span class="p">(),</span> <span class="n">LevMar</span><span class="p">())</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c"># or alternatively</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">format</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Over-plot the fitted model atop the data points using our convenience function
+<tt class="docutils literal"><span class="pre">plot_data</span></tt>.  This time calculate the model using the best-fit parameter
+values over the <tt class="docutils literal"><span class="pre">data.x</span></tt> and plot using a custom format and indicate
+<tt class="docutils literal"><span class="pre">clear=False</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plot_data</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">pl</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="n">fmt</span><span class="o">=</span><span class="s">&quot;-&quot;</span><span class="p">,</span> <span class="n">clear</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/3c273_fit_mast.png"><img alt="../_images/3c273_fit_mast.png" src="../_images/3c273_fit_mast.png" style="width: 609.0px; height: 459.0px;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">The low-level Sherpa API</a><ul>
+<li><a class="reference internal" href="#explore-the-sherpa-object-model">Explore the Sherpa Object Model</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="image.html"
+                        title="previous chapter">2-D Fitting in Sherpa</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../astropy/astropy.html"
+                        title="next chapter">Astropy I: core functions</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/fitting/low-level.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

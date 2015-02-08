@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reading and Writing binary data &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Reading and Writing files" href="files.html" />
+    <link rel="next" title="Summary and excercise" href="summary.html" />
+    <link rel="prev" title="Reading and Writing tabular ASCII data" href="asciifiles.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="summary.html" title="Summary and excercise">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="asciifiles.html" title="Reading and Writing tabular ASCII data">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="files.html" accesskey="U">Reading and Writing files</a> &raquo;</li>
+      
+      <li>Reading and Writing binary data</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reading-and-writing-binary-data">
+<h1>Reading and Writing binary data<a class="headerlink" href="#reading-and-writing-binary-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>astropy.io.fits<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a>  is a Python module developed at STScI to read and write all types of FITS files.</p>
+<div class="admonition-external-resource admonition">
+<p class="first admonition-title">External resource!</p>
+<p class="last">The <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a> tutorial itself is good for our purpose and since this
+is the internet I will not reinvent the wheel. Read the manual
+then come back to this page for an exercise.</p>
+</div>
+<div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p>Use the following code to download a FITS file for this exercise:</p>
+<div class="highlight-python"><div class="highlight"><pre>from astropy.extern.six.moves.urllib import request
+import tarfile
+url = &#39;http://python4astronomers.github.com/core/core_examples.tar&#39;
+tarfile.open(fileobj=request.urlopen(url), mode=&#39;r|&#39;).extractall()
+cd py4ast/core
+ls
+</pre></div>
+</div>
+<p class="last">Read in the FITS file. Find the time and date of the observation. Then use <tt class="docutils literal"><span class="pre">plt.imshow()</span></tt> to display the intensity array using some sensible minimum and maximum value so that the spectrum is visible.</p>
+</div>
+<p class="flip6">Click to Show/Hide Solution</p> <div class="panel6"><p>Here is a possible solution:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="n">hdus</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;3c120_stis.fits.gz&#39;</span><span class="p">)</span>
+<span class="n">hdus</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+<span class="n">head</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>             <span class="c"># lists all keywords in a dictionary</span>
+<span class="n">head</span><span class="p">[</span><span class="s">&#39;TDATEOBS&#39;</span><span class="p">]</span>
+<span class="n">head</span><span class="p">[</span><span class="s">&#39;TTIMEOBS&#39;</span><span class="p">]</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">hdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>      <span class="c"># Intensity data</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You might recognize this piece of code. It was used before in
+the <a class="reference internal" href="../core/numpy_scipy.html"><em>NumPy</em></a> part of the tutorial, but now you should understand the <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a> commands in more detail.</p>
+</div></div>
+<div class="section" id="reading-idl-sav-files">
+<h2>Reading IDL .sav files<a class="headerlink" href="#reading-idl-sav-files" title="Permalink to this headline">¶</a></h2>
+<p>IDL is still a very common tool in astronomy. While IDL packages exist to read and write data in simple (ASCII) or standardized file formats (FITS), that users of all platforms can use, IDL also offers a binary file format with an undocumented, proprietary structure. However, acess to this file format (usually called <tt class="docutils literal"><span class="pre">.sav</span></tt>) is very simple and convenient in IDL. Therefore, many IDL users dump their data in this way and you might be forced to read <tt class="docutils literal"><span class="pre">.sav</span></tt> files a collegue has sent you.</p>
+<p>Here is an examplary <tt class="docutils literal"><span class="pre">.sav</span></tt> <a class="reference download internal" href="../_downloads/myidlfile.sav"><tt class="xref download docutils literal"><span class="pre">file</span></tt></a>.
+If you have trouble downloading the file, then use IPython:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.extern.six.moves.urllib</span> <span class="kn">import</span> <span class="n">request</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://python4astronomers.github.com/_downloads/myidlfile.sav&#39;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;myidlfile.sav&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>What can you do?</dt>
+<dd><ol class="first last arabic simple">
+<li>Convert your collegue to use a different file format.</li>
+<li>Read that file in python.</li>
+</ol>
+</dd>
+</dl>
+<p>With any relatively recent version <tt class="docutils literal"><span class="pre">scipy</span></tt> (at least 0.9) then this is a matter of two lines:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.io.idl</span> <span class="kn">import</span> <span class="n">readsav</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">readsav</span><span class="p">(</span><span class="s">&#39;myidlfile.sav&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-exercise-where-is-your-data admonition">
+<p class="first admonition-title">Exercise: Where is your data?</p>
+<p class="last"><tt class="docutils literal"><span class="pre">idlsave</span></tt> already prints some information on the screen while reading the file. Inspect the object <tt class="docutils literal"><span class="pre">data</span></tt>, find out how you use it and plot
+the <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> data in it.</p>
+</div>
+<p class="flip6">Click to Show/Hide Solution</p> <div class="panel6"><p><tt class="docutils literal"><span class="pre">data</span></tt> is a dictionary and all the variables in the <tt class="docutils literal"><span class="pre">.sav</span></tt> file are
+fields in this dictionary. You get a list with <tt class="docutils literal"><span class="pre">data.keys()</span></tt>. Then, this
+is easy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div><p>Note that <tt class="docutils literal"><span class="pre">idlsave</span></tt> cannot write files and that it will fail to read if the <tt class="docutils literal"><span class="pre">.sav</span></tt> file contains special structures like system variables or compiled IDL code.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Reading and Writing binary data</a><ul>
+<li><a class="reference internal" href="#id1">astropy.io.fits</a></li>
+<li><a class="reference internal" href="#reading-idl-sav-files">Reading IDL .sav files</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="asciifiles.html"
+                        title="previous chapter">Reading and Writing tabular ASCII data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="summary.html"
+                        title="next chapter">Summary and excercise</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/files/binaryfiles.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

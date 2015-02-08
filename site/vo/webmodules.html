@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Standard Python Tools &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Online Astronomy and the virtual observatory" href="vo.html" />
+    <link rel="next" title="Virtual Observatory" href="votools.html" />
+    <link rel="prev" title="Modules" href="install.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="votools.html" title="Virtual Observatory">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="install.html" title="Modules">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="vo.html" accesskey="U">Online Astronomy and the virtual observatory</a> &raquo;</li>
+      
+      <li>Standard Python Tools</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="standard-python-tools">
+<h1>Standard Python Tools<a class="headerlink" href="#standard-python-tools" title="Permalink to this headline">¶</a></h1>
+<p>There are two standard &#8220;core&#8221; Python modules that provide much of the
+functionality necessary to access internet resources from inside python:
+<a class="reference external" href="http://docs.python.org/library/urllib2">urllib2</a> and <a class="reference external" href="http://docs.python.org/library/urllib">urllib</a>. You have seen <tt class="docutils literal"><span class="pre">urllib2</span></tt> in each of the prior
+workshops when downloading example files or datasets, like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://python4astronomers.github.com/_downloads/image_sources.csv&#39;</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">&#39;image_sources.csv&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="webpage-retrieval">
+<h2>Webpage Retrieval<a class="headerlink" href="#webpage-retrieval" title="Permalink to this headline">¶</a></h2>
+<p>It is useful to write the example above a bit differently since
+readability counts and we want to highlight a few steps.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;image_sources.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">handler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">handler</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>First, <a class="reference external" href="http://docs.python.org/library/urllib2">urllib2</a> has returned a file like object <tt class="docutils literal"><span class="pre">handler</span></tt> that
+points to a specific web resource. Various attributes about the
+webpage are available:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;content-type&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In this particular example the data request is handled after the
+initial response has been examined; the data is streamed into a local
+variable <tt class="docutils literal"><span class="pre">data</span></tt> and then saved to a local file. As demonstrated in
+the <a class="reference internal" href="../files/asciifiles.html"><em>ASCII files portion</em></a> of the <a class="reference internal" href="../files/files.html"><em>Reading
+and Writing Files</em></a> workshop, one alternatively could
+parse the returned data stream into a table for further use.</p>
+</div>
+<div class="section" id="building-queries">
+<h2>Building Queries<a class="headerlink" href="#building-queries" title="Permalink to this headline">¶</a></h2>
+<p>Now we are getting closer to searching for data online via python.
+Traditionally, each data archive has implemented its own set of
+query parameters; more often then not you experience it as a web
+form with lots of check and input boxes. Most of the time these web
+forms  are simply input wrappers that build a query string and
+process the result.</p>
+<p>Here is a very simple query example: search for HST
+images near M 51. It is worth noting that you have
+to find and read the <a class="reference external" href="http://archive.stsci.edu/vo/mast_services.html">MAST HST documentation</a> to
+learn which <a class="reference external" href="http://archive.stsci.edu/vo/general_params.html">parameters</a> are needed to build the query.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span> <span class="nn">urllib</span>
+
+<span class="c"># this is the query url for this service.</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://archive.stsci.edu/hst/search.php&#39;</span>
+
+<span class="c"># make a dictionary of search parameters</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;target&#39;</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;M 51&quot;</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;radius&#39;</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;max_records&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;outputformat&#39;</span><span class="p">]</span><span class="o">=</span><span class="s">&#39;CSV&#39;</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;action&#39;</span><span class="p">]</span><span class="o">=</span><span class="s">&#39;Search&#39;</span>
+
+<span class="c"># encode the http string</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c"># create the full URL for a GET query</span>
+<span class="n">get_url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">&quot;?&quot;</span> <span class="o">+</span> <span class="n">query</span>
+
+<span class="c"># create the GET handler</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">get_url</span><span class="p">)</span>
+
+<span class="c"># check it</span>
+<span class="k">print</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;content-type&#39;</span><span class="p">])</span>
+
+<span class="c"># save it</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;hst_m51.csv&#39;</span><span class="p">,</span><span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The magic is that <a class="reference external" href="http://docs.python.org/library/urllib">urllib</a> module takes care of encoding the
+parameters using standard HTTP rules. You can compare the input
+dictionary key,value pairs with the HTTP url encoding.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># some simple formatting where the format %-M.Ns means</span>
+<span class="c"># &quot;-&quot; :: &#39;left justified&#39;</span>
+<span class="c"># &quot;M&quot; :: &#39;minimum string length, padded&#39;</span>
+<span class="c"># &quot;N&quot; :: &#39;maximum string length, sequence sliced&#39;</span>
+<span class="c"># &quot;s&quot; :: &#39;format as string&#39;</span>
+<span class="n">sform</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%-20.20s</span><span class="s"> </span><span class="si">%-10.10s</span><span class="s"> </span><span class="si">%-30.30s</span><span class="s">&quot;</span>
+
+<span class="c"># make a header</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="s">&#39;parameter&#39;</span><span class="p">,</span><span class="s">&#39;value&#39;</span><span class="p">,</span><span class="s">&#39;encoded&#39;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="s">&#39;-&#39;</span><span class="p">,)))</span>
+
+<span class="c"># for each paramter show the input items from the dictionary</span>
+<span class="c"># &quot;p&quot; and the output query string.</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span><span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&amp;&#39;</span><span class="p">)):</span>
+   <span class="k">print</span><span class="p">(</span><span class="n">sform</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="p">(</span><span class="n">b</span><span class="p">,)))</span>
+</pre></div>
+</div>
+<div class="admonition-exercise-import-wise-catalog-data-for-a-young-cluster admonition">
+<p class="first admonition-title">Exercise: import WISE catalog data for a young cluster</p>
+<p>In this exerice you will use a different service (IRSA) and
+with a different overall goal for these data.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">atpy</span><span class="o">,</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">urllib2</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query&quot;</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;spatial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Cone&quot;</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;objstr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;IC 348&quot;</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;outfmt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c"># IPAC table format</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;catalog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;wise_prelim_p3as_psd&#39;</span>
+<span class="n">p</span><span class="p">[</span><span class="s">&#39;radius&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">get_url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">&quot;?&quot;</span> <span class="o">+</span> <span class="n">query</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">get_url</span><span class="p">)</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">handler</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">255</span><span class="p">])</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;ic348_wise.tbl&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">The challenge is to immediately analyze the results of this query. The
+exercise is to make a simple color-color plot of these objects.</p>
+</div>
+<p class="flip9">Click to Show/Hide Solution</p> <div class="panel9"><p>There are MANY ways we have looked at in the workshops for converting
+this result to a numpy array.  Some of these examples parse the raw
+web data directly, circumventing a need to write it to file. Some use
+different means to try to deal with the data types and null values
+in the result.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t1</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;ic348_wise.tbl&#39;</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&quot;ipac&quot;</span><span class="p">)</span>
+
+<span class="n">t2</span> <span class="o">=</span> <span class="n">asciitable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">Reader</span><span class="o">=</span><span class="n">asciitable</span><span class="o">.</span><span class="n">IpacReader</span><span class="p">)</span>
+
+<span class="n">t3</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;ascii&#39;</span><span class="p">)</span>
+
+<span class="n">fill_values</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;null&#39;</span><span class="p">,</span><span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span>
+
+<span class="n">t4</span> <span class="o">=</span> <span class="n">asciitable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">Reader</span><span class="o">=</span><span class="n">asciitable</span><span class="o">.</span><span class="n">IpacReader</span><span class="p">,</span> \
+    <span class="n">fill_values</span><span class="o">=</span><span class="n">fill_values</span><span class="p">)</span>
+
+<span class="n">t5</span> <span class="o">=</span> <span class="n">atpy</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span> <span class="n">fill_values</span><span class="o">=</span><span class="n">fill_values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Its important to realize that YMMV as to how these differ in their output.
+For example, lets look at the output table types and the data types for
+a couple of columns:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="n">t3</span><span class="p">,</span> <span class="n">t4</span><span class="p">,</span> <span class="n">t5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">i</span><span class="p">[</span><span class="s">&#39;j_m_2mass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="s">&#39;tmass_key&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%40s%10s%10s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output table types (and hence their built-in utilities), column data types
+and treatment of null values vary and this matters when trying to make a plot
+or perform other types of analysis. We will use <tt class="docutils literal"><span class="pre">t1</span></tt> as the data types are
+correct. It also preserves more of the metadata of the query.
+Just a quick plot that reuses some of this metadata in the plot title.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clf</span><span class="p">()</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">[</span><span class="s">&#39;w2mag&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">t1</span><span class="p">[</span><span class="s">&#39;w3mag&#39;</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="s">&#39;j_m_2mass&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">t1</span><span class="p">[</span><span class="s">&#39;h_m_2mass&#39;</span><span class="p">],</span> <span class="s">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;W2 - W3&#39;</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;J - H&#39;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">keywords</span><span class="p">[</span><span class="s">&#39;SKYAREA&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="s">&#39;small&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/wise_cc.png"><img alt="../_images/wise_cc.png" src="../_images/wise_cc.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div><div class="admonition-read-the-instructions admonition">
+<p class="first admonition-title">Read the instructions!</p>
+<p>Because these web interfaces vary from archive to archive it is
+worth emphasizing that building the query string for a particular
+data archive begins with reading the documentation page
+for that archive&#8217;s GET interface.</p>
+<p>Here are some links to these documentation pages for some archives</p>
+<ul class="simple">
+<li><a class="reference external" href="http://irsa.ipac.caltech.edu/applications/Gator/GatorAid/irsa/catsearch.html">IRSA</a></li>
+<li><a class="reference external" href="http://archive.stsci.edu/vo/mast_services.html">MAST</a></li>
+</ul>
+<p>and the service url for these are:</p>
+<ul class="last simple">
+<li>(IRSA) <a class="reference external" href="http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query">http://irsa.ipac.caltech.edu/cgi-bin/Gator/nph-query</a></li>
+<li>(MAST, HST) <a class="reference external" href="http://archive.stsci.edu/hst/search.php">http://archive.stsci.edu/hst/search.php</a></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Nothing I&#8217;ve shown actually checks that the data expected is the
+data retrieved. See also warnings in the documentation for
+<a class="reference external" href="http://docs.python.org/library/urllib2">urllib2</a> and <a class="reference external" href="http://docs.python.org/library/urllib">urllib</a> about <tt class="docutils literal"><span class="pre">https</span></tt> transactions. As with
+everything web based, you should implement assertions or tests to
+check your results before continuing.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Standard Python Tools</a><ul>
+<li><a class="reference internal" href="#webpage-retrieval">Webpage Retrieval</a></li>
+<li><a class="reference internal" href="#building-queries">Building Queries</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="votools.html"
+                        title="next chapter">Virtual Observatory</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/vo/webmodules.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

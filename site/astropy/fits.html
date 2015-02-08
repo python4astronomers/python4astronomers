@@ -1,0 +1,654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Handling FITS files &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Astropy I: core functions" href="astropy.html" />
+    <link rel="next" title="WCS Transformations" href="wcs.html" />
+    <link rel="prev" title="Tabular data" href="tables.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="wcs.html" title="WCS Transformations">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="tables.html" title="Tabular data">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="astropy.html" accesskey="U">Astropy I: core functions</a> &raquo;</li>
+      
+      <li>Handling FITS files</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="handling-fits-files">
+<span id="id1"></span><h1>Handling FITS files<a class="headerlink" href="#handling-fits-files" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you are already familiar with PyFITS, <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a> is in
+fact the same code as the latest version of PyFITS, and you can
+adapt old scripts that use PyFITS to use Astropy by simply doing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span> <span class="k">as</span> <span class="n">pyfits</span>
+</pre></div>
+</div>
+<p>However, for new scripts, we recommend the following import:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>For more information about the features presented below, you can read the
+<a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a> docs.</p>
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>The data used in this page (<tt class="docutils literal"><span class="pre">gll_iem_v02_P6_V11_DIFFUSE.fit</span></tt>) is an old
+version of the LAT Background Model (Pass 6 V11 Diffuse front+back) which was
+chosen so as not to have to download the larger more recent file.</p>
+</div>
+<div class="section" id="reading-fits-files-and-accessing-data">
+<h2>Reading FITS files and accessing data<a class="headerlink" href="#reading-fits-files-and-accessing-data" title="Permalink to this headline">¶</a></h2>
+<p>Opening a FITS file is relatively straightforward. We can open the LAT
+Background Model included in the tutorial files:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;gll_iem_v02_P6_V11_DIFFUSE.fit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The returned object, <tt class="docutils literal"><span class="pre">hdulist</span></tt>, behaves like a Python list, and each element
+maps to a Header-Data Unit (HDU) in the FITS file. You can view more
+information about the FITS file with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdulist</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="go">Filename: gll_iem_v02_P6_V11_DIFFUSE.fit</span>
+<span class="go">No.    Name         Type      Cards   Dimensions   Format</span>
+<span class="go">0    PRIMARY     PrimaryHDU      34   (720, 360, 30)   float32</span>
+<span class="go">1    ENERGIES    BinTableHDU     19   30R x 1C     [D]</span>
+</pre></div>
+</div>
+<p>As we can see, this file contains two HDUs. To access the primary HDU, which
+contains the main data, you can then do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">hdu</span></tt> object then has two important attributes: <tt class="docutils literal"><span class="pre">data</span></tt>, which behaves
+like a Numpy array, can be used to access the data, and <tt class="docutils literal"><span class="pre">header</span></tt>, which
+behaves like a dictionary, can be used to access the header information.
+First, we can take a look at the data:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(30, 360, 720)</span>
+</pre></div>
+</div>
+<p>This tells us that it is a 3-d cube. We can now take a peak at the header</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
+<span class="go">SIMPLE  =                    T / Written by IDL:  Thu Jan 20 07:19:05 2011</span>
+<span class="go">BITPIX  =                  -32 /</span>
+<span class="go">NAXIS   =                    3 / number of data axes</span>
+<span class="go">NAXIS1  =                  720 / length of data axis 1</span>
+<span class="go">NAXIS2  =                  360 / length of data axis 2</span>
+<span class="go">NAXIS3  =                   30 / length of data axis 3</span>
+<span class="go">EXTEND  =                    T / FITS dataset may contain extensions</span>
+<span class="go">COMMENT   FITS (Flexible Image Transport System) format is defined in &#39;Astronomy</span>
+<span class="go">COMMENT   and Astrophysics&#39;, volume 376, page 359; bibcode: 2001A&amp;A...376..359H</span>
+<span class="go">FLUX    =        8.42259635886 /</span>
+<span class="go">CRVAL1  =                   0. / Value of longitude in pixel CRPIX1</span>
+<span class="go">CDELT1  =                  0.5 / Step size in longitude</span>
+<span class="go">CRPIX1  =                360.5 / Pixel that has value CRVAL1</span>
+<span class="go">CTYPE1  = &#39;GLON-CAR&#39;           / The type of parameter 1 (Galactic longitude in</span>
+<span class="go">CUNIT1  = &#39;deg     &#39;           / The unit of parameter 1</span>
+<span class="go">CRVAL2  =                   0. / Value of latitude in pixel CRPIX2</span>
+<span class="go">CDELT2  =                  0.5 / Step size in latitude</span>
+<span class="go">CRPIX2  =                180.5 / Pixel that has value CRVAL2</span>
+<span class="go">CTYPE2  = &#39;GLAT-CAR&#39;           / The type of parameter 2 (Galactic latitude in C</span>
+<span class="go">CUNIT2  = &#39;deg     &#39;           / The unit of parameter 2</span>
+<span class="go">CRVAL3  =                  50. / Energy of pixel CRPIX3</span>
+<span class="go">CDELT3  =    0.113828620540137 / log10 of step size in energy (if it is logarith</span>
+<span class="go">CRPIX3  =                   1. / Pixel that has value CRVAL3</span>
+<span class="go">CTYPE3  = &#39;photon energy&#39;      / Axis 3 is the spectra</span>
+<span class="go">CUNIT3  = &#39;MeV     &#39;           / The unit of axis 3</span>
+<span class="go">CHECKSUM= &#39;3fdO3caL3caL3caL&#39;   / HDU checksum updated 2009-07-07T22:31:18</span>
+<span class="go">DATASUM = &#39;2184619035&#39;         / data unit checksum updated 2009-07-07T22:31:18</span>
+<span class="go">DATE    = &#39;2009-07-07&#39;         /</span>
+<span class="go">FILENAME= &#39;$TEMPDIR/diffuse/gll_iem_v02.fit&#39; /File name with version number</span>
+<span class="go">TELESCOP= &#39;GLAST   &#39;           /</span>
+<span class="go">INSTRUME= &#39;LAT     &#39;           /</span>
+<span class="go">ORIGIN  = &#39;LISOC   &#39;           /LAT team product delivered from the LISOC</span>
+<span class="go">OBSERVER= &#39;MICHELSON&#39;          /Instrument PI</span>
+<span class="go">HISTORY Scaled version of gll_iem_v02.fit for use with P6_V11_DIFFUSE</span>
+</pre></div>
+</div>
+<p>which shows that this is a Plate Carrée (-CAR) projection in Galactic
+Coordinates, and the third axis is photon energy. We can access individual
+header keywords using standard item notation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s">&#39;TELESCOP&#39;</span><span class="p">]</span>
+<span class="go">&#39;GLAST&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s">&#39;INSTRUME&#39;</span><span class="p">]</span>
+<span class="go">&#39;LAT&#39;</span>
+</pre></div>
+</div>
+<p>Provided that we started up <tt class="docutils literal"><span class="pre">ipython</span></tt> with the <tt class="docutils literal"><span class="pre">--matplotlib</span></tt> flag and did
+<tt class="docutils literal"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></tt>, we can plot
+one of the slices in photon energy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:],</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which gives:</p>
+<img alt="../_images/lat_background_slice0.png" src="../_images/lat_background_slice0.png" />
+<p>Note that this is just a plot of an array, so the coordinates are just pixel
+coordinates at this stage. The data is stored with longitude increasing to the
+right (the opposite of the normal convention), but the Level 3 problem at the
+bottom of this page shows how to correctly flip the image.</p>
+<p>Modifying data or header information in a FITS file object is easy. We can
+update existing header keywords:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s">&#39;TELESCOP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Fermi Gamma-ray Space Telescope&quot;</span>
+</pre></div>
+</div>
+<p>or add new ones:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s">&#39;MODIFIED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;26 Feb 2013&#39;</span>  <span class="c"># adds a new keyword</span>
+</pre></div>
+</div>
+<p>and we can also change the data, for example extracting only the first slice
+in photon energy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:]</span>
+</pre></div>
+</div>
+<p>Note that this does not change the original FITS file, simply the FITS file
+object in memory. Note that since the data is now 2-dimensional, we can remove the WCS keywords for the third dimension:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;CRPIX3&#39;</span><span class="p">)</span>
+<span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;CRVAL3&#39;</span><span class="p">)</span>
+<span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;CDELT3&#39;</span><span class="p">)</span>
+<span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;CUNIT3&#39;</span><span class="p">)</span>
+<span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;CTYPE3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can write the FITS file object to a file with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;lat_background_model_slice.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>if you want to simply write out this HDU to a file, or:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdulist</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;lat_background_model_slice_allhdus.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>if you want to write out all of the original HDUs, including the modified one,
+to a file.</p>
+</div>
+<div class="section" id="creating-a-fits-file-from-scratch">
+<h2>Creating a FITS file from scratch<a class="headerlink" href="#creating-a-fits-file-from-scratch" title="Permalink to this headline">¶</a></h2>
+<p>If you want to create a FITS file from scratch, you need to start off by creating an HDU object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>and you can then populate the data and header attributes with whatever information you like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that setting the data automatically populates the header with basic information:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
+<span class="go">SIMPLE  =                    T / conforms to FITS standard</span>
+<span class="go">BITPIX  =                  -64 / array data type</span>
+<span class="go">NAXIS   =                    2 / number of array dimensions</span>
+<span class="go">NAXIS1  =                  128</span>
+<span class="go">NAXIS2  =                  128</span>
+<span class="go">EXTEND  =                    T</span>
+</pre></div>
+</div>
+<p>and you should never have to set header keywords such as <tt class="docutils literal"><span class="pre">NAXIS</span></tt>, <tt class="docutils literal"><span class="pre">NAXIS1</span></tt>, and so on manually. We can then set additional header keywords:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s">&#39;telescop&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;Python Observatory&#39;</span>
+</pre></div>
+</div>
+<p>and we can then write out the FITS file to disk:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;random_array.fits&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the file already exists, you can overwrite it with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">hdu</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;random_array.fits&#39;</span><span class="p">,</span> <span class="n">clobber</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="convenience-functions">
+<h2>Convenience functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">¶</a></h2>
+<p>In cases where you just want to access the data or header in a specific HDU,
+you can use the following convenience functions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s">&#39;gll_iem_v02_P6_V11_DIFFUSE.fit&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="s">&#39;gll_iem_v02_P6_V11_DIFFUSE.fit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To get the data or header for an HDU other than the first, you can specify the
+extension name or index. The second HDU is called <tt class="docutils literal"><span class="pre">energies</span></tt>, so we can do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s">&#39;gll_iem_v02_P6_V11_DIFFUSE.fit&#39;</span><span class="p">,</span> <span class="n">extname</span><span class="o">=</span><span class="s">&#39;energies&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s">&#39;gll_iem_v02_P6_V11_DIFFUSE.fit&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and similarly for <tt class="docutils literal"><span class="pre">getheader</span></tt>.</p>
+</div>
+<div class="section" id="accessing-tabular-data">
+<h2>Accessing Tabular Data<a class="headerlink" href="#accessing-tabular-data" title="Permalink to this headline">¶</a></h2>
+<p>In Astropy 0.2, FITS tables cannot be read/written directly from the <tt class="docutils literal"><span class="pre">Table</span></tt>
+class. To create a <tt class="docutils literal"><span class="pre">Table</span></tt> object from a FITS table, you can use
+<a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s">&#39;catalog.fits&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and to write out, you can use <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a>, converting the table to a
+Numpy array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s">&#39;new_catalog.fits&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The main drawback of the current approach is that table metadata like UCDs and
+other FITS header keywords are lost. Future versions of Astropy will support
+reading/writing FITS tables directly from the <tt class="docutils literal"><span class="pre">Table</span></tt> class.</p>
+</div>
+<div class="section" id="practical-exercises">
+<h2>Practical Exercises<a class="headerlink" href="#practical-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-excercise admonition">
+<p class="first admonition-title">Excercise</p>
+<p class="last">Read in the LAT Point Source Catalog and make a scatter plot of the
+Galactic Coordinates of the sources (complete with axis labels). Bonus
+points if you can make the plot go between -180 and 180 instead of 0 and
+360 degrees. Note that the Point Source Catalog contains the Galactic
+Coordinates, so no need to convert them.</p>
+</div>
+<p class="flip2">Click to Show/Hide Solution</p> <div class="panel2"><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c"># Read in Point Source Catalog</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s">&#39;gll_psc_v08.fit&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">psc</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c"># Extract Galactic Coordinates</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">psc</span><span class="p">[</span><span class="s">&#39;GLON&#39;</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">psc</span><span class="p">[</span><span class="s">&#39;GLAT&#39;</span><span class="p">]</span>
+
+<span class="c"># Coordinates from 0 to 360, wrap to -180 to 180 to match image</span>
+<span class="n">l</span><span class="p">[</span><span class="n">l</span> <span class="o">&gt;</span> <span class="mf">180.</span><span class="p">]</span> <span class="o">-=</span> <span class="mf">360.</span>
+
+<span class="c"># Plot the image</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">180.</span><span class="p">,</span> <span class="o">-</span><span class="mf">180.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Galactic Longitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Galactic Latitude&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;fits_level2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/fits_level2.png" src="../_images/fits_level2.png" />
+</div><div class="admonition-advanced-exercise admonition">
+<p class="first admonition-title">Advanced exercise</p>
+<p class="last">Using Matplotlib, make an all-sky plot of the LAT Background Model in the
+Plate Carée projection showing the LAT Point Source Catalog overlaid with
+markers, and with the correct coordinates on the axes. You should do this
+using only <a class="reference external" href="http://astropy.readthedocs.org/en/stable/io/fits/">astropy.io.fits</a>, Numpy, and Matplotlib (no WCS or
+coordinate conversion library). Hint: the -CAR projection is such that the
+x pixel position is proportional to longitude, and the y pixel position to
+latitude. Bonus points for a pretty colormap.</p>
+</div>
+<p class="flip3">Click to Show/Hide Solution</p> <div class="panel3"><div class="highlight-python"><div class="highlight"><pre><span class="c"># this continues from the previous exercise</span>
+<span class="c"># Read in Background Model</span>
+<span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;gll_iem_v02_P6_V11_DIFFUSE.fit&#39;</span><span class="p">)</span>
+<span class="n">bg</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+
+
+<span class="c"># Plot the image</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">bg</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">180.</span><span class="p">,</span> <span class="mf">180.</span><span class="p">,</span> <span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gist_heat</span><span class="p">,</span>
+          <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2e-3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">&#39;none&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">180.</span><span class="p">,</span> <span class="o">-</span><span class="mf">180.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Galactic Longitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Galactic Latitude&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;fits_level3.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/fits_level3.png" src="../_images/fits_level3.png" />
+</div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">Handling FITS files</a><ul>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+<li><a class="reference internal" href="#reading-fits-files-and-accessing-data">Reading FITS files and accessing data</a></li>
+<li><a class="reference internal" href="#creating-a-fits-file-from-scratch">Creating a FITS file from scratch</a></li>
+<li><a class="reference internal" href="#convenience-functions">Convenience functions</a></li>
+<li><a class="reference internal" href="#accessing-tabular-data">Accessing Tabular Data</a></li>
+<li><a class="reference internal" href="#practical-exercises">Practical Exercises</a></li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tables.html"
+                        title="previous chapter">Tabular data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wcs.html"
+                        title="next chapter">WCS Transformations</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/astropy/fits.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>

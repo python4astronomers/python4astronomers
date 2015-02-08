@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>MacPorts &mdash; Python4Astronomers 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/bootstrap-astropy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    <link rel="top" title="Python4Astronomers 2.0 documentation" href="../index.html" />
+    <link rel="up" title="Recommended installation options" href="recommended_options.html" />
+    <link rel="next" title="Linux" href="linux.html" />
+    <link rel="prev" title="Recommended installation options" href="recommended_options.html" />
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../_static/copybutton.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+
+$(".flip0").click(function(){
+    $(".panel0").slideToggle("normal");
+  });
+
+$(".flip1").click(function(){
+    $(".panel1").slideToggle("normal");
+  });
+
+$(".flip2").click(function(){
+    $(".panel2").slideToggle("normal");
+  });
+
+$(".flip3").click(function(){
+    $(".panel3").slideToggle("normal");
+  });
+
+$(".flip4").click(function(){
+    $(".panel4").slideToggle("normal");
+  });
+
+$(".flip5").click(function(){
+    $(".panel5").slideToggle("normal");
+  });
+
+$(".flip6").click(function(){
+    $(".panel6").slideToggle("normal");
+  });
+
+$(".flip7").click(function(){
+    $(".panel7").slideToggle("normal");
+  });
+
+$(".flip8").click(function(){
+    $(".panel8").slideToggle("normal");
+  });
+
+$(".flip9").click(function(){
+    $(".panel9").slideToggle("normal");
+  });
+
+});
+</script>
+ 
+<style type="text/css"> 
+
+div.panel0,p.flip0
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip0
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel0
+{
+display:none;
+}
+
+div.panel1,p.flip1
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip1
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel1
+{
+display:none;
+}
+
+div.panel2,p.flip2
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip2
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel2
+{
+display:none;
+}
+
+div.panel3,p.flip3
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip3
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel3
+{
+display:none;
+}
+
+div.panel4,p.flip4
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip4
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel4
+{
+display:none;
+}
+
+div.panel5,p.flip5
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip5
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel5
+{
+display:none;
+}
+
+div.panel6,p.flip6
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip6
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel6
+{
+display:none;
+}
+
+div.panel7,p.flip7
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip7
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel7
+{
+display:none;
+}
+
+div.panel8,p.flip8
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip8
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel8
+{
+display:none;
+}
+
+div.panel9,p.flip9
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip9
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel9
+{
+display:none;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  </head>
+  <body>
+<div class="topbar">
+  <a class="brand" title="Documentation Home" href="../index.html"><span id="logotext1">python</span><span id="logotext2">4</span><span id="logotext3">astronomers</span></a>
+  <ul>
+    <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
+  </ul>
+</div>
+
+<div class="related">
+    <h3>Navigation</h3>
+    <ul>
+      <li class="right">
+	<a href="linux.html" title="Linux">
+	  next &raquo;
+	</a>
+      </li>
+      <li class="right">
+	<a href="recommended_options.html" title="Recommended installation options">
+	  &laquo; previous
+	</a>
+	 |
+      </li>
+      <li>
+	<a href="../index.html">Python4Astronomers 2.0 documentation</a>
+	 &raquo;
+      </li>
+      <li><a href="recommended_options.html" accesskey="U">Recommended installation options</a> &raquo;</li>
+      
+      <li>MacPorts</li> 
+    </ul>
+</div>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="macports">
+<span id="mac-osx"></span><h1>MacPorts<a class="headerlink" href="#macports" title="Permalink to this headline">¶</a></h1>
+<p>If you can follow instructions and have a little patience then MacPorts is
+a very good option for a long-term commitment to using Python on a Mac.</p>
+<p>To install Python using MacPorts follow the detailed instructions at <a class="reference external" href="http://astrofrog.github.com/macports-python/">MacPorts
+Python installation on Mac - 10 easy steps</a>.  Another tutorial
+on MacPorts for Python which is well-written and helpful is
+<a class="reference external" href="http://jakevdp.github.com/blog/2013/02/02/setting-up-a-mac-for-python-development">Setting Up a Mac for Python Development</a>.</p>
+<div class="section" id="quick-installation-check">
+<h2>Quick installation check<a class="headerlink" href="#quick-installation-check" title="Permalink to this headline">¶</a></h2>
+<p>Open a new terminal window and type:</p>
+<div class="highlight-python"><div class="highlight"><pre>which ipython
+</pre></div>
+</div>
+<p>You should see one of the following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Dist</th>
+<th class="head">Path</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MacPorts</td>
+<td><tt class="docutils literal"><span class="pre">/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/ipython</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>If not go to the <a class="reference internal" href="#troubleshooting">Troubleshooting</a> section.</p>
+</div>
+<div class="section" id="macos-x-developer-tools">
+<h2>MacOS X Developer Tools<a class="headerlink" href="#macos-x-developer-tools" title="Permalink to this headline">¶</a></h2>
+<p>Before you install additional packages, you will need to make sure that you
+have installed the MacOS X Developer Tools (XCode) so that the <tt class="docutils literal"><span class="pre">gcc</span></tt>
+compiler is available. If you are not sure if you have the developer tools
+installed, try typing <tt class="docutils literal"><span class="pre">gcc</span></tt> in a Terminal. You should see something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ gcc
+i686-apple-darwin10-gcc-4.2.1: no input files
+</pre></div>
+</div>
+<p>If you get <tt class="docutils literal"><span class="pre">gcc:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></tt> then you need to install the
+developer tools. <strong>If you already have the developer tools installed, you can
+proceed to the next section</strong>.</p>
+<p>There are several ways to install XCode:</p>
+<ul class="simple">
+<li>The developer tools should be present on one of the installation DVDs
+that came with your Mac. Often, this can be found on DVD 2 rather than on
+the main DVD.</li>
+<li>If you don&#8217;t have the original installation DVDs, you can <a class="reference external" href="http://developer.apple.com/programs/register/">register</a> for free as an Apple
+Developer, which will give you access to XCode 2 or 3:<ul>
+<li>If you are using MacOS 10.6 you should be able to download XCode 3.2.6
+once you are logged in to the <a class="reference external" href="http://developer.apple.com/devcenter/mac/index.action">Mac Dev Center</a>. Then, run
+the installer (<tt class="docutils literal"><span class="pre">Xcode</span> <span class="pre">and</span> <span class="pre">iOS</span> <span class="pre">SDK</span></tt>).</li>
+<li>If you are using MacOS 10.5, first log in to the <a class="reference external" href="http://developer.apple.com/devcenter/mac/index.action">Mac Dev Center</a>, then go
+<a class="reference external" href="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/downloads">here</a>.
+Click on <cite>Developer Tools</cite>, and download <cite>Xcode 3.1.4 Developer DVD
+(Disk Image)</cite>, then run the installer (<tt class="docutils literal"><span class="pre">XcodeTools.mpkg</span></tt>).</li>
+<li>If you are using MacOS 10.4, first log in to the <a class="reference external" href="http://developer.apple.com/devcenter/mac/index.action">Mac Dev Center</a>, then go
+<a class="reference external" href="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/downloads">here</a>.
+Click on <cite>Developer Tools</cite>, and download <cite>Xcode 2.5 Developer Tools
+(Disk Image)</cite>, then run the installer (<tt class="docutils literal"><span class="pre">XcodeTools.mpkg</span></tt>).</li>
+</ul>
+</li>
+<li>If you like to live on the bleeding edge, have MacOS X 10.6.6, and don&#8217;t
+mind shelling out $4.99, go to the App Store (<tt class="docutils literal"><span class="pre">/Applications/App</span>
+<span class="pre">Store.app</span></tt>) and buy XCode 4. Note that while this should work, we have
+not tested it so we can&#8217;t guarantee that everything will go smoothly with
+the Enthought Python Distribution.</li>
+</ul>
+</div>
+<div class="section" id="fortran">
+<h2>Fortran<a class="headerlink" href="#fortran" title="Permalink to this headline">¶</a></h2>
+<p>Many of the Python scientific packages use Fortran libraries internally. To
+avoid getting obscure errors, it is highly recommended to install the latest
+<tt class="docutils literal"><span class="pre">gfortran</span></tt> from <a class="reference external" href="http://r.research.att.com/tools/">http://r.research.att.com/tools/</a>.  Once you have
+installed it, make sure that typing <tt class="docutils literal"><span class="pre">gfortran</span></tt> gives something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ gfortran
+i686-apple-darwin8-gfortran-4.2: no input files
+</pre></div>
+</div>
+<p>If you get <tt class="docutils literal"><span class="pre">gfortran:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></tt>, then <tt class="docutils literal"><span class="pre">gfortran</span></tt> did not
+install correctly.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="path">
+<h3>Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h3>
+<p>If the Python distribution installed successfully and you can start <tt class="docutils literal"><span class="pre">python</span></tt> but not <tt class="docutils literal"><span class="pre">ipython</span></tt>
+(error message like <tt class="docutils literal"><span class="pre">ipython:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></tt>) then there is likely a
+problem with your PATH.  In the instructions below use the correct PATH for your distribution:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Dist</th>
+<th class="head">Path</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MacPorts</td>
+<td><tt class="docutils literal"><span class="pre">/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="step-1">
+<h4>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h4>
+<p>Are you sure you opened a new terminal window after the installation finished?</p>
+</div>
+<div class="section" id="step-2">
+<h4>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h4>
+<p>Try this in a new terminal window:</p>
+<div class="highlight-python"><div class="highlight"><pre>echo $PATH
+</pre></div>
+</div>
+<p>If you do not see something like
+<tt class="docutils literal"><span class="pre">/Library/Frameworks/EPD64.framework/Versions/Current/bin</span></tt> in your path then go
+to step 3.</p>
+</div>
+<div class="section" id="step-3">
+<h4>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">¶</a></h4>
+<p>Determine if you are running csh/tcsh or bash by entering the command
+<tt class="docutils literal"><span class="pre">echo</span> <span class="pre">$0</span></tt> in a terminal window.  For <tt class="docutils literal"><span class="pre">csh</span></tt> or <tt class="docutils literal"><span class="pre">tcsh</span></tt> you should edit the file
+<tt class="docutils literal"><span class="pre">~/.cshrc</span></tt> and add the following lines at the end:</p>
+<div class="highlight-python"><div class="highlight"><pre># Setting PATH for Enthough Python Distribution
+set path=(/Library/Frameworks/EPD64.framework/Versions/Current/bin $path)
+</pre></div>
+</div>
+<p>For <tt class="docutils literal"><span class="pre">bash</span></tt> you should edit the file <tt class="docutils literal"><span class="pre">~/.bash_profile</span></tt> and add the following lines at the end:</p>
+<div class="highlight-python"><div class="highlight"><pre># Setting PATH for Enthough Python Distribution
+export PATH=/Library/Frameworks/EPD64.framework/Versions/Current/bin:$PATH
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="vs-64-bit">
+<h3>32 vs. 64 bit<a class="headerlink" href="#vs-64-bit" title="Permalink to this headline">¶</a></h3>
+<p>If you get the following error when attempting to start up <tt class="docutils literal"><span class="pre">python</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ python
+-bash: /Library/Frameworks/EPD64.framework/Versions/Current/bin/python: Bad CPU type in executable
+</pre></div>
+</div>
+<p>then this means that your processor does not support 64-bit binaries. Start
+by uninstalling EPD:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd /Library/Frameworks/EPD64.framework/Versions
+sudo rm -rf 7.0
+cd /Applications
+sudo rm -rf Enthought
+</pre></div>
+</div>
+<p>then download and install EPD 7.0.2 32-bit.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Page Contents</h3>
+<ul>
+<li><a class="reference internal" href="#">MacPorts</a><ul>
+<li><a class="reference internal" href="#quick-installation-check">Quick installation check</a></li>
+<li><a class="reference internal" href="#macos-x-developer-tools">MacOS X Developer Tools</a></li>
+<li><a class="reference internal" href="#fortran">Fortran</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#path">Path</a><ul>
+<li><a class="reference internal" href="#step-1">Step 1</a></li>
+<li><a class="reference internal" href="#step-2">Step 2</a></li>
+<li><a class="reference internal" href="#step-3">Step 3</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vs-64-bit">32 vs. 64 bit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="recommended_options.html"
+                        title="previous chapter">Recommended installation options</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="linux.html"
+                        title="next chapter">Linux</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+<footer class="footer">
+  <p class="pull-right">
+    <a href="../_sources/installation/macosx.txt"
+       rel="nofollow">Page Source</a> &nbsp;
+    <a href="#">Back to Top</a></p>
+  <p>
+    &copy; Copyright 2011-2015, Smithsonian Astrophysical Observatory under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.<br/>
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3. &nbsp;
+</footer>
+  </body>
+</html>
