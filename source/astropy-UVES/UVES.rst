@@ -332,13 +332,13 @@ energy conservation:
 So, let us calculate the free-fall velocity for MN Lup::
 
     >>> v_accr = (2.* G * M_MN_Lup/R_MN_Lup)**0.5 
-    >>> print v_accr
+    >>> print(v_accr)
     504469.027564 m / (s)
     >>> # Maybe astronomers prefer it in the traditional cgs system?
-    >>> print v_accr.cgs
+    >>> print(v_accr.cgs)
     50446902.7564 cm / (s)
     >>> # Or in some really obscure unit?
-    >>> print v_accr.to(u.mile / u.hour)
+    >>> print(v_accr.to(u.mile / u.hour))
     1128465.07598 mi / (h)
 
 How does the accretion velocity relate to the rotational velocity?
@@ -409,7 +409,7 @@ This is how it can be done::
 The values from evolutionary tracks are indeed consistent with the 
 spectroscopically estimated surface gravity::
    
-    >>> print np.log10((G*M_MN_Lup/R_MN_Lup**2).cgs)
+    >>> print(np.log10((G*M_MN_Lup/R_MN_Lup**2).cgs))
     4.3080943799180433
 
 .. raw:: html

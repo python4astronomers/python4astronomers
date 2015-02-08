@@ -56,7 +56,7 @@ Once the WCS object has been created, you can use the following methods to
 convert pixel to world coordinates::
 
     >>> wx, wy = w.wcs_pix2world(250., 100., 1)
-    >>> print wx, wy
+    >>> print('{0} {1}'.format(wx, wy))
     352.67460912268814 -15.413728717834152
 
 This converts the pixel coordinates (250, 100) to the native world coordinate
@@ -66,7 +66,7 @@ indicates whether the pixel coordinates should be treated as starting from (1,
 coordinates is similar::
 
     >>> px, py = w.wcs_world2pix(0., 0., 1)
-    >>> print px, py
+    >>> print('{0} {1}'.format(px, py))
     240.5 120.5
 
 Working with arrays
@@ -78,10 +78,10 @@ If many coordinates need to be transformed, then it is possible to use Numpy arr
     >>> px = np.linspace(200., 300., 10)
     >>> py = np.repeat(100., 10)
     >>> wx, wy = w.wcs_pix2world(px, py, 1)
-    >>> print wx
+    >>> print(wx)
     [  31.31117136   22.6911179    14.09965438    5.52581152  356.9588445
       348.38809541  339.80285857  331.19224432  322.54503641  313.84953796]
-    >>> print wy
+    >>> print(wy)
     [-15.27956026 -15.34691039 -15.39269292 -15.4170814  -15.42016742
      -15.40196251 -15.36239844 -15.30132572 -15.21851046 -15.11362923]
 
