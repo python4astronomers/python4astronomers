@@ -8,6 +8,51 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600' rel='stylesheet' type='text/css'>
 {% if not embedded %}<script type="text/javascript" src="{{ pathto('_static/copybutton.js', 1) }}"></script>{% endif %}
 
+<script type="text/javascript"> 
+$(document).ready(function(){
+{% for isol in range(10) %}
+$(".flip{{isol}}").click(function(){
+    $(".panel{{isol}}").slideToggle("normal");
+  });
+{% endfor %}
+});
+</script>
+ 
+<style type="text/css"> 
+{% for isol in range(10) %}
+div.panel{{isol}},p.flip{{isol}}
+{
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0 0.1em 0.5em;
+    border-bottom: 1px solid #86989B;
+}
+p.flip{{isol}}
+{
+    color: white;
+    font-weight: bold;
+    background-color: #AFC1C4;
+}
+div.panel{{isol}}
+{
+display:none;
+}
+{% endfor %}
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18709417-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 {% endblock %}
 
 
@@ -16,13 +61,6 @@
   <a class="brand" title="{{ _('Documentation Home') }}" href="{{ pathto(master_doc) }}"><span id="logotext1">{{ theme_logotext1 }}</span><span id="logotext2">{{ theme_logotext2 }}</span><span id="logotext3">{{ theme_logotext3 }}</span></a>
   <ul>
     <li><a class="homelink" title="Astropy Homepage" href="http://www.astropy.org"></a></li>
-    <li><a title="{{ _('General Index') }}" href="{{ pathto('genindex') }}">Index</a></li>
-    <li><a title="{{ _('Module Index') }}" href="{{ pathto('py-modindex') }}">Modules</a></li>
-    <li>
-      {% block sidebarsearch %}
-      {% include "searchbox.html" %}
-      {% endblock %}
-    </li>
   </ul>
 </div>
 {% endblock %}
@@ -82,7 +120,11 @@
     {%- if hasdoc('copyright') %}
     {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
     {%- else %}
-    {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+    {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }} under
+    terms of <a rel="license"
+                href="http://creativecommons.org/licenses/by/3.0/">CC
+      Attribution 3.0</a>.{%
+    endtrans %}<br/>
     {%- endif %}
     {%- endif %}
     {%- if show_sphinx %}
@@ -91,6 +133,5 @@
     {%- if last_updated %}
     {% trans last_updated=last_updated|e %}Last built {{ last_updated }}.{% endtrans %} <br/>
     {%- endif %}
-  </p>
 </footer>
 {%- endblock %}

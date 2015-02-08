@@ -28,7 +28,7 @@ import sys, os
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.pngmath']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+# templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Python4Astronomers'
-copyright = u'2011, Smithsonian Astrophysical Observatory'
+copyright = u'2011-2015, Smithsonian Astrophysical Observatory'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -92,15 +92,16 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 # html_theme = 'default'
-html_theme = 'sphinxdoc'
+# html_theme = 'sphinxdoc'
+html_theme = 'bootstrap-astropy'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-html_theme_options = {'nosidebar': False}
+# html_theme_options = {'nosidebar': False}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = [os.path.abspath(os.path.join(os.path.dirname(__file__), 'themes'))]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -133,6 +134,12 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 #html_sidebars = {}
+html_sidebars = {
+    '**': ['localtoc.html', 'relations.html'],
+    'search': [],
+    'genindex': [],
+    'py-modindex': [],
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -142,7 +149,7 @@ html_static_path = ['_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-#html_use_index = True
+# html_use_index = True
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
