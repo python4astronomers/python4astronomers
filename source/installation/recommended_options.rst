@@ -25,6 +25,7 @@ ActiveState CE            Y         Y          Y       [5]_
 Enthought Canopy          Y         Y          Y       [6]_, [7]_
 STSci_Python              Y        [8]_        Y       [9]_
 yt Project                Y         Y         --       [10]_
+Ureka                     Y         Y         --       [11]_
 ====================  ========  =========  =========  ======================
 
 .. rubric:: Notes
@@ -90,6 +91,11 @@ yt Project                Y         Y         --       [10]_
 .. [10] Provides NumPy, Matplotlib, HDF5, and `yt <http://yt-project.org/>`_
    (astrophysical simulation analysis).  See `Installing yt
    <http://yt-project.org/doc/orientation/installing.html>`_.
+
+.. [11] **Ureka** is a collection of useful astronomy software that is generally
+        centered around Python and IRAF. The software provides everything you
+        need to run the data reduction packages provided by STScI and Gemini.
+        See `<http://ssb.stsci.edu/ureka/>`_.
 
 .. raw:: html
 
