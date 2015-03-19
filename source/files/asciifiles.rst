@@ -516,8 +516,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
              out.append('\t'.join(colvals))
          return out
 
-    You'll
-   want to start with::
+   You'll want to start with::
 
      from astropy.extern.six.moves.urllib import request
      from astropy.io import ascii
