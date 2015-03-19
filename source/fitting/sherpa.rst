@@ -58,23 +58,25 @@ If you still have the 3C120 data from the
 `NumPy introduction <../core/numpy_scipy.html#setup>`_
 then go to the py4ast/core directory, otherwise ::
 
-  $ ipython --pylab
-  import urllib2, tarfile
+  $ ipython --matplotlib
+
+  from astropy.extern.six.moves.urllib import request
+  import tarfile
   url = 'http://python4astronomers.github.com/core/core_examples.tar'
-  tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+  tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
   cd py4ast/core
 
-Now we load the Sherpa UI module :: 
+Now we load the Sherpa UI module and other requirements::
 
   import sherpa.astro.ui as ui
   import numpy as np
-  import pyfits
+  from astropy.io import fits
   # import pycrates
   # import pychips
 
 and then the data, using the ``load_arrays`` command ::
 
-  img = pyfits.open('3c120_stis.fits.gz')[1].data
+  img = fits.open('3c120_stis.fits.gz')[1].data
   # cr = pycrates.read_file('3c120_stis.fits.gz')
   # img = pycrates.get_piximgvals(cr)
   profile = img.sum(axis=1)
@@ -369,7 +371,8 @@ current session as a single file.::
 This file can then be
 loaded into a new session with the ``restore`` command.::
 
-  ipython --pylab
+  $ ipython --matplotlib
+
   In [1]: import sherpa.astro.ui as ui
   
   In [2]: ui.restore("simple1.sherpa")

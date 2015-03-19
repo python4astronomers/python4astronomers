@@ -82,15 +82,16 @@ As with the web queries you can wrap up the parameters in a dictionary::
 enter the query URL for the target catalog (see sidebar), and create a catalog
 handler ``ic348cxo`` that wraps the query tool. We use the ``getRaw`` function
 of the ConeSearch to retrieve the raw string result that we then dump into a
-file and extract back the data using `ATpy`_::
+file and extract back the data using `astropy`_::
 
+    from astropy.table import Table
     url = "http://vizier.u-strasbg.fr/viz-bin/votable/-A?-source=J/AJ/122/866&"
     ic348cxo = ConeSearch(url)
     
     with open('ic348cxo.xml','wb') as f:
         f.write(ic348cxo.getRaw(**params))
         
-    data = atpy.Table(f.name,type='vo')
+    data = Table.read(f.name, format='votable')
     
     
 Image Search
@@ -156,7 +157,7 @@ The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
     The returned array contains **66** fields! 
     ::
         
-        print image_table.dtype.names     
+        print(image_table.dtype.names)
         
     If all we want is the actual data then the important column is **URL**
     while the **filename** column is also useful.
@@ -178,21 +179,21 @@ The ``Siap`` acronym stands for *Simple Image Access Protocol* and as with
 
    <p class="flip9">Click to Show/Hide Solution</p> <div class="panel9">
     
-We use `pyfits`_ to open the image file and examine its contents.
+We use `astropy.io.fits`_ to open the image file and examine its contents.
 ::
 
-    import pyfits
+    from astropy.io import fits
     import aplpy
-    import matplotlib.pyplot as mpl
+    import matplotlib.pyplot as plt
     
-    hdulist = pyfits.open(filename)
+    hdulist = fits.open(filename)
 
     # check for multiple FITS extensions and their contents
     # in this case the "PRIMARY" header is empty
     for hdu in hdulist:
-        print hdu.name, type(hdu.data)
+        print('name: {0}  type: {1}'.format(hdu.name, type(hdu.data)))
     
-    fig = mpl.figure(figsize=(15, 7))
+    fig = plt.figure(figsize=(15, 7))
     f1 = aplpy.FITSFigure(filename, hdu=1, subplot=[0.1,0.1,0.3,0.65], figure=fig)    
     f1.set_tick_labels_font(size='x-small')
     f1.set_axis_labels_font(size='small')
@@ -211,7 +212,3 @@ We use `pyfits`_ to open the image file and examine its contents.
     f3.hide_yaxis_label()
     f3.hide_ytick_labels()
     f3.show_colorscale(cmap='spring')
-
-        
-        
-    

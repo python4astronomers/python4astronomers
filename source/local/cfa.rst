@@ -92,8 +92,8 @@ Now within ``sherpa`` do::
 
   import scipy
   import scipy.linalg
-  print scipy.__version__
-  print scipy.linalg.eig([[1,2],[3,4]])
+  print(scipy.__version__)
+  print(scipy.linalg.eig([[1,2],[3,4]]))
 
 Now quit and install the rest::
 
@@ -117,7 +117,7 @@ Once again fire up ``sherpa`` or ``chips`` and do::
   import atpy
   import aplpy
 
-  print np.__version__
+  print(np.__version__)
 
   x = np.linspace(0, 20, 100)
   plt.plot(x, np.sin(x))

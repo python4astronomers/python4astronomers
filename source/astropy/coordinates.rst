@@ -92,10 +92,10 @@ Practical Exercises
 
     >>> from astropy import coordinates as coord
     >>> crab = coord.ICRSCoordinates.from_name('M1')
-    >>> print crab
+    >>> print(crab)
     <ICRSCoordinates RA=83.63308 deg, Dec=22.01450 deg>
     >>> crab_gal = crab.transform_to(coord.GalacticCoordinates)
-    >>> print crab_gal
+    >>> print(crab_gal)
     <GalacticCoordinates l=-175.44248 deg, b=-5.78434 deg>
 
 .. raw:: html

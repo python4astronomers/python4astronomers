@@ -7,14 +7,19 @@ Fit image data of a supernova remnant G21.5-0.9 using a 2-D multi-component
 source model.  First, download the FITS image of :download:`G21.5-0.9 <./image2.fits>`
 and start IPython::
 
-  $ ipython --pylab
+  $ ipython --matplotlib
+
+Do the usual imports of numpy and matplotlib::
+
+  import numpy as np
+  import matplotlib.pyplot as plt
 
 If you have trouble accessing the image you can download it straight away using
 Python::
 
-  import urllib2
+  from astropy.extern.six.moves.urllib import request
   url = "http://python4astronomers.github.com/_downloads/image2.fits"
-  open("image2.fits", "wb").write(urllib2.urlopen(url).read())
+  open("image2.fits", "wb").write(request.urlopen(url).read())
   ls
 
 Here we eschew the advice of keeping modules separate and load the
@@ -340,7 +345,7 @@ ERF(sigma/SQRT(2)).  We can invert this operation using the inverse
 error-function found in SciPy in the special functions module::
 
   import scipy.special
-  print scipy.special.erfinv(0.90)*numpy.sqrt(2)
+  print(scipy.special.erfinv(0.90) * numpy.sqrt(2))
 
 .. raw:: html
 
@@ -355,7 +360,7 @@ Save the 90% calculated parameter limits::
   f.write("NAME VALUE MIN MAX\n")
   for name, val, minval, maxval in zip(results.parnames,results.parvals,results.parmins,results.parmaxes):
       line = [name, str(val), str(val+minval), str(val+maxval)]
-      print line
+      print(line)
       f.write(" ".join(line)+"\n")
 
   f.close()

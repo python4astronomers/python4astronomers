@@ -1,5 +1,5 @@
-Astropy
-=======
+Astropy I: core functions
+=========================
 
 `Astropy <http://www.astropy.org>`_ is a community-developed core Python
 package for Astronomy (with the term used in the broad sense, from Solar
@@ -32,15 +32,20 @@ Please download this
 the content, either by clicking on the link or by executing this
 python code::
 
-    import urllib2, tarfile
+    from astropy.extern.six.moves.urllib import request
+    import tarfile
     url = 'http://python4astronomers.github.io/_downloads/astropy_examples.tar'
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
     cd data
     ls
 
-Then start up IPython with the ``--pylab`` option to enable easy plotting::
+Then start up IPython with the ``--matplotlib`` option to enable interactive
+plotting and then import numpy and matplotlib::
 
-    ipython --pylab
+    $ ipython --matplotlib
+
+    import numpy as np
+    import matplotlib.pyplot as plt
 
 Acknowledgments
 ---------------

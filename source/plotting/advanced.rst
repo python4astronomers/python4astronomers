@@ -193,7 +193,7 @@ This is very powerful, as it allows you to customize virtually *all* elements in
 
 .. admonition:: Exercise: Explore customization
 
-    Run the above example in ``ipython --pylab``, and try and use the title
+    Run the above example in ``ipython --matplotlib``, and try and use the title
     and points objects to change the points to be red, and the title to have
     an ``x-large`` font size.
 
@@ -507,7 +507,7 @@ Finally, add your patch to your figure::
    :scale: 60%
    :align: center
 
-See `here <http://matplotlib.sourceforge.net/api/artist_api.html?#module-matplotlib.patches>`_ for a complete list of patches and options.
+See `matplotlib.patches <http://matplotlib.sourceforge.net/api/artist_api.html?#module-matplotlib.patches>`_ for a complete list of patches and options.
 
 Similarly, there are line classes::
 
@@ -516,7 +516,7 @@ Similarly, there are line classes::
     l = Line2D(...)
     ax.add_line(l)
 
-See `here <http://matplotlib.sourceforge.net/api/artist_api.html?#module-matplotlib.lines>`_ for a complete list of line types and options.
+See `matplotlib.lines <http://matplotlib.sourceforge.net/api/artist_api.html?#module-matplotlib.lines>`_ for a complete list of line types and options.
 
 Tips and tricks
 ---------------

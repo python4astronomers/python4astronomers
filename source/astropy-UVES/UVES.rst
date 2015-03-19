@@ -1,4 +1,4 @@
-Analyzing UVES Spectroscopy with Astropy
+Astropy II: Analyzing UVES Spectroscopy
 ========================================
 
 This tutorial follows my real live data analysis of MN Lup and the code developed
@@ -25,15 +25,21 @@ Please download this
 the content, either by clicking on the link or by executing this
 python code::
 
-    import urllib2, tarfile
+    from astropy.extern.six.moves.urllib import request
+    import tarfile
     url = 'http://python4astronomers.github.io/_downloads/astropy_UVES.tar.gz'
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|*').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|*').extractall()
     cd UVES
     ls
 
-Then start up IPython with the ``--pylab`` option to enable easy plotting::
+Then start up IPython with the ``--matplotlib`` option and do the usual imports
+to enable interactive plotting::
 
-    ipython --pylab
+    $ ipython --matplotlib
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
 
 Acknowledgments
 ---------------
@@ -253,7 +259,7 @@ than two lines::
     # Let's just print the setup on the screen
     # We'll see if it's all the same.
     for f in filelist:
-        print read_setup(f)
+        print(read_setup(f))
 
 .. raw:: html
 
@@ -280,12 +286,12 @@ Units and constants in astropy
 Often, one has to keep track of the units for certain values. Was the wavelength
 given in Angstrom or in nm? In X-ray observations, a common unit of wavelength is
 keV. How many nm is 0.65 keV?
-`astropy.units <http://docs.astropy.org/en/v0.2.1/units/index.html>`_
+`astropy.units <http://docs.astropy.org/en/stable/units/index.html>`_
 offers a framework that can take
 care of this book-keeping and propagate the units through many (but not all)
 mathematical operations (e.g. addition, division, multiplication). 
 Furthermore, 
-`astropy.constants <http://docs.astropy.org/en/v0.2.1/constants/index.html>`_  supplies the values of
+`astropy.constants <http://docs.astropy.org/en/stable/constants/index.html>`_  supplies the values of
 many physical and astronomical constants.
 The easiest way to attach a unit to a number is by multiplication::
 
@@ -326,13 +332,13 @@ energy conservation:
 So, let us calculate the free-fall velocity for MN Lup::
 
     >>> v_accr = (2.* G * M_MN_Lup/R_MN_Lup)**0.5 
-    >>> print v_accr
+    >>> print(v_accr)
     504469.027564 m / (s)
     >>> # Maybe astronomers prefer it in the traditional cgs system?
-    >>> print v_accr.cgs
+    >>> print(v_accr.cgs)
     50446902.7564 cm / (s)
     >>> # Or in some really obscure unit?
-    >>> print v_accr.to(u.mile / u.hour)
+    >>> print(v_accr.to(u.mile / u.hour))
     1128465.07598 mi / (h)
 
 How does the accretion velocity relate to the rotational velocity?
@@ -374,7 +380,7 @@ to tell astropy that this number is dimensionless and does not carry any scaling
     wavelength = wavelength * (1. * u.dimensionless_unscaled+ heliocentric/c)
 
 I want to mention one more feature here (check out 
-`astropy.units <http://docs.astropy.org/en/v0.2.1/units/index.html>`_ for
+`astropy.units <http://docs.astropy.org/en/stable/units/index.html>`_ for
 more): The ability to convert the spectral axis to frequencies or energies.
 Normally, a unit of length is not equivalent to a unit of energy or to a
 frequency, but this conversion makes sense for the wavelength of a spectrum.
@@ -403,7 +409,7 @@ This is how it can be done::
 The values from evolutionary tracks are indeed consistent with the 
 spectroscopically estimated surface gravity::
    
-    >>> print np.log10((G*M_MN_Lup/R_MN_Lup**2).cgs)
+    >>> print(np.log10((G*M_MN_Lup/R_MN_Lup**2).cgs))
     4.3080943799180433
 
 .. raw:: html
@@ -427,7 +433,7 @@ spectroscopically estimated surface gravity::
     of the following wavelengths relative to :math:`H_\alpha`::
 
         waveclosetoHa = np.array([6562.,6563,6565.]) * u.AA
-        print wave2doppler(waveclosetoHa, 656.489 * u.nm)
+        print(wave2doppler(waveclosetoHa, 656.489 * u.nm))
 
     I get -132, -86 and +5 km/s.
     
@@ -441,7 +447,7 @@ spectroscopically estimated surface gravity::
         doppler = ((w-w0)/w0 * c)
         return doppler
 
-    print wave2doppler(waveclosetoHa, 656.489 * u.nm).decompose().to(u.km/u.s)
+    print(wave2doppler(waveclosetoHa, 656.489 * u.nm).decompose().to(u.km/u.s))
 
 .. raw:: html
 
@@ -478,7 +484,7 @@ spectroscopically estimated surface gravity::
 
 Converting times
 ----------------
-`astropy.time <http://docs.astropy.org/en/v0.2.1/time/index.html>`_ 
+`astropy.time <http://docs.astropy.org/en/stable/time/index.html>`_ 
 provides methods to convert times and dates between different
 systems and formats. Since the ESO fits headers already contain the time of the
 observation in different systems, we could just read the keyword in the time
@@ -579,7 +585,7 @@ for the first spectrum::
 
     ew = fcaII[0,:] - 1.
     ew = ew[:-1] * np.diff(wcaII.to(u.AA).value)
-    print ew.sum()
+    print(ew.sum())
 
 Using ``numpy`` array notation we can actually process all spectra at once::
 
@@ -589,7 +595,7 @@ Using ``numpy`` array notation we can actually process all spectra at once::
 Now, we want to generate a LaTeX table of the observation times, period
 and equivalent width that we can directly paste into our manuscript. To do so,
 we first collect all the columns and make an ``astropy.table.Table`` object. (Please
-check `astropy.table <http://docs.astropy.org/en/v0.2.1/table/index.html>`_
+check `astropy.table <http://docs.astropy.org/en/stable/table/index.html>`_
 or :ref:`tabular-data` for more
 details on ``Table``). So, here is the code::
 

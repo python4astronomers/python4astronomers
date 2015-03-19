@@ -47,11 +47,15 @@ the workshop.  Now that you have a working Python installation we can do this
 without worrying about details of the platform (e.g. linux has wget,
 Mac has curl, Windows might not have tar, etc etc).
 
-Now start IPython ("ipython --pylab") or use your existing session and enter::
+Now start IPython ("ipython --matplotlib") or use your existing session and enter::
 
-  import urllib2, tarfile
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  from astropy.extern.six.moves.urllib import request
+  import tarfile
   url = 'http://python4astronomers.github.com/core/core_examples.tar'
-  tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+  tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
   cd py4ast/core
   ls
 
@@ -60,7 +64,7 @@ Leave this IPython session open for the rest of the workshop.
 .. admonition:: Exercise (for the interested reader): How did that code above work?
 
    Explain what's happening in each part of the previous code snippet to grab
-   the file at a URL and untar it.  Google on "python urllib2" and "python
+   the file at a URL and untar it.  Google on "python3 urllib" and "python
    tarfile" to find the relevant module docs.  Figure out how you would
    use the ``tarfile`` module to create a tarfile.
 
@@ -68,7 +72,7 @@ Leave this IPython session open for the rest of the workshop.
 
    <p class="flip0">Click to Show/Hide Solution</p> <div class="panel0">
 
-- ``urllib2.urlopen(url)`` opens the URL as a streaming file-like object
+- ``urllib.request.urlopen(url)`` opens the URL as a streaming file-like object
 - ``mode='r|' means ``tarfile`` is expecting a streaming file-like object
   with no ability to seek in the file
 - ``tarfile.open(..).extractall`` then extracts the tar archive
@@ -576,7 +580,7 @@ image which includes the source region.
 
 Let's tackle a simpler problem first and fit the background for a single column::
 
-  x = append(np.arange(10, 200), np.arange(300, 480))  # Background rows
+  x = np.append(np.arange(10, 200), np.arange(300, 480))  # Background rows
   y = img_cr[x, 10]         # Background rows of column 10 of cleaned image
   plt.figure()
   plt.plot(x, y)

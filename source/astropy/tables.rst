@@ -17,7 +17,7 @@ Documentation
 -------------
 
 For more information about the features presented below, you can read the
-`astropy.table <http://docs.astropy.org/en/v0.2.1/table/index.html>`_ docs.
+`astropy.table <http://docs.astropy.org/en/stable/table/index.html>`_ docs.
 
 
 Constructing and Manipulating tables
@@ -43,7 +43,7 @@ about the table values and column definitions as follows::
 If you print the table (either from the noteboook or in a text console
 session) then a formatted version appears::
 
-  >>> print t
+  >>> print(t)
     a   b   c
   --- --- ---
     1 2.0   x
@@ -79,7 +79,7 @@ arrays::
 One can retrieve a subset of a table by rows (using a slice) or columns (using
 column names), where the subset is returned as a new table::
 
-    >>> print t[0:2]      # Table object with rows 0 and 1
+    >>> print(t[0:2])      # Table object with rows 0 and 1
      a   b   c
     --- --- ---
       1 2.0   x
@@ -99,7 +99,7 @@ Modifying table values in place is flexible and works as one would expect::
     >>> t[1] = (8, 9.0, "W")        # Set all row values
     >>> t[1]['b'] = -9              # Set column 'b' of row 1
     >>> t[0:2]['b'] = 100.0         # Set column 'c' of rows 0 and 1
-    >>> print t
+    >>> print(t)
      a    b    c
     --- ----- ---
      -1 100.0   x
@@ -132,7 +132,7 @@ Lastly, one can create a table with support for missing values, for example by s
            fill_value = (999999, 1e+20, 'N'),
                 dtype = [('a', '<i8'), ('b', '<f8'), ('c', '|S1')])
 
-    >>> print t
+    >>> print(t)
      a   b   c
     --- --- ---
      -- 2.0   x
@@ -159,7 +159,7 @@ You can read this in as a ``Table`` object by simply doing::
 (just ignore the warnings, which are due to Vizier not complying with the VO
 standard). We can see a quick overview of the table with::
 
-    >>> print t
+    >>> print(t)
          _1RXS        RAJ2000   DEJ2000  PosErr NewFlag   Count    e_Count   HR1  e_HR1  HR2  e_HR2 Extent
     ---------------- --------- --------- ------ ------- --------- --------- ----- ----- ----- ----- ------
     J000000.0-392902   0.00000 -39.48403     19    __..      0.13     0.035  0.69  0.25  0.28  0.24      0
@@ -178,7 +178,8 @@ standard). We can see a quick overview of the table with::
     J235944.7+220014 359.93625  22.00389     17    __..     0.052     0.015 -0.01  0.27  0.37  0.35      0
     J235959.1+083355 359.99625   8.56528     10    __..      0.12     0.018  0.54  0.13  0.10  0.17      9
 
-Since we are using IPython with the ``--pylab`` option, we can easily make a
+Since we are using IPython with the ``--matplotlib`` option along with 
+``import matplotlib.pyplot as plt``, we can easily make a
 histogram of the count rates::
 
     >>> plt.hist(t['Count'], range=[0., 2], bins=100)
@@ -218,7 +219,7 @@ Practical Exercises
 ::
 
     >>> t.keep_columns(['RAJ2000', 'DEJ2000', 'Count'])
-    >>> print t
+    >>> print(t)
      RAJ2000   DEJ2000    Count
     --------- --------- ---------
       0.00000 -39.48403      0.13
@@ -239,7 +240,7 @@ Practical Exercises
     Note that you can also do this with::
     
     >>> t_new = t['RAJ2000', 'DEJ2000', 'Count']
-    >>> print t_new
+    >>> print(t_new)
      RAJ2000   DEJ2000    Count
     --------- --------- ---------
       0.00000 -39.48403      0.13

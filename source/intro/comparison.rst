@@ -59,7 +59,7 @@ Python::
   y = v + x * 12         # OK
   y = str(v) + "+x*12"   # Two strings can be added (concatenated)
   y = str(v+x*12)        # Make a string from the number
-  print x, y, v          # print x, y and v. 
+  print(x, y, v)         # print x, y and v. 
 
 IDL
 -----

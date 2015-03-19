@@ -104,7 +104,7 @@ The matplotlib documentation is extensive and covers all the functionality in
 detail.  The documentation is littered with hundreds of examples showing a plot and the
 exact source code making the plot:
 
-- `Matplotlib home page <http://matplotlib.sourceforge.net/>`_: key pylab plotting commands in a table
+- `Matplotlib home page <http://matplotlib.sourceforge.net/>`_: key plotting commands in a table
 - `Pyplot tutorial <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_: intro to 1-D plotting
 - `Interactive navigation
   <http://matplotlib.sourceforge.net/users/navigation_toolbar.html>`_: how to use the plot window for zooming etc.
@@ -168,23 +168,13 @@ Basic plots
 
 So let's get started with plotting using a standard startup idiom that will work
 for both interactive and scripted plotting.  In this case we are working
-interactively so fire up ``ipython`` in the usual way::
+interactively so fire up ``ipython`` in the usual way with the standard
+imports for numpy and matplotlib::
 
-  % ipython --pylab
-
-See the `Appendix: Pylab and Pyplot and NumPy`_ for details about just what's
-going on with the ``--pylab`` switch.  Also remember if you are using IPython
-version 0.10 or earlier you need to use ``-pylab`` with just one dash.
-
-The following two statements are made for you automatically if you
-started ``ipython`` with the ``--pylab`` switch, and cause
-both ``numpy`` and ``matplotlib`` to be imported::
+  $ ipython --matplotlib
 
   import numpy as np
   import matplotlib.pyplot as plt
-
-When writing your own Python code - e.g. as a script - then you will need
-to include the above two lines.
 
 `matplotlib.pyplot`_ is a collection of command style functions that make
 matplotlib work like MATLAB.  Each ``pyplot`` function makes some change to a
@@ -356,7 +346,7 @@ somewhat cryptic messsage above. For new users it would be nice if it
 said "hold on, size isn't callable", but then this would inhibit
 useful - if complex - statements such as::
 
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
 
 Controlling line properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -774,14 +764,16 @@ To get more information check out the `mplot3d tutorial
 Appendix: Pylab and Pyplot and NumPy
 -------------------------------------
 
-Let's demystify what's happening when you use ``ipython --pylab`` and
+You may see examples that use the ``pylab`` mode of IPython by using
+``ipython --pylab`` or the ``%pylab`` magic function.
+Let's demystify what's happening in this case and
 clarify the relationship between **pylab** and **pyplot**.
 
 `matplotlib.pyplot`_ is a collection of command style functions that make
 matplotlib work like MATLAB.  This is just a package module that you can import::
 
   import matplotlib.pyplot
-  print sorted(dir(matplotlib.pyplot))
+  print(sorted(dir(matplotlib.pyplot)))
 
 Likewise pylab is also a module provided by matplotlib that you can import::
 

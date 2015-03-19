@@ -1,3 +1,5 @@
+.. include:: ../references.rst
+
 
 1-D data with errors
 --------------------
@@ -8,14 +10,14 @@ three arrays: x values, y values, and errors on the y values.
 In a new working directory, download a MAST spectrum of :download:`3C 273 <./3c273.fits>`
 and start IPython ::
 
-  $ ipython --pylab
+  $ ipython --matplotlib
 
 If you have trouble accessing the spectrum you can download it straight away
 using Python  ::
 
-  import urllib2
+  from astropy.extern.six.moves.urllib import request
   url = 'http://python4astronomers.github.com/_downloads/3c273.fits'
-  open('3c273.fits', 'wb').write(urllib2.urlopen(url).read())
+  open('3c273.fits', 'wb').write(request.urlopen(url).read())
 
 We also need to load in Sherpa ::
 
@@ -37,11 +39,11 @@ Loading the data
 
 .. Note::
   The ``load_data`` command may not work in the stand-alone version of
-  Sherpa. If not, you can use ``pyfits`` to load in the data and then
+  Sherpa. If not, you can use `astropy.io.fits`_ to load in the data and then
   ``load_arrays``, for example::
 
-    import pyfits
-    dat = pyfits.open('3c273.fits')[1].data
+    from astropy.io import fits
+    dat = fits.open('3c273.fits')[1].data
     wlen = dat.field('WAVELENGTH')
     flux = dat.field('FLUX')
     ui.load_arrays(1, wlen, flux)

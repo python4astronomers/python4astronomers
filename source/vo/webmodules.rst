@@ -31,8 +31,8 @@ First, `urllib2`_ has returned a file like object ``handler`` that
 points to a specific web resource. Various attributes about the
 webpage are available::
 
-    print handler.code
-    print handler.headers['content-type']
+    print(handler.code)
+    print(handler.headers['content-type'])
 
 In this particular example the data request is handled after the
 initial response has been examined; the data is streamed into a local
@@ -81,8 +81,8 @@ learn which `parameters <http://archive.stsci.edu/vo/general_params.html>`_ are 
     handler = urllib2.urlopen(get_url)
 
     # check it
-    print handler.code
-    print handler.headers['content-type']
+    print(handler.code)
+    print(handler.headers['content-type'])
 
     # save it
     with open('hst_m51.csv','wb') as f:
@@ -101,13 +101,13 @@ dictionary key,value pairs with the HTTP url encoding.
     sform = "%-20.20s %-10.10s %-30.30s"
 
     # make a header
-    print sform % ('parameter','value','encoded')
-    print sform % (3*(100*'-',))
+    print(sform % ('parameter','value','encoded'))
+    print(sform % (3*(100*'-',)))
 
     # for each paramter show the input items from the dictionary
     # "p" and the output query string.
     for a,b in zip(p.items(),query.split('&')):
-       print sform % (a+(b,))
+       print(sform % (a+(b,)))
 
 .. admonition::  Exercise: import WISE catalog data for a young cluster
 
@@ -129,7 +129,7 @@ dictionary key,value pairs with the HTTP url encoding.
         get_url = url + "?" + query
         handler = urllib2.urlopen(get_url)
         raw = handler.read()
-        print raw[0:255]
+        print(raw[0:255])
 
         with open('ic348_wise.tbl', 'wb') as f:
             f.write(raw)
@@ -169,7 +169,7 @@ a couple of columns::
     t = [t1, t2, t3, t4, t5]
     for i in t:
         c = (type(i), i['j_m_2mass'].dtype, i['tmass_key'].dtype)
-        print "%40s%10s%10s" % c
+        print("%40s%10s%10s" % c)
 
 The output table types (and hence their built-in utilities), column data types
 and treatment of null values vary and this matters when trying to make a plot

@@ -9,17 +9,23 @@ basic features of IPython and how it benefits interactive analysis.
 
 Before going further, open a new terminal window and change to your main Python
 for Astronomers working directory.  Then start IPython by typing "ipython
--pylab" at the command prompt::
+--matplotlib" at the command prompt::
 
-  % ipython --pylab
+  $ ipython --matplotlib
 
 As we saw in the Introduction and Installation workshops, for interactive data
-analysis IPython has a special ``-pylab`` command line option which
-automatically imports elements of the NumPy and the Matplotlib environments. 
-This is equivalent to::
+analysis IPython has a special ``--matplotlib`` command line option which makes
+interactive plotting work better from a terminal window by allowing a plot to
+come up without blocking subsequent terminal input.
+
+In all of the tutorial examples we will start the session by importing the
+core modules numpy and matplotlib as follows::
   
   import numpy as np
-  from matplotlib import pyplot as plt
+  import matplotlib.pyplot as plt
+
+The abbreviations ``np`` and ``plt`` provide quick access to numpy and
+matplotlib routines and are widely used in scientific code.
 
 .. admonition:: Reminder: What does ``import`` do?
   
@@ -29,7 +35,7 @@ This is equivalent to::
   `import <http://docs.python.org/reference/simple_stmts.html#import>`_ statement 
   makes the functions in a module available::
 
-    print time.ctime()    # will fail
+    print(time.ctime())   # will fail
     # need to import the time module first
     import time
     time.ctime()          # prints the system time
@@ -39,12 +45,12 @@ This is equivalent to::
 
     np.sum([2,3])
 
-IPython with the  ``-pylab`` command line option provides a Matlab-like environment
+IPython with the  ``--matplotlib`` command line option provides a Matlab-like environment
 allowing very simple and direct commands like the following::
   
   x = np.arange(0, 10, 0.2)
   y = np.sin(x)
-  print x
+  print(x)
   plt.plot(x, y)
 
 Keyboard navigation and history
@@ -116,7 +122,7 @@ Try::
 
   y = dict((x, 'value is %d' % x**2) for x in range(10))
   y
-  print y
+  print(y)
 
 Further resources
 ^^^^^^^^^^^^^^^^^^

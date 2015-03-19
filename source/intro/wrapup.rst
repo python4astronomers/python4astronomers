@@ -28,7 +28,7 @@ Workshop materials
 
 All the workshop materials will be available through the web site:
 
- `<http://python4astronomers.github.com>`_
+ `<http://python4astronomers.github.io>`_
 
 - Presentations
 - Tutorial and example scripts
@@ -37,8 +37,8 @@ All the workshop materials will be available through the web site:
 Installing Python and the rest
 ------------------------------
 
-In order to follow along the tutorial sessions you need to have Python 2.6 or
-2.7 installed and satisfy these :ref:`python_pkg_requirements`.  Please look
+In order to follow along the tutorial sessions you need to have Python 2.6,
+2.7, or Python >= 3.3 installed and satisfy these :ref:`python_pkg_requirements`.  Please look
 ahead to the workshop on :ref:`installing_scientific_python`.  You are
 encouraged to attempt the installation on your own, but at the very least you
 should download the necessary package files for your configuration in advance

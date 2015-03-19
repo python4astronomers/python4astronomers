@@ -21,9 +21,10 @@ Quick tour of Python
    C-COSMOS browse (live demo)
    
 In the spirit of this workshop let's jump in to real Python analysis code.
-These examples assume you are using `pylab
+These examples assume you are using the IPython `pylab
 <http://matplotlib.sourceforge.net/faq/usage_faq.html#matplotlib-pylab-and-pyplot-how-are-they-related>`_
-(you'll understand what that is after the 2nd hands-on session).
+mode which automatically imports a number of numerical and plotting routines
+into the session.
 
 Reading a table and plotting
 ----------------------------
@@ -33,11 +34,13 @@ HEASARC.  The script below will read in the catalog data using the `astropy.io.a
 module, do some basic filtering with `NumPy`_, and make a couple of plots with
 `matplotlib`_ ::
 
-  import astropy.io.ascii as ascii   # Make external package available
+  # Make external packages available
+  from astropy.io import ascii
 
   # Read table.  
   # ==> dat[column_name] and dat[row_number] both valid <==
-  dat = ascii.read('fermi_agn.dat')
+  data_url = 'https://raw.githubusercontent.com/python4astronomers/python4astronomers/stable/examples/tables/fermi_agn.dat'
+  dat = ascii.read(data_url)
 
   redshift = dat['redshift']    # array of values from 'redshift' column
   flux = dat['photon_flux']
@@ -66,7 +69,7 @@ module, do some basic filtering with `NumPy`_, and make a couple of plots with
   title('$\Gamma$ for low-z and high-z samples')
   legend(loc='upper left')
 
-  asciitable.write(dat[with_z], 'fermi_agn_with_z.dat')
+  ascii.write(dat[with_z], 'fermi_agn_with_z.dat')
 
 .. image:: scatter.png
    :scale: 70%
@@ -107,9 +110,9 @@ uncertainties.
   popt, pcov = curve_fit(gaussian, x, y, sigma=e)
 
   # Print results
-  print "Scale =  %.3f +/- %.3f" % (popt[0], sqrt(pcov[0, 0]))
-  print "Offset = %.3f +/- %.3f" % (popt[1], sqrt(pcov[1, 1]))
-  print "Sigma =  %.3f +/- %.3f" % (popt[2], sqrt(pcov[2, 2]))
+  print("Scale =  %.3f +/- %.3f" % (popt[0], sqrt(pcov[0, 0])))
+  print("Offset = %.3f +/- %.3f" % (popt[1], sqrt(pcov[1, 1])))
+  print("Sigma =  %.3f +/- %.3f" % (popt[2], sqrt(pcov[2, 2])))
 
   # Plot data
   errorbar(x, y, yerr=e, linewidth=1, color='black', fmt=None)
@@ -145,7 +148,7 @@ This example demonstrates how to create a synthetic image of a cluster,
 including convolution with a Gaussian filter and the addition of noise.
 ::
 
-  import astropy.io.fits as fits
+  from astropy.io import fits
   from scipy.ndimage import gaussian_filter
 
   # Create empty image
@@ -195,7 +198,7 @@ together other codes and doing system type tasks.
 ::
 
   import os
-  import astropy.io.ascii as ascii
+  from astropy.io import ascii
 
   smoothing = 30  # Smoothing window length
   freqs = [2, 4]  # Frequency values for making data
@@ -211,7 +214,7 @@ together other codes and doing system type tasks.
       for noise in noises:
           # Run the compiled code "make_data" to make data as a list of x, y, y_smooth
           cmd = 'make_data %s %s %s' % (freq, noise, smoothing)
-          print 'Running', cmd
+          print('Running {0}'.format(cmd))
           out = os.popen(cmd).read()
           # out now contains the output from <cmd> as a single string
 
@@ -255,7 +258,7 @@ talk was made.
                        vmin_b=-2,vmax_b=50)
 
   # Create a new figure
-  fig = aplpy.FITSFigure('rgb_2d.fits')
+  fig = aplpy.FITSFigure('rgb.fits')
 
   # Show the RGB image
   fig.show_rgb('rgb.png')

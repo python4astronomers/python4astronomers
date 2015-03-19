@@ -1,14 +1,14 @@
 :tocdepth: 2
 
-Several ways to handle ASCII data
-*********************************
+Reading and Writing tabular ASCII data
+***************************************
 
 Astronomers love storing tabular data in human-readable ASCII tables.
 Unfortunately there is very little agreement on a standard way to do this,
 unlike e.g. FITS.
 
-Reading and Writing files in Pure Python
-========================================
+Pure Python
+===========
 
 Reading
 -------
@@ -19,13 +19,18 @@ there are more types that we did not speak about. One of these is the
 
 Let's start off by downloading :download:`this <../downloads/data.txt>` data file, then launching IPython the directory where you have the file::
 
-    $ ipython --pylab
+    $ ipython --matplotlib
 
-If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
+Do the usual imports of numpy and matplotlib::
 
-    import urllib2
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+If you have trouble downloading the file, then from within IPython enter::
+
+    from astropy.extern.six.moves.urllib import request
     url = 'http://python4astronomers.github.com/_downloads/data.txt'
-    open('data.txt', 'wb').write(urllib2.urlopen(url).read())
+    open('data.txt', 'wb').write(request.urlopen(url).read())
     ls
 
 Now let's try and get the contents of the file into IPython. We start off by creating a file object::
@@ -68,20 +73,20 @@ Now ``data`` contains a string::
 
 .. admonition:: Closing files
 
-  Usually, you should close file when you are done with it to free up 
-  resources (memory). 
-  If you only have a couple of files in an interactive session, that is not 
-  dramatic. On the other hand, if you write scripts which deal with dozens of 
-  files, then you should start worrying about these things. Often you will see 
+  Usually, you should close file when you are done with it to free up
+  resources (memory).
+  If you only have a couple of files in an interactive session, that is not
+  dramatic. On the other hand, if you write scripts which deal with dozens of
+  files, then you should start worrying about these things. Often you will see
   things like this::
-      
+
       with open('data.txt', 'r') as f:
           # do things with your file
           data = f.read()
-   
+
       type(data)
-  
-  Notice the indent under the ``with``. At the end of that block the 
+
+  Notice the indent under the ``with``. At the end of that block the
   file is automatically closed, even if things went wrong and an error
   occured inside the ``with`` block.
 
@@ -90,12 +95,12 @@ But what we'd really like to do is read the file line by line. There are several
 
     f = open('data.txt', 'r')
     for line in f:
-        print repr(line)
+        print(repr(line))
 
 Notice the indent before ``print``, which is necessary to indicate that we are inside the loop (there is no ``end for`` in Python). Note that we are using ``repr()`` to show any invisible characters (this will be useful in a minute). The output should now look something like this::
 
     >>> for line in f:
-            print repr(line)
+            print(repr(line))
 
     'RAJ        DEJ                          Jmag   e_Jmag\n'
     '2000 (deg) 2000 (deg) 2MASS             (mag)  (mag) \n'
@@ -178,8 +183,8 @@ We can put all this together to write a little script to read the data from the 
         columns = line.split()
         name = columns[2]
         j = float(columns[3])
-        print name, j
-        
+        print(name, j)
+
     f.close()
 
 The output should look like this::
@@ -311,105 +316,50 @@ And a possible one-liner!::
    </div>
 
 
-Numpy
-=====
-Numpy provides two functions to read in ASCII data. ``np.loadtxt`` is meant for relatively simple tables without missing values::
-
-    from StringIO import StringIO   # Pretends your variable is really a file
-                                    # because loadtxt expect a filename as input
-    c = StringIO("0 1\n2 3")
-    np.loadtxt(c)
-    
-Here is a more complicated example, that is actually useful::
-    
-    d = StringIO('''
-    # Abundances of different elements
-    # for TW Hya
-    # taken from Guenther et al. (2007)
-    # element, abund, error, first-ionisation-potential [eV]
-    C  0.2  0.03 11.3
-    N  0.51 0.05 14.6
-    O  0.25 0.01 13.6
-    Ne 2.46 0.08 21.6
-    Fe 0.19 0.01  7.9
-    ''')
-    data = np.loadtxt(d, dtype={'names': ('elem', 'abund', 'error', \
-        'FIP'),'formats': ('S2', 'f4', 'f4', 'f4')})
-
-    plt.errorbar(data['FIP'], data['abund'], yerr = data['error'], fmt = 'o')
-
-The resulting plot clearly shows the inverse first ionization potential effect.
-That means, that elements of a large FIP are enhanced in the corona.
-
-The second command ``np.genfromtxt`` is more versatile. It can fill missing values in a table, read column names, exclude some columns etc. Here is an example::
-    
-    d = StringIO('''
-    #element abund error FIP
-    C  0.2  0.03 11.3
-    N  0.51 0.05 14.6
-    O  0.25 0.01 13.6
-    Ne 2.46 0.08 21.6
-    S  nn   nn   10.4
-    Fe 0.19 0.01  7.9
-    other elements were not meesured
-    ''')
-    data = np.genfromtxt(d, dtype=('S2', 'f4', 'f4', 'f4'), names = True, \
-         skip_footer = 1, missing_values = ('nn'), filling_values=(np.nan))
-
-Examine what was returned::
-
-  data
-
-This is an instance of the NumPy `structured array
-<http://docs.scipy.org/doc/numpy/user/basics.rec.html#module-numpy.doc.structured_arrays>`_
-type, which is an efficient way to manipulate records of tabular data.  It stores
-columns of typed data and you can access either a column of data or a row of
-data at once::
-
-  data.dtype
-  data[1]
-  data['abund']
-
-.. _`astropy.io.ascii.AASTex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.AASTex.html#astropy.io.ascii.latex.AASTex
-.. _`astropy.io.ascii.Basic`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Basic.html#astropy.io.ascii.basic.Basic
-.. _`astropy.io.ascii.Cds`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.cds.Cds.html#astropy.io.ascii.cds.Cds
-.. _`astropy.io.ascii.CommentedHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.CommentedHeader.html#astropy.io.ascii.basic.CommentedHeader
-.. _`astropy.io.ascii.Daophot`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.daophot.Daophot.html#astropy.io.ascii.daophot.Daophot
-.. _`astropy.io.ascii.FixedWidth`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.fixedwidth.FixedWidth.html#astropy.io.ascii.fixedwidth.FixedWidth
-.. _`astropy.io.ascii.Ipac`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.ipac.Ipac.html#astropy.io.ascii.ipac.Ipac
-.. _`astropy.io.ascii.Latex`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.latex.Latex.html#astropy.io.ascii.latex.Latex
-.. _`astropy.io.ascii.NoHeader`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.NoHeader.html#astropy.io.ascii.basic.NoHeader
-.. _`astropy.io.ascii.Rdb`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Rdb.html#astropy.io.ascii.basic.Rdb
-.. _`astropy.io.ascii.SExtractor`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.sextractor.SExtractor.html#astropy.io.ascii.sextractor.SExtractor
-.. _`astropy.io.ascii.Tab`: http://docs.astropy.org/en/v0.2.1/_generated/astropy.io.ascii.basic.Tab.html#astropy.io.ascii.basic.Tab
-.. _`ascii.read()`: http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#parameters-for-read
+.. _`AASTex`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.AASTex.html
+.. _`Basic`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Basic.html
+.. _`Cds`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Cds.html
+.. _`CommentedHeader`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.CommentedHeader.html
+.. _`Daophot`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.daophot.Daophot.html
+.. _`FixedWidth`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.FixedWidth.html
+.. _`Ipac`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Ipac.html
+.. _`HTML`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.HTML.html
+.. _`ECSV`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Ecsv.html
+.. _`Latex`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Latex.html
+.. _`NoHeader`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.NoHeader.html
+.. _`Rdb`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Rdb.html
+.. _`SExtractor`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.SExtractor.html
+.. _`Tab`: http://docs.astropy.org/en/stable/api/astropy.io.ascii.Tab.html
+.. _`ascii.read()`: http://docs.astropy.org/en/stable/io/ascii/read.html#parameters-for-read
 
 astropy.io.ascii
 ================
 
-If you need even more flexibility, than the `astropy.io.ascii`_ module can help you.
-It natively understands some very complex formats, e.g. the CDS machine readable tables and it can automatically detect any of those formats.
-If also can format your output in LaTeX.
+In the previous section you learned about reading and writing tabular data
+files using direct Python I/O and simple parsing and type-conversion rules.
+This is important base knowledge, but in real-world use when dealing with ASCII
+data files there are many complications and we recommend using the
+`astropy.io.ascii`_ module.  It natively understands (and can automatically
+detect) most of the formats which astronomers typically encounter.  As of
+Astropy 1.0 it includes C-based read and write methods which are much faster than
+any pure-Python implementations.
 
-The `astropy.io.ascii`_ module is an extensible ASCII table reader and writer that is
-designed to handle most formats you will encounter in the wild:
+The `astropy.io.ascii`_ module supports these formats:
 
-* `astropy.io.ascii.AASTex`_: AASTeX ``deluxetable`` used for AAS journals
-* `astropy.io.ascii.Basic`_: basic table with customizable delimiters and header configurations
-* `astropy.io.ascii.Cds`_: `CDS format table <http://vizier.u-strasbg.fr/doc/catstd.htx>`_ (also Vizier and ApJ machine readable tables)
-* `astropy.io.ascii.CommentedHeader`_: column names given in a line that begins with the comment character
-* `astropy.io.ascii.Daophot`_: table from the IRAF DAOphot package
-* `astropy.io.ascii.FixedWidth`_: table with fixed-width columns (see also `fixed_width_gallery <http://docs.astropy.org/en/v0.2.1/io/ascii/fixed_width_gallery.html#fixed-width-gallery>`_)
-* `astropy.io.ascii.Ipac`_: `IPAC format table <http://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html>`_
-* `astropy.io.ascii.Latex`_: LaTeX table with datavalue in the ``tabular`` environment
-* `astropy.io.ascii.NoHeader`_: basic table with no header where columns are auto-named
-* `astropy.io.ascii.Rdb`_: tab-separated values with an extra line after the column definition line
-* `astropy.io.ascii.SExtractor`_: `SExtractor format table <http://www.astromatic.net/software/sextractor>`_
-* `astropy.io.ascii.Tab`_: tab-separated values
-
-`astropy.io.ascii`_ is built on a modular and extensible class structure. This makes
-is easy to create new classes, which implement the functionality for some 
-specific table format.
+* `AASTex`_: AASTeX ``deluxetable`` used for AAS journals
+* `Basic`_: basic table with customizable delimiters and header configurations
+* `Cds`_: `CDS format table <http://vizier.u-strasbg.fr/doc/catstd.htx>`_ (also Vizier and ApJ machine readable tables)
+* `CommentedHeader`_: column names given in a line that begins with the comment character
+* `Daophot`_: table from the IRAF DAOphot package
+* `ECSV`_: Enhanced Character-Separated-Values
+* `FixedWidth`_: table with fixed-width columns (see also `fixed_width_gallery <http://docs.astropy.org/en/stable/io/ascii/fixed_width_gallery.html#fixed-width-gallery>`_)
+* `Ipac`_: `IPAC format table <http://irsa.ipac.caltech.edu/applications/DDGEN/Doc/ipac_tbl.html>`_
+* `HTML`_: HTML format table contained in a <table> tag
+* `Latex`_: LaTeX table with datavalue in the ``tabular`` environment
+* `NoHeader`_: basic table with no header where columns are auto-named
+* `Rdb`_: tab-separated values with an extra line after the column definition line
+* `SExtractor`_: `SExtractor format table <http://www.astromatic.net/software/sextractor>`_
+* `Tab`_: tab-separated values
 
 Reading tables
 --------------
@@ -444,7 +394,7 @@ to figure out (or guess):
 
 By default `astropy.io.ascii`_ will try each format it knows and use the first one
 that gives a "reasonable" answer.  The details are in the `Guess table format
-<http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#guess-table-format>`_ section.  
+<http://docs.astropy.org/en/stable/io/ascii/read.html#guess-table-format>`_ section.
 Sometimes it will fail, e.g.::
 
   table = """
@@ -462,7 +412,7 @@ In this case you simply need to give it some help::
   ascii.read(table, delimiter="&")
 
 The full list of parameters for reading includes common options like
-``Reader``, ``delimiter``, ``quote_char``, and ``comment``.  
+``format``, ``delimiter``, ``quote_char``, and ``comment``.
 
 
 No guessing
@@ -473,7 +423,7 @@ the relevant table format information to the `ascii.read()`_ function.
 A big advantage in this strategy is that `astropy.io.ascii`_ can then provide more
 detailed information if it still fails to parse the table, e.g.::
 
-  ascii.read(table, guess=False, Reader=ascii.Basic)
+  ascii.read(table, guess=False, format='basic')
 
 This produces a message (after the stacktrace) that should be a pretty good
 clue that `astropy.io.ascii`_ is using the wrong column delimiter::
@@ -486,12 +436,10 @@ clue that `astropy.io.ascii`_ is using the wrong column delimiter::
 Writing
 -------
 
-You can write ASCII tables using the `ascii.write() <http://docs.astropy.org/en/v0.2.1/io/ascii/index.html#writing-tables>`_ function. There is a lot of flexibility in the format of the input data to be written:
+You can write ASCII tables using the `ascii.write() <http://docs.astropy.org/en/stable/io/ascii/index.html#writing-tables>`_ function. There is a lot of flexibility in the format of the input data to be written:
 
-- Existing ASCII table with metadata
-- Data from ascii.read()
 - NumPy structured array or record array
-- astropy.table.Table object
+- astropy Table object
 - Sequence of sequences
 - Dict of sequences
 
@@ -513,7 +461,7 @@ We can use a different column delimiter::
 
 or a different table writer class::
 
-  ascii.write(dat, sys.stdout, Writer=ascii.Latex)
+  ascii.write(dat, sys.stdout, format='latex')
 
 As a final example, imagine you've gathered basic information about 5 galaxies
 which you want to write as an ASCII table.  You could just use pure Python file I/O as
@@ -530,20 +478,32 @@ rewrite the same code every time when it is already done!).  Instead just use `a
 
 .. admonition::  Exercise: scraping table data from the web
 
+   *Note: this exercise only works on Python 2 due to BeautifulSoup doing something
+   differently in Python 3.  Five cheers to the person who can fix this!*
+
    To do this exercise you must first install the `BeautifulSoup
    <http://www.crummy.com/software/BeautifulSoup/>`_ package which will parse
    HTML pages into nice data structures.  **QUIT** your IPython session and from the command line do::
-     
-     pip install --upgrade [--user] BeautifulSoup
 
-   Use the ``--user`` flag if you prefer to install the package into your local
-   user area instead of within the system Python installation.
+     pip install --upgrade beautifulsoup4
 
-   Now start IPython again and define the following function which converts an
-   HTML table to a list of lines with tab-separated values (this will be more
-   clear in the next part)::
+   Now start IPython again.  The exercise is to grab the table data from the
+   `XJET catalog page <http://hea-www.harvard.edu/XJET/>`_ into a Python data
+   structure.  First we'll show you the really easy answer using the HTML
+   reading capability of `astropy.io.ascii`_::
 
-     from BeautifulSoup import BeautifulSoup
+     dat = ascii.read('http://hea-www.harvard.edu/XJET/',
+                      format='html',
+                      htmldict={'table_id':2},  # Get data from the second table
+                      fill_values=('', '-1'),   # Fill blank entries with -1
+                      header_start=0,           # Row 0 is header with column names
+                      data_start=1)             # Row 1 is start of table data
+
+   But in order to understand the guts of how this works, start by defining
+   following function which converts an HTML table to a list of lines with
+   tab-separated values (this will be more clear in the next part)::
+
+     from bs4 import BeautifulSoup
      def html2tsv(html, index=0):
          """Parse the index'th HTML table in ``html``.  Return table as a list of
          tab-separated ASCII table lines"""
@@ -556,13 +516,12 @@ rewrite the same code every time when it is already done!).  Instead just use `a
              out.append('\t'.join(colvals))
          return out
 
-   Now the exercise is to grab the table data from the `XJET catalog page
-   <http://hea-www.harvard.edu/XJET/>`_ into a Python data structure.  You'll
+    You'll
    want to start with::
 
-     import urllib2
+     from astropy.extern.six.moves.urllib import request
      from astropy.io import ascii
-     html = urllib2.urlopen('http://hea-www.harvard.edu/XJET/').read()  # Get web page as string
+     html = request.urlopen('http://hea-www.harvard.edu/XJET/').read()  # Get web page as string
      table1 = html2tsv(html, 0)   # Parse the first table in the web page
      table2 = html2tsv(html, 1)   # Parse the second table
      table3 = html2tsv(html, 2)   # Parse the third table
@@ -573,7 +532,7 @@ rewrite the same code every time when it is already done!).  Instead just use `a
 
    **HINT**: the table has missing values so include ``fill_values=('', '-1')`` in
    the call to `ascii.read()`_.  `astropy.io.ascii`_ has robust functionality to `replace bad or
-   missing values <http://docs.astropy.org/en/v0.2.1/io/ascii/read.html#replace-bad-or-missing-values>`_.
+   missing values <http://docs.astropy.org/en/stable/io/ascii/read.html#replace-bad-or-missing-values>`_.
 
 .. raw:: html
 
@@ -581,10 +540,11 @@ rewrite the same code every time when it is already done!).  Instead just use `a
 
 The data are in the second table, so do::
 
-  dat = asciitable.read(table2, fill_values=('', '-1'))
+  dat = ascii.read(table2, fill_values=('', '-1'))
+  print(dat)
+  dat.colnames
   dat.dtype
-  dat.dtype.names
-  hist(dat['z'], bins=50)
+  plt.hist(dat['z'], bins=50)
 
 .. image:: xjet_hist.png
    :scale: 50
@@ -592,5 +552,72 @@ The data are in the second table, so do::
 .. raw:: html
 
    </div>
+
+Numpy
+=====
+Numpy provides two functions to read in ASCII data which we describe here for
+completeness.  In most cases the `astropy.io.ascii`_ functionality is
+recommended since it is more flexible and generally faster.
+
+``np.loadtxt`` is meant for relatively simple tables without missing values::
+
+    # Pretend your variable is really a file because loadtxt expect
+    # a filename as input
+    from astropy.extern.six.moves import cStringIO as StringIO
+
+    c = StringIO("0 1\n2 3")
+    np.loadtxt(c)
+
+Here is a more complicated example, that is actually useful::
+
+    d = StringIO('''
+    # Abundances of different elements
+    # for TW Hya
+    # taken from Guenther et al. (2007)
+    # element, abund, error, first-ionisation-potential [eV]
+    C  0.2  0.03 11.3
+    N  0.51 0.05 14.6
+    O  0.25 0.01 13.6
+    Ne 2.46 0.08 21.6
+    Fe 0.19 0.01  7.9
+    ''')
+    data = np.loadtxt(d, dtype={'names': ('elem', 'abund', 'error', \
+        'FIP'),'formats': ('S2', 'f4', 'f4', 'f4')})
+
+    plt.errorbar(data['FIP'], data['abund'], yerr = data['error'], fmt = 'o')
+
+The resulting plot clearly shows the inverse first ionization potential effect.
+That means, that elements of a large FIP are enhanced in the corona.
+
+The second command ``np.genfromtxt`` is more versatile. It can fill missing
+values in a table, read column names, exclude some columns etc. Here is an
+example (which only works in Python 2 as of Numpy 1.9)::
+
+    d = StringIO('''
+    #element abund error FIP
+    C  0.2  0.03 11.3
+    N  0.51 0.05 14.6
+    O  0.25 0.01 13.6
+    Ne 2.46 0.08 21.6
+    S  nn   nn   10.4
+    Fe 0.19 0.01  7.9
+    other elements were not meesured
+    ''')
+    data = np.genfromtxt(d, dtype=('S2', 'f4', 'f4', 'f4'), names = True, \
+         skip_footer = 1, missing_values = ('nn'), filling_values=(np.nan))
+
+Examine what was returned::
+
+  data
+
+This is an instance of the NumPy `structured array
+<http://docs.scipy.org/doc/numpy/user/basics.rec.html#module-numpy.doc.structured_arrays>`_
+type, which is an efficient way to manipulate records of tabular data.  It stores
+columns of typed data and you can access either a column of data or a row of
+data at once::
+
+  data.dtype
+  data[1]
+  data['abund']
 
 .. include:: ../references.rst

@@ -32,15 +32,16 @@ When things go wrong
 Getting started
 ---------------
 
-Start off by downloading :download:`this tar file <../downloads/APLpy-example.tar>`, expand it, and go to the ``APLpy-example`` directory on the command line. Then, launch pylab::
+Start off by downloading :download:`this tar file <../downloads/APLpy-example.tar>`, expand it, and go to the ``APLpy-example`` directory on the command line. Then, launch IPython::
 
-    $ ipython --pylab
+    $ ipython --matplotlib
 
-If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
+If you have trouble downloading the file, then within your IPython session enter::
 
-    import urllib2, tarfile
+    from astropy.extern.six.moves.urllib import request
+    import tarfile
     url = 'http://python4astronomers.github.com/_downloads/APLpy-example.tar'
-    tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+    tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
     cd APLpy-example
     ls
 
@@ -135,10 +136,11 @@ To show the y-axis labels in dd:mm format::
 
     Use APLpy to plot one of your own FITS images! If you don't have any FITS files at hand, you can play with :download:`this <../downloads/m82_wise.tar>` newly-released WISE data of M82!
 
-    If you have trouble downloading the file, then start up IPython (``ipython --pylab``) and enter::
+    If you have trouble downloading the file, then within your IPython session enter::
 
-        import urllib2, tarfile
+        from astropy.extern.six.moves.urllib import request
+        import tarfile
         url = 'http://python4astronomers.github.com/_downloads/m82_wise.tar'
-        tarfile.open(fileobj=urllib2.urlopen(url), mode='r|').extractall()
+        tarfile.open(fileobj=request.urlopen(url), mode='r|').extractall()
         cd m82_wise
         ls

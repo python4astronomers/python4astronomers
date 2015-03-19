@@ -1,12 +1,9 @@
-.. _`matplotlib`: http://matplotlib.sourceforge.net/
-.. _`NumPy`: http://numpy.scipy.org/
+.. _`matplotlib`: http://matplotlib.org/
+.. _`NumPy`: http://numpy.org/
 .. _`SciPy`: http://scipy.org/
-.. _`IPython`: http://ipython.scipy.org/moin/
+.. _`IPython`: http://ipython.org
 .. _CIAO: http://cxc.harvard.edu/ciao/
 .. _SAS: http://xmm.vilspa.esa.es/sas/
-.. _`astropy.io.ascii`: http://docs.astropy.org/en/v0.2.1/io/ascii/index.html
-.. _pyfits: http://www.stsci.edu/resources/software_hardware/pyfits
-.. _ATpy: http://atpy.github.com
 .. _APLpy: http://aplpy.github.com
 .. _SAMPy: http://pypi.python.org/pypi/sampy
 .. _COATPy: https://github.com/python4vo/coatpy
@@ -16,3 +13,6 @@
 .. _TOPCAT: http://www.star.bris.ac.uk/~mbt/topcat
 .. _Directory: http://nvo.stsci.edu/vor10/index.aspx
 .. _astropy: http://astropy.org
+.. _astropy_doc: http://docs.astropy.org/en/stable
+.. _`astropy.io.ascii`: http://docs.astropy.org/en/stable/io/ascii/
+.. _`astropy.io.fits`: http://docs.astropy.org/en/stable/io/fits/

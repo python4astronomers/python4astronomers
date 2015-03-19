@@ -32,9 +32,20 @@ encounter in research.*
    plotting/plotting
    files/files
    fitting/fitting
-   vo/vo
    astropy/astropy
    astropy-UVES/UVES
+
+
+**Archival topic**
+
+The following topic is based on packages that are not being actively
+developed and have been superceded.  However there are still useful concepts
+presented here and we keep it for reference.
+
+.. toctree::
+   :maxdepth: 1
+
+   vo/vo
 
 .. toctree::
    :hidden:
