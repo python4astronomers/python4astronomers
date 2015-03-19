@@ -13,6 +13,6 @@
 .. _TOPCAT: http://www.star.bris.ac.uk/~mbt/topcat
 .. _Directory: http://nvo.stsci.edu/vor10/index.aspx
 .. _astropy: http://astropy.org
-.. _astropy_doc: http://astropy.readthedocs.org/en/stable
-.. _`astropy.io.ascii`: http://astropy.readthedocs.org/en/stable/io/ascii/
-.. _`astropy.io.fits`: http://astropy.readthedocs.org/en/stable/io/fits/
+.. _astropy_doc: http://docs.astropy.org/en/stable
+.. _`astropy.io.ascii`: http://docs.astropy.org/en/stable/io/ascii/
+.. _`astropy.io.fits`: http://docs.astropy.org/en/stable/io/fits/

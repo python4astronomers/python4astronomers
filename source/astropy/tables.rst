@@ -17,7 +17,7 @@ Documentation
 -------------
 
 For more information about the features presented below, you can read the
-`astropy.table <http://astropy.readthedocs.org/en/stable/table/index.html>`_ docs.
+`astropy.table <http://docs.astropy.org/en/stable/table/index.html>`_ docs.
 
 
 Constructing and Manipulating tables

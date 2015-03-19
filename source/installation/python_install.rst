@@ -162,7 +162,7 @@ Then change to a working directory, untar the file, and start up IPython::
 .. admonition:: Exercise: Read a table and examine it
 
   Look at the documentation for the `astropy.Table.read()
-  <http://astropy.readthedocs.org/en/stable/io/ascii/index.html>`_ function in
+  <http://docs.astropy.org/en/stable/io/ascii/index.html>`_ function in
   `astropy`_.  Follow the very first example and use the ``read()`` function
   to read the data in the file ``table1.dat`` into the variable named ``data``.
 
