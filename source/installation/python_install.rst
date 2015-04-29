@@ -140,7 +140,7 @@ Take your Python for a spin!
 If you are following along with the Python for Astronomers tutorial and have
 finished installing Python, you can give a real test drive now.
 
-First download the `<install_examples.tar>`_ tar file which has example data
+First download the :download:`install_examples.tar <../downloads/install_examples.tar>` file which has example data
 files that will be used in subsequent exercises.
 Then change to a working directory, untar the file, and start up IPython::
 
