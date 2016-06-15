@@ -182,7 +182,7 @@ including convolution with a Gaussian filter and the addition of noise.
   image += random.normal(3., 0.01, image.shape)
 
   # Write out to FITS image
-  pits.writeto('cluster.fits', image, clobber=True)
+  fits.writeto('cluster.fits', image, clobber=True)
 
 The simulated cluster image is below:
 
