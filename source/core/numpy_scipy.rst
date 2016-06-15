@@ -458,7 +458,7 @@ image.
 
   import scipy.signal
   img_sm = scipy.signal.medfilt(img, 5)
-  sigma = median(err)
+  sigma = np.median(err)
   bad = np.abs(img - img_sm) / sigma > 8.0
   img_cr = img.copy()
   img_cr[bad] = img_sm[bad]
