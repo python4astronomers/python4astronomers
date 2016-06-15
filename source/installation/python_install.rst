@@ -19,11 +19,12 @@ You may need to choose between 32-bit and 64-bit installations.  Generally
 speaking you should choose 64-bit, but read `64 versus 32 bit`_ for some caveats
 or if you aren't sure if your CPU is 64-bit.
 
-For this workshop you can use either Python 2.6, 2.7 or Python 3 (version >=
-3.3).  On the general question of whether to use Python 2 or Python 3, at this
-point the major package support for both is quite similar, and (as of
-early 2015) it appears that in the overall community Python 3 usage is
-becoming substantial.
+For most of this workshop you can use either Python 2.7 or Python 3 (version >=
+3.3).  The exception is the Sherpa fitting tutorial which can only be done with
+Python 2.7.  On the general question of whether to use Python 2 or Python 3, at
+this point the major package support for both is quite similar, and (as of
+early 2015) it appears that in the overall community Python 3 usage is becoming
+substantial.
 
 .. _`anaconda_option`:
 
@@ -113,6 +114,7 @@ core scientific Python installation, do the following and check version numbers:
   import numpy
   import scipy
   import scipy.linalg
+  import matplotlib
   import matplotlib.pyplot as plt
 
   print(numpy.__version__)
@@ -120,7 +122,7 @@ core scientific Python installation, do the following and check version numbers:
   print(matplotlib.__version__)
 
   x = numpy.linspace(0, 20, 100)
-  plt.plot(x, sin(x))
+  plt.plot(x, numpy.sin(x))
   print(scipy.linalg.eig([[1,2],[3,4]]))
 
 The commands above should succeed with no errors.  The version numbers should
