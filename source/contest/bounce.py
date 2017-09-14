@@ -24,7 +24,6 @@ for i in range(100):
     bounce = abs(pos) > 10      # Find balls that are outside walls
     vel[bounce] = -vel[bounce]  # Bounce if outside the walls
     circles.set_offsets(pos)    # Change the positions
-    plt.draw()
-    plt.show()
+    plt.pause(0.05)
 
     
